@@ -94,3 +94,7 @@ hs_err_pid*
 .gitignore
 .idea/
 lc4e.iml
+
+node_modules/
+
+node_modules
