@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <title>${SiteName}</title>
+    <link href="${Theme}/dist/app.css" rel="stylesheet" type="text/css">
+    <link href="${Theme}/dist/base/base.css" rel="stylesheet" type="text/css">
+    <title>Lc4e Demo</title>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="alternate icon" type="image/png" href="${Theme}/images/logo.png">
-    <link rel="stylesheet" type="text/css" href="${Theme}/js/plugins/semantic-ui/semantic.min.css?v=${version}">
-    <link href="${Theme}/style.css?v=${version}" rel="stylesheet">
+    <link href="http://at.alicdn.com/t/font_1476762785_820331.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="app"></div>
@@ -24,8 +25,6 @@
         page: Number('${page?!1}')
     };
 </script>
-<script type="text/javascript" src="${Theme}/js/plugins/jquery/jquery.min.js?v=${version}"></script>
-<script type="text/javascript" src="${Theme}/js/plugins/semantic-ui/semantic.min.js?v=${version}"></script>
-<script src="${Theme}/app.js?v=${version}"></script>
+<script src="${Theme}/dist/app.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.silentgo.lc4e.web.controller;
 
 
+import com.silentgo.core.aop.validator.annotation.RequestInt;
+import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.render.RenderModel;
 import com.silentgo.core.route.annotation.*;
@@ -45,9 +47,15 @@ public class ViewController {
 //            @ValidateParam(index = 0, type = Integer.class, defaultValue = "2")
 //    })
     @Route("/")
-    public String index(Request request, Integer p) {
-        request.setAttribute("page", p);
+    public String index(Request request) {
         return "index.html";
+    }
+
+    @Route("/{page:[0-9]+}-{order:[0-9]}")
+    @ResponseBody
+    @RouteMatch(method = RequestMethod.POST)
+    public Message index(@PathVariable Integer page, @PathVariable Integer order) {
+        return new Message(true, new ReturnData("topics", getArticle(page, order, "all")));
     }
 
     //    @ValidateParams({
@@ -57,8 +65,9 @@ public class ViewController {
 //    })
     @Route("/a/{area}-{page:[0-9]+}-{order:[0-1]}")
     @RouteMatch(method = RequestMethod.GET)
-    public String a(Request request, @PathVariable String area, @PathVariable Integer page, @PathVariable Integer order) {
-        request.setAttribute("curArea", area);
+    public String a(Request request, @PathVariable @RequestString String area,
+                    @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {
+        request.setAttribute("area", area);
         request.setAttribute("topics", getArticle(page, order, area));
         return "index.html";
     }
@@ -67,8 +76,8 @@ public class ViewController {
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message a2(Request request, @PathVariable String area, @PathVariable Integer page, @PathVariable Integer order) {
-        request.setAttribute("curArea", area);
-        return new Message(true, new ReturnData("curArea", area),
+        request.setAttribute("area", area);
+        return new Message(true, new ReturnData("area", area),
                 new ReturnData("topics", getArticle(page, order, area)));
     }
 
