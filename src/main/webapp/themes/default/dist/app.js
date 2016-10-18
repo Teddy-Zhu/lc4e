@@ -27620,13 +27620,13 @@ module.exports =
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(45)
+__webpack_require__(47)
 
 /* script */
 __vue_exports__ = __webpack_require__(8)
 
 /* template */
-var __vue_template__ = __webpack_require__(36)
+var __vue_template__ = __webpack_require__(38)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27638,7 +27638,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/app.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/app.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -27649,9 +27649,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-290ec1b7", __vue_options__)
+    hotAPI.createRecord("data-v-53b92194", __vue_options__)
   } else {
-    hotAPI.reload("data-v-290ec1b7", __vue_options__)
+    hotAPI.reload("data-v-53b92194", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] app.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -29207,78 +29207,6 @@ module.exports = plugin;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -29566,16 +29494,7 @@ module.exports = plugin;
         };
     },
     created: function created() {
-        for (var i = 0; i < 20; i++) {
-            this.topics.push({
-                imgurl: '/sss',
-                author: 'aaa',
-                title: 'asdasdx',
-                hot: 123,
-                createTime: new Date(),
-                areaName: 'ssxx'
-            });
-        }
+        this.getData();
     },
 
     watch: {
@@ -29595,9 +29514,9 @@ module.exports = plugin;
 
             var url = '/' + this.page + '-' + this.order;
 
-            this.$http.get(url).then(function (response) {
-                if (response.result) {
-                    _this.topics = response.data.topics;
+            this.$http.post(url).then(function (response) {
+                if (response.data.result) {
+                    _this.topics = response.data.data.topics;
                 }
             }, function (response) {});
         },
@@ -29620,6 +29539,13 @@ module.exports = plugin;
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29812,7 +29738,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"subMenu.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.el-select-mini {\n    margin: 5px 0;\n}\n.order-select .el-input__inner {\n    height: 24px;\n}\n.pager-center {\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.inline-block {\n    display: inline-block;\n}\n.br-path {\n    margin: 10px 0;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index.vue?4c17446e"],"names":[],"mappings":";AAsCA;IACA,cAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,mBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,sBAAA;CACA;AAEA;IACA,eAAA;CACA","file":"index.vue","sourcesContent":["<template>\n    <sg-body>\n        <slot>\n            <el-row>\n                <el-col :span=\"17\">\n                    <el-row type=\"flex\" justify=\"space-between\">\n                        <el-col :span=\"15\" class=\"br-path\">\n                            <el-breadcrumb separator=\">\">\n                                <el-breadcrumb-item :to=\"{ path: '/' }\">首页</el-breadcrumb-item>\n                                <el-breadcrumb-item>Area</el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </el-col>\n                        <el-col :span=\"3\">\n                            <el-select v-model=\"order\" class=\"el-select-mini\">\n                                <el-option\n                                        v-for=\"orderItem in orders\"\n                                        :label=\"orderItem.label\"\n                                        :value=\"orderItem.value\">\n                                </el-option>\n                            </el-select>\n                        </el-col>\n                    </el-row>\n                    <sg-topic-Line :data=\"data\" v-for=\"data in topics\"></sg-topic-Line>\n                    <el-row type=\"flex\" justify=\"center\">\n                        <el-col :span=\"24\" class=\"pager-center\">\n                            <sg-pager :pageNow=\"page\" :pageSize=\"size\" :pageTotal=\"total\"\n                                      @currentchange=\"pageChange\" class=\"inline-block\"></sg-pager>\n                        </el-col>\n                    </el-row>\n                </el-col>\n                <el-col :span=\"7\">\n                    <p>right</p>\n                </el-col>\n            </el-row>\n        </slot>\n    </sg-body>\n</template>\n<style>\n    .el-select-mini {\n        margin: 5px 0;\n    }\n\n    .order-select .el-input__inner {\n        height: 24px;\n    }\n\n    .pager-center {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n\n    .inline-block {\n        display: inline-block;\n    }\n\n    .br-path {\n        margin: 10px 0;\n    }\n</style>\n<script type=\"text/javascript\">\n    import Body from './compments/body.vue'\n    import Pager from './others/pager.vue'\n    import TopicLine from './index/topicLine.vue'\n    export default  {\n        name: 'index',\n        data () {\n            return {\n                menus: preLoadData.menus,\n                topics: [],\n                page: 1,\n                size: 30,\n                total: 100,\n                order: 1,\n                orders: [{\n                    value: '1',\n                    label: '最新发布'\n                }, {\n                    value: '2',\n                    label: '最后回复'\n                }, {\n                    value: '3',\n                    label: '个人喜好'\n                }]\n            }\n        },\n        created () {\n            this.getData();\n        },\n        watch: {\n            $route() {\n                this.getData();\n            },\n            page(val, OldVal){\n                this.getData();\n            }\n        },\n        methods: {\n            pageChange(page){\n                this.page = page;\n            },\n            getData () {\n                var url = '/' + this.page + '-' + this.order;\n\n                this.$http.post(url).then((response)=> {\n                    if (response.data.result) {\n                        this.topics = response.data.data.topics;\n                    }\n                }, (response)=> {\n\n                });\n            },\n            nextPage () {\n                this.page = this.page + 1;\n            },\n            prevPage () {\n                this.page = this.page - 1;\n            }\n        },\n        components: {\n            'sg-body': Body,\n            'sg-pager': Pager,\n            'sg-topic-Line': TopicLine\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29826,7 +29752,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n[v-cloak] {\n    display: none;\n}\n.bg-blue-light {\n    background-color: #58B7FF;\n}\n.bg-blue {\n    background-color: #20A0FF;\n}\n.bg-blue-dark {\n    background-color: #1D8CE0;\n}\n.bg-info {\n    background-color: #20A0FF;\n}\n.bg-success {\n    background-color: #13CE66;\n}\n.bg-warning {\n    background-color: #F7BA2A;\n}\n.bg-danger {\n    background-color: #FF4949;\n}\n.bg-black {\n    background-color: #1F2D3D;\n}\n.bg-black-light {\n    background-color: #324057;\n}\n.bg-black-lighter {\n    background-color: #475669;\n}\n.bg-silver {\n    background-color: #8492A6;\n}\n.bg-silver-light {\n    background-color: #99A9BF;\n}\n.bg-silver-lighter {\n    background-color: #C0CCDA;\n}\n.bg-gray-lighter {\n    background-color: #D3DCE6;\n}\n.bg-gray-light {\n    background-color: #E5E9F2;\n}\n.bg-gray-lighter {\n    background-color: #EFF2F7;\n}\n.bg-white-dark {\n    background-color: #F9FAFC;\n}\n.bg-white {\n    background-color: #FFFFFF;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/WebstormProjects/lc4e/src/app.vue?042fb8aa"],"names":[],"mappings":";AACA;IACA,cAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,0BAAA;CACA","file":"app.vue","sourcesContent":["<style>\n    [v-cloak] {\n        display: none;\n    }\n\n    .bg-blue-light {\n        background-color: #58B7FF;\n    }\n\n    .bg-blue {\n        background-color: #20A0FF;\n    }\n\n    .bg-blue-dark {\n        background-color: #1D8CE0;\n    }\n\n    .bg-info {\n        background-color: #20A0FF;\n    }\n\n    .bg-success {\n        background-color: #13CE66;\n    }\n\n    .bg-warning {\n        background-color: #F7BA2A;\n    }\n\n    .bg-danger {\n        background-color: #FF4949;\n    }\n\n    .bg-black {\n        background-color: #1F2D3D;\n    }\n\n    .bg-black-light {\n        background-color: #324057;\n    }\n\n    .bg-black-lighter {\n        background-color: #475669;\n    }\n\n    .bg-silver {\n        background-color: #8492A6;\n    }\n\n    .bg-silver-light {\n        background-color: #99A9BF;\n    }\n\n    .bg-silver-lighter {\n        background-color: #C0CCDA;\n    }\n\n    .bg-gray-lighter {\n        background-color: #D3DCE6;\n    }\n\n    .bg-gray-light {\n        background-color: #E5E9F2;\n    }\n\n    .bg-gray-lighter {\n        background-color: #EFF2F7;\n    }\n\n    .bg-white-dark {\n        background-color: #F9FAFC;\n    }\n\n    .bg-white {\n        background-color: #FFFFFF;\n    }\n</style>\n<template>\n    <el-row>\n        <el-col :span=\"24\">\n            <sg-header :menus=\"menus\"></sg-header>\n            <router-view></router-view>\n            <sg-footer :siteName=\"siteName\" :version=\"version\"></sg-footer>\n        </el-col>\n    </el-row>\n</template>\n\n<script>\n    import Header from './views/compments/header.vue'\n    import Footer from './views/compments/footer.vue'\n\n    export default {\n        name: 'app',\n        data () {\n            return preLoadData;\n        },\n        created () {\n            console.log(\"created\")\n        },\n        components: {\n            'sg-header': Header,\n            'sg-footer': Footer\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"subMenu.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29840,7 +29766,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"pager.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.el-tag-mini {\n    height: 13px;\n    line-height: 13px;\n}\n.el-tag.clickable{\n    cursor: pointer;\n}\n.topic-line-img {\n    width: 3em;\n    height: 3em;\n}\n.topic-line {\n    padding: .3em 0;\n    border-bottom: 1px solid #eaeefb;\n}\n.topic-line:hover {\n    background-color: white;\n}\n.topic-line-title {\n    cursor: pointer;\n    display: inline-block;\n    font-size: 1.3em;\n    line-height: 1.3em;\n}\n.topic-line-title:after {\n    width: 100%;\n    height: 2px;\n    background-color: #4183C4;\n    content: '';\n    -webkit-transition: all 0.2s;\n    -webkit-backface-visibility: hidden;\n    transition: all 0.2s;\n    backface-visibility: hidden;\n    -ms-transform: scaleX(0);\n        transform: scaleX(0);\n    clear: both;\n    display: block;\n}\n.topic-line-title:hover:after {\n    -ms-transform: scaleX(1);\n        transform: scaleX(1);\n}\n.topic-line-meta {\n    margin-top: .2em;\n}\n.topic-line-body {\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue?97f380d2"],"names":[],"mappings":";AAuBA;IACA,aAAA;IACA,kBAAA;CACA;AACA;IACA,gBAAA;CACA;AACA;IACA,WAAA;IACA,YAAA;CACA;AAEA;IACA,gBAAA;IACA,iCAAA;CACA;AAEA;IACA,wBAAA;CACA;AAEA;IACA,gBAAA;IACA,sBAAA;IACA,iBAAA;IACA,mBAAA;CACA;AAEA;IACA,YAAA;IACA,YAAA;IACA,0BAAA;IACA,YAAA;IACA,6BAAA;IACA,oCAAA;IACA,qBAAA;IACA,4BAAA;IAEA,yBAAA;QAAA,qBAAA;IACA,YAAA;IACA,eAAA;CACA;AAEA;IAEA,yBAAA;QAAA,qBAAA;CACA;AAEA;IACA,iBAAA;CACA;AAEA;CAEA","file":"topicLine.vue","sourcesContent":["<template>\n    <el-row class=\"topic-line\">\n        <el-col :span=\"3\" class=\"topic-author-pic\">\n            <a>\n                <img :src=\"data.imageUrl\" class=\"topic-line-img\">\n            </a>\n        </el-col>\n        <el-col :span=\"21\" class=\"topic-line-body\">\n            <router-link :to=\"data.articleUrl\" tag=\"div\" class=\"topic-line-title\">\n                {{data.articleTitle}}\n            </router-link>\n            <div class=\"topic-line-meta\">\n                <el-breadcrumb separator=\"/\">\n                    <el-breadcrumb-item :to=\"{ path: '/a/' +data.category }\"><el-tag type=\"primary\" class=\"el-tag-mini\">{{data.category}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-user\"></i>{{data.user}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-huo\"></i>{{data.comments}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"el-icon-date\"></i>{{data.publishTime}}</el-tag></el-breadcrumb-item>\n                </el-breadcrumb>\n            </div>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .el-tag-mini {\n        height: 13px;\n        line-height: 13px;\n    }\n    .el-tag.clickable{\n        cursor: pointer;\n    }\n    .topic-line-img {\n        width: 3em;\n        height: 3em;\n    }\n\n    .topic-line {\n        padding: .3em 0;\n        border-bottom: 1px solid #eaeefb;\n    }\n\n    .topic-line:hover {\n        background-color: white;\n    }\n\n    .topic-line-title {\n        cursor: pointer;\n        display: inline-block;\n        font-size: 1.3em;\n        line-height: 1.3em;\n    }\n\n    .topic-line-title:after {\n        width: 100%;\n        height: 2px;\n        background-color: #4183C4;\n        content: '';\n        -webkit-transition: all 0.2s;\n        -webkit-backface-visibility: hidden;\n        transition: all 0.2s;\n        backface-visibility: hidden;\n        -webkit-transform: scaleX(0);\n        transform: scaleX(0);\n        clear: both;\n        display: block;\n    }\n\n    .topic-line-title:hover:after {\n        -webkit-transform: scaleX(1);\n        transform: scaleX(1);\n    }\n\n    .topic-line-meta {\n        margin-top: .2em;\n    }\n\n    .topic-line-body {\n\n    }\n</style>\n<script>\n    export default{\n        name: 'sg-topic-Line',\n        props: {\n            data: {\n                type: Object\n            }\n        },\n        components: {}\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29854,7 +29780,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.footer-des {\n    display: inline-block;\n}\n.footer-des p {\n    color: white;\n}\n.footer-a {\n    display: inline-block;\n    margin: 0 11px 12px 0;\n    line-height: 1;\n    font-size: 12px;\n    color: #768193;\n    text-decoration: none;\n}\n.footer-icon a i {\n    font-size: 25px;\n}\n.footer-icon a {\n    color: white;\n    text-decoration: none;\n}\n.footer-icon {\n    padding-top: 1em;\n    float: right;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/WebstormProjects/lc4e/src/views/compments/footer.vue?0202a973"],"names":[],"mappings":";AAmBA;IACA,sBAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,sBAAA;IACA,sBAAA;IACA,eAAA;IACA,gBAAA;IACA,eAAA;IACA,sBAAA;CACA;AAEA;IACA,gBAAA;CACA;AAEA;IACA,aAAA;IACA,sBAAA;CACA;AAEA;IACA,iBAAA;IACA,aAAA;CACA","file":"footer.vue","sourcesContent":["<template>\n    <el-row type=\"flex\" justify=\"center\" class=\"bg-black-light\">\n        <el-col :span=\"22\">\n            <div class=\"footer-des\">\n                <p>{{siteName}} {{version}}</p>\n                <a class=\"footer-a\" target=\"_blank\"\n                   href=\"http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html\">JDK8</a>\n                <a class=\"footer-a\" target=\"_blank\" href=\"https://github.com/Teddy-Zhu/SilentGo\">SilentGo</a>\n                <a class=\"footer-a\" target=\"_blank\" href=\"https://github.com/vuejs/vue\">Vue2</a>\n            </div>\n            <div class=\"footer-icon\">\n                <a href=\"https://github.com/Teddy-Zhu/lc4e\" target=\"_blank\">\n                    <i class=\"iconfont icon-github\"></i>\n                </a>\n            </div>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .footer-des {\n        display: inline-block;\n    }\n\n    .footer-des p {\n        color: white;\n    }\n\n    .footer-a {\n        display: inline-block;\n        margin: 0 11px 12px 0;\n        line-height: 1;\n        font-size: 12px;\n        color: #768193;\n        text-decoration: none;\n    }\n\n    .footer-icon a i {\n        font-size: 25px;\n    }\n\n    .footer-icon a {\n        color: white;\n        text-decoration: none;\n    }\n\n    .footer-icon {\n        padding-top: 1em;\n        float: right;\n    }\n</style>\n<script>\n\n    export default{\n        name: 'sg-footer',\n        props: {\n            siteName: {\n                type: String\n            },\n            version: {\n                type: String\n            }\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n[v-cloak] {\n    display: none;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/app.vue?666021ec"],"names":[],"mappings":";AACA;IACA,cAAA;CACA","file":"app.vue","sourcesContent":["<style>\n    [v-cloak] {\n        display: none;\n    }\n</style>\n<template>\n    <el-row>\n        <el-col :span=\"24\">\n            <sg-header :menus=\"menus\"></sg-header>\n            <router-view></router-view>\n            <sg-footer :siteName=\"siteName\" :version=\"version\"></sg-footer>\n        </el-col>\n    </el-row>\n</template>\n\n<script>\n    import Header from './views/compments/header.vue'\n    import Footer from './views/compments/footer.vue'\n\n    export default {\n        name: 'app',\n        data () {\n            return preLoadData;\n        },\n        created () {\n            console.log(\"created\")\n        },\n        components: {\n            'sg-header': Header,\n            'sg-footer': Footer\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29868,7 +29794,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.order-select {\n    margin: 5px 0;\n}\n.order-select .el-input__inner {\n    height: 24px;\n}\n.pager-center {\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.inline-block {\n    display: inline-block;\n}\n.br-path {\n    margin: 10px 0;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/WebstormProjects/lc4e/src/views/index.vue?212682a2"],"names":[],"mappings":";AAsCA;IACA,cAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,mBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,sBAAA;CACA;AAEA;IACA,eAAA;CACA","file":"index.vue","sourcesContent":["<template>\n    <sg-body>\n        <slot>\n            <el-row>\n                <el-col :span=\"17\">\n                    <el-row type=\"flex\" justify=\"space-between\">\n                        <el-col :span=\"15\" class=\"br-path\">\n                            <el-breadcrumb separator=\">\">\n                                <el-breadcrumb-item :to=\"{ path: '/' }\">首页</el-breadcrumb-item>\n                                <el-breadcrumb-item>Area</el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </el-col>\n                        <el-col :span=\"3\">\n                            <el-select v-model=\"order\" class=\"order-select\">\n                                <el-option\n                                        v-for=\"orderItem in orders\"\n                                        :label=\"orderItem.label\"\n                                        :value=\"orderItem.value\">\n                                </el-option>\n                            </el-select>\n                        </el-col>\n                    </el-row>\n                    <sg-topic-Line :data=\"data\" v-for=\"data in topics\"></sg-topic-Line>\n                    <el-row type=\"flex\" justify=\"center\">\n                        <el-col :span=\"24\" class=\"pager-center\">\n                            <sg-pager :pageNow=\"page\" :pageSize=\"size\" :pageTotal=\"total\"\n                                      @currentchange=\"pageChange\" class=\"inline-block\"></sg-pager>\n                        </el-col>\n                    </el-row>\n                </el-col>\n                <el-col :span=\"7\">\n                    <p>right</p>\n                </el-col>\n            </el-row>\n        </slot>\n    </sg-body>\n</template>\n<style>\n    .order-select {\n        margin: 5px 0;\n    }\n\n    .order-select .el-input__inner {\n        height: 24px;\n    }\n\n    .pager-center {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n\n    .inline-block {\n        display: inline-block;\n    }\n\n    .br-path {\n        margin: 10px 0;\n    }\n</style>\n<script type=\"text/javascript\">\n    import Body from './compments/body.vue'\n    import Pager from './others/pager.vue'\n    import TopicLine from './index/topicLine.vue'\n    export default  {\n        name: 'index',\n        data () {\n            return {\n                menus: preLoadData.menus,\n                topics: [],\n                page: 1,\n                size: 30,\n                total: 100,\n                order: 1,\n                orders: [{\n                    value: '1',\n                    label: '最新发布'\n                }, {\n                    value: '2',\n                    label: '最后回复'\n                }, {\n                    value: '3',\n                    label: '个人喜好'\n                }]\n            }\n        },\n        created () {\n            for (var i = 0; i < 20; i++) {\n                this.topics.push({\n                    imgurl: '/sss',\n                    author: 'aaa',\n                    title: 'asdasdx',\n                    hot: 123,\n                    createTime: new Date(),\n                    areaName: 'ssxx'\n                });\n            }\n        },\n        watch: {\n            $route() {\n                this.getData();\n            },\n            page(val, OldVal){\n                this.getData();\n            }\n        },\n        methods: {\n            pageChange(page){\n                this.page = page;\n            },\n            getData () {\n                var url = '/' + this.page + '-' + this.order;\n\n                this.$http.get(url).then((response)=> {\n                    if (response.result) {\n                        this.topics = response.data.topics;\n                    }\n                }, (response)=> {\n\n                });\n            },\n            nextPage () {\n                this.page = this.page + 1;\n            },\n            prevPage () {\n                this.page = this.page - 1;\n            }\n        },\n        components: {\n            'sg-body': Body,\n            'sg-pager': Pager,\n            'sg-topic-Line': TopicLine\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.footer-des {\n    display: inline-block;\n}\n.footer-des p {\n    color: white;\n}\n.footer-a {\n    display: inline-block;\n    margin: 0 11px 12px 0;\n    line-height: 1;\n    font-size: 12px;\n    color: #768193;\n    text-decoration: none;\n}\n.footer-icon a i {\n    font-size: 25px;\n}\n.footer-icon a {\n    color: white;\n    text-decoration: none;\n}\n.footer-icon {\n    padding-top: 1em;\n    float: right;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/footer.vue?0202a973"],"names":[],"mappings":";AAmBA;IACA,sBAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,sBAAA;IACA,sBAAA;IACA,eAAA;IACA,gBAAA;IACA,eAAA;IACA,sBAAA;CACA;AAEA;IACA,gBAAA;CACA;AAEA;IACA,aAAA;IACA,sBAAA;CACA;AAEA;IACA,iBAAA;IACA,aAAA;CACA","file":"footer.vue","sourcesContent":["<template>\n    <el-row type=\"flex\" justify=\"center\" class=\"bg-black-light\">\n        <el-col :span=\"22\">\n            <div class=\"footer-des\">\n                <p>{{siteName}} {{version}}</p>\n                <a class=\"footer-a\" target=\"_blank\"\n                   href=\"http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html\">JDK8</a>\n                <a class=\"footer-a\" target=\"_blank\" href=\"https://github.com/Teddy-Zhu/SilentGo\">SilentGo</a>\n                <a class=\"footer-a\" target=\"_blank\" href=\"https://github.com/vuejs/vue\">Vue2</a>\n            </div>\n            <div class=\"footer-icon\">\n                <a href=\"https://github.com/Teddy-Zhu/lc4e\" target=\"_blank\">\n                    <i class=\"iconfont icon-github\"></i>\n                </a>\n            </div>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .footer-des {\n        display: inline-block;\n    }\n\n    .footer-des p {\n        color: white;\n    }\n\n    .footer-a {\n        display: inline-block;\n        margin: 0 11px 12px 0;\n        line-height: 1;\n        font-size: 12px;\n        color: #768193;\n        text-decoration: none;\n    }\n\n    .footer-icon a i {\n        font-size: 25px;\n    }\n\n    .footer-icon a {\n        color: white;\n        text-decoration: none;\n    }\n\n    .footer-icon {\n        padding-top: 1em;\n        float: right;\n    }\n</style>\n<script>\n\n    export default{\n        name: 'sg-footer',\n        props: {\n            siteName: {\n                type: String\n            },\n            version: {\n                type: String\n            }\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29882,7 +29808,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.menu-panel {\n    height: 60px;\n}\n.sg-header {\n    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .25);\n    padding: 0 5rem;\n}\n.sg-header.fixed {\n    width: 100%;\n    z-index: 1;\n    position: fixed;\n    background-color: rgba(50, 64, 87, 0.84);\n}\n\n", "", {"version":3,"sources":["/./Users/teddyzhu/WebstormProjects/lc4e/src/views/compments/header.vue?7ec87774"],"names":[],"mappings":";AAWA;IACA,aAAA;CACA;AAEA;IACA,8CAAA;IACA,gBAAA;CACA;AAEA;IACA,YAAA;IACA,WAAA;IACA,gBAAA;IACA,yCAAA;CACA","file":"header.vue","sourcesContent":["<template>\n    <el-row>\n        <el-col :span=\"24\" class=\"menu-panel\">\n            <el-menu default-active=\"/\" theme=\"dark\" :mode=\"mode\" @select=\"select\"\n                     class=\"sg-header\" :class=\"{ fixed:fixed }\">\n                <sg-menu :menu=\"menu\" v-for=\"menu in menus\"></sg-menu>\n            </el-menu>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .menu-panel {\n        height: 60px;\n    }\n\n    .sg-header {\n        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .25);\n        padding: 0 5rem;\n    }\n\n    .sg-header.fixed {\n        width: 100%;\n        z-index: 1;\n        position: fixed;\n        background-color: rgba(50, 64, 87, 0.84);\n    }\n\n</style>\n<script>\n    import {on} from 'wind-dom/src/event';\n    import sgmenu from '../others/menu.vue';\n\n    export default{\n        name: \"sg-header\",\n        data(){\n            return {\n                fixed: false\n            }\n        },\n        props: {\n            mode: {\n                type: String,\n                default: 'horizontal'\n            },\n            menus: {\n                type: Array,\n                required: true\n            }\n        },\n        created(){\n            let self = this;\n            on(window, 'scroll', function (event) {\n                self.fixed = window.scrollY > 0;\n            })\n        },\n        methods: {\n            select(index, indexPath){\n                if (index)\n                    this.$router.push(index);\n            }\n        },\n        components: {\n            'sg-menu': sgmenu\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"pager.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -29910,7 +29836,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.topic-line-img {\n    width: 3em;\n    height: 3em;\n}\n.topic-line {\n    padding: .3em 0;\n    border-bottom: 1px solid #eaeefb;\n}\n.topic-line:hover {\n    background-color: #EFF2F7;\n}\n.topic-line-title {\n    cursor: pointer;\n    display: inline-block;\n    font-size: 1.3em;\n    line-height: 1.3em;\n}\n.topic-line-title:after {\n    width: 100%;\n    height: 2px;\n    background-color: #4183C4;\n    content: '';\n    -webkit-transition: all 0.2s;\n    -webkit-backface-visibility: hidden;\n    transition: all 0.2s;\n    backface-visibility: hidden;\n    -ms-transform: scaleX(0);\n        transform: scaleX(0);\n    clear: both;\n    display: block;\n}\n.topic-line-title:hover:after {\n    -ms-transform: scaleX(1);\n        transform: scaleX(1);\n}\n.topic-line-meta {\n    margin-top: .2em;\n}\n.topic-line-body {\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/WebstormProjects/lc4e/src/views/index/topicLine.vue?355fbc25"],"names":[],"mappings":";AAuBA;IACA,WAAA;IACA,YAAA;CACA;AAEA;IACA,gBAAA;IACA,iCAAA;CACA;AAEA;IACA,0BAAA;CACA;AAEA;IACA,gBAAA;IACA,sBAAA;IACA,iBAAA;IACA,mBAAA;CACA;AAEA;IACA,YAAA;IACA,YAAA;IACA,0BAAA;IACA,YAAA;IACA,6BAAA;IACA,oCAAA;IACA,qBAAA;IACA,4BAAA;IAEA,yBAAA;QAAA,qBAAA;IACA,YAAA;IACA,eAAA;CACA;AAEA;IAEA,yBAAA;QAAA,qBAAA;CACA;AAEA;IACA,iBAAA;CACA;AAEA;CAEA","file":"topicLine.vue","sourcesContent":["<template>\n    <el-row class=\"topic-line\">\n        <el-col :span=\"3\" class=\"topic-author-pic\">\n            <a>\n                <img :src=\"data.imgurl\" class=\"topic-line-img\">\n            </a>\n        </el-col>\n        <el-col :span=\"21\" class=\"topic-line-body\">\n            <router-link to=\"/foo\" tag=\"div\" class=\"topic-line-title\">\n                {{data.title}}\n            </router-link>\n            <div class=\"topic-line-meta\">\n                <el-breadcrumb separator=\"/\">\n                    <el-breadcrumb-item :to=\"{ path: '/' }\">{{data.areaName}}</el-breadcrumb-item>\n                    <el-breadcrumb-item>{{data.author}}</el-breadcrumb-item>\n                    <el-breadcrumb-item>{{data.hot}}</el-breadcrumb-item>\n                    <el-breadcrumb-item>{{data.createTime}}</el-breadcrumb-item>\n                </el-breadcrumb>\n            </div>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .topic-line-img {\n        width: 3em;\n        height: 3em;\n    }\n\n    .topic-line {\n        padding: .3em 0;\n        border-bottom: 1px solid #eaeefb;\n    }\n\n    .topic-line:hover {\n        background-color: #EFF2F7;\n    }\n\n    .topic-line-title {\n        cursor: pointer;\n        display: inline-block;\n        font-size: 1.3em;\n        line-height: 1.3em;\n    }\n\n    .topic-line-title:after {\n        width: 100%;\n        height: 2px;\n        background-color: #4183C4;\n        content: '';\n        -webkit-transition: all 0.2s;\n        -webkit-backface-visibility: hidden;\n        transition: all 0.2s;\n        backface-visibility: hidden;\n        -webkit-transform: scaleX(0);\n        transform: scaleX(0);\n        clear: both;\n        display: block;\n    }\n\n    .topic-line-title:hover:after {\n        -webkit-transform: scaleX(1);\n        transform: scaleX(1);\n    }\n\n    .topic-line-meta {\n        margin-top: .2em;\n    }\n\n    .topic-line-body {\n\n    }\n</style>\n<script>\n    export default{\n        name: 'sg-topic-Line',\n        props: {\n            data: {\n                type: Object\n            }\n        },\n        components: {}\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.menu-panel {\n    height: 60px;\n}\n.sg-header {\n    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .25);\n    padding: 0 5rem;\n}\n.sg-header.fixed {\n    width: 100%;\n    z-index: 1;\n    position: fixed;\n    background-color: rgba(50, 64, 87, 0.84);\n}\n\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/header.vue?7ec87774"],"names":[],"mappings":";AAWA;IACA,aAAA;CACA;AAEA;IACA,8CAAA;IACA,gBAAA;CACA;AAEA;IACA,YAAA;IACA,WAAA;IACA,gBAAA;IACA,yCAAA;CACA","file":"header.vue","sourcesContent":["<template>\n    <el-row>\n        <el-col :span=\"24\" class=\"menu-panel\">\n            <el-menu default-active=\"/\" theme=\"dark\" :mode=\"mode\" @select=\"select\"\n                     class=\"sg-header\" :class=\"{ fixed:fixed }\">\n                <sg-menu :menu=\"menu\" v-for=\"menu in menus\"></sg-menu>\n            </el-menu>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .menu-panel {\n        height: 60px;\n    }\n\n    .sg-header {\n        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .25);\n        padding: 0 5rem;\n    }\n\n    .sg-header.fixed {\n        width: 100%;\n        z-index: 1;\n        position: fixed;\n        background-color: rgba(50, 64, 87, 0.84);\n    }\n\n</style>\n<script>\n    import {on} from 'wind-dom/src/event';\n    import sgmenu from '../others/menu.vue';\n\n    export default{\n        name: \"sg-header\",\n        data(){\n            return {\n                fixed: false\n            }\n        },\n        props: {\n            mode: {\n                type: String,\n                default: 'horizontal'\n            },\n            menus: {\n                type: Array,\n                required: true\n            }\n        },\n        created(){\n            let self = this;\n            on(window, 'scroll', function (event) {\n                self.fixed = window.scrollY > 0;\n            })\n        },\n        methods: {\n            select(index, indexPath){\n                if (index)\n                    this.$router.push(index);\n            }\n        },\n        components: {\n            'sg-menu': sgmenu\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -30126,7 +30052,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/compments/body.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/body.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30137,9 +30063,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f16c9cf4", __vue_options__)
+    hotAPI.createRecord("data-v-ca8d316e", __vue_options__)
   } else {
-    hotAPI.reload("data-v-f16c9cf4", __vue_options__)
+    hotAPI.reload("data-v-ca8d316e", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] body.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -30154,102 +30080,10 @@ module.exports = __vue_exports__
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(47)
-
-/* script */
-__vue_exports__ = __webpack_require__(10)
-
-/* template */
-var __vue_template__ = __webpack_require__(38)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/compments/footer.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-787925ff", __vue_options__)
-  } else {
-    hotAPI.reload("data-v-787925ff", __vue_options__)
-  }
-})()}
-if (__vue_options__.functional) {console.error("[vue-loader] footer.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-module.exports = __vue_exports__
-
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-
-/* styles */
-__webpack_require__(49)
-
-/* script */
-__vue_exports__ = __webpack_require__(11)
-
-/* template */
-var __vue_template__ = __webpack_require__(40)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/compments/header.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cca8ec1e", __vue_options__)
-  } else {
-    hotAPI.reload("data-v-cca8ec1e", __vue_options__)
-  }
-})()}
-if (__vue_options__.functional) {console.error("[vue-loader] header.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-module.exports = __vue_exports__
-
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-
-/* styles */
 __webpack_require__(48)
 
 /* script */
-__vue_exports__ = __webpack_require__(12)
+__vue_exports__ = __webpack_require__(10)
 
 /* template */
 var __vue_template__ = __webpack_require__(39)
@@ -30264,7 +30098,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/index.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/footer.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30275,18 +30109,18 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8cad00f2", __vue_options__)
+    hotAPI.createRecord("data-v-6ed27702", __vue_options__)
   } else {
-    hotAPI.reload("data-v-8cad00f2", __vue_options__)
+    hotAPI.reload("data-v-6ed27702", __vue_options__)
   }
 })()}
-if (__vue_options__.functional) {console.error("[vue-loader] index.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+if (__vue_options__.functional) {console.error("[vue-loader] footer.vue: functional components are not supported and should be defined in plain js files using render functions.")}
 
 module.exports = __vue_exports__
 
 
 /***/ },
-/* 30 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -30295,7 +30129,7 @@ var __vue_exports__, __vue_options__
 __webpack_require__(51)
 
 /* script */
-__vue_exports__ = __webpack_require__(13)
+__vue_exports__ = __webpack_require__(11)
 
 /* template */
 var __vue_template__ = __webpack_require__(42)
@@ -30310,7 +30144,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/index/topicLine.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/header.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30321,9 +30155,101 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f928e58a", __vue_options__)
+    hotAPI.createRecord("data-v-dff64a18", __vue_options__)
   } else {
-    hotAPI.reload("data-v-f928e58a", __vue_options__)
+    hotAPI.reload("data-v-dff64a18", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] header.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(44)
+
+/* script */
+__vue_exports__ = __webpack_require__(12)
+
+/* template */
+var __vue_template__ = __webpack_require__(34)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02ce9b38", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-02ce9b38", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] index.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(46)
+
+/* script */
+__vue_exports__ = __webpack_require__(13)
+
+/* template */
+var __vue_template__ = __webpack_require__(36)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-441ae050", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-441ae050", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] topicLine.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -30341,7 +30267,7 @@ var __vue_exports__, __vue_options__
 __vue_exports__ = __webpack_require__(14)
 
 /* template */
-var __vue_template__ = __webpack_require__(34)
+var __vue_template__ = __webpack_require__(37)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30353,7 +30279,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/others/menu.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/menu.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30364,9 +30290,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12c27100", __vue_options__)
+    hotAPI.createRecord("data-v-4ac54a1d", __vue_options__)
   } else {
-    hotAPI.reload("data-v-12c27100", __vue_options__)
+    hotAPI.reload("data-v-4ac54a1d", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] menu.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -30381,13 +30307,13 @@ module.exports = __vue_exports__
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(46)
+__webpack_require__(49)
 
 /* script */
 __vue_exports__ = __webpack_require__(15)
 
 /* template */
-var __vue_template__ = __webpack_require__(37)
+var __vue_template__ = __webpack_require__(40)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30399,7 +30325,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/others/pager.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/pager.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30410,9 +30336,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4e4ead1c", __vue_options__)
+    hotAPI.createRecord("data-v-bd9e1816", __vue_options__)
   } else {
-    hotAPI.reload("data-v-4e4ead1c", __vue_options__)
+    hotAPI.reload("data-v-bd9e1816", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] pager.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -30427,7 +30353,7 @@ module.exports = __vue_exports__
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(44)
+__webpack_require__(45)
 
 /* script */
 __vue_exports__ = __webpack_require__(16)
@@ -30445,7 +30371,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/WebstormProjects/lc4e/src/views/others/subMenu.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/subMenu.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30456,9 +30382,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16b88ca4", __vue_options__)
+    hotAPI.createRecord("data-v-08136f71", __vue_options__)
   } else {
-    hotAPI.reload("data-v-16b88ca4", __vue_options__)
+    hotAPI.reload("data-v-08136f71", __vue_options__)
   }
 })()}
 if (__vue_options__.functional) {console.error("[vue-loader] subMenu.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -30471,26 +30397,97 @@ module.exports = __vue_exports__
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
-  return (menu.CHILDS.length == 0) ? _h('el-menu-item', {
+  return _h('sg-body', [_t("default", [_h('el-row', [_h('el-col', {
     attrs: {
-      "index": menu.ABBR
+      "span": 17
     }
-  }, [_s(menu.NAME)]) : _h('sg-subMenu', {
+  }, [_h('el-row', {
     attrs: {
-      "menu": menu
+      "type": "flex",
+      "justify": "space-between"
     }
-  }, [_t("default", [_l((menu.CHILDS), function(menuchild) {
-    return _h('sg-menu', {
+  }, [_h('el-col', {
+    staticClass: "br-path",
+    attrs: {
+      "span": 15
+    }
+  }, [_h('el-breadcrumb', {
+    attrs: {
+      "separator": ">"
+    }
+  }, [_h('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/'
+      }
+    }
+  }, ["首页"]), " ", _h('el-breadcrumb-item', ["Area"])])]), " ", _h('el-col', {
+    attrs: {
+      "span": 3
+    }
+  }, [_h('el-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (order),
+      expression: "order"
+    }],
+    staticClass: "el-select-mini",
+    domProps: {
+      "value": (order)
+    },
+    on: {
+      "input": function($event) {
+        order = $event
+      }
+    }
+  }, [_l((orders), function(orderItem) {
+    return _h('el-option', {
       attrs: {
-        "menu": menuchild
+        "label": orderItem.label
+      },
+      domProps: {
+        "value": orderItem.value
       }
     })
-  })])])
-}},staticRenderFns: []}
+  })])])]), " ", _l((topics), function(data) {
+    return _h('sg-topic-Line', {
+      attrs: {
+        "data": data
+      }
+    })
+  }), " ", _h('el-row', {
+    attrs: {
+      "type": "flex",
+      "justify": "center"
+    }
+  }, [_h('el-col', {
+    staticClass: "pager-center",
+    attrs: {
+      "span": 24
+    }
+  }, [_h('sg-pager', {
+    staticClass: "inline-block",
+    attrs: {
+      "pageNow": page,
+      "pageSize": size,
+      "pageTotal": total
+    },
+    on: {
+      "currentchange": pageChange
+    }
+  })])])]), " ", _h('el-col', {
+    attrs: {
+      "span": 7
+    }
+  }, [_m(0)])])])])
+}},staticRenderFns: [function (){with(this) {
+  return _h('p', ["right"])
+}}]}
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-12c27100", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-02ce9b38", module.exports)
   }
 }
 
@@ -30501,21 +30498,130 @@ if (false) {
 module.exports={render:function (){with(this) {
   return _h('el-submenu', {
     attrs: {
-      "index": menu.ABBR
+      "index": menu.abbr
     }
   }, [_h('template', {
     slot: "title"
-  }, [_s(menu.NAME)]), " ", _t("default")])
+  }, [_s(menu.name)]), " ", _t("default")])
 }},staticRenderFns: []}
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-16b88ca4", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-08136f71", module.exports)
   }
 }
 
 /***/ },
 /* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('el-row', {
+    staticClass: "topic-line"
+  }, [_h('el-col', {
+    staticClass: "topic-author-pic",
+    attrs: {
+      "span": 3
+    }
+  }, [_h('a', [_h('img', {
+    staticClass: "topic-line-img",
+    attrs: {
+      "src": data.imageUrl
+    }
+  })])]), " ", _h('el-col', {
+    staticClass: "topic-line-body",
+    attrs: {
+      "span": 21
+    }
+  }, [_h('router-link', {
+    staticClass: "topic-line-title",
+    attrs: {
+      "to": data.articleUrl,
+      "tag": "div"
+    }
+  }, ["\n            " + _s(data.articleTitle) + "\n        "]), " ", _h('div', {
+    staticClass: "topic-line-meta"
+  }, [_h('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
+    }
+  }, [_h('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/a/' + data.category
+      }
+    }
+  }, [_h('el-tag', {
+    staticClass: "el-tag-mini",
+    attrs: {
+      "type": "primary"
+    }
+  }, [_s(data.category)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+    staticClass: "clickable el-tag-mini",
+    attrs: {
+      "type": "gray"
+    }
+  }, [_m(0), _s(data.user)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+    staticClass: "clickable el-tag-mini",
+    attrs: {
+      "type": "gray"
+    }
+  }, [_m(1), _s(data.comments)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+    staticClass: "clickable el-tag-mini",
+    attrs: {
+      "type": "gray"
+    }
+  }, [_m(2), _s(data.publishTime)])])])])])])
+}},staticRenderFns: [function (){with(this) {
+  return _h('i', {
+    staticClass: "iconfont icon-user"
+  })
+}},function (){with(this) {
+  return _h('i', {
+    staticClass: "iconfont icon-huo"
+  })
+}},function (){with(this) {
+  return _h('i', {
+    staticClass: "el-icon-date"
+  })
+}}]}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-441ae050", module.exports)
+  }
+}
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return (menu.children.length == 0) ? _h('el-menu-item', {
+    attrs: {
+      "index": menu.abbr
+    }
+  }, [_s(menu.name)]) : _h('sg-subMenu', {
+    attrs: {
+      "menu": menu
+    }
+  }, [_t("default", [_l((menu.children), function(menuchild) {
+    return _h('sg-menu', {
+      attrs: {
+        "menu": menuchild
+      }
+    })
+  })])])
+}},staticRenderFns: []}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4ac54a1d", module.exports)
+  }
+}
+
+/***/ },
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30537,37 +30643,12 @@ module.exports={render:function (){with(this) {
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-290ec1b7", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-53b92194", module.exports)
   }
 }
 
 /***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){with(this) {
-  return _h('el-pagination', {
-    attrs: {
-      "current-page": pageNow,
-      "page-size": pageSize,
-      "layout": "prev, pager, next, jumper",
-      "total": pageTotal
-    },
-    on: {
-      "sizechange": handleSizeChange,
-      "currentchange": handleCurrentChange
-    }
-  })
-}},staticRenderFns: []}
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4e4ead1c", module.exports)
-  }
-}
-
-/***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30623,111 +30704,60 @@ module.exports={render:function (){with(this) {
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-787925ff", module.exports)
-  }
-}
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){with(this) {
-  return _h('sg-body', [_t("default", [_h('el-row', [_h('el-col', {
-    attrs: {
-      "span": 17
-    }
-  }, [_h('el-row', {
-    attrs: {
-      "type": "flex",
-      "justify": "space-between"
-    }
-  }, [_h('el-col', {
-    staticClass: "br-path",
-    attrs: {
-      "span": 15
-    }
-  }, [_h('el-breadcrumb', {
-    attrs: {
-      "separator": ">"
-    }
-  }, [_h('el-breadcrumb-item', {
-    attrs: {
-      "to": {
-        path: '/'
-      }
-    }
-  }, ["首页"]), " ", _h('el-breadcrumb-item', ["Area"])])]), " ", _h('el-col', {
-    attrs: {
-      "span": 3
-    }
-  }, [_h('el-select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (order),
-      expression: "order"
-    }],
-    staticClass: "order-select",
-    domProps: {
-      "value": (order)
-    },
-    on: {
-      "input": function($event) {
-        order = $event
-      }
-    }
-  }, [_l((orders), function(orderItem) {
-    return _h('el-option', {
-      attrs: {
-        "label": orderItem.label
-      },
-      domProps: {
-        "value": orderItem.value
-      }
-    })
-  })])])]), " ", _l((topics), function(data) {
-    return _h('sg-topic-Line', {
-      attrs: {
-        "data": data
-      }
-    })
-  }), " ", _h('el-row', {
-    attrs: {
-      "type": "flex",
-      "justify": "center"
-    }
-  }, [_h('el-col', {
-    staticClass: "pager-center",
-    attrs: {
-      "span": 24
-    }
-  }, [_h('sg-pager', {
-    staticClass: "inline-block",
-    attrs: {
-      "pageNow": page,
-      "pageSize": size,
-      "pageTotal": total
-    },
-    on: {
-      "currentchange": pageChange
-    }
-  })])])]), " ", _h('el-col', {
-    attrs: {
-      "span": 7
-    }
-  }, [_m(0)])])])])
-}},staticRenderFns: [function (){with(this) {
-  return _h('p', ["right"])
-}}]}
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8cad00f2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6ed27702", module.exports)
   }
 }
 
 /***/ },
 /* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('el-pagination', {
+    attrs: {
+      "current-page": pageNow,
+      "page-size": pageSize,
+      "layout": "prev, pager, next, jumper",
+      "total": pageTotal
+    },
+    on: {
+      "sizechange": handleSizeChange,
+      "currentchange": handleCurrentChange
+    }
+  })
+}},staticRenderFns: []}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-bd9e1816", module.exports)
+  }
+}
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('el-row', {
+    attrs: {
+      "type": "flex",
+      "justify": "center"
+    }
+  }, [_h('el-col', {
+    attrs: {
+      "span": col
+    }
+  }, [_t("default")])])
+}},staticRenderFns: []}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ca8d316e", module.exports)
+  }
+}
+
+/***/ },
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30760,79 +30790,7 @@ module.exports={render:function (){with(this) {
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-cca8ec1e", module.exports)
-  }
-}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){with(this) {
-  return _h('el-row', {
-    attrs: {
-      "type": "flex",
-      "justify": "center"
-    }
-  }, [_h('el-col', {
-    attrs: {
-      "span": col
-    }
-  }, [_t("default")])])
-}},staticRenderFns: []}
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f16c9cf4", module.exports)
-  }
-}
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){with(this) {
-  return _h('el-row', {
-    staticClass: "topic-line"
-  }, [_h('el-col', {
-    staticClass: "topic-author-pic",
-    attrs: {
-      "span": 3
-    }
-  }, [_h('a', [_h('img', {
-    staticClass: "topic-line-img",
-    attrs: {
-      "src": data.imgurl
-    }
-  })])]), " ", _h('el-col', {
-    staticClass: "topic-line-body",
-    attrs: {
-      "span": 21
-    }
-  }, [_h('router-link', {
-    staticClass: "topic-line-title",
-    attrs: {
-      "to": "/foo",
-      "tag": "div"
-    }
-  }, ["\n            " + _s(data.title) + "\n        "]), " ", _h('div', {
-    staticClass: "topic-line-meta"
-  }, [_h('el-breadcrumb', {
-    attrs: {
-      "separator": "/"
-    }
-  }, [_h('el-breadcrumb-item', {
-    attrs: {
-      "to": {
-        path: '/'
-      }
-    }
-  }, [_s(data.areaName)]), " ", _h('el-breadcrumb-item', [_s(data.author)]), " ", _h('el-breadcrumb-item', [_s(data.hot)]), " ", _h('el-breadcrumb-item', [_s(data.createTime)])])])])])
-}},staticRenderFns: []}
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f928e58a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-dff64a18", module.exports)
   }
 }
 
@@ -32735,8 +32693,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-16b88ca4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./subMenu.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-16b88ca4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./subMenu.vue");
+		module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-02ce9b38!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+			var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-02ce9b38!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32761,8 +32719,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-290ec1b7!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-290ec1b7!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-08136f71!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./subMenu.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-08136f71!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./subMenu.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32787,8 +32745,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4e4ead1c!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4e4ead1c!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-441ae050!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topicLine.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-441ae050!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topicLine.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32813,8 +32771,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-787925ff!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-787925ff!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue");
+		module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-53b92194!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
+			var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-53b92194!./../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32839,8 +32797,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8cad00f2!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-			var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-8cad00f2!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6ed27702!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-6ed27702!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./footer.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32865,8 +32823,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-cca8ec1e!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./header.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-cca8ec1e!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./header.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32891,8 +32849,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f16c9cf4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f16c9cf4!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-ca8d316e!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-ca8d316e!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./body.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32917,8 +32875,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f928e58a!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topicLine.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-f928e58a!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topicLine.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-dff64a18!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./header.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-dff64a18!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./header.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

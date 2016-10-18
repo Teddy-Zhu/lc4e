@@ -46,6 +46,7 @@ public class Config implements com.silentgo.core.config.Config {
 
         //enable shiro
         config.addExtraInitConfig(new ShiroInitConfig(new UserRealm()));
+        config.addExtraInitConfig(new JetbrickInitConfig());
 
     }
 
@@ -72,9 +73,8 @@ public class Config implements com.silentgo.core.config.Config {
         properties.setProperty("$loader.root", "/WEB-INF/views/themes/" + Key.kvs.get("Theme"));
         properties.setProperty("$loader.reloadable", "true");
 
-        config.addExtraInitConfig(new JetbrickInitConfig(properties));
-
-        JetTemplateRender jetTemplateRender = (JetTemplateRender) renderFactory.getRender(RenderType.View);
+        JetTemplateRender jetTemplateRender = new JetTemplateRender(properties);
+        renderFactory.addAndReplaceRender(RenderType.View, jetTemplateRender);
 
         GlobalResolver resolver = jetTemplateRender.getEngine().getGlobalResolver();
         resolver.registerFunctions(ShiroMethod.class);
