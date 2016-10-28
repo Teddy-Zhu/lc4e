@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 53);
+/******/ 	return __webpack_require__(__webpack_require__.s = 70);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -5961,22 +5961,166 @@ setTimeout(function () {
 
 module.exports = Vue$2;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(67)
+
+/* script */
+__vue_exports__ = __webpack_require__(14)
+
+/* template */
+var __vue_template__ = __webpack_require__(55)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/body.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ca8d316e", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-ca8d316e", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] body.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(66)
+
+/* script */
+__vue_exports__ = __webpack_require__(21)
+
+/* template */
+var __vue_template__ = __webpack_require__(54)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/pager.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-bd9e1816"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bd9e1816", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-bd9e1816", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] pager.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(61)
+
+/* script */
+__vue_exports__ = __webpack_require__(18)
+
+/* template */
+var __vue_template__ = __webpack_require__(48)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-441ae050", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-441ae050", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] topicLine.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_router__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_index_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_index_vue__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_area_vue__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_area_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_area_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_topic_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_topic_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_topic_vue__);
 /**
  * Created by teddyzhu on 2016/10/15.
  */
+
 
 
 
@@ -5992,17 +6136,26 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         path: '/',
         component: __WEBPACK_IMPORTED_MODULE_2__views_index_vue___default.a
     }, {
-        path: "/all",
-        name: 'index',
-        component: __WEBPACK_IMPORTED_MODULE_2__views_index_vue___default.a
+        path: '/a/:area',
+        name: 'area1',
+        component: __WEBPACK_IMPORTED_MODULE_3__views_area_vue___default.a
     }, {
-        path: '*',
-        component: __WEBPACK_IMPORTED_MODULE_2__views_index_vue___default.a
+        path: "/a/:area-:page(\\d+)-:order(\\d+)",
+        name: 'area2',
+        component: __WEBPACK_IMPORTED_MODULE_3__views_area_vue___default.a
+    }, {
+        path: "/t/:topic",
+        name: "topic1",
+        component: __WEBPACK_IMPORTED_MODULE_4__views_topic_vue___default.a
+    }, {
+        path: "/t/:topic-:page(\\d+)-:order(\\d+)",
+        name: "topic2",
+        component: __WEBPACK_IMPORTED_MODULE_4__views_topic_vue___default.a
     }]
 });
 
 /***/ },
-/* 4 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -27608,25 +27761,25 @@ module.exports =
 /******/ ]);
 
 /***/ },
-/* 5 */
+/* 8 */
 /***/ function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ },
-/* 6 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(47)
+__webpack_require__(63)
 
 /* script */
-__vue_exports__ = __webpack_require__(8)
+__vue_exports__ = __webpack_require__(12)
 
 /* template */
-var __vue_template__ = __webpack_require__(38)
+var __vue_template__ = __webpack_require__(51)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27660,7 +27813,7 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 7 */
+/* 10 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -29184,13 +29337,40 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = plugin;
 
 /***/ },
-/* 8 */
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+
+
+let smoothScrollWebSites =  __webpack_require__(36)
+
+module.exports = {
+    install(Vue, options = { name: 'smoothScrollWebsites' }) {
+      Object.defineProperty(Vue.prototype, '$SmoothScrollWebSites', {
+          get: function () {
+              return smoothScrollWebSites;
+          }
+      });
+      Object.defineProperty(Vue.prototype, '$SmoothScrollWebSitesOptions', {
+          get: function () {
+              return window.SmoothScrollOptions;
+          },
+          set: function (value) {
+              window.SmoothScrollOptions = value;
+          }
+      });
+    }
+}
+
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_compments_header_vue__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_compments_header_vue__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_compments_header_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_compments_header_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_compments_footer_vue__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_compments_footer_vue__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_compments_footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_compments_footer_vue__);
 //
 //
@@ -29217,6 +29397,7 @@ module.exports = plugin;
         return preLoadData;
     },
     created: function created() {
+        this.$SmoothScrollWebSites();
         console.log("created");
     },
 
@@ -29227,10 +29408,198 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 9 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__compments_body_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__others_pager_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ exports["default"] = {
+    name: 'area',
+    data: function data() {
+        return {
+            menus: preLoadData.menus,
+            topics: [],
+            page: this.$route.params.page ? this.$route.params.page : 1,
+            area: this.$route.params.area,
+            size: 30,
+            total: 0,
+            orderNow: this.$route.params.order ? this.$route.params.order : '1',
+            orders: [{
+                value: '1',
+                label: '最新发布'
+            }, {
+                value: '2',
+                label: '最后回复'
+            }, {
+                value: '3',
+                label: '个人喜好'
+            }]
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    watch: {
+        $route: function $route() {
+            this.getData();
+        },
+        page: function page(val, OldVal) {
+            this.getData();
+        }
+    },
+    methods: {
+        pageChange: function pageChange(page) {
+            this.page = page;
+        },
+        getData: function getData() {
+            var _this = this;
+
+            var url = '/a/' + this.area + "/" + this.page + '/' + this.orderNow;
+
+            this.$http.post(url).then(function (response) {
+                if (response.data.result) {
+                    _this.topics = response.data.data.topics.result;
+                    _this.page = response.data.data.topics.pageNumber;
+                    _this.total = response.data.data.topics.totalPage;
+                    _this.size = response.data.data.topics.pageSize;
+                }
+            }, function (response) {});
+        },
+        nextPage: function nextPage() {
+            this.page = this.page + 1;
+        },
+        prevPage: function prevPage() {
+            this.page = this.page - 1;
+        }
+    },
+    components: {
+        'sg-body': __WEBPACK_IMPORTED_MODULE_0__compments_body_vue___default.a,
+        'sg-pager': __WEBPACK_IMPORTED_MODULE_1__others_pager_vue___default.a,
+        'sg-topic-Line': __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue___default.a
+    }
+};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+//
+//
+//
 //
 //
 //
@@ -29252,7 +29621,7 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 10 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29321,13 +29690,13 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 11 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wind_dom_src_event__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wind_dom_src_event__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wind_dom_src_event___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_wind_dom_src_event__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_menu_vue__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_menu_vue__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_menu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__others_menu_vue__);
 //
 //
@@ -29397,16 +29766,62 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 12 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__compments_body_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__others_pager_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_topicLine_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29479,8 +29894,8 @@ module.exports = plugin;
             topics: [],
             page: 1,
             size: 30,
-            total: 100,
-            order: 1,
+            total: 0,
+            orderNow: '1',
             orders: [{
                 value: '1',
                 label: '最新发布'
@@ -29490,6 +29905,23 @@ module.exports = plugin;
             }, {
                 value: '3',
                 label: '个人喜好'
+            }],
+            hots: [{
+                area: 'c++',
+                link: '/asd',
+                title: 'xx'
+            }, {
+                area: 'c++',
+                link: '/asd',
+                title: 'casasdassss'
+            }, {
+                area: 'c++',
+                link: '/asd',
+                title: 'asds'
+            }, {
+                area: 'c++',
+                link: '/asd',
+                title: 'asds'
             }]
         };
     },
@@ -29512,11 +29944,14 @@ module.exports = plugin;
         getData: function getData() {
             var _this = this;
 
-            var url = '/' + this.page + '-' + this.order;
+            var url = '/' + this.page + '/' + this.orderNow;
 
             this.$http.post(url).then(function (response) {
                 if (response.data.result) {
-                    _this.topics = response.data.data.topics;
+                    _this.topics = response.data.data.topics.result;
+                    _this.page = response.data.data.topics.pageNumber;
+                    _this.total = response.data.data.topics.totalPage;
+                    _this.size = response.data.data.topics.pageSize;
                 }
             }, function (response) {});
         },
@@ -29535,10 +29970,48 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 13 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29630,11 +30103,37 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 14 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__subMenu_vue__ = __webpack_require__(33);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ exports["default"] = {
+    name: 'sg-comment',
+    props: {
+        body: {
+            type: String,
+            default: ""
+        }
+    },
+    components: {}
+};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__subMenu_vue__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__subMenu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__subMenu_vue__);
 //
 //
@@ -29661,10 +30160,12 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 15 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+//
+//
 //
 //
 //
@@ -29707,7 +30208,7 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 16 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29730,7 +30231,104 @@ module.exports = plugin;
 };
 
 /***/ },
-/* 17 */
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compments_body_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__compments_body_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__others_pager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__others_pager_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__others_comment_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__others_comment_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__others_comment_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ exports["default"] = {
+    data: function data() {
+        return {
+            page: 1,
+            size: 20,
+            total: 0,
+            topic: {},
+            comments: []
+        };
+    },
+    created: function created() {},
+
+    components: {
+        'sg-body': __WEBPACK_IMPORTED_MODULE_0__compments_body_vue___default.a,
+        'sg-pager': __WEBPACK_IMPORTED_MODULE_1__others_pager_vue___default.a,
+        'sg-comment': __WEBPACK_IMPORTED_MODULE_2__others_comment_vue___default.a
+    }
+};
+
+/***/ },
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29738,13 +30336,13 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.el-select-mini {\n    margin: 5px 0;\n}\n.order-select .el-input__inner {\n    height: 24px;\n}\n.pager-center {\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.inline-block {\n    display: inline-block;\n}\n.br-path {\n    margin: 10px 0;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index.vue?4c17446e"],"names":[],"mappings":";AAsCA;IACA,cAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,mBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,sBAAA;CACA;AAEA;IACA,eAAA;CACA","file":"index.vue","sourcesContent":["<template>\n    <sg-body>\n        <slot>\n            <el-row>\n                <el-col :span=\"17\">\n                    <el-row type=\"flex\" justify=\"space-between\">\n                        <el-col :span=\"15\" class=\"br-path\">\n                            <el-breadcrumb separator=\">\">\n                                <el-breadcrumb-item :to=\"{ path: '/' }\">首页</el-breadcrumb-item>\n                                <el-breadcrumb-item>Area</el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </el-col>\n                        <el-col :span=\"3\">\n                            <el-select v-model=\"order\" class=\"el-select-mini\">\n                                <el-option\n                                        v-for=\"orderItem in orders\"\n                                        :label=\"orderItem.label\"\n                                        :value=\"orderItem.value\">\n                                </el-option>\n                            </el-select>\n                        </el-col>\n                    </el-row>\n                    <sg-topic-Line :data=\"data\" v-for=\"data in topics\"></sg-topic-Line>\n                    <el-row type=\"flex\" justify=\"center\">\n                        <el-col :span=\"24\" class=\"pager-center\">\n                            <sg-pager :pageNow=\"page\" :pageSize=\"size\" :pageTotal=\"total\"\n                                      @currentchange=\"pageChange\" class=\"inline-block\"></sg-pager>\n                        </el-col>\n                    </el-row>\n                </el-col>\n                <el-col :span=\"7\">\n                    <p>right</p>\n                </el-col>\n            </el-row>\n        </slot>\n    </sg-body>\n</template>\n<style>\n    .el-select-mini {\n        margin: 5px 0;\n    }\n\n    .order-select .el-input__inner {\n        height: 24px;\n    }\n\n    .pager-center {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n\n    .inline-block {\n        display: inline-block;\n    }\n\n    .br-path {\n        margin: 10px 0;\n    }\n</style>\n<script type=\"text/javascript\">\n    import Body from './compments/body.vue'\n    import Pager from './others/pager.vue'\n    import TopicLine from './index/topicLine.vue'\n    export default  {\n        name: 'index',\n        data () {\n            return {\n                menus: preLoadData.menus,\n                topics: [],\n                page: 1,\n                size: 30,\n                total: 100,\n                order: 1,\n                orders: [{\n                    value: '1',\n                    label: '最新发布'\n                }, {\n                    value: '2',\n                    label: '最后回复'\n                }, {\n                    value: '3',\n                    label: '个人喜好'\n                }]\n            }\n        },\n        created () {\n            this.getData();\n        },\n        watch: {\n            $route() {\n                this.getData();\n            },\n            page(val, OldVal){\n                this.getData();\n            }\n        },\n        methods: {\n            pageChange(page){\n                this.page = page;\n            },\n            getData () {\n                var url = '/' + this.page + '-' + this.order;\n\n                this.$http.post(url).then((response)=> {\n                    if (response.data.result) {\n                        this.topics = response.data.data.topics;\n                    }\n                }, (response)=> {\n\n                });\n            },\n            nextPage () {\n                this.page = this.page + 1;\n            },\n            prevPage () {\n                this.page = this.page - 1;\n            }\n        },\n        components: {\n            'sg-body': Body,\n            'sg-pager': Pager,\n            'sg-topic-Line': TopicLine\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.topic-hot-line {\n    margin: 5px 0;\n    border-bottom: 1px solid #c2c8dc;\n    padding-left: 5px;\n    padding-bottom: 5px;\n}\n.topic-hot-line a {\n    display: inline;\n}\n.topic-hot div:first-child h3 {\n    text-align: center;\n    margin: .4em 0;\n}\n.topic-hot {\n    min-height: 100px;\n    padding: 10px 0;\n    border-radius: 0.2em;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);\n    border-bottom: 1px solid rgba(162, 162, 162, 0.31);\n}\n.topic-hot-line a {\n    text-decoration: none;\n    color: black;\n}\n.el-select-mini {\n    margin: 5px 0;\n}\n.el-select-mini .el-input__inner {\n    height: 24px;\n    background-color: #f2f3f5;\n}\n.pager-center {\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.inline-block {\n    display: inline-block;\n}\n.br-path {\n    margin: 10px 0;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index.vue?7265b371"],"names":[],"mappings":";AAsDA;IACA,cAAA;IACA,iCAAA;IACA,kBAAA;IACA,oBAAA;CACA;AAEA;IACA,gBAAA;CACA;AAEA;IACA,mBAAA;IACA,eAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,qBAAA;IACA,yCAAA;IACA,mDAAA;CACA;AAEA;IACA,sBAAA;IACA,aAAA;CACA;AAEA;IACA,cAAA;CACA;AAEA;IACA,aAAA;IACA,0BAAA;CACA;AAEA;IACA,mBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,sBAAA;CACA;AAEA;IACA,eAAA;CACA","file":"index.vue","sourcesContent":["<template>\n    <sg-body>\n        <slot>\n            <el-row>\n                <el-col :span=\"15\">\n                    <el-row type=\"flex\" justify=\"space-between\">\n                        <el-col :span=\"13\" class=\"br-path\">\n                            <el-breadcrumb separator=\">\">\n                                <el-breadcrumb-item :to=\"{ path: '/' }\">首页</el-breadcrumb-item>\n                                <el-breadcrumb-item>Area</el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </el-col>\n                        <el-col :span=\"5\">\n                            <el-select v-model=\"orderNow\" class=\"el-select-mini\">\n                                <el-option\n                                        v-for=\"orderItem in orders\"\n                                        :label=\"orderItem.label\"\n                                        :key=\"orderItem.value\"\n                                        :value=\"orderItem.value\">\n                                </el-option>\n                            </el-select>\n                        </el-col>\n                    </el-row>\n                    <el-row>\n                        <el-col :span=\"24\">\n                            <sg-topic-Line :data=\"data\" v-for=\"data in topics\"></sg-topic-Line>\n                        </el-col>\n                    </el-row>\n                    <el-row type=\"flex\" justify=\"center\">\n                        <el-col :span=\"24\" class=\"pager-center\">\n                            <sg-pager :pageNow=\"page\" :pageSize=\"size\" :pageTotal=\"total\"\n                                      @currentchange=\"pageChange\" class=\"inline-block\"></sg-pager>\n                        </el-col>\n                    </el-row>\n                </el-col>\n                <el-col :span=\"7\" :offset=\"1\">\n                    <el-row class=\"topic-hot\">\n                        <el-col :span=\"24\">\n                            <h3>Topic Hot</h3>\n                        </el-col>\n                        <el-col :span=\"24\" class=\"topic-hot-line\" v-for=\"hot in hots\">\n                            <el-tag type=\"primary\">\n                                <router-link tag=\"a\" :to=\"'/a/' + hot.area\">{{hot.area}}</router-link>\n                            </el-tag>\n                            <router-link tag=\"a\" :to=\"hot.link\">{{hot.title}}</router-link>\n                        </el-col>\n                    </el-row>\n                </el-col>\n            </el-row>\n        </slot>\n    </sg-body>\n</template>\n<style>\n\n    .topic-hot-line {\n        margin: 5px 0;\n        border-bottom: 1px solid #c2c8dc;\n        padding-left: 5px;\n        padding-bottom: 5px;\n    }\n\n    .topic-hot-line a {\n        display: inline;\n    }\n\n    .topic-hot div:first-child h3 {\n        text-align: center;\n        margin: .4em 0;\n    }\n\n    .topic-hot {\n        min-height: 100px;\n        padding: 10px 0;\n        border-radius: 0.2em;\n        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);\n        border-bottom: 1px solid rgba(162, 162, 162, 0.31);\n    }\n\n    .topic-hot-line a {\n        text-decoration: none;\n        color: black;\n    }\n\n    .el-select-mini {\n        margin: 5px 0;\n    }\n\n    .el-select-mini .el-input__inner {\n        height: 24px;\n        background-color: #f2f3f5;\n    }\n\n    .pager-center {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n\n    .inline-block {\n        display: inline-block;\n    }\n\n    .br-path {\n        margin: 10px 0;\n    }\n</style>\n<script type=\"text/javascript\">\n    import Body from './compments/body.vue'\n    import Pager from './others/pager.vue'\n    import TopicLine from './index/topicLine.vue'\n    export default  {\n        name: 'index',\n        data () {\n            return {\n                menus: preLoadData.menus,\n                topics: [],\n                page: 1,\n                size: 30,\n                total: 0,\n                orderNow: '1',\n                orders: [{\n                    value: '1',\n                    label: '最新发布'\n                }, {\n                    value: '2',\n                    label: '最后回复'\n                }, {\n                    value: '3',\n                    label: '个人喜好'\n                }],\n                hots: [{\n                    area: 'c++',\n                    link: '/asd',\n                    title: 'xx'\n                }, {\n                    area: 'c++',\n                    link: '/asd',\n                    title: 'casasdassss'\n                }, {\n                    area: 'c++',\n                    link: '/asd',\n                    title: 'asds'\n                }, {\n                    area: 'c++',\n                    link: '/asd',\n                    title: 'asds'\n                }]\n            }\n        },\n        created () {\n            this.getData();\n        },\n        watch: {\n            $route() {\n                this.getData();\n            },\n            page(val, OldVal){\n                this.getData();\n            }\n        },\n        methods: {\n            pageChange(page){\n                this.page = page;\n            },\n            getData () {\n                var url = '/' + this.page + '/' + this.orderNow;\n\n                this.$http.post(url).then((response)=> {\n                    if (response.data.result) {\n                        this.topics = response.data.data.topics.result;\n                        this.page = response.data.data.topics.pageNumber;\n                        this.total = response.data.data.topics.totalPage;\n                        this.size = response.data.data.topics.pageSize;\n                    }\n                }, (response)=> {\n                });\n            },\n            nextPage () {\n                this.page = this.page + 1;\n            },\n            prevPage () {\n                this.page = this.page - 1;\n            }\n        },\n        components: {\n            'sg-body': Body,\n            'sg-pager': Pager,\n            'sg-topic-Line': TopicLine\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ },
-/* 18 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29758,7 +30356,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":
 
 
 /***/ },
-/* 19 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29766,13 +30364,13 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.el-tag-mini {\n    height: 13px;\n    line-height: 13px;\n}\n.el-tag.clickable{\n    cursor: pointer;\n}\n.topic-line-img {\n    width: 3em;\n    height: 3em;\n}\n.topic-line {\n    padding: .3em 0;\n    border-bottom: 1px solid #eaeefb;\n}\n.topic-line:hover {\n    background-color: white;\n}\n.topic-line-title {\n    cursor: pointer;\n    display: inline-block;\n    font-size: 1.3em;\n    line-height: 1.3em;\n}\n.topic-line-title:after {\n    width: 100%;\n    height: 2px;\n    background-color: #4183C4;\n    content: '';\n    -webkit-transition: all 0.2s;\n    -webkit-backface-visibility: hidden;\n    transition: all 0.2s;\n    backface-visibility: hidden;\n    -ms-transform: scaleX(0);\n        transform: scaleX(0);\n    clear: both;\n    display: block;\n}\n.topic-line-title:hover:after {\n    -ms-transform: scaleX(1);\n        transform: scaleX(1);\n}\n.topic-line-meta {\n    margin-top: .2em;\n}\n.topic-line-body {\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue?97f380d2"],"names":[],"mappings":";AAuBA;IACA,aAAA;IACA,kBAAA;CACA;AACA;IACA,gBAAA;CACA;AACA;IACA,WAAA;IACA,YAAA;CACA;AAEA;IACA,gBAAA;IACA,iCAAA;CACA;AAEA;IACA,wBAAA;CACA;AAEA;IACA,gBAAA;IACA,sBAAA;IACA,iBAAA;IACA,mBAAA;CACA;AAEA;IACA,YAAA;IACA,YAAA;IACA,0BAAA;IACA,YAAA;IACA,6BAAA;IACA,oCAAA;IACA,qBAAA;IACA,4BAAA;IAEA,yBAAA;QAAA,qBAAA;IACA,YAAA;IACA,eAAA;CACA;AAEA;IAEA,yBAAA;QAAA,qBAAA;CACA;AAEA;IACA,iBAAA;CACA;AAEA;CAEA","file":"topicLine.vue","sourcesContent":["<template>\n    <el-row class=\"topic-line\">\n        <el-col :span=\"3\" class=\"topic-author-pic\">\n            <a>\n                <img :src=\"data.imageUrl\" class=\"topic-line-img\">\n            </a>\n        </el-col>\n        <el-col :span=\"21\" class=\"topic-line-body\">\n            <router-link :to=\"data.articleUrl\" tag=\"div\" class=\"topic-line-title\">\n                {{data.articleTitle}}\n            </router-link>\n            <div class=\"topic-line-meta\">\n                <el-breadcrumb separator=\"/\">\n                    <el-breadcrumb-item :to=\"{ path: '/a/' +data.category }\"><el-tag type=\"primary\" class=\"el-tag-mini\">{{data.category}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-user\"></i>{{data.user}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-huo\"></i>{{data.comments}}</el-tag></el-breadcrumb-item>\n                    <el-breadcrumb-item><el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"el-icon-date\"></i>{{data.publishTime}}</el-tag></el-breadcrumb-item>\n                </el-breadcrumb>\n            </div>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .el-tag-mini {\n        height: 13px;\n        line-height: 13px;\n    }\n    .el-tag.clickable{\n        cursor: pointer;\n    }\n    .topic-line-img {\n        width: 3em;\n        height: 3em;\n    }\n\n    .topic-line {\n        padding: .3em 0;\n        border-bottom: 1px solid #eaeefb;\n    }\n\n    .topic-line:hover {\n        background-color: white;\n    }\n\n    .topic-line-title {\n        cursor: pointer;\n        display: inline-block;\n        font-size: 1.3em;\n        line-height: 1.3em;\n    }\n\n    .topic-line-title:after {\n        width: 100%;\n        height: 2px;\n        background-color: #4183C4;\n        content: '';\n        -webkit-transition: all 0.2s;\n        -webkit-backface-visibility: hidden;\n        transition: all 0.2s;\n        backface-visibility: hidden;\n        -webkit-transform: scaleX(0);\n        transform: scaleX(0);\n        clear: both;\n        display: block;\n    }\n\n    .topic-line-title:hover:after {\n        -webkit-transform: scaleX(1);\n        transform: scaleX(1);\n    }\n\n    .topic-line-meta {\n        margin-top: .2em;\n    }\n\n    .topic-line-body {\n\n    }\n</style>\n<script>\n    export default{\n        name: 'sg-topic-Line',\n        props: {\n            data: {\n                type: Object\n            }\n        },\n        components: {}\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.topic-hot-line {\n    margin: 5px 0;\n    border-bottom: 1px solid #c2c8dc;\n    padding-left: 5px;\n    padding-bottom: 5px;\n}\n.topic-hot-line a {\n    display: inline;\n}\n.topic-hot div:first-child h3 {\n    text-align: center;\n    margin: .4em 0;\n}\n.topic-hot {\n    min-height: 100px;\n    padding: 10px 0;\n    border-radius: 0.2em;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);\n    border-bottom: 1px solid rgba(162, 162, 162, 0.31);\n}\n.topic-hot-line a {\n    text-decoration: none;\n    color: black;\n}\n.el-select-mini {\n    margin: 5px 0;\n}\n.el-select-mini .el-input__inner {\n    height: 24px;\n    background-color: #f2f3f5;\n}\n.pager-center {\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.inline-block {\n    display: inline-block;\n}\n.br-path {\n    margin: 10px 0;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/area.vue?326e78df"],"names":[],"mappings":";AAmDA;IACA,cAAA;IACA,iCAAA;IACA,kBAAA;IACA,oBAAA;CACA;AAEA;IACA,gBAAA;CACA;AAEA;IACA,mBAAA;IACA,eAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,qBAAA;IACA,yCAAA;IACA,mDAAA;CACA;AAEA;IACA,sBAAA;IACA,aAAA;CACA;AAEA;IACA,cAAA;CACA;AAEA;IACA,aAAA;IACA,0BAAA;CACA;AAEA;IACA,mBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,sBAAA;CACA;AAEA;IACA,eAAA;CACA","file":"area.vue","sourcesContent":["<template>\n    <sg-body>\n        <slot>\n            <el-row>\n                <el-col :span=\"15\">\n                    <el-row type=\"flex\" justify=\"space-between\">\n                        <el-col :span=\"13\" class=\"br-path\">\n                            <el-breadcrumb separator=\">\">\n                                <el-breadcrumb-item :to=\"{ path: '/' }\">首页</el-breadcrumb-item>\n                                <el-breadcrumb-item>Area</el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </el-col>\n                        <el-col :span=\"5\">\n                            <el-select v-model=\"orderNow\" class=\"el-select-mini\">\n                                <el-option\n                                        v-for=\"orderItem in orders\"\n                                        :label=\"orderItem.label\"\n                                        :key=\"orderItem.value\"\n                                        :value=\"orderItem.value\">\n                                </el-option>\n                            </el-select>\n                        </el-col>\n                    </el-row>\n                    <el-row>\n                        <el-col :span=\"24\">\n                            <sg-topic-Line :data=\"data\" v-for=\"data in topics\"></sg-topic-Line>\n                        </el-col>\n                    </el-row>\n                    <el-row type=\"flex\" justify=\"center\">\n                        <el-col :span=\"24\" class=\"pager-center\">\n                            <sg-pager :pageNow=\"page\" :pageSize=\"size\" :pageTotal=\"total\"\n                                      @currentchange=\"pageChange\" class=\"inline-block\"></sg-pager>\n                        </el-col>\n                    </el-row>\n                </el-col>\n                <el-col :span=\"7\" :offset=\"1\">\n                    <el-row class=\"topic-hot\">\n                        <el-col :span=\"24\">\n                            <h3>{{area}}</h3>\n                        </el-col>\n                        <el-col :span=\"24\" class=\"topic-hot-line\">\n                            <p>it's the description of area</p>\n                        </el-col>\n                    </el-row>\n                </el-col>\n            </el-row>\n        </slot>\n    </sg-body>\n</template>\n<style>\n\n    .topic-hot-line {\n        margin: 5px 0;\n        border-bottom: 1px solid #c2c8dc;\n        padding-left: 5px;\n        padding-bottom: 5px;\n    }\n\n    .topic-hot-line a {\n        display: inline;\n    }\n\n    .topic-hot div:first-child h3 {\n        text-align: center;\n        margin: .4em 0;\n    }\n\n    .topic-hot {\n        min-height: 100px;\n        padding: 10px 0;\n        border-radius: 0.2em;\n        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);\n        border-bottom: 1px solid rgba(162, 162, 162, 0.31);\n    }\n\n    .topic-hot-line a {\n        text-decoration: none;\n        color: black;\n    }\n\n    .el-select-mini {\n        margin: 5px 0;\n    }\n\n    .el-select-mini .el-input__inner {\n        height: 24px;\n        background-color: #f2f3f5;\n    }\n\n    .pager-center {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n\n    .inline-block {\n        display: inline-block;\n    }\n\n    .br-path {\n        margin: 10px 0;\n    }\n</style>\n<script type=\"text/javascript\">\n    import Body from './compments/body.vue'\n    import Pager from './others/pager.vue'\n    import TopicLine from './index/topicLine.vue'\n    export default  {\n        name: 'area',\n        data () {\n            return {\n                menus: preLoadData.menus,\n                topics: [],\n                page: this.$route.params.page ? this.$route.params.page : 1,\n                area: this.$route.params.area,\n                size: 30,\n                total: 0,\n                orderNow: this.$route.params.order ? this.$route.params.order : '1',\n                orders: [{\n                    value: '1',\n                    label: '最新发布'\n                }, {\n                    value: '2',\n                    label: '最后回复'\n                }, {\n                    value: '3',\n                    label: '个人喜好'\n                }]\n            }\n        },\n        created () {\n            this.getData();\n        },\n        watch: {\n            $route() {\n                this.getData();\n            },\n            page(val, OldVal){\n                this.getData();\n            }\n        },\n        methods: {\n            pageChange(page){\n                this.page = page;\n            },\n            getData () {\n                var url = '/a/' + this.area + \"/\" + this.page + '/' + this.orderNow;\n\n                this.$http.post(url).then((response)=> {\n                    if (response.data.result) {\n                        this.topics = response.data.data.topics.result;\n                        this.page = response.data.data.topics.pageNumber;\n                        this.total = response.data.data.topics.totalPage;\n                        this.size = response.data.data.topics.pageSize;\n                    }\n                }, (response)=> {\n                });\n            },\n            nextPage () {\n                this.page = this.page + 1;\n            },\n            prevPage () {\n                this.page = this.page - 1;\n            }\n        },\n        components: {\n            'sg-body': Body,\n            'sg-pager': Pager,\n            'sg-topic-Line': TopicLine\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ },
-/* 20 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29780,13 +30378,55 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n[v-cloak] {\n    display: none;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/app.vue?666021ec"],"names":[],"mappings":";AACA;IACA,cAAA;CACA","file":"app.vue","sourcesContent":["<style>\n    [v-cloak] {\n        display: none;\n    }\n</style>\n<template>\n    <el-row>\n        <el-col :span=\"24\">\n            <sg-header :menus=\"menus\"></sg-header>\n            <router-view></router-view>\n            <sg-footer :siteName=\"siteName\" :version=\"version\"></sg-footer>\n        </el-col>\n    </el-row>\n</template>\n\n<script>\n    import Header from './views/compments/header.vue'\n    import Footer from './views/compments/footer.vue'\n\n    export default {\n        name: 'app',\n        data () {\n            return preLoadData;\n        },\n        created () {\n            console.log(\"created\")\n        },\n        components: {\n            'sg-header': Header,\n            'sg-footer': Footer\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.el-tag-mini {\n    height: 12px;\n    line-height: 12px;\n}\n.topic-author-img-a {\n    display: inline-block;\n    margin: 0 5px;\n}\n.el-tag.clickable {\n    cursor: pointer;\n}\n.topic-line-img {\n    width: 3em;\n    height: 3em;\n}\n.topic-table {\n    width: 100%;\n}\n.topic-line {\n    padding: .3em 0;\n    border-bottom: 1px solid #c2c8dc;\n    transition: box-shadow 500ms;\n}\n.topic-line:hover {\n    background-color: white;\n    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);\n}\n.topic-line-title {\n    word-break: break-all;\n    word-wrap: break-word;\n    display: inline-block;\n    text-align: left;\n    cursor: pointer;\n    font-size: 1.1em;\n    line-height: 1.1em;\n}\n.topic-line-title:after {\n    width: 100%;\n    height: 2px;\n    background-color: #4183C4;\n    content: '';\n    -webkit-transition: all 0.2s;\n    -webkit-backface-visibility: hidden;\n    transition: all 0.2s;\n    backface-visibility: hidden;\n    -ms-transform: scaleX(0);\n        transform: scaleX(0);\n    clear: both;\n    display: block;\n}\n.topic-line-title:hover:after {\n    -ms-transform: scaleX(1);\n        transform: scaleX(1);\n}\n.topic-line-meta {\n    margin-top: .2em;\n}\n.topic-line-body {\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue?6dc2f95f"],"names":[],"mappings":";AA6CA;IACA,aAAA;IACA,kBAAA;CACA;AAEA;IACA,sBAAA;IACA,cAAA;CACA;AAEA;IACA,gBAAA;CACA;AAEA;IACA,WAAA;IACA,YAAA;CACA;AAEA;IACA,YAAA;CACA;AAEA;IACA,gBAAA;IACA,iCAAA;IACA,6BAAA;CACA;AAEA;IACA,wBAAA;IACA,yCAAA;CACA;AAEA;IACA,sBAAA;IACA,sBAAA;IACA,sBAAA;IACA,iBAAA;IACA,gBAAA;IACA,iBAAA;IACA,mBAAA;CACA;AAEA;IACA,YAAA;IACA,YAAA;IACA,0BAAA;IACA,YAAA;IACA,6BAAA;IACA,oCAAA;IACA,qBAAA;IACA,4BAAA;IAEA,yBAAA;QAAA,qBAAA;IACA,YAAA;IACA,eAAA;CACA;AAEA;IAEA,yBAAA;QAAA,qBAAA;CACA;AAEA;IACA,iBAAA;CACA;AAEA;CAEA","file":"topicLine.vue","sourcesContent":["<template>\n    <el-row class=\"topic-line\">\n        <el-col :span=\"24\">\n            <table class=\"topic-table\">\n                <tr>\n                    <td align=\"center\" width=\"10%\">\n                        <a class=\"topic-author-img-a\">\n                            <img :src=\"data.imageUrl\" class=\"topic-line-img\">\n                        </a>\n                    </td>\n                    <td align=\"left\" width=\"75%\">\n                        <router-link :to=\"data.articleUrl\" tag=\"div\" class=\"topic-line-title\">\n                            {{data.articleTitle}}\n                        </router-link>\n                        <div class=\"topic-line-meta\">\n                            <el-breadcrumb separator=\"/\">\n                                <el-breadcrumb-item :to=\"{ path: '/a/' +data.category }\">\n                                    <el-tag type=\"primary\" class=\"el-tag-mini\"><i class=\"iconfont icon-area\"></i>{{data.category}}\n                                    </el-tag>\n                                </el-breadcrumb-item>\n                                <el-breadcrumb-item>\n                                    <el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i\n                                            class=\"iconfont icon-people\"></i>{{data.user}}\n                                    </el-tag>\n                                </el-breadcrumb-item>\n                                <el-breadcrumb-item>\n                                    <el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-cmt\"></i>{{data.comments}}\n                                    </el-tag>\n                                </el-breadcrumb-item>\n                                <el-breadcrumb-item>\n                                    <el-tag type=\"gray\" class=\"clickable el-tag-mini\"><i class=\"iconfont icon-time\"></i>{{data.publishTime}}\n                                    </el-tag>\n                                </el-breadcrumb-item>\n                            </el-breadcrumb>\n                        </div>\n                    </td>\n                    <td align=\"right\">\n                        <el-tag type=\"warning\" v-if=\"label != ''\" v-for=\"label in data.statusText\">{{label}}</el-tag>\n                    </td>\n                </tr>\n            </table>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .el-tag-mini {\n        height: 12px;\n        line-height: 12px;\n    }\n\n    .topic-author-img-a {\n        display: inline-block;\n        margin: 0 5px;\n    }\n\n    .el-tag.clickable {\n        cursor: pointer;\n    }\n\n    .topic-line-img {\n        width: 3em;\n        height: 3em;\n    }\n\n    .topic-table {\n        width: 100%;\n    }\n\n    .topic-line {\n        padding: .3em 0;\n        border-bottom: 1px solid #c2c8dc;\n        transition: box-shadow 500ms;\n    }\n\n    .topic-line:hover {\n        background-color: white;\n        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);\n    }\n\n    .topic-line-title {\n        word-break: break-all;\n        word-wrap: break-word;\n        display: inline-block;\n        text-align: left;\n        cursor: pointer;\n        font-size: 1.1em;\n        line-height: 1.1em;\n    }\n\n    .topic-line-title:after {\n        width: 100%;\n        height: 2px;\n        background-color: #4183C4;\n        content: '';\n        -webkit-transition: all 0.2s;\n        -webkit-backface-visibility: hidden;\n        transition: all 0.2s;\n        backface-visibility: hidden;\n        -webkit-transform: scaleX(0);\n        transform: scaleX(0);\n        clear: both;\n        display: block;\n    }\n\n    .topic-line-title:hover:after {\n        -webkit-transform: scaleX(1);\n        transform: scaleX(1);\n    }\n\n    .topic-line-meta {\n        margin-top: .2em;\n    }\n\n    .topic-line-body {\n\n    }\n</style>\n<script>\n    export default{\n        name: 'sg-topic-Line',\n        props: {\n            data: {\n                type: Object\n            }\n        },\n        components: {}\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ },
-/* 21 */
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"topic.vue","sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n[v-cloak] {\n    display: none;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/app.vue?308ceefe"],"names":[],"mappings":";AACA;IACA,cAAA;CACA","file":"app.vue","sourcesContent":["<style>\n    [v-cloak] {\n        display: none;\n    }\n</style>\n<template>\n    <el-row>\n        <el-col :span=\"24\">\n            <sg-header :menus=\"menus\"></sg-header>\n            <router-view></router-view>\n            <sg-footer :siteName=\"siteName\" :version=\"version\"></sg-footer>\n        </el-col>\n    </el-row>\n</template>\n\n<script>\n    import Header from './views/compments/header.vue'\n    import Footer from './views/compments/footer.vue'\n\n    export default {\n        name: 'app',\n        data () {\n            return preLoadData;\n        },\n        created () {\n            this.$SmoothScrollWebSites();\n            console.log(\"created\")\n        },\n        components: {\n            'sg-header': Header,\n            'sg-footer': Footer\n        }\n    }\n</script>"],"sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"comment.vue","sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ },
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29800,7 +30440,7 @@ exports.push([module.i, "\n.footer-des {\n    display: inline-block;\n}\n.footer
 
 
 /***/ },
-/* 22 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29808,13 +30448,13 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"pager.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.el-pagination[data-v-bd9e1816] {\n    background-color: #f2f3f5;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/pager.vue?65fd6e8b"],"names":[],"mappings":";AAWA;IACA,0BAAA;CACA","file":"pager.vue","sourcesContent":["<template>\n    <el-pagination\n            @sizechange=\"handleSizeChange\"\n            @currentchange=\"handleCurrentChange\"\n            :current-page=\"pageNow\"\n            :page-size=\"pageSize\"\n            layout=\"prev, pager, next, jumper\"\n            :total=\"pageTotal\">\n    </el-pagination>\n</template>\n<style scoped>\n    .el-pagination {\n        background-color: #f2f3f5;\n    }\n</style>\n<script>\n\n    export default{\n        name: 'sg-pager',\n        props: {\n            pageSize: {\n                type: Number,\n                default: 30\n            },\n            pageNow: {\n                type: Number,\n                default: 1\n            },\n            pageTotal: {\n                type: Number,\n                default: 0\n            }\n        },\n        methods: {\n            handleSizeChange(internalCurrentPage){\n                this.$emit('sizechange', internalCurrentPage);\n            },\n            handleCurrentChange(internalCurrentPage){\n                this.$emit('currentchange', internalCurrentPage);\n            }\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ },
-/* 23 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29822,13 +30462,13 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"body.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.sg-body {\n    margin-top: 10px;\n}\n", "", {"version":3,"sources":["/./Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/body.vue?d12aecda"],"names":[],"mappings":";AAQA;IACA,iBAAA;CACA","file":"body.vue","sourcesContent":["<template>\n    <el-row type=\"flex\" justify=\"center\" class=\"sg-body\">\n        <el-col :span=\"col\">\n            <slot></slot>\n        </el-col>\n    </el-row>\n</template>\n<style>\n    .sg-body {\n        margin-top: 10px;\n    }\n</style>\n<script>\n    export default{\n        name: 'sg-body',\n        props: {\n            col: {\n                type: Number,\n                default: 20\n            }\n        }\n    }\n</script>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ },
-/* 24 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -29842,7 +30482,7 @@ exports.push([module.i, "\n.menu-panel {\n    height: 60px;\n}\n.sg-header {\n  
 
 
 /***/ },
-/* 25 */
+/* 35 */
 /***/ function(module, exports) {
 
 // shim for using process in browser
@@ -30028,19 +30668,746 @@ process.umask = function() { return 0; };
 
 
 /***/ },
-/* 26 */
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;//
+// SmoothScroll for websites v1.4.0 (Balazs Galambosi)
+// http://www.smoothscroll.net/
+//
+// Licensed under the terms of the MIT license.
+//
+// You may use it in your theme if you credit me. 
+// It is also free to use on any individual website.
+//
+// Exception:
+// The only restriction is to not publish any  
+// extension for browsers or native application
+// without getting a written permission first.
+//
+
+(function () {
+  
+// Scroll Variables (tweakable)
+var defaultOptions = {
+
+    // Scrolling Core
+    frameRate        : 150, // [Hz]
+    animationTime    : 400, // [ms]
+    stepSize         : 100, // [px]
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm   : true,
+    pulseScale       : 4,
+    pulseNormalize   : 1,
+
+    // Acceleration
+    accelerationDelta : 50,  // 50
+    accelerationMax   : 3,   // 3
+
+    // Keyboard Settings
+    keyboardSupport   : true,  // option
+    arrowScroll       : 50,    // [px]
+
+    // Other
+    touchpadSupport   : false, // ignore touchpad by default
+    fixedBackground   : true, 
+    excluded          : ''    
+};
+
+var options = defaultOptions;
+
+
+// Other Variables
+var isExcluded = false;
+var isFrame = false;
+var direction = { x: 0, y: 0 };
+var initDone  = false;
+var root = document.documentElement;
+var activeElement;
+var observer;
+var refreshSize;
+var deltaBuffer = [];
+var isMac = /^Mac/.test(navigator.platform);
+
+var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
+            pageup: 33, pagedown: 34, end: 35, home: 36 };
+
+
+/***********************************************
+ * INITIALIZE
+ ***********************************************/
+
+/**
+ * Tests if smooth scrolling is allowed. Shuts down everything if not.
+ */
+function initTest() {
+    if (options.keyboardSupport) {
+        addEvent('keydown', keydown);
+    }
+}
+
+/**
+ * Sets up scrolls array, determines if frames are involved.
+ */
+function init() {
+  
+    if (initDone || !document.body) return;
+
+    initDone = true;
+
+    var body = document.body;
+    var html = document.documentElement;
+    var windowHeight = window.innerHeight; 
+    var scrollHeight = body.scrollHeight;
+    
+    // check compat mode for root element
+    root = (document.compatMode.indexOf('CSS') >= 0) ? html : body;
+    activeElement = body;
+    
+    initTest();
+
+    // Checks if this script is running in a frame
+    if (top != self) {
+        isFrame = true;
+    }
+
+    /**
+     * Please duplicate this radar for a Safari fix! 
+     * rdar://22376037
+     * https://openradar.appspot.com/radar?id=4965070979203072
+     * 
+     * Only applies to Safari now, Chrome fixed it in v45:
+     * This fixes a bug where the areas left and right to 
+     * the content does not trigger the onmousewheel event
+     * on some pages. e.g.: html, body { height: 100% }
+     */
+    else if (scrollHeight > windowHeight &&
+            (body.offsetHeight <= windowHeight || 
+             html.offsetHeight <= windowHeight)) {
+
+        var fullPageElem = document.createElement('div');
+        fullPageElem.style.cssText = 'position:absolute; z-index:-10000; ' +
+                                     'top:0; left:0; right:0; height:' + 
+                                      root.scrollHeight + 'px';
+        document.body.appendChild(fullPageElem);
+        
+        // DOM changed (throttled) to fix height
+        var pendingRefresh;
+        refreshSize = function () {
+            if (pendingRefresh) return; // could also be: clearTimeout(pendingRefresh);
+            pendingRefresh = setTimeout(function () {
+                if (isExcluded) return; // could be running after cleanup
+                fullPageElem.style.height = '0';
+                fullPageElem.style.height = root.scrollHeight + 'px';
+                pendingRefresh = null;
+            }, 500); // act rarely to stay fast
+        };
+  
+        setTimeout(refreshSize, 10);
+
+        addEvent('resize', refreshSize);
+
+        // TODO: attributeFilter?
+        var config = {
+            attributes: true, 
+            childList: true, 
+            characterData: false 
+            // subtree: true
+        };
+
+        observer = new MutationObserver(refreshSize);
+        observer.observe(body, config);
+
+        if (root.offsetHeight <= windowHeight) {
+            var clearfix = document.createElement('div');   
+            clearfix.style.clear = 'both';
+            body.appendChild(clearfix);
+        }
+    }
+
+    // disable fixed background
+    if (!options.fixedBackground && !isExcluded) {
+        body.style.backgroundAttachment = 'scroll';
+        html.style.backgroundAttachment = 'scroll';
+    }
+}
+
+/**
+ * Removes event listeners and other traces left on the page.
+ */
+function cleanup() {
+    observer && observer.disconnect();
+    removeEvent(wheelEvent, wheel);
+    removeEvent('mousedown', mousedown);
+    removeEvent('keydown', keydown);
+    removeEvent('resize', refreshSize);
+    removeEvent('load', init);
+}
+
+
+/************************************************
+ * SCROLLING 
+ ************************************************/
+ 
+var que = [];
+var pending = false;
+var lastScroll = Date.now();
+
+/**
+ * Pushes scroll actions to the scrolling queue.
+ */
+function scrollArray(elem, left, top) {
+    
+    directionCheck(left, top);
+
+    if (options.accelerationMax != 1) {
+        var now = Date.now();
+        var elapsed = now - lastScroll;
+        if (elapsed < options.accelerationDelta) {
+            var factor = (1 + (50 / elapsed)) / 2;
+            if (factor > 1) {
+                factor = Math.min(factor, options.accelerationMax);
+                left *= factor;
+                top  *= factor;
+            }
+        }
+        lastScroll = Date.now();
+    }          
+    
+    // push a scroll command
+    que.push({
+        x: left, 
+        y: top, 
+        lastX: (left < 0) ? 0.99 : -0.99,
+        lastY: (top  < 0) ? 0.99 : -0.99, 
+        start: Date.now()
+    });
+        
+    // don't act if there's a pending queue
+    if (pending) {
+        return;
+    }  
+
+    var scrollWindow = (elem === document.body);
+    
+    var step = function (time) {
+        
+        var now = Date.now();
+        var scrollX = 0;
+        var scrollY = 0; 
+    
+        for (var i = 0; i < que.length; i++) {
+            
+            var item = que[i];
+            var elapsed  = now - item.start;
+            var finished = (elapsed >= options.animationTime);
+            
+            // scroll position: [0, 1]
+            var position = (finished) ? 1 : elapsed / options.animationTime;
+            
+            // easing [optional]
+            if (options.pulseAlgorithm) {
+                position = pulse(position);
+            }
+            
+            // only need the difference
+            var x = (item.x * position - item.lastX) >> 0;
+            var y = (item.y * position - item.lastY) >> 0;
+            
+            // add this to the total scrolling
+            scrollX += x;
+            scrollY += y;            
+            
+            // update last values
+            item.lastX += x;
+            item.lastY += y;
+        
+            // delete and step back if it's over
+            if (finished) {
+                que.splice(i, 1); i--;
+            }           
+        }
+
+        // scroll left and top
+        if (scrollWindow) {
+            window.scrollBy(scrollX, scrollY);
+        } 
+        else {
+            if (scrollX) elem.scrollLeft += scrollX;
+            if (scrollY) elem.scrollTop  += scrollY;                    
+        }
+        
+        // clean up if there's nothing left to do
+        if (!left && !top) {
+            que = [];
+        }
+        
+        if (que.length) { 
+            requestFrame(step, elem, (1000 / options.frameRate + 1)); 
+        } else { 
+            pending = false;
+        }
+    };
+    
+    // start a new queue of actions
+    requestFrame(step, elem, 0);
+    pending = true;
+}
+
+
+/***********************************************
+ * EVENTS
+ ***********************************************/
+
+/**
+ * Mouse wheel handler.
+ * @param {Object} event
+ */
+function wheel(event) {
+
+    if (!initDone) {
+        init();
+    }
+    
+    var target = event.target;
+    var overflowing = overflowingAncestor(target);
+
+    // use default if there's no overflowing
+    // element or default action is prevented   
+    // or it's a zooming event with CTRL 
+    if (!overflowing || event.defaultPrevented || event.ctrlKey) {
+        return true;
+    }
+    
+    // leave embedded content alone (flash & pdf)
+    if (isNodeName(activeElement, 'embed') || 
+       (isNodeName(target, 'embed') && /\.pdf/i.test(target.src)) ||
+       isNodeName(activeElement, 'object')) {
+        return true;
+    }
+
+    var deltaX = -event.wheelDeltaX || event.deltaX || 0;
+    var deltaY = -event.wheelDeltaY || event.deltaY || 0;
+    
+    if (isMac) {
+        if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
+            deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
+        }
+        if (event.wheelDeltaY && isDivisible(event.wheelDeltaY, 120)) {
+            deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
+        }
+    }
+    
+    // use wheelDelta if deltaX/Y is not available
+    if (!deltaX && !deltaY) {
+        deltaY = -event.wheelDelta || 0;
+    }
+
+    // line based scrolling (Firefox mostly)
+    if (event.deltaMode === 1) {
+        deltaX *= 40;
+        deltaY *= 40;
+    }
+    
+    // check if it's a touchpad scroll that should be ignored
+    if (!options.touchpadSupport && isTouchpad(deltaY)) {
+        return true;
+    }
+
+    // scale by step size
+    // delta is 120 most of the time
+    // synaptics seems to send 1 sometimes
+    if (Math.abs(deltaX) > 1.2) {
+        deltaX *= options.stepSize / 120;
+    }
+    if (Math.abs(deltaY) > 1.2) {
+        deltaY *= options.stepSize / 120;
+    }
+    
+    scrollArray(overflowing, deltaX, deltaY);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Keydown event handler.
+ * @param {Object} event
+ */
+function keydown(event) {
+
+    var target   = event.target;
+    var modifier = event.ctrlKey || event.altKey || event.metaKey || 
+                  (event.shiftKey && event.keyCode !== key.spacebar);
+    
+    // our own tracked active element could've been removed from the DOM
+    if (!document.body.contains(activeElement)) {
+        activeElement = document.activeElement;
+    }
+
+    // do nothing if user is editing text
+    // or using a modifier key (except shift)
+    // or in a dropdown
+    // or inside interactive elements
+    var inputNodeNames = /^(textarea|select|embed|object)$/i;
+    var buttonTypes = /^(button|submit|radio|checkbox|file|color|image)$/i;
+    if ( inputNodeNames.test(target.nodeName) ||
+         isNodeName(target, 'input') && !buttonTypes.test(target.type) ||
+         isNodeName(activeElement, 'video') ||
+         isInsideYoutubeVideo(event) ||
+         target.isContentEditable || 
+         event.defaultPrevented   ||
+         modifier ) {
+      return true;
+    }
+    
+    // spacebar should trigger button press
+    if ((isNodeName(target, 'button') ||
+         isNodeName(target, 'input') && buttonTypes.test(target.type)) &&
+        event.keyCode === key.spacebar) {
+      return true;
+    }
+    
+    var shift, x = 0, y = 0;
+    var elem = overflowingAncestor(activeElement);
+    var clientHeight = elem.clientHeight;
+
+    if (elem == document.body) {
+        clientHeight = window.innerHeight;
+    }
+
+    switch (event.keyCode) {
+        case key.up:
+            y = -options.arrowScroll;
+            break;
+        case key.down:
+            y = options.arrowScroll;
+            break;         
+        case key.spacebar: // (+ shift)
+            shift = event.shiftKey ? 1 : -1;
+            y = -shift * clientHeight * 0.9;
+            break;
+        case key.pageup:
+            y = -clientHeight * 0.9;
+            break;
+        case key.pagedown:
+            y = clientHeight * 0.9;
+            break;
+        case key.home:
+            y = -elem.scrollTop;
+            break;
+        case key.end:
+            var damt = elem.scrollHeight - elem.scrollTop - clientHeight;
+            y = (damt > 0) ? damt+10 : 0;
+            break;
+        case key.left:
+            x = -options.arrowScroll;
+            break;
+        case key.right:
+            x = options.arrowScroll;
+            break;            
+        default:
+            return true; // a key we don't care about
+    }
+
+    scrollArray(elem, x, y);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Mousedown event only for updating activeElement
+ */
+function mousedown(event) {
+    activeElement = event.target;
+}
+
+
+/***********************************************
+ * OVERFLOW
+ ***********************************************/
+
+var uniqueID = (function () {
+    var i = 0;
+    return function (el) {
+        return el.uniqueID || (el.uniqueID = i++);
+    };
+})();
+
+var cache = {}; // cleared out after a scrolling session
+var clearCacheTimer;
+
+//setInterval(function () { cache = {}; }, 10 * 1000);
+
+function scheduleClearCache() {
+    clearTimeout(clearCacheTimer);
+    clearCacheTimer = setInterval(function () { cache = {}; }, 1*1000);
+}
+
+function setCache(elems, overflowing) {
+    for (var i = elems.length; i--;)
+        cache[uniqueID(elems[i])] = overflowing;
+    return overflowing;
+}
+
+//  (body)                (root)
+//         | hidden | visible | scroll |  auto  |
+// hidden  |   no   |    no   |   YES  |   YES  |
+// visible |   no   |   YES   |   YES  |   YES  |
+// scroll  |   no   |   YES   |   YES  |   YES  |
+// auto    |   no   |   YES   |   YES  |   YES  |
+
+function overflowingAncestor(el) {
+    var elems = [];
+    var body = document.body;
+    var rootScrollHeight = root.scrollHeight;
+    do {
+        var cached = cache[uniqueID(el)];
+        if (cached) {
+            return setCache(elems, cached);
+        }
+        elems.push(el);
+        if (rootScrollHeight === el.scrollHeight) {
+            var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
+            var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
+            if (isFrame && isContentOverflowing(root) || 
+               !isFrame && isOverflowCSS) {
+                return setCache(elems, getScrollRoot()); 
+            }
+        } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
+            return setCache(elems, el);
+        }
+    } while (el = el.parentElement);
+}
+
+function isContentOverflowing(el) {
+    return (el.clientHeight + 10 < el.scrollHeight);
+}
+
+// typically for <body> and <html>
+function overflowNotHidden(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow !== 'hidden');
+}
+
+// for all other elements
+function overflowAutoOrScroll(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow === 'scroll' || overflow === 'auto');
+}
+
+
+/***********************************************
+ * HELPERS
+ ***********************************************/
+
+function addEvent(type, fn) {
+    window.addEventListener(type, fn, false);
+}
+
+function removeEvent(type, fn) {
+    window.removeEventListener(type, fn, false);  
+}
+
+function isNodeName(el, tag) {
+    return (el.nodeName||'').toLowerCase() === tag.toLowerCase();
+}
+
+function directionCheck(x, y) {
+    x = (x > 0) ? 1 : -1;
+    y = (y > 0) ? 1 : -1;
+    if (direction.x !== x || direction.y !== y) {
+        direction.x = x;
+        direction.y = y;
+        que = [];
+        lastScroll = 0;
+    }
+}
+
+var deltaBufferTimer;
+
+if (window.localStorage && localStorage.SS_deltaBuffer) {
+    deltaBuffer = localStorage.SS_deltaBuffer.split(',');
+}
+
+function isTouchpad(deltaY) {
+    if (!deltaY) return;
+    if (!deltaBuffer.length) {
+        deltaBuffer = [deltaY, deltaY, deltaY];
+    }
+    deltaY = Math.abs(deltaY)
+    deltaBuffer.push(deltaY);
+    deltaBuffer.shift();
+    clearTimeout(deltaBufferTimer);
+    deltaBufferTimer = setTimeout(function () {
+        if (window.localStorage) {
+            localStorage.SS_deltaBuffer = deltaBuffer.join(',');
+        }
+    }, 1000);
+    return !allDeltasDivisableBy(120) && !allDeltasDivisableBy(100);
+} 
+
+function isDivisible(n, divisor) {
+    return (Math.floor(n / divisor) == n / divisor);
+}
+
+function allDeltasDivisableBy(divisor) {
+    return (isDivisible(deltaBuffer[0], divisor) &&
+            isDivisible(deltaBuffer[1], divisor) &&
+            isDivisible(deltaBuffer[2], divisor));
+}
+
+function isInsideYoutubeVideo(event) {
+    var elem = event.target;
+    var isControl = false;
+    if (document.URL.indexOf ('www.youtube.com/watch') != -1) {
+        do {
+            isControl = (elem.classList && 
+                         elem.classList.contains('html5-video-controls'));
+            if (isControl) break;
+        } while (elem = elem.parentNode);
+    }
+    return isControl;
+}
+
+var requestFrame = (function () {
+      return (window.requestAnimationFrame       || 
+              window.webkitRequestAnimationFrame || 
+              window.mozRequestAnimationFrame    ||
+              function (callback, element, delay) {
+                 window.setTimeout(callback, delay || (1000/60));
+             });
+})();
+
+var MutationObserver = (window.MutationObserver || 
+                        window.WebKitMutationObserver ||
+                        window.MozMutationObserver);  
+
+var getScrollRoot = (function() {
+  var SCROLL_ROOT;
+  return function() {
+    if (!SCROLL_ROOT) {
+      var dummy = document.createElement('div');
+      dummy.style.cssText = 'height:10000px;width:1px;';
+      document.body.appendChild(dummy);
+      var bodyScrollTop  = document.body.scrollTop;
+      var docElScrollTop = document.documentElement.scrollTop;
+      window.scrollBy(0, 3);
+      if (document.body.scrollTop != bodyScrollTop)
+        (SCROLL_ROOT = document.body);
+      else 
+        (SCROLL_ROOT = document.documentElement);
+      window.scrollBy(0, -3);
+      document.body.removeChild(dummy);
+    }
+    return SCROLL_ROOT;
+  };
+})();
+
+
+/***********************************************
+ * PULSE (by Michael Herf)
+ ***********************************************/
+ 
+/**
+ * Viscous fluid with a pulse for part and decay for the rest.
+ * - Applies a fixed force over an interval (a damped acceleration), and
+ * - Lets the exponential bleed away the velocity over a longer interval
+ * - Michael Herf, http://stereopsis.com/stopping/
+ */
+function pulse_(x) {
+    var val, start, expx;
+    // test
+    x = x * options.pulseScale;
+    if (x < 1) { // acceleartion
+        val = x - (1 - Math.exp(-x));
+    } else {     // tail
+        // the previous animation ended here:
+        start = Math.exp(-1);
+        // simple viscous drag
+        x -= 1;
+        expx = 1 - Math.exp(-x);
+        val = start + (expx * (1 - start));
+    }
+    return val * options.pulseNormalize;
+}
+
+function pulse(x) {
+    if (x >= 1) return 1;
+    if (x <= 0) return 0;
+
+    if (options.pulseNormalize == 1) {
+        options.pulseNormalize /= pulse_(1);
+    }
+    return pulse_(x);
+}
+
+
+/***********************************************
+ * FIRST RUN
+ ***********************************************/
+
+var userAgent = window.navigator.userAgent;
+var isEdge    = /Edge/.test(userAgent); // thank you MS
+var isChrome  = /chrome/i.test(userAgent) && !isEdge; 
+var isSafari  = /safari/i.test(userAgent) && !isEdge; 
+var isMobile  = /mobile/i.test(userAgent);
+var isIEWin7  = /Windows NT 6.1/i.test(userAgent) && /rv:11/i.test(userAgent);
+var isEnabledForBrowser = (isChrome || isSafari || isIEWin7) && !isMobile;
+
+var wheelEvent;
+if ('onwheel' in document.createElement('div'))
+    wheelEvent = 'wheel';
+else if ('onmousewheel' in document.createElement('div'))
+    wheelEvent = 'mousewheel';
+
+if (wheelEvent && isEnabledForBrowser) {
+    addEvent(wheelEvent, wheel);
+    addEvent('mousedown', mousedown);
+    addEvent('load', init);
+}
+
+
+/***********************************************
+ * PUBLIC INTERFACE
+ ***********************************************/
+
+function SmoothScroll(optionsToSet) {
+    for (var key in optionsToSet)
+        if (defaultOptions.hasOwnProperty(key)) 
+            options[key] = optionsToSet[key];
+}
+SmoothScroll.destroy = cleanup;
+
+if (window.SmoothScrollOptions) // async API
+    SmoothScroll(window.SmoothScrollOptions)
+
+if (true)
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+        return SmoothScroll;
+    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+else if ('object' == typeof exports)
+    module.exports = SmoothScroll;
+else
+    window.SmoothScroll = SmoothScroll;
+
+})();
+
+/***/ },
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(50)
+__webpack_require__(60)
 
 /* script */
-__vue_exports__ = __webpack_require__(9)
+__vue_exports__ = __webpack_require__(13)
 
 /* template */
-var __vue_template__ = __webpack_require__(41)
+var __vue_template__ = __webpack_require__(47)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30052,7 +31419,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/compments/body.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/area.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30063,30 +31430,30 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ca8d316e", __vue_options__)
+    hotAPI.createRecord("data-v-2a84fd6b", __vue_options__)
   } else {
-    hotAPI.reload("data-v-ca8d316e", __vue_options__)
+    hotAPI.reload("data-v-2a84fd6b", __vue_options__)
   }
 })()}
-if (__vue_options__.functional) {console.error("[vue-loader] body.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+if (__vue_options__.functional) {console.error("[vue-loader] area.vue: functional components are not supported and should be defined in plain js files using render functions.")}
 
 module.exports = __vue_exports__
 
 
 /***/ },
-/* 27 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(48)
+__webpack_require__(65)
 
 /* script */
-__vue_exports__ = __webpack_require__(10)
+__vue_exports__ = __webpack_require__(15)
 
 /* template */
-var __vue_template__ = __webpack_require__(39)
+var __vue_template__ = __webpack_require__(53)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30120,19 +31487,19 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 28 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(51)
+__webpack_require__(68)
 
 /* script */
-__vue_exports__ = __webpack_require__(11)
+__vue_exports__ = __webpack_require__(16)
 
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(56)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30166,19 +31533,19 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 29 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(44)
+__webpack_require__(58)
 
 /* script */
-__vue_exports__ = __webpack_require__(12)
+__vue_exports__ = __webpack_require__(17)
 
 /* template */
-var __vue_template__ = __webpack_require__(34)
+var __vue_template__ = __webpack_require__(45)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30212,19 +31579,19 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 30 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(46)
+__webpack_require__(64)
 
 /* script */
-__vue_exports__ = __webpack_require__(13)
+__vue_exports__ = __webpack_require__(19)
 
 /* template */
-var __vue_template__ = __webpack_require__(36)
+var __vue_template__ = __webpack_require__(52)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30236,7 +31603,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/index/topicLine.vue"
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/comment.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -30247,27 +31614,27 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-441ae050", __vue_options__)
+    hotAPI.createRecord("data-v-5b17e611", __vue_options__)
   } else {
-    hotAPI.reload("data-v-441ae050", __vue_options__)
+    hotAPI.reload("data-v-5b17e611", __vue_options__)
   }
 })()}
-if (__vue_options__.functional) {console.error("[vue-loader] topicLine.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+if (__vue_options__.functional) {console.error("[vue-loader] comment.vue: functional components are not supported and should be defined in plain js files using render functions.")}
 
 module.exports = __vue_exports__
 
 
 /***/ },
-/* 31 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* script */
-__vue_exports__ = __webpack_require__(14)
+__vue_exports__ = __webpack_require__(20)
 
 /* template */
-var __vue_template__ = __webpack_require__(37)
+var __vue_template__ = __webpack_require__(50)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30301,65 +31668,19 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 32 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 
 /* styles */
-__webpack_require__(49)
+__webpack_require__(59)
 
 /* script */
-__vue_exports__ = __webpack_require__(15)
+__vue_exports__ = __webpack_require__(22)
 
 /* template */
-var __vue_template__ = __webpack_require__(40)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/others/pager.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bd9e1816", __vue_options__)
-  } else {
-    hotAPI.reload("data-v-bd9e1816", __vue_options__)
-  }
-})()}
-if (__vue_options__.functional) {console.error("[vue-loader] pager.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-
-module.exports = __vue_exports__
-
-
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-
-/* styles */
-__webpack_require__(45)
-
-/* script */
-__vue_exports__ = __webpack_require__(16)
-
-/* template */
-var __vue_template__ = __webpack_require__(35)
+var __vue_template__ = __webpack_require__(46)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30393,13 +31714,59 @@ module.exports = __vue_exports__
 
 
 /***/ },
-/* 34 */
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+
+/* styles */
+__webpack_require__(62)
+
+/* script */
+__vue_exports__ = __webpack_require__(23)
+
+/* template */
+var __vue_template__ = __webpack_require__(49)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/teddyzhu/Documents/JavaWork/code/lc4e/src/main/webapp/WEB-INF/views/themes/default/src/views/topic.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45e0e041", __vue_options__)
+  } else {
+    hotAPI.reload("data-v-45e0e041", __vue_options__)
+  }
+})()}
+if (__vue_options__.functional) {console.error("[vue-loader] topic.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+module.exports = __vue_exports__
+
+
+/***/ },
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
   return _h('sg-body', [_t("default", [_h('el-row', [_h('el-col', {
     attrs: {
-      "span": 17
+      "span": 15
     }
   }, [_h('el-row', {
     attrs: {
@@ -30409,7 +31776,7 @@ module.exports={render:function (){with(this) {
   }, [_h('el-col', {
     staticClass: "br-path",
     attrs: {
-      "span": 15
+      "span": 13
     }
   }, [_h('el-breadcrumb', {
     attrs: {
@@ -30423,26 +31790,27 @@ module.exports={render:function (){with(this) {
     }
   }, ["首页"]), " ", _h('el-breadcrumb-item', ["Area"])])]), " ", _h('el-col', {
     attrs: {
-      "span": 3
+      "span": 5
     }
   }, [_h('el-select', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (order),
-      expression: "order"
+      value: (orderNow),
+      expression: "orderNow"
     }],
     staticClass: "el-select-mini",
     domProps: {
-      "value": (order)
+      "value": (orderNow)
     },
     on: {
       "input": function($event) {
-        order = $event
+        orderNow = $event
       }
     }
   }, [_l((orders), function(orderItem) {
     return _h('el-option', {
+      key: orderItem.value,
       attrs: {
         "label": orderItem.label
       },
@@ -30450,13 +31818,17 @@ module.exports={render:function (){with(this) {
         "value": orderItem.value
       }
     })
-  })])])]), " ", _l((topics), function(data) {
+  })])])]), " ", _h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_l((topics), function(data) {
     return _h('sg-topic-Line', {
       attrs: {
         "data": data
       }
     })
-  }), " ", _h('el-row', {
+  })])]), " ", _h('el-row', {
     attrs: {
       "type": "flex",
       "justify": "center"
@@ -30478,11 +31850,39 @@ module.exports={render:function (){with(this) {
     }
   })])])]), " ", _h('el-col', {
     attrs: {
-      "span": 7
+      "span": 7,
+      "offset": 1
     }
-  }, [_m(0)])])])])
+  }, [_h('el-row', {
+    staticClass: "topic-hot"
+  }, [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_m(0)]), " ", _l((hots), function(hot) {
+    return _h('el-col', {
+      staticClass: "topic-hot-line",
+      attrs: {
+        "span": 24
+      }
+    }, [_h('el-tag', {
+      attrs: {
+        "type": "primary"
+      }
+    }, [_h('router-link', {
+      attrs: {
+        "tag": "a",
+        "to": '/a/' + hot.area
+      }
+    }, [_s(hot.area)])]), " ", _h('router-link', {
+      attrs: {
+        "tag": "a",
+        "to": hot.link
+      }
+    }, [_s(hot.title)])])
+  })])])])])])
 }},staticRenderFns: [function (){with(this) {
-  return _h('p', ["right"])
+  return _h('h3', ["Topic Hot"])
 }}]}
 if (false) {
   module.hot.accept()
@@ -30492,7 +31892,7 @@ if (false) {
 }
 
 /***/ },
-/* 35 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30512,26 +31912,150 @@ if (false) {
 }
 
 /***/ },
-/* 36 */
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('sg-body', [_t("default", [_h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 15
+    }
+  }, [_h('el-row', {
+    attrs: {
+      "type": "flex",
+      "justify": "space-between"
+    }
+  }, [_h('el-col', {
+    staticClass: "br-path",
+    attrs: {
+      "span": 13
+    }
+  }, [_h('el-breadcrumb', {
+    attrs: {
+      "separator": ">"
+    }
+  }, [_h('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/'
+      }
+    }
+  }, ["首页"]), " ", _h('el-breadcrumb-item', ["Area"])])]), " ", _h('el-col', {
+    attrs: {
+      "span": 5
+    }
+  }, [_h('el-select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (orderNow),
+      expression: "orderNow"
+    }],
+    staticClass: "el-select-mini",
+    domProps: {
+      "value": (orderNow)
+    },
+    on: {
+      "input": function($event) {
+        orderNow = $event
+      }
+    }
+  }, [_l((orders), function(orderItem) {
+    return _h('el-option', {
+      key: orderItem.value,
+      attrs: {
+        "label": orderItem.label
+      },
+      domProps: {
+        "value": orderItem.value
+      }
+    })
+  })])])]), " ", _h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_l((topics), function(data) {
+    return _h('sg-topic-Line', {
+      attrs: {
+        "data": data
+      }
+    })
+  })])]), " ", _h('el-row', {
+    attrs: {
+      "type": "flex",
+      "justify": "center"
+    }
+  }, [_h('el-col', {
+    staticClass: "pager-center",
+    attrs: {
+      "span": 24
+    }
+  }, [_h('sg-pager', {
+    staticClass: "inline-block",
+    attrs: {
+      "pageNow": page,
+      "pageSize": size,
+      "pageTotal": total
+    },
+    on: {
+      "currentchange": pageChange
+    }
+  })])])]), " ", _h('el-col', {
+    attrs: {
+      "span": 7,
+      "offset": 1
+    }
+  }, [_h('el-row', {
+    staticClass: "topic-hot"
+  }, [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_h('h3', [_s(area)])]), " ", _h('el-col', {
+    staticClass: "topic-hot-line",
+    attrs: {
+      "span": 24
+    }
+  }, [_m(0)])])])])])])
+}},staticRenderFns: [function (){with(this) {
+  return _h('p', ["it's the description of area"])
+}}]}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2a84fd6b", module.exports)
+  }
+}
+
+/***/ },
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
   return _h('el-row', {
     staticClass: "topic-line"
   }, [_h('el-col', {
-    staticClass: "topic-author-pic",
     attrs: {
-      "span": 3
+      "span": 24
     }
-  }, [_h('a', [_h('img', {
+  }, [_h('table', {
+    staticClass: "topic-table"
+  }, [_h('tr', [_h('td', {
+    attrs: {
+      "align": "center",
+      "width": "10%"
+    }
+  }, [_h('a', {
+    staticClass: "topic-author-img-a"
+  }, [_h('img', {
     staticClass: "topic-line-img",
     attrs: {
       "src": data.imageUrl
     }
-  })])]), " ", _h('el-col', {
-    staticClass: "topic-line-body",
+  })])]), " ", _h('td', {
     attrs: {
-      "span": 21
+      "align": "left",
+      "width": "75%"
     }
   }, [_h('router-link', {
     staticClass: "topic-line-title",
@@ -30539,7 +32063,7 @@ module.exports={render:function (){with(this) {
       "to": data.articleUrl,
       "tag": "div"
     }
-  }, ["\n            " + _s(data.articleTitle) + "\n        "]), " ", _h('div', {
+  }, ["\n                        " + _s(data.articleTitle) + "\n                    "]), " ", _h('div', {
     staticClass: "topic-line-meta"
   }, [_h('el-breadcrumb', {
     attrs: {
@@ -30556,33 +32080,47 @@ module.exports={render:function (){with(this) {
     attrs: {
       "type": "primary"
     }
-  }, [_s(data.category)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+  }, [_m(0), _s(data.category) + "\n                                "])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
     staticClass: "clickable el-tag-mini",
     attrs: {
       "type": "gray"
     }
-  }, [_m(0), _s(data.user)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+  }, [_m(1), _s(data.user) + "\n                                "])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
     staticClass: "clickable el-tag-mini",
     attrs: {
       "type": "gray"
     }
-  }, [_m(1), _s(data.comments)])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
+  }, [_m(2), _s(data.comments) + "\n                                "])]), " ", _h('el-breadcrumb-item', [_h('el-tag', {
     staticClass: "clickable el-tag-mini",
     attrs: {
       "type": "gray"
     }
-  }, [_m(2), _s(data.publishTime)])])])])])])
+  }, [_m(3), _s(data.publishTime) + "\n                                "])])])])]), " ", _h('td', {
+    attrs: {
+      "align": "right"
+    }
+  }, [_l((data.statusText), function(label) {
+    return (label != '') ? _h('el-tag', {
+      attrs: {
+        "type": "warning"
+      }
+    }, [_s(label)]) : _e()
+  })])])])])])
 }},staticRenderFns: [function (){with(this) {
   return _h('i', {
-    staticClass: "iconfont icon-user"
+    staticClass: "iconfont icon-area"
   })
 }},function (){with(this) {
   return _h('i', {
-    staticClass: "iconfont icon-huo"
+    staticClass: "iconfont icon-people"
   })
 }},function (){with(this) {
   return _h('i', {
-    staticClass: "el-icon-date"
+    staticClass: "iconfont icon-cmt"
+  })
+}},function (){with(this) {
+  return _h('i', {
+    staticClass: "iconfont icon-time"
   })
 }}]}
 if (false) {
@@ -30593,7 +32131,86 @@ if (false) {
 }
 
 /***/ },
-/* 37 */
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('sg-body', [_t("default", [_h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 15
+    }
+  }, [_h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_h('table', [_h('tr', [_h('td', [_s(topic.name)]), " ", _h('td', [_s(topic.title)])]), " ", _h('tr', [_h('td', [_h('img', {
+    attrs: {
+      "src": '/images/avatar' + topic.imgUrl
+    }
+  })]), " ", _h('td', [_h('sg-common', {
+    attrs: {
+      "body": topic.body
+    }
+  })])])])])]), " ", _h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_l((comments), function(comment) {
+    return _h('table', {
+      staticClass: "comment"
+    }, [_h('tr', [_h('td', [_h('img', {
+      attrs: {
+        "src": '/images/avatar' + comment.imgUrl
+      }
+    })]), " ", _h('td', [_h('sg-common', {
+      attrs: {
+        "body": topic.body
+      }
+    })])]), " ", _h('tr', [_h('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, ["\n                                    " + _s(comment.name) + "\n                                "]), " ", _h('td', [_h('sg-common', {
+      attrs: {
+        "body": comment.body
+      }
+    })])])])
+  })])]), " ", _h('el-row', {
+    attrs: {
+      "type": "flex",
+      "justify": "center"
+    }
+  }, [_h('el-col', {
+    staticClass: "pager-center",
+    attrs: {
+      "span": 24
+    }
+  }, [_h('sg-pager', {
+    staticClass: "inline-block",
+    attrs: {
+      "pageNow": page,
+      "pageSize": size,
+      "pageTotal": total
+    },
+    on: {
+      "currentchange": pageChange
+    }
+  })])])]), " ", _h('el-col', {
+    attrs: {
+      "span": 7,
+      "offset": 1
+    }
+  }, ["\n                right\n            "])])])])
+}},staticRenderFns: []}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-45e0e041", module.exports)
+  }
+}
+
+/***/ },
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30621,7 +32238,7 @@ if (false) {
 }
 
 /***/ },
-/* 38 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30648,7 +32265,25 @@ if (false) {
 }
 
 /***/ },
-/* 39 */
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){with(this) {
+  return _h('el-row', [_h('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, ["\n        " + _s(body) + "\n    "])])
+}},staticRenderFns: []}
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5b17e611", module.exports)
+  }
+}
+
+/***/ },
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30709,7 +32344,7 @@ if (false) {
 }
 
 /***/ },
-/* 40 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30734,11 +32369,12 @@ if (false) {
 }
 
 /***/ },
-/* 41 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
   return _h('el-row', {
+    staticClass: "sg-body",
     attrs: {
       "type": "flex",
       "justify": "center"
@@ -30757,7 +32393,7 @@ if (false) {
 }
 
 /***/ },
-/* 42 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){with(this) {
@@ -30795,7 +32431,7 @@ if (false) {
 }
 
 /***/ },
-/* 43 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 /**
@@ -32678,13 +34314,13 @@ return VueRouter;
 })));
 
 /***/ },
-/* 44 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(17);
+var content = __webpack_require__(24);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32704,13 +34340,13 @@ if(false) {
 }
 
 /***/ },
-/* 45 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(18);
+var content = __webpack_require__(25);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32730,13 +34366,39 @@ if(false) {
 }
 
 /***/ },
-/* 46 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(26);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2a84fd6b!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./area.vue", function() {
+			var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2a84fd6b!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./area.vue");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(27);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32756,13 +34418,39 @@ if(false) {
 }
 
 /***/ },
-/* 47 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(28);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-45e0e041!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topic.vue", function() {
+			var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-45e0e041!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topic.vue");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(29);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32782,13 +34470,39 @@ if(false) {
 }
 
 /***/ },
-/* 48 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(30);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5b17e611!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./comment.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5b17e611!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./comment.vue");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(31);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32808,13 +34522,13 @@ if(false) {
 }
 
 /***/ },
-/* 49 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(32);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32823,8 +34537,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue", function() {
-			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bd9e1816&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pager.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -32834,13 +34548,13 @@ if(false) {
 }
 
 /***/ },
-/* 50 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(23);
+var content = __webpack_require__(33);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32860,13 +34574,13 @@ if(false) {
 }
 
 /***/ },
-/* 51 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(24);
+var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -32886,7 +34600,7 @@ if(false) {
 }
 
 /***/ },
-/* 52 */
+/* 69 */
 /***/ function(module, exports) {
 
 var bindEvent = (function() {
@@ -32938,21 +34652,23 @@ module.exports = {
 };
 
 /***/ },
-/* 53 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__route__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_resource__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__route__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_resource__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_resource___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_resource__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__app_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_element_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_smoothscroll_websites__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_smoothscroll_websites___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_smoothscroll_websites__);
 /**
  * Created by teddyzhu on 15/12/5.
  */
@@ -32963,8 +34679,12 @@ module.exports = {
 
 
 
+
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_element_ui___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_resource___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vue_smoothscroll_websites___default.a);
+
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   router: __WEBPACK_IMPORTED_MODULE_1__route__["a" /* default */],
   render: function render(h) {

@@ -4,7 +4,7 @@ package com.silentgo.lc4e.web.service;
 import com.silentgo.core.cache.annotation.Cache;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
-import com.silentgo.lc4e.dao.SysMenuDao;
+import com.silentgo.lc4e.database.dao.MenuDao;
 import com.silentgo.lc4e.entity.MenuEntity;
 
 import java.util.ArrayList;
@@ -17,12 +17,12 @@ import java.util.List;
 public class MenuService {
 
     @Inject
-    SysMenuDao sysMenuDao;
+    MenuDao menuDao;
 
     @Cache(cacheName = "UiData", key = "menus")
     public List<MenuEntity> getMenuTree() {
         MenuEntity menuTree;
-        List<MenuEntity> allMenus = sysMenuDao.queryListOrderByParentIdAndOrder();
+        List<MenuEntity> allMenus = menuDao.queryListOrderByParentIdAndOrder();
 
         if (allMenus == null || allMenus.isEmpty()) {
             return new ArrayList<>();

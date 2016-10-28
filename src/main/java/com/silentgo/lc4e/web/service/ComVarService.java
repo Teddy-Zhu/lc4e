@@ -4,8 +4,8 @@ import com.silentgo.core.cache.annotation.Cache;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
-import com.silentgo.lc4e.dao.SysCommonVariable;
-import com.silentgo.lc4e.dao.SysCommonVariableDao;
+import com.silentgo.lc4e.database.model.SysConfig;
+import com.silentgo.lc4e.database.dao.SysConfigDao;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,28 +18,24 @@ import java.util.List;
 public class ComVarService {
 
     @Inject
-    SysCommonVariableDao sysCommonVariableDao;
+    SysConfigDao sysConfigDao;
 
     @Cache(cacheName = Key.ComVar, index = 0)
-    public SysCommonVariable getComVarByName(String name) {
+    public SysConfig getComVarByName(String name) {
 
-        return sysCommonVariableDao.queryOneByName(name);
+        return sysConfigDao.queryOneByName(name);
     }
 
-
-    @Cache(cacheName = Key.ComVar, index = 0)
-    public List<SysCommonVariable> getComVarsByNames(String[] name) {
-        return sysCommonVariableDao.queryListByListName(Arrays.asList(name));
+    public List<SysConfig> getComVarsByNames(String[] name) {
+        return sysConfigDao.queryListByListName(Arrays.asList(name));
     }
 
-    @Cache(cacheName = Key.ComVar, index = 0)
-    public List<SysCommonVariable> getComVarsByNames(Collection<String> name) {
-        return sysCommonVariableDao.queryListByListName(name);
+    public List<SysConfig> getComVarsByNames(Collection<String> name) {
+        return sysConfigDao.queryListByListName(name);
     }
 
-    @Cache(cacheName = Key.ComVar, index = 0)
     public String getComVarValueByName(String name) {
-        SysCommonVariable commonVariable = getComVarByName(name);
+        SysConfig commonVariable = getComVarByName(name);
         if (commonVariable != null) {
             return commonVariable.getValue();
         } else {

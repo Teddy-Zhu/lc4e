@@ -4,7 +4,7 @@ package com.silentgo.lc4e.web.controller;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.Controller;
 import com.silentgo.core.route.annotation.Route;
-import com.silentgo.lc4e.dao.User;
+import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.web.service.UserService;
 import com.silentgo.utils.StringKit;

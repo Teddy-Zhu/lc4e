@@ -23,6 +23,7 @@
             return preLoadData;
         },
         created () {
+            this.$SmoothScrollWebSites();
             console.log("created")
         },
         components: {

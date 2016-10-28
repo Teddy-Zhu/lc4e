@@ -3,8 +3,8 @@ package com.silentgo.lc4e.util.shiro;
 
 import com.silentgo.core.SilentGo;
 import com.silentgo.core.ioc.bean.BeanFactory;
-import com.silentgo.lc4e.dao.User;
-import com.silentgo.lc4e.dao.VwUserRolePermission;
+import com.silentgo.lc4e.database.model.User;
+import com.silentgo.lc4e.entity.UserRolePermission;
 import com.silentgo.lc4e.web.service.CurUserService;
 import com.silentgo.lc4e.web.service.UserService;
 import org.apache.shiro.authc.*;
@@ -21,11 +21,15 @@ import java.util.Set;
 public class UserRealm extends AuthorizingRealm {
 
     private BeanFactory getBeaFactory() {
-        return SilentGo.getInstance().getFactory(SilentGo.getInstance().getConfig().getBeanClass());
+        return me().getFactory(SilentGo.me().getConfig().getBeanClass());
     }
 
-    private Object getBeanObject(Class<?> clz) {
-        return getBeaFactory().getBean(clz.getName()).getObject();
+    private SilentGo me() {
+        return SilentGo.me();
+    }
+
+    private <T> T getBeanObject(Class<T> clz) {
+        return (T) getBeaFactory().getBean(clz.getName()).getObject();
     }
 
     @Override
@@ -33,7 +37,7 @@ public class UserRealm extends AuthorizingRealm {
         String username = (String) principals.getPrimaryPrincipal();
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        List<VwUserRolePermission> user = ((UserService) getBeanObject(UserService.class)).findUserRolesAndPermission(username);
+        List<UserRolePermission> user = getBeanObject(UserService.class).findUserRolesAndPermission(username);
         Set<String> roles = new HashSet<>(), permissions = new HashSet<>();
         user.forEach(u -> {
             roles.add(u.getRoleAbbr());
@@ -60,7 +64,7 @@ public class UserRealm extends AuthorizingRealm {
             throw new LockedAccountException();
         }
 
-        SilentGo.getInstance().getConfig().getCacheManager().set("users", ((CurUserService) getBeanObject(CurUserService.class)).getSessionId(), user);
+        me().getConfig().getCacheManager().set("users", getBeanObject(CurUserService.class).getSessionId(), user);
 
         return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), ByteSource.Util.bytes(user.getName() + user.getPasssalt()), getName());
     }
@@ -72,13 +76,13 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     public void clearCachedAuthenticationInfo(PrincipalCollection principals) {
-        SilentGo.getInstance().getConfig().getCacheManager().evict("users", ((CurUserService) getBeanObject(CurUserService.class)).getSessionId());
+        me().getConfig().getCacheManager().evict("users", getBeanObject(CurUserService.class).getSessionId());
         super.clearCachedAuthenticationInfo(principals);
     }
 
     @Override
     public void clearCache(PrincipalCollection principals) {
-        SilentGo.getInstance().getConfig().getCacheManager().evict("users", ((CurUserService) getBeanObject(CurUserService.class)).getSessionId());
+        me().getConfig().getCacheManager().evict("users", getBeanObject(CurUserService.class).getSessionId());
         super.clearCache(principals);
     }
 

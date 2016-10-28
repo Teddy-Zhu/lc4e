@@ -3,7 +3,6 @@ package com.silentgo.lc4e.config;
 import com.silentgo.core.SilentGo;
 import com.silentgo.core.cache.CacheManager;
 import com.silentgo.core.config.SilentGoConfig;
-import com.silentgo.core.db.DBType;
 import com.silentgo.core.render.support.RenderFactory;
 import com.silentgo.core.render.support.RenderType;
 import com.silentgo.jetbrick.JetTemplateRender;
@@ -13,6 +12,7 @@ import com.silentgo.lc4e.tool.staticIncludeTag;
 import com.silentgo.lc4e.util.shiro.UserRealm;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.lc4e.web.service.MenuService;
+import com.silentgo.orm.base.DBType;
 import com.silentgo.shiro.ShiroInitConfig;
 import com.silentgo.shiro.ShiroMethod;
 import com.silentgo.utils.PropKit;
@@ -57,7 +57,7 @@ public class Config implements com.silentgo.core.config.Config {
         CacheManager cacheManager = config.getCacheManager();
         cacheManager.evict(Key.ComVar);
 
-        RenderFactory renderFactory = config.getFactory(RenderFactory.class, SilentGo.getInstance());
+        RenderFactory renderFactory = config.getFactory(RenderFactory.class, SilentGo.me());
 
 
         ComVarService comVarService = (ComVarService) config.getBean(ComVarService.class.getName()).getObject();
@@ -88,7 +88,7 @@ public class Config implements com.silentgo.core.config.Config {
         globalContext.set(String.class, "SiteName", comVarService.getComVarValueByName("SiteName"));
         globalContext.set(List.class, "menulist", menuService.getMenuTree());
         globalContext.set(String.class, "menusString", config.getJsonPaser().toJsonString(menuService.getMenuTree()));
-        globalContext.set(String.class, "version", "111");
+        globalContext.set(String.class, "version", comVarService.getComVarValueByName("Version"));
         //add cdn
         //"http://7u2sne.com1.z0.glb.clouddn.com" +
         globalContext.set(String.class, "Theme", "/themes/" + comVarService.getComVarValueByName("DefaultTheme"));

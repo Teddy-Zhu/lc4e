@@ -4,7 +4,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../views/index.vue'
-
+import area from '../views/area.vue'
+import topic from '../views/topic.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -14,15 +15,23 @@ export default new Router({
         {
             path: '/',
             component: index
+        }, {
+            path: '/a/:area',
+            name: 'area1',
+            component: area
         },
         {
-            path: "/all",
-            name: 'index',
-            component: index
-        },
-        {
-            path: '*',
-            component: index
+            path: "/a/:area-:page(\\d+)-:order(\\d+)",
+            name: 'area2',
+            component: area
+        }, {
+            path: "/t/:topic",
+            name: "topic1",
+            component: topic
+        }, {
+            path: "/t/:topic-:page(\\d+)-:order(\\d+)",
+            name: "topic2",
+            component: topic
         }
     ]
 })

@@ -1,8 +1,10 @@
 package com.silentgo.lc4e.web.service;
 
 import com.silentgo.core.SilentGo;
+import com.silentgo.core.config.SilentGoConfig;
+import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
-import com.silentgo.lc4e.dao.User;
+import com.silentgo.lc4e.database.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -11,6 +13,9 @@ import org.apache.shiro.subject.Subject;
  */
 @Service
 public class CurUserService {
+
+    @Inject
+    SilentGoConfig config;
 
     public String getSessionId() {
         Subject user = SecurityUtils.getSubject();
@@ -27,7 +32,7 @@ public class CurUserService {
         }
         User curUser = null;
         if (user.isAuthenticated()) {
-            curUser = (User) SilentGo.getInstance().getConfig().getCacheManager().get("users", user.getSession().getId().toString());
+            curUser = (User) config.getCacheManager().get("users", user.getSession().getId().toString());
         }
         return curUser;
     }

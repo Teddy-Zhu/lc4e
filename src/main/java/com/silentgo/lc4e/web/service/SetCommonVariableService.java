@@ -3,7 +3,7 @@ package com.silentgo.lc4e.web.service;
 import com.silentgo.core.exception.AppException;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
-import com.silentgo.lc4e.dao.SysCommonVariable;
+import com.silentgo.lc4e.database.model.SysConfig;
 import com.silentgo.lc4e.tool.ReflectTool;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.utils.StringKit;
@@ -28,7 +28,7 @@ public class SetCommonVariableService {
         if (StringKit.isBlank(name)) {
             throw new AppException("ComVar Field must be not empty!");
         }
-        SysCommonVariable variable = comVarService.getComVarByName(name);
+        SysConfig variable = comVarService.getComVarByName(name);
         if (variable == null) {
             throw new AppException("No ComVar Record Found in Database or Cache");
         } else {

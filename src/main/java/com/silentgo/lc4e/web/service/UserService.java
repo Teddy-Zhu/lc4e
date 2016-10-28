@@ -1,14 +1,22 @@
 package com.silentgo.lc4e.web.service;
 
+import com.silentgo.core.SilentGo;
 import com.silentgo.core.cache.annotation.Cache;
 import com.silentgo.core.db.intercept.Transaction;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
-import com.silentgo.lc4e.dao.*;
+import com.silentgo.lc4e.database.dao.UserDao;
+import com.silentgo.lc4e.database.dao.VwUserPermissionDao;
+import com.silentgo.lc4e.database.dao.VwUserRolePermissionDao;
+import com.silentgo.lc4e.database.model.User;
+import com.silentgo.lc4e.database.model.VwUserPermission;
+import com.silentgo.lc4e.database.model.VwUserRolePermission;
+import com.silentgo.lc4e.entity.UserRolePermission;
 import com.silentgo.lc4e.util.shiro.PassDisposer;
 import com.silentgo.utils.Assert;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,27 +26,36 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Inject
-    UserDao userDao;
 
-    @Inject
-    VwUserRolePermissionDao vwUserRolePermissionDao;
+    //    @Inject
+//    VwUserRolePermissionDao vwUserRolePermissionDao;
     @Inject
     ComVarService comVarService;
 
     @Inject
-    UserBasicinfoDao userBasicinfoDao;
+    UserDao userDao;
+
+    @Inject
+    VwUserPermissionDao vwUserPermissionDao;
+
+    @Inject
+    VwUserRolePermissionDao vwUserRolePermissionDao;
 
     @Cache(cacheName = Key.ComVar, index = 0)
-    public List<VwUserRolePermission> findUserRolesAndPermission(String username) {
+    public List<UserRolePermission> findUserRolesAndPermission(String username) {
+        List<UserRolePermission> result = new ArrayList<>();
+        Date now = new Date();
 
-        VwUserRolePermission query = new VwUserRolePermission();
-        query.setName(username);
-        query.setRoleEndTime(new Date());
-        query.setPermissionAvailable(1);
-        query.setRoleAvailable(1);
+        List<VwUserPermission> userPermissions = vwUserPermissionDao.queryByUserName(now, 1, username);
 
-        return vwUserRolePermissionDao.queryByModelSelective(query);
+        List<VwUserRolePermission> userRolePermissions = vwUserRolePermissionDao.queryByUserName(
+                1, 1, now, username);
+
+        userPermissions.forEach(permission -> result.add(new UserRolePermission(permission.getUserName(), null, permission.getPermissionAbbr())));
+
+        userRolePermissions.forEach(userRolePermission -> result.add(new UserRolePermission(userRolePermission.getUserName(), userRolePermission.getRoleAbbr(), userRolePermission.getPermissionAbbr())));
+
+        return result;
     }
 
     @Cache(cacheName = Key.ComVar, index = 0)
@@ -60,7 +77,7 @@ public class UserService {
     }
 
     @Transaction
-    public User createUser(User user, UserBasicinfo basicinfo) throws Exception {
+    public User createUser(User user) throws Exception {
         //validate exist
         //username
         if (validateUserName(user.getName())) {
@@ -80,18 +97,7 @@ public class UserService {
 
         int i = userDao.insertByRow(user);
 
-        Assert.isTrue(i == 1, "user insert failed");
-        if (user.getId() != null) {
-            if (!Boolean.parseBoolean(comVarService.getComVarValueByName("SimpleRegister"))) {
-                basicinfo.setId(null);
-                basicinfo.setUserId(user.getId());
-                userBasicinfoDao.insertByRow(basicinfo);
-            } else {
-                UserBasicinfo newBasicInfo = new UserBasicinfo();
-                newBasicInfo.setUserId(user.getId());
-                userBasicinfoDao.insertByRow(newBasicInfo);
-            }
-        }
+        Assert.isTrue(i == 1, "数据执行Insert异常 , data :" + SilentGo.me().json().toJsonString(user));
 
         return user;
     }

@@ -1,6 +1,6 @@
 package com.silentgo.lc4e.entity;
 
-import com.silentgo.lc4e.dao.SysMenu;
+import com.silentgo.lc4e.database.model.Menu;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *         <p>
  *         Created by teddyzhu on 2016/10/10.
  */
-public class MenuEntity extends SysMenu {
+public class MenuEntity extends Menu {
 
     public List<MenuEntity> children;
 

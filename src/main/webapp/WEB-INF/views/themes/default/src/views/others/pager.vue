@@ -8,8 +8,10 @@
             :total="pageTotal">
     </el-pagination>
 </template>
-<style>
-
+<style scoped>
+    .el-pagination {
+        background-color: #f2f3f5;
+    }
 </style>
 <script>
 

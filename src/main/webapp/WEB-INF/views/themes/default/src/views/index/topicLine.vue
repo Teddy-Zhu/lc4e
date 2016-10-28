@@ -1,52 +1,90 @@
 <template>
     <el-row class="topic-line">
-        <el-col :span="3" class="topic-author-pic">
-            <a>
-                <img :src="data.imageUrl" class="topic-line-img">
-            </a>
-        </el-col>
-        <el-col :span="21" class="topic-line-body">
-            <router-link :to="data.articleUrl" tag="div" class="topic-line-title">
-                {{data.articleTitle}}
-            </router-link>
-            <div class="topic-line-meta">
-                <el-breadcrumb separator="/">
-                    <el-breadcrumb-item :to="{ path: '/a/' +data.category }"><el-tag type="primary" class="el-tag-mini">{{data.category}}</el-tag></el-breadcrumb-item>
-                    <el-breadcrumb-item><el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-user"></i>{{data.user}}</el-tag></el-breadcrumb-item>
-                    <el-breadcrumb-item><el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-huo"></i>{{data.comments}}</el-tag></el-breadcrumb-item>
-                    <el-breadcrumb-item><el-tag type="gray" class="clickable el-tag-mini"><i class="el-icon-date"></i>{{data.publishTime}}</el-tag></el-breadcrumb-item>
-                </el-breadcrumb>
-            </div>
+        <el-col :span="24">
+            <table class="topic-table">
+                <tr>
+                    <td align="center" width="10%">
+                        <a class="topic-author-img-a">
+                            <img :src="data.imageUrl" class="topic-line-img">
+                        </a>
+                    </td>
+                    <td align="left" width="75%">
+                        <router-link :to="data.articleUrl" tag="div" class="topic-line-title">
+                            {{data.articleTitle}}
+                        </router-link>
+                        <div class="topic-line-meta">
+                            <el-breadcrumb separator="/">
+                                <el-breadcrumb-item :to="{ path: '/a/' +data.category }">
+                                    <el-tag type="primary" class="el-tag-mini"><i class="iconfont icon-area"></i>{{data.category}}
+                                    </el-tag>
+                                </el-breadcrumb-item>
+                                <el-breadcrumb-item>
+                                    <el-tag type="gray" class="clickable el-tag-mini"><i
+                                            class="iconfont icon-people"></i>{{data.user}}
+                                    </el-tag>
+                                </el-breadcrumb-item>
+                                <el-breadcrumb-item>
+                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-cmt"></i>{{data.comments}}
+                                    </el-tag>
+                                </el-breadcrumb-item>
+                                <el-breadcrumb-item>
+                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-time"></i>{{data.publishTime}}
+                                    </el-tag>
+                                </el-breadcrumb-item>
+                            </el-breadcrumb>
+                        </div>
+                    </td>
+                    <td align="right">
+                        <el-tag type="warning" v-if="label != ''" v-for="label in data.statusText">{{label}}</el-tag>
+                    </td>
+                </tr>
+            </table>
         </el-col>
     </el-row>
 </template>
 <style>
     .el-tag-mini {
-        height: 13px;
-        line-height: 13px;
+        height: 12px;
+        line-height: 12px;
     }
-    .el-tag.clickable{
+
+    .topic-author-img-a {
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    .el-tag.clickable {
         cursor: pointer;
     }
+
     .topic-line-img {
         width: 3em;
         height: 3em;
     }
 
+    .topic-table {
+        width: 100%;
+    }
+
     .topic-line {
         padding: .3em 0;
-        border-bottom: 1px solid #eaeefb;
+        border-bottom: 1px solid #c2c8dc;
+        transition: box-shadow 500ms;
     }
 
     .topic-line:hover {
         background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     .topic-line-title {
-        cursor: pointer;
+        word-break: break-all;
+        word-wrap: break-word;
         display: inline-block;
-        font-size: 1.3em;
-        line-height: 1.3em;
+        text-align: left;
+        cursor: pointer;
+        font-size: 1.1em;
+        line-height: 1.1em;
     }
 
     .topic-line-title:after {

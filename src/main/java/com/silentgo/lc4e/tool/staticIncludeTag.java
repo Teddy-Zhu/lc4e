@@ -14,7 +14,7 @@ import java.io.IOException;
 public class staticIncludeTag {
 
     public static void staticInclude(JetTagContext ctx, String name) {
-        String path = SilentGo.getInstance().getContext().getRealPath("/");
+        String path = SilentGo.me().getContext().getRealPath("/");
         try {
             File file = new File(path + name);
             if (!file.exists()) {

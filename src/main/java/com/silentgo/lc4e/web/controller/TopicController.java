@@ -1,0 +1,87 @@
+package com.silentgo.lc4e.web.controller;
+
+import com.silentgo.core.aop.validator.annotation.RequestBool;
+import com.silentgo.core.aop.validator.annotation.RequestInt;
+import com.silentgo.core.aop.validator.annotation.RequestString;
+import com.silentgo.core.route.annotation.*;
+import com.silentgo.lc4e.database.model.Comment;
+import com.silentgo.lc4e.database.model.SysConfig;
+import com.silentgo.lc4e.database.model.Topic;
+import com.silentgo.lc4e.database.model.User;
+import com.silentgo.lc4e.entity.Message;
+import com.silentgo.lc4e.entity.ReturnData;
+import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
+import com.silentgo.servlet.http.Request;
+import com.silentgo.servlet.http.RequestMethod;
+import com.silentgo.servlet.http.Response;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+
+import java.util.ArrayList;
+
+/**
+ * Project : lc4e
+ * Package : com.silentgo.lc4e.web.controller
+ *
+ * @author <a href="mailto:teddyzhu15@gmail.com" target="_blank">teddyzhu</a>
+ *         <p>
+ *         Created by teddyzhu on 2016/10/28.
+ */
+@Controller
+@Route("/t")
+public class TopicController {
+
+
+    /**
+     * visit topic
+     *
+     * @param request
+     * @param topicpath
+     * @return
+     */
+    @Route("/{topic}")
+    @RouteMatch(method = RequestMethod.GET)
+    public String t(Request request, @PathVariable("topic") @RequestString String topicpath) {
+        return "index.html";
+    }
+
+    /**
+     * page topic data
+     *
+     * @param request
+     * @param topicpath
+     * @param page
+     * @return
+     */
+    @Route("/{topic}/{page:[0-9]+}")
+    @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
+    public Message t2(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
+        return new Message(true, new ReturnData("topic", new Topic()),
+                new ReturnData("comments", new ArrayList<Comment>() {{
+                    add(new Comment());
+                }}));
+    }
+
+    @Route("/new")
+    @RouteMatch(method = RequestMethod.GET)
+    public String newTopic(Request request, Topic topic) {
+        return "index.html";
+    }
+
+    /**
+     * post create new topic
+     *
+     * @param request
+     * @return
+     */
+    @Route("/new")
+    @ResponseBody
+    @RouteMatch(method = RequestMethod.POST)
+    public Message newTopic(Request request) {
+
+        return new Message();
+    }
+
+}
