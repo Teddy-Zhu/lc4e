@@ -38,4 +38,4 @@
 ----------
 
 - 10/14/2016 18:46:21
-> 项目初始化,从mvc从jfinal迁移至silentgo
+> 项目初始化,mvc从jfinal迁移至silentgo

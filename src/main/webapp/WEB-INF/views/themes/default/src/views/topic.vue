@@ -70,6 +70,11 @@
         created(){
 
         },
+        methods: {
+            pageChange(){
+
+            }
+        },
         components: {
             'sg-body': Body,
             'sg-pager': Pager,

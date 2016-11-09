@@ -30,7 +30,7 @@ public class UserSocial extends TableModel {
 		this.userId = userId;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String province;
 
 	public String getProvince() {
@@ -41,7 +41,7 @@ public class UserSocial extends TableModel {
 		this.province = province;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String city;
 
 	public String getCity() {
@@ -52,7 +52,7 @@ public class UserSocial extends TableModel {
 		this.city = city;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String region;
 
 	public String getRegion() {
@@ -63,7 +63,7 @@ public class UserSocial extends TableModel {
 		this.region = region;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String street;
 
 	public String getStreet() {
@@ -74,7 +74,7 @@ public class UserSocial extends TableModel {
 		this.street = street;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String github;
 
 	public String getGithub() {
@@ -85,7 +85,7 @@ public class UserSocial extends TableModel {
 		this.github = github;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String twitter;
 
 	public String getTwitter() {
@@ -96,7 +96,7 @@ public class UserSocial extends TableModel {
 		this.twitter = twitter;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String facebook;
 
 	public String getFacebook() {
@@ -107,7 +107,7 @@ public class UserSocial extends TableModel {
 		this.facebook = facebook;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String google;
 
 	public String getGoogle() {
@@ -118,7 +118,7 @@ public class UserSocial extends TableModel {
 		this.google = google;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String qq;
 
 	public String getQq() {
@@ -140,7 +140,7 @@ public class UserSocial extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

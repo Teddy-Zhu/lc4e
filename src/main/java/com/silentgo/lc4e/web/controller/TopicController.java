@@ -3,6 +3,7 @@ package com.silentgo.lc4e.web.controller;
 import com.silentgo.core.aop.validator.annotation.RequestBool;
 import com.silentgo.core.aop.validator.annotation.RequestInt;
 import com.silentgo.core.aop.validator.annotation.RequestString;
+import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.Comment;
 import com.silentgo.lc4e.database.model.SysConfig;
@@ -11,11 +12,14 @@ import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
 import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
+import com.silentgo.lc4e.web.service.CurUserService;
+import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
 import com.silentgo.servlet.http.Response;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
 
 import java.util.ArrayList;
@@ -66,9 +70,15 @@ public class TopicController {
 
     @Route("/new")
     @RouteMatch(method = RequestMethod.GET)
-    public String newTopic(Request request, Topic topic) {
+    public String newTopic(Request request) {
         return "index.html";
     }
+
+    @Inject
+    CurUserService curUserService;
+
+    @Inject
+    TopicService topicService;
 
     /**
      * post create new topic
@@ -79,9 +89,12 @@ public class TopicController {
     @Route("/new")
     @ResponseBody
     @RouteMatch(method = RequestMethod.POST)
-    public Message newTopic(Request request) {
+    //@RequiresUser
+    public Message newTopic(Request request, @RequestParam("topic") Topic topic) {
+        User user = curUserService.getCurrentUser();
+        topic.setUserId(1L);
 
-        return new Message();
+        return new Message(topicService.createTopic(topic), "主题创建成功");
     }
 
 }

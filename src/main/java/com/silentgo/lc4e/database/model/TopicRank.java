@@ -9,25 +9,25 @@ import com.silentgo.orm.base.TableModel;
 @Table(value="topic_rank",  primaryKey = "id")
 public class TopicRank extends TableModel {
 
-	@Column
-	public String id;
+	@Column(aic = true)
+	public Long id;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	@Column("topic_id")
-	public String topicId;
+	public Long topicId;
 
-	public String getTopicId() {
+	public Long getTopicId() {
 		return topicId;
 	}
 
-	public void setTopicId(String topicId) {
+	public void setTopicId(Long topicId) {
 		this.topicId = topicId;
 	}
 
@@ -64,7 +64,7 @@ public class TopicRank extends TableModel {
 		this.viewCount = viewCount;
 	}
 
-	@Column
+	@Column(def = true)
 	public BigDecimal rank;
 
 	public BigDecimal getRank() {
@@ -86,7 +86,7 @@ public class TopicRank extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

@@ -10,13 +10,13 @@ import com.silentgo.orm.base.TableModel;
 public class User extends TableModel {
 
 	@Column
-	public String id;
+	public Long id;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -75,7 +75,7 @@ public class User extends TableModel {
 		this.passsalt = passsalt;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String web;
 
 	public String getWeb() {
@@ -86,7 +86,7 @@ public class User extends TableModel {
 		this.web = web;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public Date birth;
 
 	public Date getBirth() {
@@ -97,7 +97,7 @@ public class User extends TableModel {
 		this.birth = birth;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String sign;
 
 	public String getSign() {
@@ -108,7 +108,7 @@ public class User extends TableModel {
 		this.sign = sign;
 	}
 
-	@Column
+	@Column(def = true)
 	public BigDecimal balance;
 
 	public BigDecimal getBalance() {
@@ -119,7 +119,7 @@ public class User extends TableModel {
 		this.balance = balance;
 	}
 
-	@Column
+	@Column(def = true)
 	public BigDecimal rank;
 
 	public BigDecimal getRank() {
@@ -141,7 +141,7 @@ public class User extends TableModel {
 		this.phone = phone;
 	}
 
-	@Column
+	@Column(def = true)
 	public Boolean locked;
 
 	public Boolean getLocked() {

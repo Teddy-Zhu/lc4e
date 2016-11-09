@@ -52,7 +52,7 @@ public class UserAreaKeep extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

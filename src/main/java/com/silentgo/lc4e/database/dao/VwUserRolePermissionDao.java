@@ -1,9 +1,9 @@
 package com.silentgo.lc4e.database.dao;
 
-import com.silentgo.core.db.annotation.Query;
-import com.silentgo.orm.base.BaseDao;
-import com.silentgo.lc4e.database.model.VwUserRolePermission;
 import com.silentgo.core.ioc.annotation.Service;
+import com.silentgo.lc4e.database.model.VwUserRolePermission;
+import com.silentgo.orm.base.BaseDao;
+import com.silentgo.orm.sqlparser.annotation.Where;
 
 import java.util.Date;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface VwUserRolePermissionDao extends BaseDao<VwUserRolePermission> {
 
-    @Query({"RoleIsAvailable", "PermissionIsAvailable", "RoleEndTimeGreater"})
-    List<VwUserRolePermission> queryByUserName(Integer roleIsAvailable, Integer permissionIsAvailable, Date time, String username);
+    @Where({" role_is_available = ? ", " permission_is_available = ? ", " role_end_time >= ? "})
+    List<VwUserRolePermission> queryWhereUserName(String username, Integer roleIsAvailable, Integer permissionIsAvailable, Date time);
 }
 

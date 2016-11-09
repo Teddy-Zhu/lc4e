@@ -52,7 +52,7 @@ public class Permission extends TableModel {
 		this.description = description;
 	}
 
-	@Column("is_available")
+	@Column(value= "is_available",def = true)
 	public Boolean isAvailable;
 
 	public Boolean getIsAvailable() {

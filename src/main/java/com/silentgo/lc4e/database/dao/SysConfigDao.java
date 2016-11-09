@@ -11,9 +11,9 @@ import java.util.List;
 public interface SysConfigDao extends BaseDao<SysConfig> {
 
 
-    SysConfig queryOneByName(String name);
+    SysConfig queryOneWhereName(String name);
 
-    List<SysConfig> queryListByListName(Collection<String> names);
+    List<SysConfig> queryListWhereName(Collection<String> names);
 
 }
 

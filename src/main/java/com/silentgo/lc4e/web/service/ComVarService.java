@@ -23,15 +23,15 @@ public class ComVarService {
     @Cache(cacheName = Key.ComVar, index = 0)
     public SysConfig getComVarByName(String name) {
 
-        return sysConfigDao.queryOneByName(name);
+        return sysConfigDao.queryOneWhereName(name);
     }
 
     public List<SysConfig> getComVarsByNames(String[] name) {
-        return sysConfigDao.queryListByListName(Arrays.asList(name));
+        return sysConfigDao.queryListWhereName(Arrays.asList(name));
     }
 
     public List<SysConfig> getComVarsByNames(Collection<String> name) {
-        return sysConfigDao.queryListByListName(name);
+        return sysConfigDao.queryListWhereName(name);
     }
 
     public String getComVarValueByName(String name) {

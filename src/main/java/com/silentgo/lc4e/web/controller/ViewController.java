@@ -22,8 +22,8 @@ import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
 import com.silentgo.servlet.http.Response;
 import com.silentgo.utils.StringKit;
-import com.silentgo.utils.logger.Logger;
-import com.silentgo.utils.logger.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 
@@ -40,7 +40,7 @@ import java.util.Random;
 @Route("/")
 public class ViewController {
 
-    private static final Logger log = LoggerFactory.getLog(ViewController.class);
+    private static final Logger log = LoggerFactory.getLogger(ViewController.class);
 
 
     @Inject

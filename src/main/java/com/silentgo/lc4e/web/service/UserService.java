@@ -46,10 +46,9 @@ public class UserService {
         List<UserRolePermission> result = new ArrayList<>();
         Date now = new Date();
 
-        List<VwUserPermission> userPermissions = vwUserPermissionDao.queryByUserName(now, 1, username);
+        List<VwUserPermission> userPermissions = vwUserPermissionDao.queryWhereUserName(username, now, 1);
 
-        List<VwUserRolePermission> userRolePermissions = vwUserRolePermissionDao.queryByUserName(
-                1, 1, now, username);
+        List<VwUserRolePermission> userRolePermissions = vwUserRolePermissionDao.queryWhereUserName(username, 1, 1, now);
 
         userPermissions.forEach(permission -> result.add(new UserRolePermission(permission.getUserName(), null, permission.getPermissionAbbr())));
 
@@ -60,7 +59,7 @@ public class UserService {
 
     @Cache(cacheName = Key.ComVar, index = 0)
     public User findUserFullInfo(String username) {
-        return userDao.queryOneByName(username);
+        return userDao.queryOneWhereName(username);
     }
 
     // to do simply
@@ -69,11 +68,11 @@ public class UserService {
     }
 
     public boolean validateUserNick(String nick) {
-        return userDao.countByNick(nick) > 0;
+        return userDao.countWhereNick(nick) > 0;
     }
 
     public boolean validateUserMail(String mail) {
-        return userDao.countByMail(mail) > 0;
+        return userDao.countWhereMail(mail) > 0;
     }
 
     @Transaction

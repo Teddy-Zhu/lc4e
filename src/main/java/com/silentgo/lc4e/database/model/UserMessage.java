@@ -41,7 +41,7 @@ public class UserMessage extends TableModel {
 		this.destUserId = destUserId;
 	}
 
-	@Column("is_read")
+	@Column(value= "is_read",def = true)
 	public Boolean isRead;
 
 	public Boolean getIsRead() {

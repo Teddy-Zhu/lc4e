@@ -63,7 +63,7 @@ public class SysJob extends TableModel {
 		this.className = className;
 	}
 
-	@Column
+	@Column(def = true)
 	public Boolean enable;
 
 	public Boolean getEnable() {

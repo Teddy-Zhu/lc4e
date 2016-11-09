@@ -41,7 +41,7 @@ public class Comment extends TableModel {
 		this.topicId = topicId;
 	}
 
-	@Column("refer_user")
+	@Column(value= "refer_user",def = true)
 	public String referUser;
 
 	public String getReferUser() {
@@ -52,7 +52,7 @@ public class Comment extends TableModel {
 		this.referUser = referUser;
 	}
 
-	@Column("refer_floor")
+	@Column(value= "refer_floor",def = true)
 	public String referFloor;
 
 	public String getReferFloor() {
@@ -107,7 +107,7 @@ public class Comment extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

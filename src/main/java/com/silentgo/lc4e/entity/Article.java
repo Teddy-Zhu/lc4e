@@ -8,8 +8,6 @@ public class Article {
 
     private String imageUrl;
 
-    private Popup popUp;
-
     private String articleTitle;
 
     private String articleUrl;
@@ -32,9 +30,8 @@ public class Article {
     }
 
 
-    public Article(String imageUrl, Popup popUp, String articleTitle, String category, String user, Integer comments, String publishTime, String lastCommentUser, Integer page, String... statusText) {
+    public Article(String imageUrl, String articleTitle, String category, String user, Integer comments, String publishTime, String lastCommentUser, Integer page, String... statusText) {
         this.imageUrl = imageUrl;
-        this.popUp = popUp;
         this.articleTitle = articleTitle;
         this.category = category;
         this.user = user;
@@ -45,9 +42,8 @@ public class Article {
         this.statusText = Arrays.asList(statusText);
     }
 
-    public Article(String imageUrl, Popup popUp, String articleTitle, String articleUrl, String category, String user, Integer comments, String publishTime, String lastCommentUser, Integer page, String... statusText) {
+    public Article(String imageUrl, String articleTitle, String articleUrl, String category, String user, Integer comments, String publishTime, String lastCommentUser, Integer page, String... statusText) {
         this.imageUrl = imageUrl;
-        this.popUp = popUp;
         this.articleTitle = articleTitle;
         this.articleUrl = articleUrl;
         this.category = category;
@@ -82,14 +78,6 @@ public class Article {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Popup getPopUp() {
-        return popUp;
-    }
-
-    public void setPopUp(Popup popUp) {
-        this.popUp = popUp;
     }
 
     public String getArticleTitle() {

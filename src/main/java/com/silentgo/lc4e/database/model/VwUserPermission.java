@@ -19,7 +19,7 @@ public class VwUserPermission extends TableModel {
 		this.userName = userName;
 	}
 
-	@Column("permission_end_time")
+	@Column(value= "permission_end_time",nullable = true)
 	public Date permissionEndTime;
 
 	public Date getPermissionEndTime() {
@@ -30,7 +30,7 @@ public class VwUserPermission extends TableModel {
 		this.permissionEndTime = permissionEndTime;
 	}
 
-	@Column("permission_abbr")
+	@Column(value= "permission_abbr",nullable = true)
 	public String permissionAbbr;
 
 	public String getPermissionAbbr() {
@@ -41,7 +41,7 @@ public class VwUserPermission extends TableModel {
 		this.permissionAbbr = permissionAbbr;
 	}
 
-	@Column("permission_is_available")
+	@Column(value= "permission_is_available",def = true,nullable = true)
 	public Boolean permissionIsAvailable;
 
 	public Boolean getPermissionIsAvailable() {

@@ -52,7 +52,7 @@ public class Role extends TableModel {
 		this.description = description;
 	}
 
-	@Column("is_available")
+	@Column(value= "is_available",def = true)
 	public Boolean isAvailable;
 
 	public Boolean getIsAvailable() {
@@ -74,7 +74,7 @@ public class Role extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

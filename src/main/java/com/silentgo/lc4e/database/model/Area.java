@@ -85,7 +85,7 @@ public class Area extends TableModel {
 		this.icon = icon;
 	}
 
-	@Column("is_publish")
+	@Column(value= "is_publish",def = true)
 	public Boolean isPublish;
 
 	public Boolean getIsPublish() {
@@ -96,7 +96,7 @@ public class Area extends TableModel {
 		this.isPublish = isPublish;
 	}
 
-	@Column("is_visible")
+	@Column(value= "is_visible",def = true)
 	public Boolean isVisible;
 
 	public Boolean getIsVisible() {
@@ -107,7 +107,7 @@ public class Area extends TableModel {
 		this.isVisible = isVisible;
 	}
 
-	@Column("is_close")
+	@Column(value= "is_close",def = true)
 	public Boolean isClose;
 
 	public Boolean getIsClose() {

@@ -8,7 +8,7 @@ import com.silentgo.orm.base.TableModel;
 @Table("vw_user_role_permission")
 public class VwUserRolePermission extends TableModel {
 
-	@Column("role_abbr")
+	@Column(value= "role_abbr",nullable = true)
 	public String roleAbbr;
 
 	public String getRoleAbbr() {
@@ -19,7 +19,7 @@ public class VwUserRolePermission extends TableModel {
 		this.roleAbbr = roleAbbr;
 	}
 
-	@Column("permission_abbr")
+	@Column(value= "permission_abbr",nullable = true)
 	public String permissionAbbr;
 
 	public String getPermissionAbbr() {
@@ -41,7 +41,7 @@ public class VwUserRolePermission extends TableModel {
 		this.userName = userName;
 	}
 
-	@Column("role_is_available")
+	@Column(value= "role_is_available",def = true,nullable = true)
 	public Boolean roleIsAvailable;
 
 	public Boolean getRoleIsAvailable() {
@@ -52,7 +52,7 @@ public class VwUserRolePermission extends TableModel {
 		this.roleIsAvailable = roleIsAvailable;
 	}
 
-	@Column("permission_is_available")
+	@Column(value= "permission_is_available",def = true,nullable = true)
 	public Boolean permissionIsAvailable;
 
 	public Boolean getPermissionIsAvailable() {
@@ -63,7 +63,7 @@ public class VwUserRolePermission extends TableModel {
 		this.permissionIsAvailable = permissionIsAvailable;
 	}
 
-	@Column("role_end_time")
+	@Column(value= "role_end_time",nullable = true)
 	public Date roleEndTime;
 
 	public Date getRoleEndTime() {

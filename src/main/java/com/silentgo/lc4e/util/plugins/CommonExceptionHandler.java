@@ -28,7 +28,7 @@ public class CommonExceptionHandler implements IExceptionHandler {
     SilentGoConfig config;
 
     @Override
-    public RenderModel resolve(Response response, Request request, Throwable ex) {
+    public RenderModel resolve(Response response, Request request, Exception ex) {
         Message error = new Message(ex.getMessage() == null ? ex.toString() : ex.getMessage());
         if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
             return new RenderModel(new JsonRender(), error, request, response);

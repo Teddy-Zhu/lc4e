@@ -42,7 +42,7 @@ public class UserTag extends TableModel {
 		this.tagId = tagId;
 	}
 
-	@Column
+	@Column(def = true)
 	public BigDecimal rank;
 
 	public BigDecimal getRank() {
@@ -64,7 +64,7 @@ public class UserTag extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

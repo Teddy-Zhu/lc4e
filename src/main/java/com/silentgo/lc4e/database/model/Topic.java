@@ -8,7 +8,7 @@ import com.silentgo.orm.base.TableModel;
 @Table(value="topic",  primaryKey = "id")
 public class Topic extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	public Long getId() {
@@ -17,6 +17,17 @@ public class Topic extends TableModel {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Column
+	public String url;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Column("user_id")
@@ -63,7 +74,7 @@ public class Topic extends TableModel {
 		this.content = content;
 	}
 
-	@Column
+	@Column(def = true)
 	public String texts;
 
 	public String getTexts() {
@@ -74,7 +85,7 @@ public class Topic extends TableModel {
 		this.texts = texts;
 	}
 
-	@Column("is_visible")
+	@Column(value= "is_visible",def = true)
 	public Boolean isVisible;
 
 	public Boolean getIsVisible() {
@@ -85,7 +96,7 @@ public class Topic extends TableModel {
 		this.isVisible = isVisible;
 	}
 
-	@Column("is_close")
+	@Column(value= "is_close",def = true)
 	public Boolean isClose;
 
 	public Boolean getIsClose() {
@@ -96,7 +107,7 @@ public class Topic extends TableModel {
 		this.isClose = isClose;
 	}
 
-	@Column("is_delete")
+	@Column(value= "is_delete",def = true)
 	public Boolean isDelete;
 
 	public Boolean getIsDelete() {
@@ -107,7 +118,7 @@ public class Topic extends TableModel {
 		this.isDelete = isDelete;
 	}
 
-	@Column("is_comment")
+	@Column(value= "is_comment",def = true)
 	public Boolean isComment;
 
 	public Boolean getIsComment() {
@@ -129,7 +140,7 @@ public class Topic extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_time")
+	@Column(value= "update_time",nullable = true)
 	public Date updateTime;
 
 	public Date getUpdateTime() {

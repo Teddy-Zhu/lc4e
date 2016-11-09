@@ -41,7 +41,7 @@ public class SysConfig extends TableModel {
 		this.value = value;
 	}
 
-	@Column
+	@Column(nullable = true)
 	public String error;
 
 	public String getError() {
@@ -74,7 +74,7 @@ public class SysConfig extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_ime")
+	@Column(value= "update_ime",nullable = true)
 	public Date updateIme;
 
 	public Date getUpdateIme() {

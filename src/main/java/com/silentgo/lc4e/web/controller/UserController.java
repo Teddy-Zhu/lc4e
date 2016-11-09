@@ -3,12 +3,15 @@ package com.silentgo.lc4e.web.controller;
 import com.silentgo.core.aop.validator.annotation.RequestBool;
 import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
+import com.silentgo.core.plugin.event.EventFactory;
+import com.silentgo.core.plugin.event.EventTool;
 import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.SysConfig;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
 import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
+import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.lc4e.web.service.UserService;
 import com.silentgo.servlet.http.Request;
@@ -38,6 +41,9 @@ public class UserController {
 
     @Inject
     ComVarService comVarService;
+
+    @Inject
+    EventFactory eventFactory;
 
     /**
      * log out
@@ -103,11 +109,18 @@ public class UserController {
      */
     @Route("/register")
     public String register(Response response, Request request) throws Exception {
-
         request.setAttribute("enable", Boolean.parseBoolean(comVarService.getComVarByName("Register").getValue()));
         return "index.html";
     }
 
+    /**
+     * 用户注册
+     * @param response
+     * @param request
+     * @param user
+     * @return
+     * @throws Exception
+     */
     @RouteMatch(method = RequestMethod.POST)
     @Route("/register")
     @ResponseBody
@@ -117,14 +130,26 @@ public class UserController {
             return new Message("register closed");
         }
         userService.createUser(user);
+
+        //event notify
+        eventFactory.emit(new UserRegisterEvent(user));
         if (user.getId() != null) {
             return new Message(true, "register successfully");
         } else {
             return new Message("register failed");
         }
+
     }
 
 
+    /**
+     * 用户登陆
+     * @param user
+     * @param captcha
+     * @param request
+     * @param rememberMe
+     * @return
+     */
     @RouteMatch(method = RequestMethod.POST)
     @Route("/signin")
     @ResponseBody
@@ -158,7 +183,7 @@ public class UserController {
      * @return
      */
     @Route("/i/{username}")
-    public String user(@PathVariable String username) {
+    public String user(@PathVariable @RequestString String username) {
         return "index.html";
     }
 

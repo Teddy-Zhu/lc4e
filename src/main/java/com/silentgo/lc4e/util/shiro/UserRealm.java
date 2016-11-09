@@ -54,13 +54,13 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
         String username = (String) token.getPrincipal();
-        User user = ((UserService) getBeanObject(UserService.class)).findUserFullInfo(username);
+        User user = getBeanObject(UserService.class).findUserFullInfo(username);
 
         if (user == null) {
             throw new UnknownAccountException();
         }
 
-        if (Boolean.TRUE.equals(user.getLocked())) {
+        if (user.getLocked()) {
             throw new LockedAccountException();
         }
 

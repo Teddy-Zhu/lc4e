@@ -1,18 +1,23 @@
 package com.silentgo.lc4e.database.dao;
 
-import com.silentgo.orm.base.BaseDao;
-import com.silentgo.lc4e.database.model.User;
 import com.silentgo.core.ioc.annotation.Service;
+import com.silentgo.lc4e.database.model.User;
+import com.silentgo.orm.base.BaseDao;
+import com.silentgo.orm.sqlparser.annotation.Set;
 
 @Service
 public interface UserDao extends BaseDao<User> {
 
-    User queryOneByName(String name);
+    User queryOneWhereName(String name);
 
     int countByName(String name);
 
-    int countByNick(String nick);
+    int countWhereNick(String nick);
 
-    int countByMail(String mail);
+    int countWhereMail(String mail);
+
+    @Set({" balance = balance + ? "})
+    int updateSetWhereId(int balance, Long id);
+
 }
 
