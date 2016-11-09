@@ -11,7 +11,7 @@
  Target Server Version : 50709
  File Encoding         : utf-8
 
- Date: 10/28/2016 11:22:04 AM
+ Date: 11/09/2016 17:17:53 PM
 */
 
 SET NAMES utf8mb4;
@@ -41,7 +41,7 @@ CREATE TABLE `area` (
 --  Records of `area`
 -- ----------------------------
 BEGIN;
-INSERT INTO `area` VALUES ('1', '0', 'LC4E', 'root', '根域', '', '', '1', '1', '1', '2015-08-10 11:05:23', '2015-08-10 11:05:25'), ('2', '1', 'program', 'Program', '编程语言相关', '', '', '1', '1', '1', '2015-09-21 16:46:49', '2015-09-21 16:46:52'), ('3', '2', 'java', 'JAVA', 'java', '', '', '1', '1', '1', '2015-09-21 16:45:19', '2015-09-21 16:45:21'), ('4', '2', 'c', 'C/C++', 'C', '', '', '1', '1', '1', '2015-09-21 16:47:48', '2015-09-21 16:47:50');
+INSERT INTO `area` VALUES ('1', '0', 'LC4E', 'root', '根域', '', '', '0', '1', '1', '2015-08-10 11:05:23', '2015-08-10 11:05:25'), ('2', '1', 'program', 'Program', '编程语言相关', '', '', '1', '1', '0', '2015-09-21 16:46:49', '2015-09-21 16:46:52'), ('3', '2', 'java', 'JAVA', 'java', '', '', '1', '1', '0', '2015-09-21 16:45:19', '2015-09-21 16:45:21'), ('4', '2', 'c', 'C/C++', 'C', '', '', '1', '1', '0', '2015-09-21 16:47:48', '2015-09-21 16:47:50');
 COMMIT;
 
 -- ----------------------------
@@ -182,7 +182,7 @@ CREATE TABLE `sys_config` (
 --  Records of `sys_config`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_config` VALUES ('1', 'SiteName', 'Light Community', '', '站点名称', '2015-08-02 22:44:43', '2015-08-02 22:44:45'), ('2', 'IndexPageSize', '20', '', '首页每页帖子数', '2015-08-02 22:45:29', '2015-08-02 22:45:32'), ('3', 'Register', '1', 'Register is forbid', '是否开放注册', '2015-08-02 22:45:55', '2015-08-02 22:45:58'), ('4', 'SimpleRegister', '0', '', '是否开启简单注册', '2015-08-02 22:46:14', '2015-08-02 22:46:16'), ('5', 'CaptchaCaseSensitive', '1', '', '验证码大小写敏感', '2015-08-11 10:31:49', '2015-08-11 10:31:51'), ('6', 'Captcha', '0', '验证码错误', '是否开启注册登录验证码', '2015-08-11 10:33:20', '2015-08-11 10:33:23'), ('7', 'UserInitBalances', '10', '', '用户初始化货币数量', '2015-08-22 11:20:32', '2015-08-22 11:20:34'), ('8', 'AreaPageSize', '20', '', '分区每页帖子数目', '2015-09-21 15:57:00', '2015-09-21 15:57:02'), ('9', 'UserTagPercent', '2', '', '用户标签权重', '2015-09-23 19:59:48', '2015-09-23 19:59:50'), ('10', 'TopicStatusPercent', '10', '', '主题状态权重', '2015-09-24 15:51:45', '2015-09-24 15:51:50'), ('11', 'CommentCountPCT', '0.5', '', '', '2015-09-24 15:52:22', '2015-09-24 15:52:24'), ('12', 'DefaultTheme', 'default', '', '主题目录', '2015-10-10 14:23:41', '2015-10-10 14:23:43'), ('13', 'Version', '1', '', '版本号', '2016-10-21 14:40:41', '2016-10-21 14:40:42');
+INSERT INTO `sys_config` VALUES ('1', 'SiteName', 'Light Community', '', '站点名称', '2015-08-02 22:44:43', '2015-08-02 22:44:45'), ('2', 'IndexPageSize', '20', '', '首页每页帖子数', '2015-08-02 22:45:29', '2015-08-02 22:45:32'), ('3', 'Register', '1', 'Register is forbid', '是否开放注册', '2015-08-02 22:45:55', '2015-08-02 22:45:58'), ('4', 'SimpleRegister', '0', '', '是否开启简单注册', '2015-08-02 22:46:14', '2015-08-02 22:46:16'), ('5', 'CaptchaCaseSensitive', '1', '', '验证码大小写敏感', '2015-08-11 10:31:49', '2015-08-11 10:31:51'), ('6', 'Captcha', '0', '验证码错误', '是否开启注册登录验证码', '2015-08-11 10:33:20', '2015-08-11 10:33:23'), ('7', 'UserInitBalances', '10', '', '用户初始化货币数量', '2015-08-22 11:20:32', '2015-08-22 11:20:34'), ('8', 'AreaPageSize', '20', '', '分区每页帖子数目', '2015-09-21 15:57:00', '2015-09-21 15:57:02'), ('9', 'UserTagPercent', '2', '', '用户标签权重', '2015-09-23 19:59:48', '2015-09-23 19:59:50'), ('10', 'TopicStatusPercent', '10', '', '主题状态权重', '2015-09-24 15:51:45', '2015-09-24 15:51:50'), ('11', 'CommentCountPCT', '0.5', '', '', '2015-09-24 15:52:22', '2015-09-24 15:52:24'), ('12', 'DefaultTheme', 'default', '', '主题目录', '2015-10-10 14:23:41', '2015-10-10 14:23:43'), ('13', 'Version', '1', '', '版本号', '2016-10-21 14:40:41', '2016-10-21 14:40:42'), ('14', 'RegisterReward', '10', null, '注册奖励', '2016-10-28 16:02:20', '2016-10-28 16:02:22'), ('15', 'Avatar', '//cdn.v2ex.co/gravatar/{md5}?s=48&d=wavatar', null, '头像地址', '2016-11-02 12:58:38', '2016-11-02 12:58:40'), ('16', 'PublishTopicInterval', '600', null, '发帖间隔时间', '2016-11-03 13:12:45', '2016-11-03 13:12:47');
 COMMIT;
 
 -- ----------------------------
@@ -242,11 +242,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `topic`;
 CREATE TABLE `topic` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `area_id` bigint(20) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` varchar(5000) NOT NULL,
   `texts` varchar(255) NOT NULL DEFAULT '',
   `is_visible` tinyint(1) NOT NULL DEFAULT '1',
   `is_close` tinyint(1) NOT NULL DEFAULT '0',
@@ -255,15 +256,22 @@ CREATE TABLE `topic` (
   `create_time` datetime NOT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+--  Records of `topic`
+-- ----------------------------
+BEGIN;
+INSERT INTO `topic` VALUES ('1', ' ', '1', '2', '第一篇文章', '爱范儿致电苹果广州天环广场零售店了解到的信息是：从 11 月 2 日起，只有通过大陆官网或苹果零售店购买的苹果设备，才能在大陆“天才吧”进行维修，从电商平台或其他线下渠道购买的苹果设备，即使是国行的机器，也只能前往第三方授权维修点进行维修。   苹果深圳益田假日广场店、北京三里屯店的相关人员也证实了这一说法，但他们表示这一政策还未完全落实，因此暂未正式对外公布。而按照新规定，在“天才吧”维修时一定要出具相关购买凭证，如发票、收据或包装盒等。   苹果官网的客服则表示他们目前仍未接到相关通知，具体执行以零售店的说法为准。   via ： http://www.ifanr.com/741293', '', '1', '0', '0', '1', '2016-11-09 02:48:49', null);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `topic_rank`
 -- ----------------------------
 DROP TABLE IF EXISTS `topic_rank`;
 CREATE TABLE `topic_rank` (
-  `id` varchar(255) NOT NULL,
-  `topic_id` varchar(255) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(255) NOT NULL,
   `tags` varchar(255) NOT NULL,
   `comment_count` int(11) NOT NULL,
   `view_count` int(11) NOT NULL,
@@ -271,14 +279,21 @@ CREATE TABLE `topic_rank` (
   `create_time` datetime NOT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+--  Records of `topic_rank`
+-- ----------------------------
+BEGIN;
+INSERT INTO `topic_rank` VALUES ('1', '1', '苹果,相关,维修,零售店', '0', '0', '0.000', '2016-11-09 02:49:03', null);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` varchar(11) COLLATE utf8mb4_bin NOT NULL,
+  `id` bigint(11) NOT NULL,
   `name` varchar(12) COLLATE utf8mb4_bin NOT NULL,
   `mail` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   `nick` varchar(12) COLLATE utf8mb4_bin NOT NULL,
@@ -459,6 +474,18 @@ CREATE TABLE `user_topic_keep` (
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- ----------------------------
+--  View structure for `vw_comment_detail`
+-- ----------------------------
+DROP VIEW IF EXISTS `vw_comment_detail`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_comment_detail` AS select `comment`.`floor` AS `floor`,`comment`.`is_visible` AS `is_visible`,`comment`.`content` AS `content`,`comment`.`create_time` AS `create_time`,`comment`.`update_time` AS `update_time`,`cmuser`.`nick` AS `nick`,`cmuser`.`id` AS `id`,`cmuser`.`mail` AS `mail`,`comment`.`topic_id` AS `topic_id` from (`comment` left join `user` `cmuser` on((`cmuser`.`id` = `comment`.`user_id`)));
+
+-- ----------------------------
+--  View structure for `vw_topic_detail`
+-- ----------------------------
+DROP VIEW IF EXISTS `vw_topic_detail`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_topic_detail` AS select `topic`.`title` AS `title`,`topic`.`content` AS `content`,`topic`.`texts` AS `texts`,`topic`.`id` AS `id`,`topic`.`url` AS `url`,`topic`.`create_time` AS `create_time`,`topic`.`update_time` AS `update_time`,`author`.`id` AS `author_id`,`author`.`nick` AS `author_nick`,`author`.`mail` AS `author_mail`,`topic`.`area_id` AS `area_id`,`topic_rank`.`view_count` AS `view_count`,`topic_rank`.`comment_count` AS `comment_count`,`topic_rank`.`tags` AS `tags` from ((`topic` left join `user` `author` on((`author`.`id` = `topic`.`user_id`))) left join `topic_rank` on((`topic_rank`.`topic_id` = `topic`.`id`)));
 
 -- ----------------------------
 --  View structure for `vw_user_permission`
