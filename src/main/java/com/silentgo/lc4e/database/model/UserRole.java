@@ -5,10 +5,10 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user_role",  primaryKey = "id")
+@Table(value= "user_role",  primaryKey = "id")
 public class UserRole extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	public Long getId() {

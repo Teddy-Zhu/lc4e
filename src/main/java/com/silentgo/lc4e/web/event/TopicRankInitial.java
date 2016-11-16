@@ -5,7 +5,6 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.TopicRankDao;
-import com.silentgo.lc4e.database.model.TopicRank;
 import com.silentgo.utils.StringKit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +22,9 @@ import java.util.List;
  *         Created by teddyzhu on 2016/11/3.
  */
 @EventListen
-public class TopicRankListener implements EventListener<TopicEvent> {
+public class TopicRankInitial implements EventListener<TopicEvent> {
 
-    private static final Logger logger = LoggerFactory.getLogger(TopicRankListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(TopicRankInitial.class);
     @Inject
     TopicRankDao topicRankDao;
 
@@ -33,7 +32,7 @@ public class TopicRankListener implements EventListener<TopicEvent> {
     public void onEvent(TopicEvent topicEvent) {
         List<String> tags = HanLP.extractKeyword(topicEvent.getTopic().getTitle() + topicEvent.getTopic().getContent(), 4);
 
-        TopicRank topicRank = new TopicRank();
+        com.silentgo.lc4e.database.model.TopicRank topicRank = new com.silentgo.lc4e.database.model.TopicRank();
         topicRank.setCreateTime(new Date());
         topicRank.setTopicId(topicEvent.getTopic().getId());
         topicRank.setTags(StringKit.join(tags, ","));

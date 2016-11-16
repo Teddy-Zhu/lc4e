@@ -25,7 +25,7 @@ public class ShiroExceptionHandler implements IExceptionHandler {
     @Override
     public RenderModel resolve(Response response, Request request, Exception ex) {
         Message error = new Message(ex.getMessage() == null ? ex.toString() : ex.getMessage());
-        if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
+        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             return new RenderModel(new JsonRender(), error, request, response);
         } else {
             request.setAttribute("message", error);

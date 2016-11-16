@@ -7,11 +7,10 @@
                         <el-col :span="13" class="br-path">
                             <el-breadcrumb separator=">">
                                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                                <el-breadcrumb-item>Area</el-breadcrumb-item>
                             </el-breadcrumb>
                         </el-col>
                         <el-col :span="5">
-                            <el-select v-model="orderNow" class="el-select-mini">
+                            <el-select v-model="orderNow" size="mini" class="el-select-mini">
                                 <el-option
                                         v-for="orderItem in orders"
                                         :label="orderItem.label"
@@ -50,7 +49,7 @@
         </slot>
     </sg-body>
 </template>
-<style>
+<style scoped type="text/css">
 
     .topic-hot-line {
         margin: 5px 0;
@@ -82,11 +81,13 @@
     }
 
     .el-select-mini {
-        margin: 5px 0;
+        margin: 4px 0;
+        display: inline-block;
     }
 
-    .el-select-mini .el-input__inner {
+    .el-select-mini .el-input input {
         height: 24px;
+        line-height: 23px;
         background-color: #f2f3f5;
     }
 
@@ -105,29 +106,20 @@
     }
 </style>
 <script type="text/javascript">
-    import Body from './compments/body.vue'
-    import Pager from './others/pager.vue'
-    import TopicLine from './index/topicLine.vue'
+    import Body from '../compments/body.vue'
+    import Pager from '../others/pager.vue'
+    import TopicLine from '../index/topicLine.vue'
+    import {mapState} from 'vuex'
+
     export default  {
         name: 'index',
         data () {
             return {
-                menus: preLoadData.menus,
                 topics: [],
                 page: 1,
-                size: 30,
+                size: 20,
                 total: 0,
                 orderNow: '1',
-                orders: [{
-                    value: '1',
-                    label: '最新发布'
-                }, {
-                    value: '2',
-                    label: '最后回复'
-                }, {
-                    value: '3',
-                    label: '个人喜好'
-                }],
                 hots: [{
                     area: 'c++',
                     link: '/asd',
@@ -147,6 +139,7 @@
                 }]
             }
         },
+        computed: mapState({orders: state => state.order}),
         created () {
             this.getData();
         },
@@ -155,6 +148,9 @@
                 this.getData();
             },
             page(val, OldVal){
+                this.getData();
+            },
+            orderNow(val, OldVal){
                 this.getData();
             }
         },
@@ -171,8 +167,11 @@
                         this.page = response.data.data.topics.pageNumber;
                         this.total = response.data.data.topics.totalPage;
                         this.size = response.data.data.topics.pageSize;
+                    } else {
+                        this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
                     }
                 }, (response)=> {
+                    this.$message.error('数据获取错误');
                 });
             },
             nextPage () {

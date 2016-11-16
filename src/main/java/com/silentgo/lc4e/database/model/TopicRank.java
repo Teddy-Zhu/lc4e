@@ -6,7 +6,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="topic_rank",  primaryKey = "id")
+@Table(value= "topic_rank",  primaryKey = "id")
 public class TopicRank extends TableModel {
 
 	@Column(aic = true)

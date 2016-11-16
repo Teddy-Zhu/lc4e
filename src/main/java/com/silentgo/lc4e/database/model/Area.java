@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="area",  primaryKey = "id")
+@Table(value= "area",  primaryKey = "id")
 public class Area extends TableModel {
 
 	@Column

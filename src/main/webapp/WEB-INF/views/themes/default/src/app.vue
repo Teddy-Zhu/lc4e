@@ -16,6 +16,8 @@
 <script>
     import Header from './views/compments/header.vue'
     import Footer from './views/compments/footer.vue'
+    import 'element-ui/lib/theme-default/index.css';
+    import {mapState} from 'vuex'
 
     export default {
         name: 'app',

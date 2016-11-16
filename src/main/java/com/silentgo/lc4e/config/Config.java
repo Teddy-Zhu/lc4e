@@ -92,6 +92,6 @@ public class Config implements com.silentgo.core.config.Config {
         //add cdn
         //"http://7u2sne.com1.z0.glb.clouddn.com" +
         globalContext.set(String.class, "Theme", "/themes/" + comVarService.getComVarValueByName("DefaultTheme"));
-
+        globalContext.set(String.class, "userImg", comVarService.getComVarValueByName("Avatar"));
     }
 }

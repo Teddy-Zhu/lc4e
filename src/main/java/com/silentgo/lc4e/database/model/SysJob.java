@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="sys_job",  primaryKey = "id")
+@Table(value= "sys_job",  primaryKey = "id")
 public class SysJob extends TableModel {
 
 	@Column

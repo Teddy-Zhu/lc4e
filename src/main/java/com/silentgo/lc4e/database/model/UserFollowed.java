@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user_followed",  primaryKey = "id")
+@Table(value= "user_followed",  primaryKey = "id")
 public class UserFollowed extends TableModel {
 
 	@Column

@@ -13,6 +13,7 @@ import com.silentgo.lc4e.entity.ReturnData;
 import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.service.CurUserService;
 import com.silentgo.lc4e.web.service.UserService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
@@ -52,7 +53,7 @@ public class UserController {
      * @return
      * @throws IOException
      */
-    @Route("/logout")
+    @Route("/signout")
     @RouteMatch(method = RequestMethod.POST)
     public Message SignOut(Response response) throws IOException {
         SecurityUtils.getSubject().logout();
@@ -65,7 +66,7 @@ public class UserController {
      * @param response
      * @throws IOException
      */
-    @Route("/logout")
+    @Route("/signout")
     public void SignOut2(Response response) throws IOException {
         SecurityUtils.getSubject().logout();
         response.sendRedirect("/");
@@ -89,7 +90,6 @@ public class UserController {
      *
      * @return
      */
-    @RequiresGuest
     @Route("/login")
     @RouteMatch(method = RequestMethod.POST)
     public Message SignIn(Request request) {
@@ -115,6 +115,7 @@ public class UserController {
 
     /**
      * 用户注册
+     *
      * @param response
      * @param request
      * @param user
@@ -123,8 +124,9 @@ public class UserController {
      */
     @RouteMatch(method = RequestMethod.POST)
     @Route("/register")
+    @RequiresGuest
     @ResponseBody
-    public Message reg(Response response, Request request, @RequestParam("user") User user) throws Exception {
+    public Message reg(Response response, Request request, @RequestParam User user) throws Exception {
 
         if (!Boolean.parseBoolean(comVarService.getComVarByName("Register").getValue())) {
             return new Message("register closed");
@@ -132,8 +134,8 @@ public class UserController {
         userService.createUser(user);
 
         //event notify
-        eventFactory.emit(new UserRegisterEvent(user));
         if (user.getId() != null) {
+            eventFactory.emit(new UserRegisterEvent(user));
             return new Message(true, "register successfully");
         } else {
             return new Message("register failed");
@@ -141,10 +143,13 @@ public class UserController {
 
     }
 
+    @Inject
+    CurUserService curUserService;
 
     /**
      * 用户登陆
-     * @param user
+     * @param name
+     * @param password
      * @param captcha
      * @param request
      * @param rememberMe
@@ -153,19 +158,19 @@ public class UserController {
     @RouteMatch(method = RequestMethod.POST)
     @Route("/signin")
     @ResponseBody
-    public Message signin(@RequestParam("user") User user,
-                          @RequestString(defaultValue = "@@@@", range = {4, 4}) String captcha,
+    public Message signin(@RequestParam String name, @RequestParam String password,
+                          @RequestParam @RequestString(defaultValue = "@@@@", range = {4, 4}) String captcha,
                           Request request,
                           @RequestBool Boolean rememberMe) {
 
-        SysConfig captchaComVar = comVarService.getComVarByName("Captcha");
-        String captchaValue = captchaComVar == null ? null : captchaComVar.getValue();
-        if (captchaValue != null && Boolean.parseBoolean(captchaValue) && !Lc4eCaptchaRender.validate(request, captcha)) {
-            return new Message(captchaComVar.getError());
+        SysConfig captchaConfig = comVarService.getComVarByName("Captcha");
+        boolean captchaValue = Boolean.parseBoolean(captchaConfig.getValue());
+        if (captchaValue && !Lc4eCaptchaRender.validate(request, captcha)) {
+            return new Message(captchaConfig.getError());
         }
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
-            UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getPassword());
+            UsernamePasswordToken token = new UsernamePasswordToken(name, password);
             token.setRememberMe(rememberMe);
             subject.login(token);
             subject.getSession().removeAttribute(Lc4eCaptchaRender.captcha_code);
@@ -173,18 +178,12 @@ public class UserController {
                 return new Message("Login failed");
             }
         }
-        return new Message(true, "Login Success");
+        User LoginUser = curUserService.getCurrentUser();
+        User user = new User();
+        user.setId(LoginUser.getId());
+        user.setNick(LoginUser.getNick());
+        return new Message(true, "Login Success", new ReturnData("user", user));
     }
 
-
-    /**
-     * user infomation view
-     * @param username
-     * @return
-     */
-    @Route("/i/{username}")
-    public String user(@PathVariable @RequestString String username) {
-        return "index.html";
-    }
 
 }

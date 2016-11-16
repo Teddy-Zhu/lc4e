@@ -74,7 +74,7 @@ public class VwCommentDetail extends TableModel {
 		this.nick = nick;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true,nullable = true)
 	public Long id;
 
 	public Long getId() {

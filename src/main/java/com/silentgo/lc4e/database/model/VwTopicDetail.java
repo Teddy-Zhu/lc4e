@@ -85,7 +85,7 @@ public class VwTopicDetail extends TableModel {
 		this.updateTime = updateTime;
 	}
 
-	@Column(value= "author_id",nullable = true)
+	@Column(value= "author_id",def = true,nullable = true)
 	public Long authorId;
 
 	public Long getAuthorId() {
@@ -160,6 +160,17 @@ public class VwTopicDetail extends TableModel {
 
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+
+	@Column(value= "area_abbr",nullable = true)
+	public String areaAbbr;
+
+	public String getAreaAbbr() {
+		return areaAbbr;
+	}
+
+	public void setAreaAbbr(String areaAbbr) {
+		this.areaAbbr = areaAbbr;
 	}
 
 

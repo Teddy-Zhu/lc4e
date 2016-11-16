@@ -4,10 +4,11 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.UserDao;
-import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.web.service.ComVarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Date;
 
 /**
  * Project : lc4e
@@ -18,10 +19,10 @@ import org.slf4j.LoggerFactory;
  *         Created by teddyzhu on 2016/10/28.
  */
 @EventListen(async = true)
-public class RegisterRewardListener implements EventListener<UserRegisterEvent> {
+public class RegisterReward implements EventListener<UserRegisterEvent> {
 
 
-    private final Logger logger = LoggerFactory.getLogger(RegisterRewardListener.class);
+    private final Logger logger = LoggerFactory.getLogger(RegisterReward.class);
 
     @Inject
     private UserDao userDao;
@@ -32,7 +33,8 @@ public class RegisterRewardListener implements EventListener<UserRegisterEvent> 
     @Override
     public void onEvent(UserRegisterEvent event) {
 
-        int i = userDao.updateSetWhereId(Integer.parseInt(comVarService.getComVarValueByName("RegisterReward")), event.getUser().getId());
+        int i = userDao.updateSetWhereId(Integer.parseInt(comVarService.getComVarValueByName("RegisterReward")),
+                new Date(), event.getUser().getId());
 
         if (i == 1) {
             logger.info("reward user :{} , success ", event.getUser().getName());

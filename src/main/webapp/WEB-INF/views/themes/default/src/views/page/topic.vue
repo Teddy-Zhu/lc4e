@@ -12,10 +12,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img :src="'/images/avatar'+topic.imgUrl">
+                                        <img :src="getAvatar(topic.authorMail)">
                                     </td>
                                     <td>
-                                        <sg-common :content="topic.body"></sg-common>
+                                        <sg-comment :content="topic.content"></sg-comment>
                                     </td>
                                 </tr>
                             </table>
@@ -26,10 +26,10 @@
                             <table v-for="comment in comments" class="comment">
                                 <tr>
                                     <td>
-                                        <img :src="'/images/avatar'+ comment.imgUrl">
+                                        <img :src="getAvatar(user.mail)">
                                     </td>
                                     <td>
-                                        <sg-common :content="comment.body"></sg-common>
+                                        <sg-comment :content="comment.content"></sg-comment>
                                     </td>
                                 </tr>
                             </table>
@@ -49,30 +49,71 @@
         </slot>
     </sg-body>
 </template>
-<style>
+<style scoped>
+    .pager-center {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
+    .inline-block {
+        display: inline-block;
+    }
 </style>
 <script>
-    import Body from './compments/body.vue'
-    import Pager from './others/pager.vue'
-    import Comment from './others/comment.vue'
+    import Body from '../compments/body.vue'
+    import Pager from '../others/pager.vue'
+    import Comment from '../others/comment.vue'
+    import md5 from 'md5'
 
     export default{
+        name: "topicInfo",
         data(){
             return {
-                page: 1,
+                avatarUrl: preLoadData.userImg,
+                name: this.$route.params.topic,
+                page: this.$route.params.page ? this.$route.params.page : 1,
                 size: 20,
                 total: 0,
-                topic: {},
+                topic: {
+                    authorMail: '',
+                    name: '',
+                    content: ''
+                },
                 comments: []
             }
         },
         created(){
-
+            this.getData();
+        },
+        watch: {
+            $route(val, oldVal){
+                this.updateBaseData();
+                this.getData();
+            }
         },
         methods: {
             pageChange(){
 
+            },
+            getAvatar(mail){
+                return this.avatarUrl.replace('{md5}', md5(mail));
+            },
+            getData(){
+                var url = '/t/' + this.name;
+                this.$http.post(url).then((response)=> {
+                    if (response.data.result) {
+                        this.topic = response.data.data.topic
+                    } else {
+                        this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
+                    }
+                }, (response)=> {
+                    this.$message.error('数据获取错误');
+                });
+            },
+            updateBaseData(){
+                this.name = this.$route.params.topic;
+                this.page = this.$route.params.page ? this.$route.params.page : 1;
             }
         },
         components: {

@@ -6,10 +6,10 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user",  primaryKey = "id")
+@Table(value= "user",  primaryKey = "id")
 public class User extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	public Long getId() {
@@ -163,15 +163,15 @@ public class User extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column("update_ime")
-	public Date updateIme;
+	@Column(value= "update_time",nullable = true)
+	public Date updateTime;
 
-	public Date getUpdateIme() {
-		return updateIme;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setUpdateIme(Date updateIme) {
-		this.updateIme = updateIme;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
 

@@ -5,10 +5,10 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user_social",  primaryKey = "id")
+@Table(value= "user_social",  primaryKey = "id")
 public class UserSocial extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	public Long getId() {
@@ -30,7 +30,7 @@ public class UserSocial extends TableModel {
 		this.userId = userId;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String province;
 
 	public String getProvince() {
@@ -41,7 +41,7 @@ public class UserSocial extends TableModel {
 		this.province = province;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String city;
 
 	public String getCity() {
@@ -52,7 +52,7 @@ public class UserSocial extends TableModel {
 		this.city = city;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String region;
 
 	public String getRegion() {
@@ -63,7 +63,7 @@ public class UserSocial extends TableModel {
 		this.region = region;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String street;
 
 	public String getStreet() {
@@ -74,7 +74,7 @@ public class UserSocial extends TableModel {
 		this.street = street;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String github;
 
 	public String getGithub() {
@@ -85,7 +85,7 @@ public class UserSocial extends TableModel {
 		this.github = github;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String twitter;
 
 	public String getTwitter() {
@@ -96,7 +96,7 @@ public class UserSocial extends TableModel {
 		this.twitter = twitter;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String facebook;
 
 	public String getFacebook() {
@@ -107,7 +107,7 @@ public class UserSocial extends TableModel {
 		this.facebook = facebook;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String google;
 
 	public String getGoogle() {
@@ -118,7 +118,7 @@ public class UserSocial extends TableModel {
 		this.google = google;
 	}
 
-	@Column(nullable = true)
+	@Column(def = true)
 	public String qq;
 
 	public String getQq() {

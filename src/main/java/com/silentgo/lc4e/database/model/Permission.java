@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="permission",  primaryKey = "id")
+@Table(value= "permission",  primaryKey = "id")
 public class Permission extends TableModel {
 
 	@Column

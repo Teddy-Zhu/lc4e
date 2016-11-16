@@ -5,6 +5,7 @@ import com.silentgo.core.cache.annotation.Cache;
 import com.silentgo.core.db.intercept.Transaction;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
+import com.silentgo.core.plugin.event.EventFactory;
 import com.silentgo.lc4e.config.Key;
 import com.silentgo.lc4e.database.dao.UserDao;
 import com.silentgo.lc4e.database.dao.VwUserPermissionDao;
@@ -16,6 +17,7 @@ import com.silentgo.lc4e.entity.UserRolePermission;
 import com.silentgo.lc4e.util.shiro.PassDisposer;
 import com.silentgo.utils.Assert;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +41,9 @@ public class UserService {
     VwUserPermissionDao vwUserPermissionDao;
 
     @Inject
+    EventFactory eventFactory;
+
+    @Inject
     VwUserRolePermissionDao vwUserRolePermissionDao;
 
     @Cache(cacheName = Key.ComVar, index = 0)
@@ -57,14 +62,13 @@ public class UserService {
         return result;
     }
 
-    @Cache(cacheName = Key.ComVar, index = 0)
     public User findUserFullInfo(String username) {
         return userDao.queryOneWhereName(username);
     }
 
     // to do simply
     public boolean validateUserName(String name) {
-        return userDao.countByName(name) > 0;
+        return userDao.countWhereName(name) > 0;
     }
 
     public boolean validateUserNick(String nick) {
@@ -77,6 +81,7 @@ public class UserService {
 
     @Transaction
     public User createUser(User user) throws Exception {
+        Assert.isNotNull(user, "参数错误");
         //validate exist
         //username
         if (validateUserName(user.getName())) {
@@ -93,6 +98,12 @@ public class UserService {
         PassDisposer.encryptPassword(user);
         user.setId(null);
         user.setLocked(false);
+        user.setCreateTime(new Date());
+
+        BigDecimal initialRank = BigDecimal.valueOf(Long.parseLong(comVarService.getComVarValueByName("UserInitialRank")));
+        user.setRank(initialRank);
+        user.setBalance(new BigDecimal(0));
+
 
         int i = userDao.insertByRow(user);
 

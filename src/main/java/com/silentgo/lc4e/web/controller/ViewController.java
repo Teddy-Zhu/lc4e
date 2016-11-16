@@ -45,17 +45,20 @@ public class ViewController {
 
     @Inject
     TopicService topicService;
+    @Inject
+    ComVarService comVarService;
 
     @Route("/")
     public String index(Request request) {
         return "index.html";
     }
 
-    @Route("/{page:[0-9]+}/{order:[0-9]}")
+    @Route("/{page:[1-9][0-9]*}/{order:[1-3]}")
     @ResponseBody
     @RouteMatch(method = RequestMethod.POST)
     public Message index(@PathVariable Integer page, @PathVariable Integer order) {
-        return new Message(true, new ReturnData("topics", topicService.getArticle(page, order, "all")));
+        Integer size = Integer.parseInt(comVarService.getComVarValueByName("AreaPageSize"));
+        return new Message(true, new ReturnData("topics", topicService.getTopic(null, order, page, size)));
     }
 
 

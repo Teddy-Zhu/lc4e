@@ -50,6 +50,19 @@ public class TopicController {
         return "index.html";
     }
 
+    @Route("/{topic}/{page:[1-9][0-9]*}")
+    @RouteMatch(method = RequestMethod.POST)
+    public String t(Request request) {
+        return "index.html";
+    }
+
+    @Route("/{topic}")
+    @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
+    public Message topicInfo(Request request, @PathVariable("topic") String topic) {
+        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(Long.parseLong(topic))));
+    }
+
     /**
      * page topic data
      *
@@ -58,7 +71,7 @@ public class TopicController {
      * @param page
      * @return
      */
-    @Route("/{topic}/{page:[0-9]+}")
+    @Route("/{topic}/{page:[1-9][0-9]*}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message t2(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
@@ -66,12 +79,6 @@ public class TopicController {
                 new ReturnData("comments", new ArrayList<Comment>() {{
                     add(new Comment());
                 }}));
-    }
-
-    @Route("/new")
-    @RouteMatch(method = RequestMethod.GET)
-    public String newTopic(Request request) {
-        return "index.html";
     }
 
     @Inject
@@ -89,12 +96,26 @@ public class TopicController {
     @Route("/new")
     @ResponseBody
     @RouteMatch(method = RequestMethod.POST)
-    //@RequiresUser
+    @RequiresUser
     public Message newTopic(Request request, @RequestParam("topic") Topic topic) {
         User user = curUserService.getCurrentUser();
-        topic.setUserId(1L);
+        topic.setUserId(user.getId());
 
         return new Message(topicService.createTopic(topic), "主题创建成功");
     }
 
+    /**
+     * view
+     * @param request
+     * @return
+     */
+    @Route("/new/{area}")
+    public String newTopic(Request request) {
+        return "index.html";
+    }
+
+    @Route("/new")
+    public String newTopic() {
+        return "index.html";
+    }
 }

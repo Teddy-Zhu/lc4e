@@ -3,10 +3,13 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '../views/index.vue'
-import area from '../views/area.vue'
-import topic from '../views/topic.vue'
-Vue.use(Router)
+import index from '../views/page/index.vue'
+import area from '../views/page/area.vue'
+import topic from '../views/page/topic.vue'
+import login from '../views/page/login.vue'
+import register from '../views/page/register.vue'
+import signout from '../views/page/signout.vue'
+Vue.use(Router);
 
 export default new Router({
     mode: 'history',
@@ -29,9 +32,21 @@ export default new Router({
             name: "topic1",
             component: topic
         }, {
-            path: "/t/:topic-:page(\\d+)-:order(\\d+)",
+            path: "/t/:topic/:page(\\d+)",
             name: "topic2",
             component: topic
+        }, {
+            path: "/u/login",
+            name: "login",
+            component: login
+        }, {
+            path: "/u/register",
+            name: "register",
+            component: register
+        }, {
+            path: "/u/signout",
+            name: 'signout',
+            component: signout
         }
     ]
 })

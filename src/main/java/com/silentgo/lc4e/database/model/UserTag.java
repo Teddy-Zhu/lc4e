@@ -6,10 +6,10 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user_tag",  primaryKey = "id")
+@Table(value= "user_tag",  primaryKey = "id")
 public class UserTag extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	public Long getId() {

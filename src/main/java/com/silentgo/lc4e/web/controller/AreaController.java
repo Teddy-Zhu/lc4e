@@ -40,25 +40,27 @@ public class AreaController {
     @Inject
     TopicService topicService;
 
-    @Route("/a/{area}")
+    @Route("/{area}")
     @RouteMatch(method = RequestMethod.GET)
     public String a(Request request, @PathVariable @RequestString String area) {
         return "index.html";
     }
 
-    @Route("/a/{area}/{page:[0-9]+}/{order:[0-1]}")
+    @Route("/{area}/{page:[1-9][0-9]*}/{order:[1-3]}")
     @RouteMatch(method = RequestMethod.GET)
     public String a(Request request, @PathVariable @RequestString String area,
                     @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {
         return "index.html";
     }
 
-    @Route("/a/{area}/{page:[0-9]+}/{order:[0-1]}")
+    @Route("/{area}/{page:[1-9][0-9]*}/{order:[1-3]}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message a2(Request request, @PathVariable String area, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {
+        if ("all".equalsIgnoreCase(area)) area = null;
+        Integer size = Integer.parseInt(comVarService.getComVarValueByName("AreaPageSize"));
         return new Message(true, new ReturnData("area", area),
-                new ReturnData("topics", topicService.getArticle(page, order, area)));
+                new ReturnData("topics", topicService.getTopic(area, order, page, size)));
     }
 
 

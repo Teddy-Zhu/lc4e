@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="comment",  primaryKey = "id")
+@Table(value= "comment",  primaryKey = "id")
 public class Comment extends TableModel {
 
 	@Column

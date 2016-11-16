@@ -8,7 +8,7 @@
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
-           overflowToDisk="false"
+           overflowToDisk="true"
            statistics="true">
     </cache>
 
@@ -18,7 +18,7 @@
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
-           overflowToDisk="false"
+           overflowToDisk="true"
            statistics="true">
     </cache>
 
@@ -27,7 +27,7 @@
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
-           overflowToDisk="false"
+           overflowToDisk="true"
            statistics="true">
     </cache>
 
@@ -36,7 +36,7 @@
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
-           overflowToDisk="false"
+           overflowToDisk="true"
            statistics="true">
     </cache>
 
@@ -46,7 +46,7 @@
            eternal="false"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
-           overflowToDisk="false"
+           overflowToDisk="true"
            statistics="true">
     </cache>
 

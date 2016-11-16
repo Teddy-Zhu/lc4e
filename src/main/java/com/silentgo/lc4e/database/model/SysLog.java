@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="sys_log",  primaryKey = "id")
+@Table(value= "sys_log",  primaryKey = "id")
 public class SysLog extends TableModel {
 
 	@Column

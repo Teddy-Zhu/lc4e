@@ -5,37 +5,38 @@
                 <tr>
                     <td align="center" width="10%">
                         <a class="topic-author-img-a">
-                            <img :src="data.imageUrl" class="topic-line-img">
+                            <img :src="getAvatar(data.authorMail)" class="topic-line-img">
                         </a>
                     </td>
                     <td align="left" width="75%">
-                        <router-link :to="data.articleUrl" tag="div" class="topic-line-title">
-                            {{data.articleTitle}}
+                        <router-link :to="getTopicUrl(data.id)" tag="div" class="topic-line-title">
+                            {{data.title}}
                         </router-link>
                         <div class="topic-line-meta">
                             <el-breadcrumb separator="/">
-                                <el-breadcrumb-item :to="{ path: '/a/' +data.category }">
-                                    <el-tag type="primary" class="el-tag-mini"><i class="iconfont icon-area"></i>{{data.category}}
+                                <el-breadcrumb-item :to="{ path: getAreaUrl(data.areaAbbr) }">
+                                    <el-tag type="primary" class="el-tag-mini"><i class="iconfont icon-area"></i>{{data.areaAbbr}}
                                     </el-tag>
                                 </el-breadcrumb-item>
-                                <el-breadcrumb-item>
+                                <el-breadcrumb-item :to="{ path : getUserUrl(data.authorId) }">
                                     <el-tag type="gray" class="clickable el-tag-mini"><i
-                                            class="iconfont icon-people"></i>{{data.user}}
+                                            class="iconfont icon-people"></i>{{data.authorNick}}
                                     </el-tag>
                                 </el-breadcrumb-item>
                                 <el-breadcrumb-item>
-                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-cmt"></i>{{data.comments}}
+                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-cmt"></i>{{data.commentCount}}
                                     </el-tag>
                                 </el-breadcrumb-item>
                                 <el-breadcrumb-item>
-                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-time"></i>{{data.publishTime}}
+                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-time"></i>{{data.createTime}}
                                     </el-tag>
                                 </el-breadcrumb-item>
                             </el-breadcrumb>
                         </div>
                     </td>
                     <td align="right">
-                        <el-tag type="warning" v-if="label != ''" v-for="label in data.statusText">{{label}}</el-tag>
+                        <el-tag type="warning" v-for="label in splitText(data.texts)">{{label}}
+                        </el-tag>
                     </td>
                 </tr>
             </table>
@@ -69,12 +70,14 @@
     .topic-line {
         padding: .3em 0;
         border-bottom: 1px solid #c2c8dc;
-        transition: box-shadow 500ms;
+        border-left: 0 solid black;
+        transition: box-shadow 500ms, border-left 70ms;
     }
 
     .topic-line:hover {
         background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-left: 5px solid black;
+        box-shadow: 2px 4px 6px rgba(29, 26, 26, 0.3)
     }
 
     .topic-line-title {
@@ -116,11 +119,34 @@
     }
 </style>
 <script>
+    import md5 from 'md5'
+
     export default{
         name: 'sg-topic-Line',
+        data() {
+            return {avatarUrl: preLoadData.userImg}
+        },
         props: {
             data: {
                 type: Object
+            }
+        },
+        methods: {
+            getAreaUrl(id){
+                return '/a/' + id;
+            },
+            getTopicUrl(id){
+                return '/t/' + id;
+            },
+            getUserUrl(id){
+                return '/i/' + id;
+            },
+            getAvatar(mail){
+                return this.avatarUrl.replace('{md5}', md5(mail));
+            },
+            splitText(str){
+                if (!str) return [];
+                return str.split(',');
             }
         },
         components: {}

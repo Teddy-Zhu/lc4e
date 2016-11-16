@@ -18,8 +18,10 @@ import com.silentgo.lc4e.entity.Popup;
 import com.silentgo.lc4e.tool.RelativeDate;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
+import com.silentgo.orm.base.SQLTool;
 import com.silentgo.orm.base.TableModel;
 import com.silentgo.orm.model.Page;
+import com.silentgo.orm.sqlparser.annotation.Select;
 import com.silentgo.utils.Assert;
 import com.silentgo.utils.CollectionKit;
 import com.silentgo.utils.DateKit;
@@ -51,26 +53,50 @@ public class TopicService {
     /**
      * all topic in time range(3 month)
      *
-     * @param order 1:  by user favorite tag
-     *              2: by topic publish time
-     *              3: by last reply time
+     * @param order 1:  by topic publish time
+     *              2: by last reply time
+     *              3: by user favorite tag
      * @return
      */
-    public Page<Article> getTopicByLast(int order, int page, int size) {
 
-        return null;
+    public Page<VwTopicDetail> getTopic(String area, int order, int page, int size) {
+        switch (order) {
+            case 3:
+                return new Page<>();
+            case 1:
+                return getTopicByPubDate(area, page, size);
+            case 2:
+                return getTopicByLast(area, page, size);
+            default:
+                return new Page<>();
+        }
     }
 
-    public Page<VwTopicDetail> getTopicByPubDate(int page, int size) {
+    public Page<VwTopicDetail> getTopicByLast(String area, int page, int size) {
+
+        Date date = DateKit.addMonths(new Date(), 3);
+
+        int total = vwTopicDetailDao.countWhere(date, area);
+
+        Page<VwTopicDetail> result = buildDetailModel(page, size, total);
+
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereGroupByIdOrderLimit(date, result.getStart(), result.getPageSize(), area);
+
+        result.setResult(list);
+
+        return result;
+    }
+
+    public Page<VwTopicDetail> getTopicByPubDate(String area, int page, int size) {
 
 
         Date date = DateKit.addMonths(new Date(), 3);
 
-        int total = vwTopicDetailDao.countWhere(date);
+        int total = vwTopicDetailDao.countWhere(date, area);
 
         Page<VwTopicDetail> result = buildDetailModel(page, size, total);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, result.getStart(), result.getPageSize());
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, result.getStart(), result.getPageSize(), area);
 
         result.setResult(list);
 
@@ -87,32 +113,9 @@ public class TopicService {
         return result;
     }
 
-
-    public Page<Article> getArticle(int page, int order, String area) {
-        Integer size = 10;
-        if (StringKit.isBlank(area) || "all".equals(area)) {
-            area = "";
-            size = Integer.valueOf(comVarService.getComVarValueByName("IndexPageSize"));
-        } else {
-            size = Integer.valueOf(comVarService.getComVarValueByName("AreaPageSize"));
-        }
-
-        String[] cate = new String[]{"Java", "Obj-C", "C", "C++", "IOS", "Android"};
-        String[] high = new String[]{"TOP", "NOTICE", "OTHER", "SYSTEM", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-        String[] users = new String[]{"Admin", "Test", "Myas", "Liakx", "Google", "vsss"};
-        Date now = new Date();
-        List<Article> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            list.add(new Article("/themes/" + Key.kvs.get("Theme") + "/images/wireframe/image.png", "The friction between your thoughts and your code" + page, "/t/hello" + new Random().nextInt(1000), cate[new Random().nextInt(cate.length - 1)], users[new Random().nextInt(users.length - 1)], new Random().nextInt(100),
-                    RelativeDate.format(RelativeDate.randomDate("2015-05-11 13:00:00", now), now), users[new Random().nextInt(users.length - 1)], page, high[new Random().nextInt(high.length - 1)]));
-        }
-
-        Page<Article> articlePage = new Page<>();
-        articlePage.setPageSize(30);
-        articlePage.setTotalPage(200);
-        articlePage.setPageNumber(page);
-        articlePage.setResult(list);
-        return articlePage;
+    public VwTopicDetail getTopicDetail(Long topicId) {
+        Assert.isNotNull(topicId, "主题ID不存在");
+        return vwTopicDetailDao.queryByPrimaryKey(topicId);
     }
 
     @Inject
@@ -144,7 +147,6 @@ public class TopicService {
             throw new AppBusinessException("区域ID不正确");
         }
 
-        silentGoConfig.getCacheManager().set("topicPublishCache", topic.getUserId(), new Date());
         topic.setId(null);
         topic.setCreateTime(new Date());
         topic.setIsClose(false);
@@ -155,6 +157,8 @@ public class TopicService {
         int i = topicDao.insertByRow(topic);
 
         Assert.isTrue(i == 1, "主题创建失败");
+
+        silentGoConfig.getCacheManager().set("topicPublishCache", topic.getUserId(), new Date());
 
         eventFactory.emit(new TopicEvent(topic));
 

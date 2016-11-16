@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="user_topic_blocked",  primaryKey = "id")
+@Table(value= "user_topic_blocked",  primaryKey = "id")
 public class UserTopicBlocked extends TableModel {
 
 	@Column

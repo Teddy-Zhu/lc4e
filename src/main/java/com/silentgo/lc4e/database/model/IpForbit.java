@@ -5,7 +5,7 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value="ip_forbit",  primaryKey = "id")
+@Table(value= "ip_forbit",  primaryKey = "id")
 public class IpForbit extends TableModel {
 
 	@Column

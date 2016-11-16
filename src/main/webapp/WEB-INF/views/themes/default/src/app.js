@@ -5,9 +5,9 @@
 import Vue from 'vue'
 import router from './route'
 import resource from 'vue-resource'
+import store from './store'
 import App from './app.vue'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css';
 import VueSmoothScrollWebSites from 'vue-smoothscroll-websites';
 
 Vue.use(ElementUI)
@@ -16,6 +16,7 @@ Vue.use(VueSmoothScrollWebSites)
 
 const app = new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount("#app");
 

@@ -3,6 +3,8 @@ package com.silentgo.lc4e.web.controller;
 
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.Controller;
+import com.silentgo.core.route.annotation.RequestParam;
+import com.silentgo.core.route.annotation.ResponseBody;
 import com.silentgo.core.route.annotation.Route;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
@@ -19,25 +21,33 @@ public class SuggestController {
     @Inject
     UserService userService;
 
-    //    @ValidateParams(value = {
-//            @ValidateParam(value = "user.name", minLen = 4, maxLen = 12, required = false, defaultValue = ""),
-//            @ValidateParam(value = "user.nick", minLen = 4, maxLen = 12, required = false, defaultValue = ""),
-//            @ValidateParam(value = "user.mail", minLen = 6, maxLen = 30, required = false, defaultValue = "")})
     @Route
-    public Message user(User user) {
+    @ResponseBody
+    public Message name(@RequestParam String name) {
         boolean exist = true;
-        StringBuilder message = new StringBuilder();
-        if (StringKit.isNotBlank(user.getName())) {
-            exist = userService.validateUserName(user.getName());
-            message.append("UserName");
-        } else if (StringKit.isNotBlank(user.getNick())) {
-            exist = userService.validateUserNick(user.getNick());
-            message.append("UserNick");
-        } else if (StringKit.isNotBlank(user.getMail())) {
-            exist = userService.validateUserMail(user.getMail());
-            message.append("UserMail");
+        if (StringKit.isNotBlank(name)) {
+            exist = userService.validateUserName(name);
         }
-        message.append(" Has been occupied");
-        return new Message(!exist, exist ? message.toString() : "");
+        return new Message(!exist, exist ? "UserName Has been occupied" : "");
+    }
+
+    @Route
+    @ResponseBody
+    public Message nick(@RequestParam String nick) {
+        boolean exist = true;
+        if (StringKit.isNotBlank(nick)) {
+            exist = userService.validateUserNick(nick);
+        }
+        return new Message(!exist, exist ? "UserNick Has been occupied" : "");
+    }
+
+    @Route
+    @ResponseBody
+    public Message mail(@RequestParam String mail) {
+        boolean exist = true;
+        if (StringKit.isNotBlank(mail)) {
+            exist = userService.validateUserMail(mail);
+        }
+        return new Message(!exist, exist ? "UserMail Has been occupied" : "");
     }
 }

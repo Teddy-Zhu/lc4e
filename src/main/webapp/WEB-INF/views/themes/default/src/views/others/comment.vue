@@ -15,7 +15,6 @@
                 type: String,
                 default: ""
             }
-        },
-        components: {}
+        }
     }
 </script>
