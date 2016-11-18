@@ -44,19 +44,19 @@ public class TopicController {
      * @param topicpath
      * @return
      */
-    @Route("/{topic}")
+    @Route("/{topic:[1-9][0-9]*}")
     @RouteMatch(method = RequestMethod.GET)
     public String t(Request request, @PathVariable("topic") @RequestString String topicpath) {
         return "index.html";
     }
 
-    @Route("/{topic}/{page:[1-9][0-9]*}")
+    @Route("/{topic:[1-9][0-9]*}/{page:[1-9][0-9]*}")
     @RouteMatch(method = RequestMethod.POST)
     public String t(Request request) {
         return "index.html";
     }
 
-    @Route("/{topic}")
+    @Route("/{topic:[1-9][0-9]*}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message topicInfo(Request request, @PathVariable("topic") String topic) {
@@ -71,7 +71,7 @@ public class TopicController {
      * @param page
      * @return
      */
-    @Route("/{topic}/{page:[1-9][0-9]*}")
+    @Route("/{topic:[1-9][0-9]*}/{page:[1-9][0-9]*}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message t2(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
@@ -97,15 +97,18 @@ public class TopicController {
     @ResponseBody
     @RouteMatch(method = RequestMethod.POST)
     @RequiresUser
-    public Message newTopic(Request request, @RequestParam("topic") Topic topic) {
+    public Message newTopic(Request request, @RequestParam Topic topic) {
         User user = curUserService.getCurrentUser();
         topic.setUserId(user.getId());
-
-        return new Message(topicService.createTopic(topic), "主题创建成功");
+        boolean result = topicService.createTopic(topic);
+        Topic ret = new Topic();
+        ret.setId(topic.getId());
+        return new Message(result, "主题创建成功", new ReturnData("topic", ret));
     }
 
     /**
      * view
+     *
      * @param request
      * @return
      */

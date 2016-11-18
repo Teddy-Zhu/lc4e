@@ -48,6 +48,7 @@ public class Config implements com.silentgo.core.config.Config {
         config.addExtraInitConfig(new ShiroInitConfig(new UserRealm()));
         config.addExtraInitConfig(new JetbrickInitConfig());
 
+
     }
 
     @Override
@@ -91,7 +92,10 @@ public class Config implements com.silentgo.core.config.Config {
         globalContext.set(String.class, "version", comVarService.getComVarValueByName("Version"));
         //add cdn
         //"http://7u2sne.com1.z0.glb.clouddn.com" +
-        globalContext.set(String.class, "Theme", "/themes/" + comVarService.getComVarValueByName("DefaultTheme"));
+        globalContext.set(String.class, "Theme", "/themes/" + Key.kvs.get("Theme"));
         globalContext.set(String.class, "userImg", comVarService.getComVarValueByName("Avatar"));
+
+
+        config.getStaticMapping().put("/themes", "/themes/" + Key.kvs.get("Theme"));
     }
 }

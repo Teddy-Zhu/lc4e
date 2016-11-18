@@ -35,10 +35,19 @@
                             </table>
                         </el-col>
                     </el-row>
+                    <keep-alive>
+                        <sg-markdown>this is the default slot</sg-markdown>
+                    </keep-alive>
                     <el-row type="flex" justify="center">
                         <el-col :span="24" class="pager-center">
-                            <sg-pager :pageNow="page" :pageSize="size" :pageTotal="total"
-                                      @currentchange="pageChange" class="inline-block"></sg-pager>
+                            <el-pagination
+                                    class="inline-block"
+                                    @current-change="pageChange"
+                                    :current-page="page"
+                                    :page-size="size"
+                                    layout="prev, pager, next, jumper"
+                                    :total="total">
+                            </el-pagination>
                         </el-col>
                     </el-row>
                 </el-col>
@@ -49,7 +58,7 @@
         </slot>
     </sg-body>
 </template>
-<style scoped>
+<style>
     .pager-center {
         text-align: center;
         margin-top: 10px;
@@ -62,9 +71,9 @@
 </style>
 <script>
     import Body from '../compments/body.vue'
-    import Pager from '../others/pager.vue'
     import Comment from '../others/comment.vue'
     import md5 from 'md5'
+    import SgMarkdown from '../compments/markdown.vue'
 
     export default{
         name: "topicInfo",
@@ -118,8 +127,8 @@
         },
         components: {
             'sg-body': Body,
-            'sg-pager': Pager,
-            'sg-comment': Comment
+            'sg-comment': Comment,
+            "sg-markdown": SgMarkdown
         }
     }
 </script>

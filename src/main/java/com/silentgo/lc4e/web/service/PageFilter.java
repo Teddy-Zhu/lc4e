@@ -18,8 +18,8 @@ public class PageFilter {
         if (result.getPageNumber() < 1) {
             result.setPageNumber(1);
         }
-        if (result.getPageSize() < 20) {
-            result.setPageNumber(20);
+        if (result.getPageSize() < 1) {
+            result.setPageSize(10);
         }
     }
 }

@@ -10,9 +10,11 @@ export default {
         signin({state}, form) {
             return new Promise((resolve, reject)=> {
                 Vue.http.post("/u/signin", form, {emulateJSON: true}).then((response)=> {
-                    sessionStorage.setItem('user', JSON.stringify(response.data.data.user));
-                    Vue.set(state, 'id', response.data.data.user.id);
-                    Vue.set(state, 'nick', response.data.data.user.nick);
+                    if (response.data.result) {
+                        sessionStorage.setItem('user', JSON.stringify(response.data.data.user));
+                        Vue.set(state, 'id', response.data.data.user.id);
+                        Vue.set(state, 'nick', response.data.data.user.nick);
+                    }
                     resolve(response.data);
                 }, (response)=> {
                     reject(response);

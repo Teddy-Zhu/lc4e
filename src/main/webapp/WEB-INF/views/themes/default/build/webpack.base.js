@@ -3,8 +3,8 @@
  */
 'use strict'
 
-const path              = require('path')
-const webpack           = require('webpack');
+const path = require('path')
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -18,82 +18,83 @@ const postcss =
 
 module.exports =
 {
-    entry:
-    {
-        app: './src/app.js'
+    node: {
+        fs: "empty"
     },
-    output:
-    {
-        path      : path.join(__dirname, '../../../../../themes/default/dist/'),
-        filename  : '[name].js',
-        publicPath: '/'
+    entry: {
+        app: './src/app.js',
+        vendors: ['vue', 'vuex', 'vue-resource', 'element-ui', 'vue-smoothscroll-websites']
     },
-    resolve:
-    {
+    output: {
+        path: path.join(__dirname, '../../../../../themes/default/dist/'),
+        filename: '[name].js',
+        publicPath: '/themes/dist/',
+        chunkFilename: '/bundle/[name].js'
+    },
+    resolve: {
         extensions: ['.js', '.vue', '.css', '.json']
     },
-    module:
-    {
-        loaders:
-            [
-                {
-                    test: /\.vue$/,
-                    loaders: ['vue']
-                },
-                {
-                    test: /\.js$/,
-                    loaders: ['babel'],
-                    exclude: [/node_modules/]
-                },
-                {
-                    test  : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                    loader: 'url',
-                    query :
-                    {
-                        limit: 10000,
-                        name: 'img/[hash:8].[ext]'
-                    }
-                },
-                {
-                    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                    loader: 'url'
-                },
-                {
-                    test: /\.css$/,
-                    loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
-                },
-                {
-                    test: /\.sass$/,
-                    loader: 'sass-loader'
+    module: {
+        loaders: [
+            {
+                test: /\.json$/,
+                loaders: ['json']
+            },
+            {
+                test: /\.vue$/,
+                loaders: ['vue']
+            },
+            {
+                test: /\.js$/,
+                loaders: ['babel'],
+                exclude: [/node_modules/]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 10000,
+                    name: 'img/[hash:8].[ext]'
                 }
-            ]
-    },
-    plugins:
-        [
-            new webpack.LoaderOptionsPlugin
-            ({
-                options:
-                {
-                    babel:
-                    {
-                        babelrc: false,
-                        presets:
-                            [
-                                ['es2015', {modules: false}], 'stage-2'
-                            ]
-                    },
-                    postcss,
-                    vue:
-                    {
-                        postcss
-                    },
-                    sassLoader:
-                    {
-                        includePaths: [path.resolve(__dirname)]
-                    },
-                    context: '/'
-                }
-            }),
-            new ExtractTextPlugin("[name].css")
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url'
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader'})
+            },
+            {
+                test: /\.sass$/,
+                loader: 'sass-loader'
+            }
         ]
+    },
+    plugins: [
+        new webpack.LoaderOptionsPlugin
+        ({
+            options: {
+                babel: {
+                    babelrc: false,
+                    presets: [
+                        ['es2015', {modules: false}], 'stage-2'
+                    ]
+                },
+                postcss,
+                vue: {
+                    postcss
+                },
+                sassLoader: {
+                    includePaths: [path.resolve(__dirname)]
+                },
+                context: '/'
+            }
+        }),
+        new ExtractTextPlugin("[name].css"),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendors',
+            filename: 'vendors.js'
+        }),
+    ]
 }

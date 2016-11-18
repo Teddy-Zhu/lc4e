@@ -53,12 +53,10 @@ public class ViewController {
         return "index.html";
     }
 
+
     @Route("/{page:[1-9][0-9]*}/{order:[1-3]}")
-    @ResponseBody
-    @RouteMatch(method = RequestMethod.POST)
-    public Message index(@PathVariable Integer page, @PathVariable Integer order) {
-        Integer size = Integer.parseInt(comVarService.getComVarValueByName("AreaPageSize"));
-        return new Message(true, new ReturnData("topics", topicService.getTopic(null, order, page, size)));
+    public String index(@PathVariable Integer page, @PathVariable Integer order) {
+        return "index.html";
     }
 
 

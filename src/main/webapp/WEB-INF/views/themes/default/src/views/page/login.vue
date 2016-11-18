@@ -71,17 +71,22 @@
             },
             onSubmit(e){
                 var that = this;
-                this.$refs.form.validate((valid) => {
+                this.$refs.form.validate(function (valid) {
                     if (valid) {
-                        this.signin(this.form).then(function (data) {
+                        that.signin(that.form).then(function (data) {
                             if (data.result) {
                                 that.$router.push("/");
+                                that.$notify({
+                                    title: '登陆成功',
+                                    message: '欢迎回来~~,' + data["data"]["user"]["nick"],
+                                    type: 'success'
+                                });
                             } else {
                                 callback(new Error(data.message.length > 40 ? data.message.substring(0, 40) + "..." : data.message))
                             }
                         });
                     } else {
-                        this.$message({
+                        that.$message({
                             message: '请填写必要信息',
                             type: 'warning'
                         });

@@ -5,10 +5,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../views/page/index.vue'
 import area from '../views/page/area.vue'
-import topic from '../views/page/topic.vue'
 import login from '../views/page/login.vue'
 import register from '../views/page/register.vue'
 import signout from '../views/page/signout.vue'
+import newTopic from '../views/page/newtopic.vue'
+//import topic from '../views/page/topic.vue'
+const topic = resolve => require(['../views/page/topic.vue'], resolve)
 Vue.use(Router);
 
 export default new Router({
@@ -18,13 +20,18 @@ export default new Router({
         {
             path: '/',
             component: index
+        },
+        {
+            path: "/:page(\\d+)/:order(\\d+)",
+            name: 'index2',
+            component: index
         }, {
             path: '/a/:area',
             name: 'area1',
             component: area
         },
         {
-            path: "/a/:area-:page(\\d+)-:order(\\d+)",
+            path: "/a/:area/:page(\\d+)/:order(\\d+)",
             name: 'area2',
             component: area
         }, {
@@ -47,6 +54,14 @@ export default new Router({
             path: "/u/signout",
             name: 'signout',
             component: signout
+        }, {
+            path: "/t/new",
+            name: 'new',
+            component: newTopic
+        }, {
+            path: "/t/new/:area",
+            name: 'new2',
+            component: newTopic
         }
     ]
 })

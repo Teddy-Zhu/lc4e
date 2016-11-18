@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <title>${SiteName}</title>
-    <link href="${Theme}/dist/app.css" rel="stylesheet" type="text/css">
-    <link href="${Theme}/dist/base/base.css" rel="stylesheet" type="text/css">
+    <link href="/themes/dist/app.css" rel="stylesheet" type="text/css">
+    <link href="/themes/dist/base/base.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link href="http://at.alicdn.com/t/font_1476846710_1240242.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -17,12 +17,16 @@
     var preLoadData = {
         userImg: String('${userImg}'),
         menus: JSON.parse('${menusString}'),
-        isLogin: Boolean('${user()}' == 'true'),
+        user: String('${currentUser()}'),
         siteName: String('${SiteName}'),
         version: String('${version}'),
         themePath: String('${Theme}')
     };
+    if (preLoadData.user) {
+        sessionStorage.setItem('user', preLoadData.user);
+    }
 </script>
-<script src="${Theme}/dist/app.js"></script>
+<script src="/themes/dist/vendors.js"></script>
+<script src="/themes/dist/app.js"></script>
 </body>
 </html>

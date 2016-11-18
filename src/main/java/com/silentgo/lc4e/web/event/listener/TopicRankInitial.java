@@ -1,10 +1,11 @@
-package com.silentgo.lc4e.web.event;
+package com.silentgo.lc4e.web.event.listener;
 
 import com.hankcs.hanlp.HanLP;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.TopicRankDao;
+import com.silentgo.lc4e.web.event.TopicEvent;
 import com.silentgo.utils.StringKit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

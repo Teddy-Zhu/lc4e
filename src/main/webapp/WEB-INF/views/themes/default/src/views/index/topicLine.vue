@@ -28,7 +28,7 @@
                                     </el-tag>
                                 </el-breadcrumb-item>
                                 <el-breadcrumb-item>
-                                    <el-tag type="gray" class="clickable el-tag-mini"><i class="iconfont icon-time"></i>{{data.createTime}}
+                                    <el-tag type="gray" class="el-tag-mini"><i class="iconfont icon-time"></i>{{getDate(data.createTime)}}
                                     </el-tag>
                                 </el-breadcrumb-item>
                             </el-breadcrumb>
@@ -70,13 +70,13 @@
     .topic-line {
         padding: .3em 0;
         border-bottom: 1px solid #c2c8dc;
-        border-left: 0 solid black;
+        border-left: 0 solid #505c6f;
         transition: box-shadow 500ms, border-left 70ms;
     }
 
     .topic-line:hover {
         background-color: white;
-        border-left: 5px solid black;
+        border-left: 5px solid #505c6f;
         box-shadow: 2px 4px 6px rgba(29, 26, 26, 0.3)
     }
 
@@ -147,6 +147,9 @@
             splitText(str){
                 if (!str) return [];
                 return str.split(',');
+            },
+            getDate(d){
+                return new Date(d).toLocaleString();
             }
         },
         components: {}

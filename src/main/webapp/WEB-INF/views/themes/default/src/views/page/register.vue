@@ -21,7 +21,7 @@
                         </el-form-item>
                         <el-form-item label="个人网页" prop="web">
                             <el-input v-model="form.web">
-                                <el-select v-model="form.webPre" slot="prepend">
+                                <el-select v-model="form.webPre" slot="prepend" class="web-select">
                                     <el-option label="https://" key="https://" value="https://"></el-option>
                                     <el-option label="http://" key="http://" value="http://"></el-option>
                                 </el-select>
@@ -45,6 +45,10 @@
     </sg-body>
 </template>
 <style>
+    .web-select .el-input {
+        width: 95px;
+    }
+
     .formStyle {
         background: white;
         box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .25);

@@ -11,15 +11,23 @@
                             </el-breadcrumb>
                         </el-col>
                         <el-col :span="10">
-                            <el-button type="primary" icon="edit">发布主题</el-button>
-                            <el-select v-model="orderNow" class="el-select-mini">
-                                <el-option
-                                        v-for="orderItem in orders"
-                                        :label="orderItem.label"
-                                        :key="orderItem.value"
-                                        :value="orderItem.value">
-                                </el-option>
-                            </el-select>
+                            <el-row type="flex" justify="end">
+                                <el-col :span="11" class="el-col-right">
+                                    <el-button type="primary" size="mini" icon="edit" @click="newTopic" v-if="user.id">
+                                        发布主题
+                                    </el-button>
+                                </el-col>
+                                <el-col :span="12" :offset="1">
+                                    <el-select v-model="orderNow" class="el-select-mini">
+                                        <el-option
+                                                v-for="orderItem in orders"
+                                                :label="orderItem.label"
+                                                :key="orderItem.value"
+                                                :value="orderItem.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-col>
+                            </el-row>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -29,8 +37,14 @@
                     </el-row>
                     <el-row type="flex" justify="center">
                         <el-col :span="24" class="pager-center">
-                            <sg-pager :pageNow="page" :pageSize="size" :pageTotal="total"
-                                      @currentchange="pageChange" class="inline-block"></sg-pager>
+                            <el-pagination
+                                    class="inline-block"
+                                    @current-change="pageChange"
+                                    :current-page="page"
+                                    :page-size="size"
+                                    layout="prev, pager, next, jumper"
+                                    :total="total">
+                            </el-pagination>
                         </el-col>
                     </el-row>
                 </el-col>
@@ -48,7 +62,7 @@
         </slot>
     </sg-body>
 </template>
-<style scoped type="text/css">
+<style type="text/css">
 
     .topic-hot-line {
         margin: 5px 0;
@@ -69,6 +83,8 @@
     .topic-hot {
         min-height: 100px;
         padding: 10px 0;
+        background-color: white;
+        margin-bottom: 1rem;
         border-radius: 0.2em;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
         border-bottom: 1px solid rgba(162, 162, 162, 0.31);
@@ -103,10 +119,15 @@
     .br-path {
         margin: 10px 0;
     }
+
+    .el-col-right {
+        text-align: right;
+        line-height: 26px;
+    }
+
 </style>
 <script type="text/javascript">
     import Body from '../compments/body.vue'
-    import Pager from '../others/pager.vue'
     import TopicLine from '../index/topicLine.vue'
     import {mapState} from 'vuex'
 
@@ -125,7 +146,10 @@
         created () {
             this.getData();
         },
-        computed: mapState({orders: state => state.order}),
+        computed: mapState({
+            orders: state => state.order,
+            user: state => state.user
+        }),
         watch: {
             $route(to, from) {
                 this.updateBaseData();
@@ -136,6 +160,9 @@
             }
         },
         methods: {
+            newTopic(){
+                this.$router.push('/t/new/' + this.area);
+            },
             pageChange(page){
                 this.page = page;
             },
@@ -151,7 +178,7 @@
                     if (response.data.result) {
                         this.topics = response.data.data.topics.result;
                         this.page = response.data.data.topics.pageNumber;
-                        this.total = response.data.data.topics.totalPage;
+                        this.total = response.data.data.topics.totalCount;
                         this.size = response.data.data.topics.pageSize;
                     } else {
                         this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
@@ -169,7 +196,6 @@
         },
         components: {
             'sg-body': Body,
-            'sg-pager': Pager,
             'sg-topic-Line': TopicLine
         }
     }

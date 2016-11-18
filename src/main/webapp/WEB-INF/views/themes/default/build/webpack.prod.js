@@ -25,16 +25,6 @@ module.exports = merge(config,
                 return true
             })
         },
-        module:
-        {
-            //loaders:
-            //[
-            //    {
-            //        test  : /\.css$/,
-            //        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
-            //    }
-            //]
-        },
         plugins:
             [
                 new ProgressBarPlugin(),

@@ -18,6 +18,7 @@ import com.silentgo.lc4e.entity.Popup;
 import com.silentgo.lc4e.tool.RelativeDate;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
+import com.silentgo.lc4e.web.event.VisitTopic;
 import com.silentgo.orm.base.SQLTool;
 import com.silentgo.orm.base.TableModel;
 import com.silentgo.orm.model.Page;
@@ -115,7 +116,11 @@ public class TopicService {
 
     public VwTopicDetail getTopicDetail(Long topicId) {
         Assert.isNotNull(topicId, "主题ID不存在");
-        return vwTopicDetailDao.queryByPrimaryKey(topicId);
+
+        VwTopicDetail detail =  vwTopicDetailDao.queryByPrimaryKey(topicId);
+
+        eventFactory.emit(new VisitTopic(detail));
+        return detail;
     }
 
     @Inject

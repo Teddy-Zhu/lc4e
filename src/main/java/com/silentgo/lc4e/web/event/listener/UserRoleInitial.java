@@ -1,4 +1,4 @@
-package com.silentgo.lc4e.web.event;
+package com.silentgo.lc4e.web.event.listener;
 
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
@@ -7,6 +7,7 @@ import com.silentgo.lc4e.database.dao.RoleDao;
 import com.silentgo.lc4e.database.dao.UserRoleDao;
 import com.silentgo.lc4e.database.model.Role;
 import com.silentgo.lc4e.database.model.UserRole;
+import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.utils.Assert;
 import com.silentgo.utils.DateKit;

@@ -27,8 +27,14 @@
                     </el-row>
                     <el-row type="flex" justify="center">
                         <el-col :span="24" class="pager-center">
-                            <sg-pager :pageNow="page" :pageSize="size" :pageTotal="total"
-                                      @currentchange="pageChange" class="inline-block"></sg-pager>
+                            <el-pagination
+                                    class="inline-block"
+                                    @current-change="pageChange"
+                                    :current-page="page"
+                                    :page-size="size"
+                                    layout="prev, pager, next, jumper"
+                                    :total="total">
+                            </el-pagination>
                         </el-col>
                     </el-row>
                 </el-col>
@@ -49,7 +55,7 @@
         </slot>
     </sg-body>
 </template>
-<style scoped type="text/css">
+<style type="text/css">
 
     .topic-hot-line {
         margin: 5px 0;
@@ -104,10 +110,13 @@
     .br-path {
         margin: 10px 0;
     }
+
+    .el-pagination {
+        background-color: #f2f3f5;
+    }
 </style>
 <script type="text/javascript">
     import Body from '../compments/body.vue'
-    import Pager from '../others/pager.vue'
     import TopicLine from '../index/topicLine.vue'
     import {mapState} from 'vuex'
 
@@ -116,10 +125,10 @@
         data () {
             return {
                 topics: [],
-                page: 1,
+                page: this.$route.params.page ? parseInt(this.$route.params.page) : 1,
                 size: 20,
                 total: 0,
-                orderNow: '1',
+                orderNow: this.$route.params.order ? this.$route.params.order : '1',
                 hots: [{
                     area: 'c++',
                     link: '/asd',
@@ -145,6 +154,7 @@
         },
         watch: {
             $route() {
+                this.updateBaseData();
                 this.getData();
             },
             page(val, OldVal){
@@ -158,14 +168,18 @@
             pageChange(page){
                 this.page = page;
             },
+            updateBaseData(){
+                this.page = this.$route.params.page ? this.$route.params.page : 1;
+                this.orderNow = this.$route.params.order ? this.$route.params.order : '1';
+            },
             getData () {
-                var url = '/' + this.page + '/' + this.orderNow;
+                var url = '/a/all/' + this.page + '/' + this.orderNow;
 
                 this.$http.post(url).then((response)=> {
                     if (response.data.result) {
                         this.topics = response.data.data.topics.result;
                         this.page = response.data.data.topics.pageNumber;
-                        this.total = response.data.data.topics.totalPage;
+                        this.total = response.data.data.topics.totalCount;
                         this.size = response.data.data.topics.pageSize;
                     } else {
                         this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
@@ -183,7 +197,6 @@
         },
         components: {
             'sg-body': Body,
-            'sg-pager': Pager,
             'sg-topic-Line': TopicLine
         }
     }

@@ -75,8 +75,7 @@
         },
         computed: mapState({
             user: state => state.user
-        })
-        ,
+        }),
         created(){
             var self = this;
             on(window, 'scroll', function (event) {
