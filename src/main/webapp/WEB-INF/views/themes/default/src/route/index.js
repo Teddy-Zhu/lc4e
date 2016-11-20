@@ -9,8 +9,7 @@ import login from '../views/page/login.vue'
 import register from '../views/page/register.vue'
 import signout from '../views/page/signout.vue'
 import newTopic from '../views/page/newtopic.vue'
-//import topic from '../views/page/topic.vue'
-const topic = resolve => require(['../views/page/topic.vue'], resolve)
+import topic from '../views/page/topic.vue'
 Vue.use(Router);
 
 export default new Router({
