@@ -16,7 +16,7 @@
     "vue": "^2.0.6",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.0",
-    "vue-smoothscroll-websites": "0.0.4",
+    "vue-smoothscroll-websites": "^0.0.6",
     "vuex": "^2.0.0",
     "wind-dom": "0.0.3",
     "markdown-it": "^6.0.1",

@@ -18,13 +18,13 @@ module.exports = merge(config,
             ({
                 minimize: true
             })
-            // ,
-            // new webpack.optimize.UglifyJsPlugin({ //压缩代码
-            //     sourceMap: true,
-            //     compress: {
-            //         warnings: false
-            //     }
-            // })
+            ,
+            new webpack.optimize.UglifyJsPlugin({ //压缩代码
+                sourceMap: true,
+                compress: {
+                    warnings: false
+                }
+            })
         ],
         devtool: 'source-map'
     })
