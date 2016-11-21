@@ -119,14 +119,17 @@
                     }
                 }
                 this.$message.error("不存在此区域或此区域无法无法发布主题,请选择其他区域");
+            },
+            shouldChange(){
+                return this.area && this.areas.length > 0;
             }
         },
         watch: {
             area(val, oldVal){
-                this.changeAreaChoosed();
+                this.shouldChange() && this.changeAreaChoosed();
             },
             areas(val, oldVal){
-                this.changeAreaChoosed();
+                this.shouldChange() && this.changeAreaChoosed();
             }
         },
         created(){
