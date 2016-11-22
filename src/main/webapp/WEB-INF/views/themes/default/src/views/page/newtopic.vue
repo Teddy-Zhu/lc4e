@@ -78,7 +78,7 @@
                             data: that.form
                         }).then(function (data) {
                             if (data.result) {
-                                that.$router.push("/t/" + data["data"]["topic"]["id"]);
+                                that.$router.push("/t/" + data["data"]["topic"]["url"]);
                                 that.$message({
                                     message: '恭喜你，主题已发布',
                                     type: 'success'

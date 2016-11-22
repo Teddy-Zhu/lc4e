@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>framework</artifactId>
-            <version>0.0.29</version>
+            <version>0.0.30</version>
         </dependency>
 
         <dependency>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>shiro</artifactId>
-            <version>0.0.3</version>
+            <version>0.0.4</version>
         </dependency>
 
         <dependency>
@@ -68,6 +68,15 @@
             <artifactId>hanlp</artifactId>
             <version>portable-1.2.8</version>
         </dependency>
+
+
+        <!-- hashids -->
+        <dependency>
+            <groupId>org.hashids</groupId>
+            <artifactId>hashids</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
 
     </dependencies>
     <build>

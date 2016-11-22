@@ -54,7 +54,7 @@ public class ViewController {
     }
 
 
-    @Route("/{page:[1-9][0-9]*}/{order:[1-3]}")
+    @Route("/{page:([1-9][0-9]*)}/{order:([1-3])}")
     public String index(@PathVariable Integer page, @PathVariable Integer order) {
         return "index.html";
     }

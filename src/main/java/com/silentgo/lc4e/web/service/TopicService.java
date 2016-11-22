@@ -1,37 +1,24 @@
 package com.silentgo.lc4e.web.service;
 
-import com.hankcs.hanlp.HanLP;
-import com.silentgo.core.cache.CacheManager;
 import com.silentgo.core.config.SilentGoConfig;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.core.plugin.event.EventFactory;
-import com.silentgo.lc4e.config.Key;
 import com.silentgo.lc4e.database.dao.AreaDao;
 import com.silentgo.lc4e.database.dao.TopicDao;
 import com.silentgo.lc4e.database.dao.VwTopicDetailDao;
 import com.silentgo.lc4e.database.model.Topic;
-import com.silentgo.lc4e.database.model.TopicRank;
 import com.silentgo.lc4e.database.model.VwTopicDetail;
-import com.silentgo.lc4e.entity.Article;
-import com.silentgo.lc4e.entity.Popup;
-import com.silentgo.lc4e.tool.RelativeDate;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
 import com.silentgo.lc4e.web.event.VisitTopic;
-import com.silentgo.orm.base.SQLTool;
-import com.silentgo.orm.base.TableModel;
 import com.silentgo.orm.model.Page;
-import com.silentgo.orm.sqlparser.annotation.Select;
 import com.silentgo.utils.Assert;
-import com.silentgo.utils.CollectionKit;
 import com.silentgo.utils.DateKit;
-import com.silentgo.utils.StringKit;
+import org.hashids.Hashids;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by teddy on 2015/9/23.
@@ -114,10 +101,12 @@ public class TopicService {
         return result;
     }
 
-    public VwTopicDetail getTopicDetail(Long topicId) {
-        Assert.isNotNull(topicId, "主题ID不存在");
+    public VwTopicDetail getTopicDetail(String url) {
+        Assert.isNotBlank(url, "主题不存在");
 
-        VwTopicDetail detail =  vwTopicDetailDao.queryByPrimaryKey(topicId);
+        Long id = urlGenerateService.getId(url);
+
+        VwTopicDetail detail = vwTopicDetailDao.queryByPrimaryKey(id);
 
         eventFactory.emit(new VisitTopic(detail));
         return detail;
@@ -133,6 +122,9 @@ public class TopicService {
     TopicDao topicDao;
     @Inject
     EventFactory eventFactory;
+
+    @Inject
+    UrlGenerateService urlGenerateService;
 
     public boolean createTopic(Topic topic) {
 
@@ -159,9 +151,23 @@ public class TopicService {
         topic.setIsComment(true);
         topic.setIsDelete(false);
         topic.setUrl(" ");
+
         int i = topicDao.insertByRow(topic);
 
         Assert.isTrue(i == 1, "主题创建失败");
+
+
+        //generate url
+        String url = urlGenerateService.getUrl(topic.getId());
+        topic.setUrl(url);
+        Topic update = new Topic();
+        update.setId(topic.getId());
+        update.setUrl(url);
+        i = topicDao.updateByPrimaryKeySelective(update);
+
+        Assert.isTrue(i == 1, "主题创建url失败");
+
+        topic.setUrl(url);
 
         silentGoConfig.getCacheManager().set("topicPublishCache", topic.getUserId(), new Date());
 
@@ -169,5 +175,6 @@ public class TopicService {
 
         return true;
     }
+
 
 }

@@ -74,18 +74,6 @@ public class UserController {
 
 
     /**
-     * sign view
-     *
-     * @param response
-     * @return
-     */
-    @RequiresGuest
-    @Route("/login")
-    public String SignIn(Response response) {
-        return "index.html";
-    }
-
-    /**
      * sign initial data
      *
      * @return
@@ -109,7 +97,18 @@ public class UserController {
      */
     @Route("/register")
     public String register(Response response, Request request) throws Exception {
-        request.setAttribute("enable", Boolean.parseBoolean(comVarService.getComVarByName("Register").getValue()));
+        return "index.html";
+    }
+
+    /**
+     * sign view
+     *
+     * @param response
+     * @return
+     */
+    @RequiresGuest
+    @Route("/login")
+    public String SignIn(Response response) {
         return "index.html";
     }
 

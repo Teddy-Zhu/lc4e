@@ -9,7 +9,7 @@
                         </a>
                     </td>
                     <td align="left" width="75%">
-                        <router-link :to="getTopicUrl(data.id)" tag="div" class="topic-line-title">
+                        <router-link :to="getTopicUrl(data.url)" tag="div" class="topic-line-title">
                             {{data.title}}
                         </router-link>
                         <div class="topic-line-meta">

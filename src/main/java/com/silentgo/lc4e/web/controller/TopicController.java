@@ -1,26 +1,18 @@
 package com.silentgo.lc4e.web.controller;
 
-import com.silentgo.core.aop.validator.annotation.RequestBool;
 import com.silentgo.core.aop.validator.annotation.RequestInt;
-import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.Comment;
-import com.silentgo.lc4e.database.model.SysConfig;
 import com.silentgo.lc4e.database.model.Topic;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
-import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
 import com.silentgo.lc4e.web.service.CurUserService;
 import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
-import com.silentgo.servlet.http.Response;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresUser;
-import org.apache.shiro.subject.Subject;
 
 import java.util.ArrayList;
 
@@ -37,30 +29,11 @@ import java.util.ArrayList;
 public class TopicController {
 
 
-    /**
-     * visit topic
-     *
-     * @param request
-     * @param topicpath
-     * @return
-     */
-    @Route("/{topic:[1-9][0-9]*}")
-    @RouteMatch(method = RequestMethod.GET)
-    public String t(Request request, @PathVariable("topic") @RequestString String topicpath) {
-        return "index.html";
-    }
-
-    @Route("/{topic:[1-9][0-9]*}/{page:[1-9][0-9]*}")
-    @RouteMatch(method = RequestMethod.POST)
-    public String t(Request request) {
-        return "index.html";
-    }
-
-    @Route("/{topic:[1-9][0-9]*}")
+    @Route("/{topic:([0-9a-zA-Z]{4,})}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
-    public Message topicInfo(Request request, @PathVariable("topic") String topic) {
-        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(Long.parseLong(topic))));
+    public Message topicInfo(Request request, @PathVariable("topic") String url) {
+        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(url)));
     }
 
     /**
@@ -71,7 +44,7 @@ public class TopicController {
      * @param page
      * @return
      */
-    @Route("/{topic:[1-9][0-9]*}/{page:[1-9][0-9]*}")
+    @Route("/{topic:([0-9a-zA-Z]{4,})}/{page:([1-9][0-9]*)}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message t2(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
@@ -102,20 +75,22 @@ public class TopicController {
         topic.setUserId(user.getId());
         boolean result = topicService.createTopic(topic);
         Topic ret = new Topic();
-        ret.setId(topic.getId());
+        ret.setUrl(topic.getUrl());
         return new Message(result, "主题创建成功", new ReturnData("topic", ret));
     }
 
     /**
-     * view
+     * view new topc , visit topic
      *
      * @param request
      * @return
      */
-    @Route("/new/{area}")
+    @Route({"/new/{area}", "/{topic:([0-9a-zA-Z]{4,})}", "/{topic:([0-9a-zA-Z]{4,})}/{page:([1-9][0-9]*)}"})
+    @RouteMatch(method = RequestMethod.GET)
     public String newTopic(Request request) {
         return "index.html";
     }
+
 
     @Route("/new")
     public String newTopic() {

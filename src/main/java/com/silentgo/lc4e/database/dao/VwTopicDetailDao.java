@@ -15,7 +15,7 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
 
 
     @Where({" create_time < ? "})
-    @ColumnIgnore("content")
+    @ColumnIgnore({"content", "id"})
     @WhereGroup(
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> ")
     )
@@ -28,6 +28,7 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
     @WhereGroup(
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> ")
     )
+    @ColumnIgnore({"content", "id"})
     public List<VwTopicDetail> queryWhereGroupByIdOrderLimit(Date date, int start, int size, @Param("area") String area);
 
     @Where({" create_time < ? "})
@@ -36,7 +37,7 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
     )
     public int countWhere(Date date, @Param("area") String area);
 
-    @ColumnIgnore("content")
+    @ColumnIgnore({"content", "id"})
     @Select(" select vw_topic_detail.* from vw_topic_detail where id in (<#id/>) order by field(id,<#id/>) ")
     public List<VwTopicDetail> queryByIds(@Param("id") List<String> id);
 

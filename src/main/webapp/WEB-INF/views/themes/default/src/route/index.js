@@ -34,11 +34,11 @@ export default new Router({
             name: 'area2',
             component: area
         }, {
-            path: "/t/:topic(\\d+)",
+            path: "/t/:topic([0-9a-zA-Z]{4,})",
             name: "topic1",
             component: topic
         }, {
-            path: "/t/:topic(\\d+)/:page(\\d+)",
+            path: "/t/:topic([0-9a-zA-Z]{4,})/:page(\\d+)",
             name: "topic2",
             component: topic
         }, {

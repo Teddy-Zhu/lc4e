@@ -40,20 +40,14 @@ public class AreaController {
     @Inject
     TopicService topicService;
 
-    @Route("/{area}")
+
+    @Route({"/{area}/{page:([1-9][0-9]*)}/{order:([1-3])}", "/{area}"})
     @RouteMatch(method = RequestMethod.GET)
-    public String a(Request request, @PathVariable @RequestString String area) {
+    public String a(Request request) {
         return "index.html";
     }
 
-    @Route("/{area}/{page:[1-9][0-9]*}/{order:[1-3]}")
-    @RouteMatch(method = RequestMethod.GET)
-    public String a(Request request, @PathVariable @RequestString String area,
-                    @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {
-        return "index.html";
-    }
-
-    @Route("/{area}/{page:[1-9][0-9]*}/{order:[1-3]}")
+    @Route("/{area}/{page:([1-9][0-9]*)}/{order:([1-3])}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message a2(Request request, @PathVariable String area, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {
