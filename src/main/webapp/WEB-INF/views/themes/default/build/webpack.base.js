@@ -93,8 +93,8 @@ module.exports =
         }),
         new ExtractTextPlugin("[name].css"),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors',
+            name: "vendors",
             filename: 'vendors.js'
-        }),
+        })
     ]
 }

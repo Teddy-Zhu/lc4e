@@ -15,7 +15,7 @@
                                         <img :src="getAvatar(topic.authorMail)">
                                     </td>
                                     <td>
-                                        <sg-comment :content="topic.content"></sg-comment>
+                                        <sg-markdown :sourceOut="topic.content" :isEditor="false"></sg-markdown>
                                     </td>
                                 </tr>
                             </table>
@@ -29,15 +29,12 @@
                                         <img :src="getAvatar(user.mail)">
                                     </td>
                                     <td>
-                                        <sg-comment :content="comment.content"></sg-comment>
+                                        <sg-markdown :sourceOut="topic.content" :isEditor="false"></sg-markdown>
                                     </td>
                                 </tr>
                             </table>
                         </el-col>
                     </el-row>
-                    <keep-alive>
-                        <sg-markdown>this is the default slot</sg-markdown>
-                    </keep-alive>
                     <el-row type="flex" justify="center">
                         <el-col :span="24" class="pager-center">
                             <el-pagination
@@ -71,9 +68,7 @@
 </style>
 <script>
     import Body from '../compments/body.vue'
-    import Comment from '../others/comment.vue'
     import md5 from 'md5'
-    import SgMarkdown from '../compments/markdown.vue'
 
     export default{
         name: "topicInfo",
@@ -127,8 +122,9 @@
         },
         components: {
             'sg-body': Body,
-            'sg-comment': Comment,
-            "sg-markdown": SgMarkdown
+            'sg-markdown': (resolve, reject)=> {
+                require(['../compments/markdown.vue'], resolve);
+            }
         }
     }
 </script>

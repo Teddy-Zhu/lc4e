@@ -1,200 +1,148 @@
 <template>
-    <el-row>
-        <el-col :span="24">
-            <slot></slot>
+    <el-row class="markdown-body" v-bind:class="{'markdown-body-extra' : isEditor }">
+        <el-col :span="24" v-html="outHtml">
         </el-col>
     </el-row>
 </template>
-<style>
+<style scoped>
+    .markdown-body {
+        margin-top: 8px;
+        padding: 5px 7px;
+    }
+
+    .markdown-body-extra {
+        margin-top: 8px;
+        padding: 5px 7px;
+        background-color: white;
+        max-height: 300px;
+        min-height: 100px;
+        overflow: auto;
+    }
+
 </style>
 <script>
     import markdownIt from 'markdown-it'
     import emoji from 'markdown-it-emoji'
-    import subscript from 'markdown-it-sub'
-    import superscript from 'markdown-it-sup'
     import footnote from 'markdown-it-footnote'
-    import deflist from 'markdown-it-deflist'
     import abbreviation from 'markdown-it-abbr'
-    import insert from 'markdown-it-ins'
     import mark from 'markdown-it-mark'
-    import toc from 'markdown-it-toc-and-anchor'
+    import taskList from 'markdown-it-task-lists'
+    import hljs from 'highlight.js';
 
+    import "../../markdown/markdown.css"
+    import "highlight.js/styles/atom-one-light.css"
     export default {
         name: 'sg-markdown',
         data() {
             return {
-                md: new markdownIt(),
-                el: undefined,
-                sourceOut: ''
+                md: undefined,
+                outHtml: ''
             }
         },
         props: {
+            isEditor: {
+                type: Boolean,
+                default: true
+            },
+            sourceOut: {
+                type: String,
+                default: ''
+            },
             watches: {
                 type: Array,
-                default: () => ['source', 'show', 'toc'],
+                default: () => ['source', 'show', 'toc']
             },
             source: {
                 type: String,
-                default: ``,
+                default: ''
             },
             show: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             html: {
                 type: Boolean,
-                default: true,
+                default: false
             },
             xhtmlOut: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             breaks: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             linkify: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             emoji: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             typographer: {
                 type: Boolean,
-                default: true,
+                default: true
             },
             langPrefix: {
                 type: String,
-                default: 'language-',
+                default: 'language-'
             },
             quotes: {
                 type: String,
-                default: '“”‘’',
+                default: '“”‘’'
             },
             tableClass: {
                 type: String,
-                default: 'table',
-            },
-            toc: {
-                type: Boolean,
-                default: false,
-            },
-            tocId: {
-                type: String,
-            },
-            tocClass: {
-                type: String,
-                default: 'table-of-contents',
-            },
-            tocFirstLevel: {
-                type: Number,
-                default: 2,
-            },
-            tocLastLevel: {
-                type: Number,
-            },
-            tocAnchorLink: {
-                type: Boolean,
-                default: true,
-            },
-            tocAnchorClass: {
-                type: String,
-                default: 'toc-anchor',
-            },
-            tocAnchorLinkSymbol: {
-                type: String,
-                default: '#',
-            },
-            tocAnchorLinkSpace: {
-                type: Boolean,
-                default: true,
-            },
-            tocAnchorLinkClass: {
-                type: String,
-                default: 'toc-anchor-link',
-            },
+                default: 'table'
+            }
         },
         watch: {
+            sourceOut(){
+                this.render();
+            },
             source(){
-                this.el && this.render(this.el);
+                this.render();
             },
             show(){
-                this.el && this.render(this.el);
-            },
-            toc(){
-                this.el && this.render(this.el);
+                this.render();
             }
         },
         created(){
-            console.log('markdown created');
+            this.render();
         },
         computed: {
             tocLastLevelComputed() {
                 return (!this.tockLastLevel) ? this.tocFirstLevel + 1 : this.tocLastLevel;
             }
         },
-        beforeDestroy(){
-            console.log("before destroy");
-        },
-        destroyed(){
-            console.log("before destroyed");
-        },
-        updated(){
-            this._inactive = false;
-        },
         methods: {
-            render(root){
-                this.md = new markdownIt().use(subscript).use(superscript)
-                        .use(footnote).use(deflist).use(abbreviation).use(insert).use(mark)
-                if (root.emoji) this.md.use(emoji)
+            render(){
+                this.md = new markdownIt().use(footnote).use(abbreviation).use(mark).use(taskList);
+                if (this.emoji) this.md.use(emoji)
                 this.md.set({
-                    html: root.html,
-                    xhtmlOut: root.xhtmlOut,
-                    breaks: root.breaks,
-                    linkify: root.linkify,
-                    typographer: root.typographer,
-                    langPrefix: root.langPrefix,
-                    quotes: root.quotes,
-                })
-                this.md.renderer.rules.table_open = () => `<table class="${root.tableClass}">\n`
-                if (root.toc) {
-                    this.md.use(toc, {
-                        tocClassName: root.tocClass,
-                        tocFirstLevel: root.tocFirstLevel,
-                        tocLastLevel: root.tocLastLevelComputed,
-                        anchorLink: root.tocAnchorLink,
-                        anchorLinkSymbol: root.tocAnchorLinkSymbol,
-                        anchorLinkSpace: root.tocAnchorLinkSpace,
-                        anchorClassName: root.tocAnchorClass,
-                        anchorLinkSymbolClassName: root.tocAnchorLinkClass,
-                        tocCallback: (tocMarkdown, tocArray, tocHtml) => {
-                            if (tocHtml) {
-                                if (root.tocId && document.getElementById(root.tocId))
-                                    document.getElementById(root.tocId).innerHTML = tocHtml
-                                root.$emit('toc-rendered', tocHtml)
+                    html: this.html,
+                    xhtmlOut: this.xhtmlOut,
+                    breaks: this.breaks,
+                    linkify: this.linkify,
+                    typographer: this.typographer,
+                    langPrefix: this.langPrefix,
+                    quotes: this.quotes,
+                    highlight: function (str, lang) {
+                        if (lang && hljs.getLanguage(lang)) {
+                            try {
+                                return hljs.highlight(lang, str).value;
+                            } catch (__) {
                             }
-                        },
-                    })
-                } else if (root.tocId && document.getElementById(root.tocId))
-                    document.getElementById(root.tocId).innerHTML = ''
-                const outHtml = root.show ? this.md.render(root.sourceOut) : ''
-                root.$el.innerHTML = outHtml
-                root._inactive = false;
-                root.$emit('rendered', outHtml)
-                console.log('rendered end');
+                        }
+                        return '';
+                    }
+                });
+                this.md.renderer.rules.table_open = () => '<table class="' + this.tableClass + '">\n'
+                var outHtml = this.show ? this.md.render(this.sourceOut) : ''
+                this.outHtml = outHtml;
+                this.$emit('rendered', outHtml);
             }
-        },
-        mounted() {
-            if (this.$el.childNodes.length > 0) {
-                this.source = '';
-                for (let el of this.$el.childNodes) {
-                    this.sourceOut += (el.outerHTML ? el.outerHTML : el.textContent)
-                }
-            }
-            this.render(this);
-            this.el = this;
         }
     }
 </script>

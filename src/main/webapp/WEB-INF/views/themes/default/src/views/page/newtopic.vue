@@ -3,24 +3,26 @@
         <slot>
             <el-row type="flex" justify="center">
                 <el-col :span="15">
-                    <el-form ref="form" :model="form" label-width="100px">
-                        <el-form-item label="区域名称" prop="area">
+                    <el-form ref="form" :rules="rules" label-position="left" :model="form" label-width="100px">
+                        <el-form-item label="区域名称" prop="areaId">
                             <el-select v-model="form.areaId" placeholder="请选择区域">
                                 <el-option v-for="allowarea in areas" :label="allowarea.name"
                                            :value="allowarea.id"></el-option>
                             </el-select>
                         </el-form-item>
-                        <el-form-item label="标题">
+                        <el-form-item label="标题" prop="title">
                             <el-input v-model="form.title"></el-input>
                         </el-form-item>
                         <el-form-item label="内容" prop="content">
-                            <el-input type="textarea" v-model="form.content"></el-input>
+                            <el-input class="topicContent" type="textarea" v-model="form.content"></el-input>
+                            <sg-markdown :sourceOut="form.content" @rendered="rendered" v-if="preview"></sg-markdown>
                         </el-form-item>
                         <el-form-item label="验证码" v-if="captcha" prop="captcha">
                             <el-input v-model="form.captcha"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                            <el-button @click="showPreview" :loading="buttonLoading">{{previewButton}}</el-button>
                         </el-form-item>
                     </el-form>
                 </el-col>
@@ -47,6 +49,11 @@
         border-bottom: 1px solid rgba(162, 162, 162, 0.31);
     }
 
+    .topicContent .el-textarea__inner {
+        min-height: 150px;
+    }
+
+
 </style>
 <script>
     import Body from '../compments/body.vue'
@@ -59,12 +66,32 @@
                 area: this.$route.params.area,
                 areas: [],
                 captcha: this.$store.state.config.captcha,
+                preview: false,
+                buttonLoading: false,
                 form: {
                     title: '',
                     content: '',
                     captcha: '',
-                    areaId: ''
+                    areaId: undefined
+                },
+                rules: {
+                    areaId: [
+                        {type: 'number', required: true, message: '请选择区域', trigger: 'change'},
+                    ],
+                    title: [
+                        {required: true, message: '请输入文章标题', trigger: 'blur'},
+                        {min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur'}
+                    ],
+                    content: [
+                        {required: true, message: '请输入文章内容', trigger: 'blur'},
+                        {min: 1, message: '长度大于1', trigger: 'blur'}
+                    ]
                 }
+            }
+        },
+        computed: {
+            previewButton(){
+                return this.preview ? "关闭预览" : "实时预览";
             }
         },
         methods: {
@@ -122,6 +149,15 @@
             },
             shouldChange(){
                 return this.area && this.areas.length > 0;
+            },
+            showPreview(){
+                this.preview = !this.preview;
+                if (this.preview) {
+                    this.buttonLoading = true;
+                }
+            },
+            rendered(){
+                this.buttonLoading = false;
             }
         },
         watch: {
@@ -136,7 +172,10 @@
             this.getData();
         },
         components: {
-            'sg-body': Body
+            'sg-body': Body,
+            'sg-markdown': (resolve, reject)=> {
+                require(['../compments/markdown.vue'], resolve);
+            }
         }
     }
 </script>

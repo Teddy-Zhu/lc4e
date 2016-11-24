@@ -21,6 +21,9 @@ module.exports = merge(config,
             ,
             new webpack.optimize.UglifyJsPlugin({ //压缩代码
                 sourceMap: false,
+                output: {
+                    comments: false,  // remove all comments
+                },
                 compress: {
                     warnings: false
                 }
