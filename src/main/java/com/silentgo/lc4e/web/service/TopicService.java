@@ -1,6 +1,7 @@
 package com.silentgo.lc4e.web.service;
 
 import com.silentgo.core.config.SilentGoConfig;
+import com.silentgo.core.db.intercept.Transaction;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.core.plugin.event.EventFactory;
@@ -126,6 +127,7 @@ public class TopicService {
     @Inject
     UrlGenerateService urlGenerateService;
 
+    @Transaction
     public boolean createTopic(Topic topic) {
 
         Assert.isNotNull(topic, "main parameter can not be null");

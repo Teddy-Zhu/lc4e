@@ -5,11 +5,38 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "comment",  primaryKey = "id")
+@Table(value = "comment",  primaryKey = "id")
 public class Comment extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column("topic_id")
+	public Long topicId;
+
+	@Column(value = "refer_user",def = true)
+	public String referUser;
+
+	@Column(value = "refer_floor",def = true)
+	public String referFloor;
+
+	@Column
+	public String content;
+
+	@Column("is_visible")
+	public Boolean isVisible;
+
+	@Column
+	public Integer floor;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +46,6 @@ public class Comment extends TableModel {
 		this.id = id;
 	}
 
-	@Column("user_id")
-	public Long userId;
-
 	public Long getUserId() {
 		return userId;
 	}
@@ -29,9 +53,6 @@ public class Comment extends TableModel {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-	@Column("topic_id")
-	public Long topicId;
 
 	public Long getTopicId() {
 		return topicId;
@@ -41,9 +62,6 @@ public class Comment extends TableModel {
 		this.topicId = topicId;
 	}
 
-	@Column(value= "refer_user",def = true)
-	public String referUser;
-
 	public String getReferUser() {
 		return referUser;
 	}
@@ -51,9 +69,6 @@ public class Comment extends TableModel {
 	public void setReferUser(String referUser) {
 		this.referUser = referUser;
 	}
-
-	@Column(value= "refer_floor",def = true)
-	public String referFloor;
 
 	public String getReferFloor() {
 		return referFloor;
@@ -63,9 +78,6 @@ public class Comment extends TableModel {
 		this.referFloor = referFloor;
 	}
 
-	@Column
-	public String content;
-
 	public String getContent() {
 		return content;
 	}
@@ -73,9 +85,6 @@ public class Comment extends TableModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	@Column("is_visible")
-	public Boolean isVisible;
 
 	public Boolean getIsVisible() {
 		return isVisible;
@@ -85,9 +94,6 @@ public class Comment extends TableModel {
 		this.isVisible = isVisible;
 	}
 
-	@Column
-	public Integer floor;
-
 	public Integer getFloor() {
 		return floor;
 	}
@@ -96,9 +102,6 @@ public class Comment extends TableModel {
 		this.floor = floor;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -106,9 +109,6 @@ public class Comment extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

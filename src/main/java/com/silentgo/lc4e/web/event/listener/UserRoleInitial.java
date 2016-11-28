@@ -1,5 +1,7 @@
 package com.silentgo.lc4e.web.event.listener;
 
+import com.silentgo.core.db.intercept.Transaction;
+import com.silentgo.core.db.propagation.Propagation;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
@@ -39,6 +41,7 @@ public class UserRoleInitial implements EventListener<UserRegisterEvent> {
     RoleDao roleDao;
 
     @Override
+    @Transaction
     public void onEvent(UserRegisterEvent event) {
 
         String abbr = comVarService.getComVarValueByName("RegisterInitialUser");

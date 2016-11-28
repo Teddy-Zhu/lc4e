@@ -5,11 +5,23 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "user_followed",  primaryKey = "id")
+@Table(value = "user_followed",  primaryKey = "id")
 public class UserFollowed extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column("followed_user_id")
+	public Long followedUserId;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +31,6 @@ public class UserFollowed extends TableModel {
 		this.id = id;
 	}
 
-	@Column("user_id")
-	public Long userId;
-
 	public Long getUserId() {
 		return userId;
 	}
@@ -29,9 +38,6 @@ public class UserFollowed extends TableModel {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-	@Column("followed_user_id")
-	public Long followedUserId;
 
 	public Long getFollowedUserId() {
 		return followedUserId;
@@ -41,9 +47,6 @@ public class UserFollowed extends TableModel {
 		this.followedUserId = followedUserId;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -51,9 +54,6 @@ public class UserFollowed extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

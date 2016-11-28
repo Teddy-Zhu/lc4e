@@ -28,26 +28,26 @@ public class SuggestController {
         if (StringKit.isNotBlank(name)) {
             exist = userService.validateUserName(name);
         }
-        return new Message(!exist, exist ? "UserName Has been occupied" : "");
+        return new Message(!exist, exist ? "用户名已被使用" : "");
     }
 
     @Route
     @ResponseBody
-    public Message nick(@RequestParam String nick) {
+    public Message nick(@RequestParam("name") String nick) {
         boolean exist = true;
         if (StringKit.isNotBlank(nick)) {
             exist = userService.validateUserNick(nick);
         }
-        return new Message(!exist, exist ? "UserNick Has been occupied" : "");
+        return new Message(!exist, exist ? "用户昵称已被使用" : "");
     }
 
     @Route
     @ResponseBody
-    public Message mail(@RequestParam String mail) {
+    public Message mail(@RequestParam("name") String mail) {
         boolean exist = true;
         if (StringKit.isNotBlank(mail)) {
             exist = userService.validateUserMail(mail);
         }
-        return new Message(!exist, exist ? "UserMail Has been occupied" : "");
+        return new Message(!exist, exist ? "用户邮箱已被使用" : "");
     }
 }

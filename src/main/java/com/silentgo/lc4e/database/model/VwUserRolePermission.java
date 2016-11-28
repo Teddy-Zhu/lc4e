@@ -8,8 +8,23 @@ import com.silentgo.orm.base.TableModel;
 @Table("vw_user_role_permission")
 public class VwUserRolePermission extends TableModel {
 
-	@Column(value= "role_abbr",nullable = true)
+	@Column(value = "role_abbr",nullable = true)
 	public String roleAbbr;
+
+	@Column(value = "permission_abbr",nullable = true)
+	public String permissionAbbr;
+
+	@Column("user_name")
+	public String userName;
+
+	@Column(value = "role_is_available",def = true,nullable = true)
+	public Boolean roleIsAvailable;
+
+	@Column(value = "permission_is_available",def = true,nullable = true)
+	public Boolean permissionIsAvailable;
+
+	@Column(value = "role_end_time",nullable = true)
+	public Date roleEndTime;
 
 	public String getRoleAbbr() {
 		return roleAbbr;
@@ -19,9 +34,6 @@ public class VwUserRolePermission extends TableModel {
 		this.roleAbbr = roleAbbr;
 	}
 
-	@Column(value= "permission_abbr",nullable = true)
-	public String permissionAbbr;
-
 	public String getPermissionAbbr() {
 		return permissionAbbr;
 	}
@@ -29,9 +41,6 @@ public class VwUserRolePermission extends TableModel {
 	public void setPermissionAbbr(String permissionAbbr) {
 		this.permissionAbbr = permissionAbbr;
 	}
-
-	@Column("user_name")
-	public String userName;
 
 	public String getUserName() {
 		return userName;
@@ -41,9 +50,6 @@ public class VwUserRolePermission extends TableModel {
 		this.userName = userName;
 	}
 
-	@Column(value= "role_is_available",def = true,nullable = true)
-	public Boolean roleIsAvailable;
-
 	public Boolean getRoleIsAvailable() {
 		return roleIsAvailable;
 	}
@@ -52,9 +58,6 @@ public class VwUserRolePermission extends TableModel {
 		this.roleIsAvailable = roleIsAvailable;
 	}
 
-	@Column(value= "permission_is_available",def = true,nullable = true)
-	public Boolean permissionIsAvailable;
-
 	public Boolean getPermissionIsAvailable() {
 		return permissionIsAvailable;
 	}
@@ -62,9 +65,6 @@ public class VwUserRolePermission extends TableModel {
 	public void setPermissionIsAvailable(Boolean permissionIsAvailable) {
 		this.permissionIsAvailable = permissionIsAvailable;
 	}
-
-	@Column(value= "role_end_time",nullable = true)
-	public Date roleEndTime;
 
 	public Date getRoleEndTime() {
 		return roleEndTime;

@@ -5,11 +5,44 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "area",  primaryKey = "id")
+@Table(value = "area",  primaryKey = "id")
 public class Area extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column("parent_id")
+	public Long parentId;
+
+	@Column
+	public String abbr;
+
+	@Column
+	public String name;
+
+	@Column
+	public String description;
+
+	@Column
+	public String css;
+
+	@Column
+	public String icon;
+
+	@Column(value = "is_publish",def = true)
+	public Boolean isPublish;
+
+	@Column(value = "is_visible",def = true)
+	public Boolean isVisible;
+
+	@Column(value = "is_close",def = true)
+	public Boolean isClose;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column("update_time")
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +52,6 @@ public class Area extends TableModel {
 		this.id = id;
 	}
 
-	@Column("parent_id")
-	public Long parentId;
-
 	public Long getParentId() {
 		return parentId;
 	}
@@ -29,9 +59,6 @@ public class Area extends TableModel {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
-
-	@Column
-	public String abbr;
 
 	public String getAbbr() {
 		return abbr;
@@ -41,9 +68,6 @@ public class Area extends TableModel {
 		this.abbr = abbr;
 	}
 
-	@Column
-	public String name;
-
 	public String getName() {
 		return name;
 	}
@@ -51,9 +75,6 @@ public class Area extends TableModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column
-	public String description;
 
 	public String getDescription() {
 		return description;
@@ -63,9 +84,6 @@ public class Area extends TableModel {
 		this.description = description;
 	}
 
-	@Column
-	public String css;
-
 	public String getCss() {
 		return css;
 	}
@@ -73,9 +91,6 @@ public class Area extends TableModel {
 	public void setCss(String css) {
 		this.css = css;
 	}
-
-	@Column
-	public String icon;
 
 	public String getIcon() {
 		return icon;
@@ -85,9 +100,6 @@ public class Area extends TableModel {
 		this.icon = icon;
 	}
 
-	@Column(value= "is_publish",def = true)
-	public Boolean isPublish;
-
 	public Boolean getIsPublish() {
 		return isPublish;
 	}
@@ -95,9 +107,6 @@ public class Area extends TableModel {
 	public void setIsPublish(Boolean isPublish) {
 		this.isPublish = isPublish;
 	}
-
-	@Column(value= "is_visible",def = true)
-	public Boolean isVisible;
 
 	public Boolean getIsVisible() {
 		return isVisible;
@@ -107,9 +116,6 @@ public class Area extends TableModel {
 		this.isVisible = isVisible;
 	}
 
-	@Column(value= "is_close",def = true)
-	public Boolean isClose;
-
 	public Boolean getIsClose() {
 		return isClose;
 	}
@@ -118,9 +124,6 @@ public class Area extends TableModel {
 		this.isClose = isClose;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -128,9 +131,6 @@ public class Area extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column("update_time")
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

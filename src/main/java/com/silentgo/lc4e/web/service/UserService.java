@@ -62,6 +62,25 @@ public class UserService {
         return result;
     }
 
+    @Inject
+    CurUserService curUserService;
+
+    public User findUserInfo(Long id) {
+
+        User user = userDao.queryOneWhereId(id);
+
+        User curUser = curUserService.getCurrentUser();
+
+        if (curUser != null && user != null && curUser.getId().equals(user.getId())) {
+            return user;
+        }
+        user.setBalance(null);
+        user.setName(null);
+        user.setMail(null);
+
+        return user;
+    }
+
     public User findUserFullInfo(String username) {
         return userDao.queryOneWhereName(username);
     }

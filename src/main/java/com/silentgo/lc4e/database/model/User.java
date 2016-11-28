@@ -6,11 +6,53 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "user",  primaryKey = "id")
+@Table(value = "user",  primaryKey = "id")
 public class User extends TableModel {
 
 	@Column(aic = true)
 	public Long id;
+
+	@Column
+	public String name;
+
+	@Column
+	public String mail;
+
+	@Column
+	public String nick;
+
+	@Column
+	public String password;
+
+	@Column
+	public String passsalt;
+
+	@Column(nullable = true)
+	public String web;
+
+	@Column(nullable = true)
+	public Date birth;
+
+	@Column(nullable = true)
+	public String sign;
+
+	@Column(def = true)
+	public BigDecimal balance;
+
+	@Column(def = true)
+	public BigDecimal rank;
+
+	@Column
+	public String phone;
+
+	@Column(def = true)
+	public Boolean locked;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -20,9 +62,6 @@ public class User extends TableModel {
 		this.id = id;
 	}
 
-	@Column
-	public String name;
-
 	public String getName() {
 		return name;
 	}
@@ -30,9 +69,6 @@ public class User extends TableModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column
-	public String mail;
 
 	public String getMail() {
 		return mail;
@@ -42,9 +78,6 @@ public class User extends TableModel {
 		this.mail = mail;
 	}
 
-	@Column
-	public String nick;
-
 	public String getNick() {
 		return nick;
 	}
@@ -52,9 +85,6 @@ public class User extends TableModel {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-
-	@Column
-	public String password;
 
 	public String getPassword() {
 		return password;
@@ -64,9 +94,6 @@ public class User extends TableModel {
 		this.password = password;
 	}
 
-	@Column
-	public String passsalt;
-
 	public String getPasssalt() {
 		return passsalt;
 	}
@@ -74,9 +101,6 @@ public class User extends TableModel {
 	public void setPasssalt(String passsalt) {
 		this.passsalt = passsalt;
 	}
-
-	@Column(nullable = true)
-	public String web;
 
 	public String getWeb() {
 		return web;
@@ -86,9 +110,6 @@ public class User extends TableModel {
 		this.web = web;
 	}
 
-	@Column(nullable = true)
-	public Date birth;
-
 	public Date getBirth() {
 		return birth;
 	}
@@ -96,9 +117,6 @@ public class User extends TableModel {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-
-	@Column(nullable = true)
-	public String sign;
 
 	public String getSign() {
 		return sign;
@@ -108,9 +126,6 @@ public class User extends TableModel {
 		this.sign = sign;
 	}
 
-	@Column(def = true)
-	public BigDecimal balance;
-
 	public BigDecimal getBalance() {
 		return balance;
 	}
@@ -118,9 +133,6 @@ public class User extends TableModel {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-
-	@Column(def = true)
-	public BigDecimal rank;
 
 	public BigDecimal getRank() {
 		return rank;
@@ -130,9 +142,6 @@ public class User extends TableModel {
 		this.rank = rank;
 	}
 
-	@Column
-	public String phone;
-
 	public String getPhone() {
 		return phone;
 	}
@@ -140,9 +149,6 @@ public class User extends TableModel {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	@Column(def = true)
-	public Boolean locked;
 
 	public Boolean getLocked() {
 		return locked;
@@ -152,9 +158,6 @@ public class User extends TableModel {
 		this.locked = locked;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -162,9 +165,6 @@ public class User extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

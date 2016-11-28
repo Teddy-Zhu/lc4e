@@ -18,7 +18,7 @@ export default {
                 }).then((response)=> {
                     resolve(response.data);
                 }, (response)=> {
-                    Message.error(data["errorMsg"] ? data["errorMsg"] : '数据获取错误');
+                    Message.error(data["errorMsg"] ? data["errorMsg"] : '数据处理错误');
                     reject(response);
                 });
             })

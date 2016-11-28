@@ -5,11 +5,32 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "sys_log",  primaryKey = "id")
+@Table(value = "sys_log",  primaryKey = "id")
 public class SysLog extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
+
+	@Column("operate_type_id")
+	public Long operateTypeId;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column
+	public String description;
+
+	@Column
+	public String ip;
+
+	@Column
+	public String agant;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +40,6 @@ public class SysLog extends TableModel {
 		this.id = id;
 	}
 
-	@Column("operate_type_id")
-	public Long operateTypeId;
-
 	public Long getOperateTypeId() {
 		return operateTypeId;
 	}
@@ -29,9 +47,6 @@ public class SysLog extends TableModel {
 	public void setOperateTypeId(Long operateTypeId) {
 		this.operateTypeId = operateTypeId;
 	}
-
-	@Column("user_id")
-	public Long userId;
 
 	public Long getUserId() {
 		return userId;
@@ -41,9 +56,6 @@ public class SysLog extends TableModel {
 		this.userId = userId;
 	}
 
-	@Column
-	public String description;
-
 	public String getDescription() {
 		return description;
 	}
@@ -51,9 +63,6 @@ public class SysLog extends TableModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@Column
-	public String ip;
 
 	public String getIp() {
 		return ip;
@@ -63,9 +72,6 @@ public class SysLog extends TableModel {
 		this.ip = ip;
 	}
 
-	@Column
-	public String agant;
-
 	public String getAgant() {
 		return agant;
 	}
@@ -74,9 +80,6 @@ public class SysLog extends TableModel {
 		this.agant = agant;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -84,9 +87,6 @@ public class SysLog extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

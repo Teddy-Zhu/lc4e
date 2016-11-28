@@ -7,7 +7,7 @@
     <el-row>
         <el-col :span="24">
             <sg-header :menus="menus"></sg-header>
-            <router-view></router-view>
+            <router-view  v-loading="load" element-loading-text="拼命加载中"></router-view>
             <sg-footer :siteName="siteName" :version="version"></sg-footer>
         </el-col>
     </el-row>
@@ -24,9 +24,10 @@
         data () {
             return preLoadData;
         },
+        computed: mapState({
+            load: state => state.route.load
+        }),
         created () {
-            this.$SmoothScrollWebSites();
-            console.log("created")
         },
         components: {
             'sg-header': Header,

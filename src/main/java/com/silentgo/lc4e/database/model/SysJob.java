@@ -5,11 +5,32 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "sys_job",  primaryKey = "id")
+@Table(value = "sys_job",  primaryKey = "id")
 public class SysJob extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column
+	public String name;
+
+	@Column
+	public Integer order;
+
+	@Column
+	public String cron;
+
+	@Column("class_name")
+	public String className;
+
+	@Column(def = true)
+	public Boolean enable;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column("update_time")
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +40,6 @@ public class SysJob extends TableModel {
 		this.id = id;
 	}
 
-	@Column
-	public String name;
-
 	public String getName() {
 		return name;
 	}
@@ -29,9 +47,6 @@ public class SysJob extends TableModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column
-	public Integer order;
 
 	public Integer getOrder() {
 		return order;
@@ -41,9 +56,6 @@ public class SysJob extends TableModel {
 		this.order = order;
 	}
 
-	@Column
-	public String cron;
-
 	public String getCron() {
 		return cron;
 	}
@@ -51,9 +63,6 @@ public class SysJob extends TableModel {
 	public void setCron(String cron) {
 		this.cron = cron;
 	}
-
-	@Column("class_name")
-	public String className;
 
 	public String getClassName() {
 		return className;
@@ -63,9 +72,6 @@ public class SysJob extends TableModel {
 		this.className = className;
 	}
 
-	@Column(def = true)
-	public Boolean enable;
-
 	public Boolean getEnable() {
 		return enable;
 	}
@@ -74,9 +80,6 @@ public class SysJob extends TableModel {
 		this.enable = enable;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -84,9 +87,6 @@ public class SysJob extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column("update_time")
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

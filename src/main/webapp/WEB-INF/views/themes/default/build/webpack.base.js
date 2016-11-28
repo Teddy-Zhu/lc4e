@@ -23,7 +23,7 @@ module.exports =
     },
     entry: {
         app: './src/app.js',
-        vendors: ['vue', 'vuex', 'vue-resource', 'element-ui', 'vue-smoothscroll-websites']
+        vendors: ['vue', 'vuex', 'vue-resource', 'element-ui', 'md5']
     },
     output: {
         path: path.join(__dirname, '../../../../../themes/default/dist/'),

@@ -5,11 +5,47 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "topic",  primaryKey = "id")
+@Table(value = "topic",  primaryKey = "id")
 public class Topic extends TableModel {
 
 	@Column(aic = true)
 	public Long id;
+
+	@Column
+	public String url;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column("area_id")
+	public Long areaId;
+
+	@Column
+	public String title;
+
+	@Column
+	public String content;
+
+	@Column(def = true)
+	public String texts;
+
+	@Column(value = "is_visible",def = true)
+	public Boolean isVisible;
+
+	@Column(value = "is_close",def = true)
+	public Boolean isClose;
+
+	@Column(value = "is_delete",def = true)
+	public Boolean isDelete;
+
+	@Column(value = "is_comment",def = true)
+	public Boolean isComment;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +55,6 @@ public class Topic extends TableModel {
 		this.id = id;
 	}
 
-	@Column
-	public String url;
-
 	public String getUrl() {
 		return url;
 	}
@@ -29,9 +62,6 @@ public class Topic extends TableModel {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	@Column("user_id")
-	public Long userId;
 
 	public Long getUserId() {
 		return userId;
@@ -41,9 +71,6 @@ public class Topic extends TableModel {
 		this.userId = userId;
 	}
 
-	@Column("area_id")
-	public Long areaId;
-
 	public Long getAreaId() {
 		return areaId;
 	}
@@ -51,9 +78,6 @@ public class Topic extends TableModel {
 	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
 	}
-
-	@Column
-	public String title;
 
 	public String getTitle() {
 		return title;
@@ -63,9 +87,6 @@ public class Topic extends TableModel {
 		this.title = title;
 	}
 
-	@Column
-	public String content;
-
 	public String getContent() {
 		return content;
 	}
@@ -73,9 +94,6 @@ public class Topic extends TableModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	@Column(def = true)
-	public String texts;
 
 	public String getTexts() {
 		return texts;
@@ -85,9 +103,6 @@ public class Topic extends TableModel {
 		this.texts = texts;
 	}
 
-	@Column(value= "is_visible",def = true)
-	public Boolean isVisible;
-
 	public Boolean getIsVisible() {
 		return isVisible;
 	}
@@ -95,9 +110,6 @@ public class Topic extends TableModel {
 	public void setIsVisible(Boolean isVisible) {
 		this.isVisible = isVisible;
 	}
-
-	@Column(value= "is_close",def = true)
-	public Boolean isClose;
 
 	public Boolean getIsClose() {
 		return isClose;
@@ -107,9 +119,6 @@ public class Topic extends TableModel {
 		this.isClose = isClose;
 	}
 
-	@Column(value= "is_delete",def = true)
-	public Boolean isDelete;
-
 	public Boolean getIsDelete() {
 		return isDelete;
 	}
@@ -117,9 +126,6 @@ public class Topic extends TableModel {
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;
 	}
-
-	@Column(value= "is_comment",def = true)
-	public Boolean isComment;
 
 	public Boolean getIsComment() {
 		return isComment;
@@ -129,9 +135,6 @@ public class Topic extends TableModel {
 		this.isComment = isComment;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -139,9 +142,6 @@ public class Topic extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

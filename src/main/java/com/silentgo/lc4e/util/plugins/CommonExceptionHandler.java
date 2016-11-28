@@ -8,6 +8,10 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.render.RenderModel;
 import com.silentgo.core.render.support.JsonRender;
 import com.silentgo.core.render.support.JspRender;
+import com.silentgo.core.render.support.RenderFactory;
+import com.silentgo.core.render.support.RenderType;
+import com.silentgo.jetbrick.JetTemplateRender;
+import com.silentgo.jetbrick.JetbrickInitConfig;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.Response;
@@ -27,6 +31,8 @@ public class CommonExceptionHandler implements IExceptionHandler {
     @Inject
     SilentGoConfig config;
 
+    @Inject
+    RenderFactory renderFactory;
     @Override
     public RenderModel resolve(Response response, Request request, Exception ex) {
         Message error = new Message(ex.getMessage() == null ? ex.toString() : ex.getMessage());
@@ -34,7 +40,7 @@ public class CommonExceptionHandler implements IExceptionHandler {
             return new RenderModel(new JsonRender(), error, request, response);
         } else {
             request.setAttribute("message", error);
-            return new RenderModel(new JspRender(config.getBaseViewPath()), "/pages/exception", request, response);
+            return new RenderModel(renderFactory.getRender(RenderType.View), "/pages/exception", request, response);
         }
     }
 }

@@ -8,7 +8,7 @@
                             <el-input v-model="form.name"></el-input>
                         </el-form-item>
                         <el-form-item label="密码" prop="password">
-                            <el-input v-model="form.password"></el-input>
+                            <el-input type="password" v-model="form.password"></el-input>
                         </el-form-item>
                         <el-form-item label="验证码" v-if="captcha" prop="captcha">
                             <el-input v-model="form.captcha"></el-input>
@@ -82,7 +82,7 @@
                                     type: 'success'
                                 });
                             } else {
-                                callback(new Error(data.message.length > 40 ? data.message.substring(0, 40) + "..." : data.message))
+                                that.$message.error(data.message.length > 40 ? data.message.substring(0, 40) + "..." : data.message)
                             }
                         });
                     } else {

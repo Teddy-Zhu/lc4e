@@ -1,6 +1,8 @@
 package com.silentgo.lc4e.web.event.listener;
 
 import com.hankcs.hanlp.HanLP;
+import com.silentgo.core.db.intercept.Transaction;
+import com.silentgo.core.db.propagation.Propagation;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
@@ -30,6 +32,7 @@ public class TopicRankInitial implements EventListener<TopicEvent> {
     TopicRankDao topicRankDao;
 
     @Override
+    @Transaction
     public void onEvent(TopicEvent topicEvent) {
         List<String> tags = HanLP.extractKeyword(topicEvent.getTopic().getTitle() + topicEvent.getTopic().getContent(), 4);
 

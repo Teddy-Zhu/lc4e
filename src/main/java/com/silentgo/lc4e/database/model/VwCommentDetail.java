@@ -11,6 +11,30 @@ public class VwCommentDetail extends TableModel {
 	@Column
 	public Integer floor;
 
+	@Column("is_visible")
+	public Boolean isVisible;
+
+	@Column
+	public String content;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
+
+	@Column(nullable = true)
+	public String nick;
+
+	@Column(def = true,nullable = true)
+	public Long id;
+
+	@Column(nullable = true)
+	public String mail;
+
+	@Column("topic_id")
+	public Long topicId;
+
 	public Integer getFloor() {
 		return floor;
 	}
@@ -18,9 +42,6 @@ public class VwCommentDetail extends TableModel {
 	public void setFloor(Integer floor) {
 		this.floor = floor;
 	}
-
-	@Column("is_visible")
-	public Boolean isVisible;
 
 	public Boolean getIsVisible() {
 		return isVisible;
@@ -30,9 +51,6 @@ public class VwCommentDetail extends TableModel {
 		this.isVisible = isVisible;
 	}
 
-	@Column
-	public String content;
-
 	public String getContent() {
 		return content;
 	}
@@ -40,9 +58,6 @@ public class VwCommentDetail extends TableModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	@Column("create_time")
-	public Date createTime;
 
 	public Date getCreateTime() {
 		return createTime;
@@ -52,9 +67,6 @@ public class VwCommentDetail extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
-
 	public Date getUpdateTime() {
 		return updateTime;
 	}
@@ -62,9 +74,6 @@ public class VwCommentDetail extends TableModel {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-
-	@Column(nullable = true)
-	public String nick;
 
 	public String getNick() {
 		return nick;
@@ -74,9 +83,6 @@ public class VwCommentDetail extends TableModel {
 		this.nick = nick;
 	}
 
-	@Column(def = true,nullable = true)
-	public Long id;
-
 	public Long getId() {
 		return id;
 	}
@@ -85,9 +91,6 @@ public class VwCommentDetail extends TableModel {
 		this.id = id;
 	}
 
-	@Column(nullable = true)
-	public String mail;
-
 	public String getMail() {
 		return mail;
 	}
@@ -95,9 +98,6 @@ public class VwCommentDetail extends TableModel {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-
-	@Column("topic_id")
-	public Long topicId;
 
 	public Long getTopicId() {
 		return topicId;

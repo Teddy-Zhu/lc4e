@@ -11,6 +11,48 @@ public class VwTopicDetail extends TableModel {
 	@Column
 	public String title;
 
+	@Column
+	public String content;
+
+	@Column(def = true)
+	public String texts;
+
+	@Column(def = true)
+	public Long id;
+
+	@Column
+	public String url;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
+
+	@Column(value = "author_id",def = true,nullable = true)
+	public Long authorId;
+
+	@Column(value = "author_nick",nullable = true)
+	public String authorNick;
+
+	@Column(value = "author_mail",nullable = true)
+	public String authorMail;
+
+	@Column("area_id")
+	public Long areaId;
+
+	@Column(value = "view_count",nullable = true)
+	public Integer viewCount;
+
+	@Column(value = "comment_count",nullable = true)
+	public Integer commentCount;
+
+	@Column(nullable = true)
+	public String tags;
+
+	@Column(value = "area_abbr",nullable = true)
+	public String areaAbbr;
+
 	public String getTitle() {
 		return title;
 	}
@@ -18,9 +60,6 @@ public class VwTopicDetail extends TableModel {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	@Column
-	public String content;
 
 	public String getContent() {
 		return content;
@@ -30,9 +69,6 @@ public class VwTopicDetail extends TableModel {
 		this.content = content;
 	}
 
-	@Column(def = true)
-	public String texts;
-
 	public String getTexts() {
 		return texts;
 	}
@@ -40,9 +76,6 @@ public class VwTopicDetail extends TableModel {
 	public void setTexts(String texts) {
 		this.texts = texts;
 	}
-
-	@Column(def = true)
-	public Long id;
 
 	public Long getId() {
 		return id;
@@ -52,9 +85,6 @@ public class VwTopicDetail extends TableModel {
 		this.id = id;
 	}
 
-	@Column
-	public String url;
-
 	public String getUrl() {
 		return url;
 	}
@@ -62,9 +92,6 @@ public class VwTopicDetail extends TableModel {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	@Column("create_time")
-	public Date createTime;
 
 	public Date getCreateTime() {
 		return createTime;
@@ -74,9 +101,6 @@ public class VwTopicDetail extends TableModel {
 		this.createTime = createTime;
 	}
 
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
-
 	public Date getUpdateTime() {
 		return updateTime;
 	}
@@ -84,9 +108,6 @@ public class VwTopicDetail extends TableModel {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-
-	@Column(value= "author_id",def = true,nullable = true)
-	public Long authorId;
 
 	public Long getAuthorId() {
 		return authorId;
@@ -96,9 +117,6 @@ public class VwTopicDetail extends TableModel {
 		this.authorId = authorId;
 	}
 
-	@Column(value= "author_nick",nullable = true)
-	public String authorNick;
-
 	public String getAuthorNick() {
 		return authorNick;
 	}
@@ -106,9 +124,6 @@ public class VwTopicDetail extends TableModel {
 	public void setAuthorNick(String authorNick) {
 		this.authorNick = authorNick;
 	}
-
-	@Column(value= "author_mail",nullable = true)
-	public String authorMail;
 
 	public String getAuthorMail() {
 		return authorMail;
@@ -118,9 +133,6 @@ public class VwTopicDetail extends TableModel {
 		this.authorMail = authorMail;
 	}
 
-	@Column("area_id")
-	public Long areaId;
-
 	public Long getAreaId() {
 		return areaId;
 	}
@@ -128,9 +140,6 @@ public class VwTopicDetail extends TableModel {
 	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
 	}
-
-	@Column(value= "view_count",nullable = true)
-	public Integer viewCount;
 
 	public Integer getViewCount() {
 		return viewCount;
@@ -140,9 +149,6 @@ public class VwTopicDetail extends TableModel {
 		this.viewCount = viewCount;
 	}
 
-	@Column(value= "comment_count",nullable = true)
-	public Integer commentCount;
-
 	public Integer getCommentCount() {
 		return commentCount;
 	}
@@ -151,9 +157,6 @@ public class VwTopicDetail extends TableModel {
 		this.commentCount = commentCount;
 	}
 
-	@Column(nullable = true)
-	public String tags;
-
 	public String getTags() {
 		return tags;
 	}
@@ -161,9 +164,6 @@ public class VwTopicDetail extends TableModel {
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
-
-	@Column(value= "area_abbr",nullable = true)
-	public String areaAbbr;
 
 	public String getAreaAbbr() {
 		return areaAbbr;

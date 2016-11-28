@@ -5,11 +5,23 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "user_topic_blocked",  primaryKey = "id")
+@Table(value = "user_topic_blocked",  primaryKey = "id")
 public class UserTopicBlocked extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column("topic_id")
+	public Long topicId;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +31,6 @@ public class UserTopicBlocked extends TableModel {
 		this.id = id;
 	}
 
-	@Column("topic_id")
-	public Long topicId;
-
 	public Long getTopicId() {
 		return topicId;
 	}
@@ -29,9 +38,6 @@ public class UserTopicBlocked extends TableModel {
 	public void setTopicId(Long topicId) {
 		this.topicId = topicId;
 	}
-
-	@Column("user_id")
-	public Long userId;
 
 	public Long getUserId() {
 		return userId;
@@ -41,9 +47,6 @@ public class UserTopicBlocked extends TableModel {
 		this.userId = userId;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -51,9 +54,6 @@ public class UserTopicBlocked extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

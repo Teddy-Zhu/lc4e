@@ -7,6 +7,8 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.render.RenderModel;
 import com.silentgo.core.render.support.JsonRender;
 import com.silentgo.core.render.support.JspRender;
+import com.silentgo.core.render.support.RenderFactory;
+import com.silentgo.core.render.support.RenderType;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.Response;
@@ -20,6 +22,8 @@ import org.apache.shiro.authz.UnauthenticatedException;
 public class ShiroExceptionHandler implements IExceptionHandler {
 
     @Inject
+    RenderFactory renderFactory;
+    @Inject
     SilentGoConfig config;
 
     @Override
@@ -29,7 +33,7 @@ public class ShiroExceptionHandler implements IExceptionHandler {
             return new RenderModel(new JsonRender(), error, request, response);
         } else {
             request.setAttribute("message", error);
-            return new RenderModel(new JspRender(config.getBaseViewPath()), "/pages/exception", request, response);
+            return new RenderModel(renderFactory.getRender(RenderType.View), "/pages/exception", request, response);
         }
     }
 }

@@ -8,11 +8,18 @@ import resource from 'vue-resource'
 import store from './store'
 import App from './app.vue'
 import ElementUI from 'element-ui'
-import VueSmoothScrollWebSites from 'vue-smoothscroll-websites';
 
 Vue.use(ElementUI)
 Vue.use(resource)
-Vue.use(VueSmoothScrollWebSites)
+
+router.beforeEach((to, from, next) => {
+    store.state.route.load = true;
+    next();
+})
+
+router.afterEach(route => {
+    store.state.route.load = false;
+})
 
 const app = new Vue({
     router,

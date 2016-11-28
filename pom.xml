@@ -26,19 +26,19 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>framework</artifactId>
-            <version>0.0.31</version>
+            <version>0.0.33</version>
         </dependency>
 
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>jetbrick</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3</version>
         </dependency>
 
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>shiro</artifactId>
-            <version>0.0.4</version>
+            <version>0.0.5</version>
         </dependency>
 
         <dependency>

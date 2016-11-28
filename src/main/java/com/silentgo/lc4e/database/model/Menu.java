@@ -5,11 +5,35 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "menu",  primaryKey = "id")
+@Table(value = "menu",  primaryKey = "id")
 public class Menu extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column("parent_id")
+	public Long parentId;
+
+	@Column
+	public Integer order;
+
+	@Column
+	public String abbr;
+
+	@Column
+	public String name;
+
+	@Column
+	public String css;
+
+	@Column
+	public String icon;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column("update_time")
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +43,6 @@ public class Menu extends TableModel {
 		this.id = id;
 	}
 
-	@Column("parent_id")
-	public Long parentId;
-
 	public Long getParentId() {
 		return parentId;
 	}
@@ -29,9 +50,6 @@ public class Menu extends TableModel {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
-
-	@Column
-	public Integer order;
 
 	public Integer getOrder() {
 		return order;
@@ -41,9 +59,6 @@ public class Menu extends TableModel {
 		this.order = order;
 	}
 
-	@Column
-	public String abbr;
-
 	public String getAbbr() {
 		return abbr;
 	}
@@ -51,9 +66,6 @@ public class Menu extends TableModel {
 	public void setAbbr(String abbr) {
 		this.abbr = abbr;
 	}
-
-	@Column
-	public String name;
 
 	public String getName() {
 		return name;
@@ -63,9 +75,6 @@ public class Menu extends TableModel {
 		this.name = name;
 	}
 
-	@Column
-	public String css;
-
 	public String getCss() {
 		return css;
 	}
@@ -73,9 +82,6 @@ public class Menu extends TableModel {
 	public void setCss(String css) {
 		this.css = css;
 	}
-
-	@Column
-	public String icon;
 
 	public String getIcon() {
 		return icon;
@@ -85,9 +91,6 @@ public class Menu extends TableModel {
 		this.icon = icon;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -95,9 +98,6 @@ public class Menu extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column("update_time")
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

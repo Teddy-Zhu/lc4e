@@ -8,6 +8,7 @@ import menu from './menu'
 import order from './order'
 import config from './config'
 import ajax from './ajax'
+import route from './route'
 
 Vue.use(Vuex);
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
         menu,
         order,
         config,
-        ajax
+        ajax,
+        route
     }
 })

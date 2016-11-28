@@ -5,11 +5,23 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "ip_forbit",  primaryKey = "id")
+@Table(value = "ip_forbit",  primaryKey = "id")
 public class IpForbit extends TableModel {
 
 	@Column
 	public Long id;
+
+	@Column
+	public String ip;
+
+	@Column
+	public String description;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column("update_time")
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +31,6 @@ public class IpForbit extends TableModel {
 		this.id = id;
 	}
 
-	@Column
-	public String ip;
-
 	public String getIp() {
 		return ip;
 	}
@@ -29,9 +38,6 @@ public class IpForbit extends TableModel {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-
-	@Column
-	public String description;
 
 	public String getDescription() {
 		return description;
@@ -41,9 +47,6 @@ public class IpForbit extends TableModel {
 		this.description = description;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -51,9 +54,6 @@ public class IpForbit extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column("update_time")
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

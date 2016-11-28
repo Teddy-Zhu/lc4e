@@ -5,11 +5,26 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "user_role",  primaryKey = "id")
+@Table(value = "user_role",  primaryKey = "id")
 public class UserRole extends TableModel {
 
 	@Column(aic = true)
 	public Long id;
+
+	@Column("user_id")
+	public Long userId;
+
+	@Column("role_id")
+	public Long roleId;
+
+	@Column("end_time")
+	public Date endTime;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -19,9 +34,6 @@ public class UserRole extends TableModel {
 		this.id = id;
 	}
 
-	@Column("user_id")
-	public Long userId;
-
 	public Long getUserId() {
 		return userId;
 	}
@@ -29,9 +41,6 @@ public class UserRole extends TableModel {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-	@Column("role_id")
-	public Long roleId;
 
 	public Long getRoleId() {
 		return roleId;
@@ -41,9 +50,6 @@ public class UserRole extends TableModel {
 		this.roleId = roleId;
 	}
 
-	@Column("end_time")
-	public Date endTime;
-
 	public Date getEndTime() {
 		return endTime;
 	}
@@ -52,9 +58,6 @@ public class UserRole extends TableModel {
 		this.endTime = endTime;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -62,9 +65,6 @@ public class UserRole extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

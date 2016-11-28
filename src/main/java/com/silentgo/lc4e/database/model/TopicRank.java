@@ -6,11 +6,32 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value= "topic_rank",  primaryKey = "id")
+@Table(value = "topic_rank",  primaryKey = "id")
 public class TopicRank extends TableModel {
 
 	@Column(aic = true)
 	public Long id;
+
+	@Column("topic_id")
+	public Long topicId;
+
+	@Column
+	public String tags;
+
+	@Column("comment_count")
+	public Integer commentCount;
+
+	@Column("view_count")
+	public Integer viewCount;
+
+	@Column(def = true)
+	public BigDecimal rank;
+
+	@Column("create_time")
+	public Date createTime;
+
+	@Column(value = "update_time",nullable = true)
+	public Date updateTime;
 
 	public Long getId() {
 		return id;
@@ -20,9 +41,6 @@ public class TopicRank extends TableModel {
 		this.id = id;
 	}
 
-	@Column("topic_id")
-	public Long topicId;
-
 	public Long getTopicId() {
 		return topicId;
 	}
@@ -30,9 +48,6 @@ public class TopicRank extends TableModel {
 	public void setTopicId(Long topicId) {
 		this.topicId = topicId;
 	}
-
-	@Column
-	public String tags;
 
 	public String getTags() {
 		return tags;
@@ -42,9 +57,6 @@ public class TopicRank extends TableModel {
 		this.tags = tags;
 	}
 
-	@Column("comment_count")
-	public Integer commentCount;
-
 	public Integer getCommentCount() {
 		return commentCount;
 	}
@@ -52,9 +64,6 @@ public class TopicRank extends TableModel {
 	public void setCommentCount(Integer commentCount) {
 		this.commentCount = commentCount;
 	}
-
-	@Column("view_count")
-	public Integer viewCount;
 
 	public Integer getViewCount() {
 		return viewCount;
@@ -64,9 +73,6 @@ public class TopicRank extends TableModel {
 		this.viewCount = viewCount;
 	}
 
-	@Column(def = true)
-	public BigDecimal rank;
-
 	public BigDecimal getRank() {
 		return rank;
 	}
@@ -75,9 +81,6 @@ public class TopicRank extends TableModel {
 		this.rank = rank;
 	}
 
-	@Column("create_time")
-	public Date createTime;
-
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -85,9 +88,6 @@ public class TopicRank extends TableModel {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
-	@Column(value= "update_time",nullable = true)
-	public Date updateTime;
 
 	public Date getUpdateTime() {
 		return updateTime;

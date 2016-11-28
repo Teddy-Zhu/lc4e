@@ -5,13 +5,13 @@
                 <el-col :span="15">
                     <el-row>
                         <el-col :span="24">
-                            <table>
+                            <table class="topic">
                                 <tr>
-                                    <td>{{topic.name}}</td>
-                                    <td>{{topic.title}}</td>
+                                    <td>{{topic.authorNick}}</td>
+                                    <td class="title">{{topic.title}}</td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="authorpic">
                                         <img :src="getAvatar(topic.authorMail)">
                                     </td>
                                     <td>
@@ -65,6 +65,16 @@
     .inline-block {
         display: inline-block;
     }
+
+    .topic .title {
+        border-bottom: 1px solid black;
+        font-size: 1.5em;
+    }
+
+    .topic .authorpic {
+        vertical-align: top;
+    }
+
 </style>
 <script>
     import Body from '../compments/body.vue'
@@ -81,8 +91,9 @@
                 total: 0,
                 topic: {
                     authorMail: '',
-                    name: '',
-                    content: ''
+                    authorName: '',
+                    content: '',
+                    title: ''
                 },
                 comments: []
             }
@@ -101,19 +112,23 @@
 
             },
             getAvatar(mail){
-                return this.avatarUrl.replace('{md5}', md5(mail));
+                return this.avatarUrl.replace('{md5}', md5(mail)).replace('s=48', 's=66');
             },
             getData(){
                 var url = '/t/' + this.name;
-                this.$http.post(url).then((response)=> {
+                var that = this;
+                this.$store.state.route.load = true;
+                this.$http.post(url).then(function (response) {
+                    that.$store.state.route.load = false;
                     if (response.data.result) {
                         this.topic = response.data.data.topic
                     } else {
                         this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
                     }
-                }, (response)=> {
+                }, function (response) {
                     this.$message.error('数据获取错误');
-                });
+                })
+                ;
             },
             updateBaseData(){
                 this.name = this.$route.params.topic;

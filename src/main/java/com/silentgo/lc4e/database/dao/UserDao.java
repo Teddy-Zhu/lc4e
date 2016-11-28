@@ -3,6 +3,7 @@ package com.silentgo.lc4e.database.dao;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.orm.base.BaseDao;
+import com.silentgo.orm.sqlparser.annotation.ColumnIgnore;
 import com.silentgo.orm.sqlparser.annotation.Set;
 
 import java.util.Date;
@@ -11,6 +12,9 @@ import java.util.Date;
 public interface UserDao extends BaseDao<User> {
 
     User queryOneWhereName(String name);
+
+    @ColumnIgnore({"password", "passsalt", "rank", "locked"})
+    User queryOneWhereId(Long id);
 
     int countWhereName(String name);
 

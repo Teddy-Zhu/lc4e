@@ -3,13 +3,7 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '../views/page/index.vue'
-import area from '../views/page/area.vue'
-import login from '../views/page/login.vue'
-import register from '../views/page/register.vue'
-import signout from '../views/page/signout.vue'
-import newTopic from '../views/page/newtopic.vue'
-import topic from '../views/page/topic.vue'
+
 Vue.use(Router);
 
 export default new Router({
@@ -18,49 +12,77 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: index
+            component: (resolve, reject)=> {
+                require(['../views/page/index.vue'], resolve);
+            }
         },
         {
             path: "/:page(\\d+)/:order(\\d+)",
             name: 'index2',
-            component: index
+            component: (resolve, reject)=> {
+                require(['../views/page/index.vue'], resolve);
+            }
         }, {
             path: '/a/:area',
             name: 'area1',
-            component: area
+            component: (resolve, reject)=> {
+                require(['../views/page/area.vue'], resolve);
+            }
         },
         {
             path: "/a/:area/:page(\\d+)/:order(\\d+)",
             name: 'area2',
-            component: area
+            component: (resolve, reject)=> {
+                require(['../views/page/area.vue'], resolve);
+            }
         }, {
             path: "/t/:topic([0-9a-zA-Z]{4,})",
             name: "topic1",
-            component: topic
+            component: (resolve, reject)=> {
+                require(['../views/page/topic.vue'], resolve);
+            }
         }, {
             path: "/t/:topic([0-9a-zA-Z]{4,})/:page(\\d+)",
             name: "topic2",
-            component: topic
+            component: (resolve, reject)=> {
+                require(['../views/page/topic.vue'], resolve);
+            }
         }, {
             path: "/u/login",
             name: "login",
-            component: login
+            component: (resolve, reject)=> {
+                require(['../views/page/login.vue'], resolve);
+            }
         }, {
             path: "/u/register",
             name: "register",
-            component: register
+            component: (resolve, reject)=> {
+                require(['../views/page/register.vue'], resolve);
+            }
         }, {
             path: "/u/signout",
             name: 'signout',
-            component: signout
+            component: (resolve, reject)=> {
+                require(['../views/page/signout.vue'], resolve);
+            }
         }, {
             path: "/t/new",
             name: 'new',
-            component: newTopic
+            component: (resolve, reject)=> {
+                require(['../views/page/newtopic.vue'], resolve);
+            }
         }, {
             path: "/t/new/:area",
             name: 'new2',
-            component: newTopic
+            component: (resolve, reject)=> {
+                require(['../views/page/newtopic.vue'], resolve);
+            }
+        }, {
+            path: "/i/:id",
+            name: 'userInfo',
+            component: (resolve, reject)=> {
+                require(['../views/page/user.vue'], resolve)
+            }
         }
     ]
 })
