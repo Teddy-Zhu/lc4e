@@ -23,7 +23,6 @@ public class UrlGenerateService {
         String salt = comVarService.getComVarValueByName("TopicUrlSalt");
         Hashids hashids = new Hashids(salt, 4);
         return hashids.encode(id);
-
     }
 
     public Long getId(String url) {

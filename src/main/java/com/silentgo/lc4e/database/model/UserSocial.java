@@ -15,6 +15,9 @@ public class UserSocial extends TableModel {
 	public Long userId;
 
 	@Column(def = true)
+	public String web;
+
+	@Column(def = true)
 	public String province;
 
 	@Column(def = true)
@@ -61,6 +64,14 @@ public class UserSocial extends TableModel {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public String getWeb() {
+		return web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
 	}
 
 	public String getProvince() {

@@ -8,9 +8,6 @@ import com.silentgo.orm.base.TableModel;
 @Table("vw_comment_detail")
 public class VwCommentDetail extends TableModel {
 
-	@Column
-	public Integer floor;
-
 	@Column("is_visible")
 	public Boolean isVisible;
 
@@ -26,22 +23,17 @@ public class VwCommentDetail extends TableModel {
 	@Column(nullable = true)
 	public String nick;
 
-	@Column(def = true,nullable = true)
-	public Long id;
-
-	@Column(nullable = true)
-	public String mail;
+	@Column(value = "user_id",def = true,nullable = true)
+	public Long userId;
 
 	@Column("topic_id")
 	public Long topicId;
 
-	public Integer getFloor() {
-		return floor;
-	}
+	@Column(def = true,nullable = true)
+	public String img;
 
-	public void setFloor(Integer floor) {
-		this.floor = floor;
-	}
+	@Column(def = true)
+	public Long id;
 
 	public Boolean getIsVisible() {
 		return isVisible;
@@ -83,20 +75,12 @@ public class VwCommentDetail extends TableModel {
 		this.nick = nick;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public Long getTopicId() {
@@ -105,6 +89,22 @@ public class VwCommentDetail extends TableModel {
 
 	public void setTopicId(Long topicId) {
 		this.topicId = topicId;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 

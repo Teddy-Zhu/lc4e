@@ -54,7 +54,7 @@
                             <h3>{{area}}</h3>
                         </el-col>
                         <el-col :span="24" class="topic-hot-line">
-                            <p>it's the description of area</p>
+                            <p>{{areaDescription}}</p>
                         </el-col>
                     </el-row>
                 </el-col>
@@ -114,6 +114,7 @@
 
     .inline-block {
         display: inline-block;
+        background: #F2F3F5;
     }
 
     .br-path {
@@ -130,7 +131,7 @@
     import Body from '../compments/body.vue'
     import TopicLine from '../index/topicLine.vue'
     import {mapState} from 'vuex'
-
+    import {mapActions} from 'vuex'
     export default  {
         name: 'area',
         data () {
@@ -140,6 +141,7 @@
                 area: this.$route.params.area,
                 size: 30,
                 total: 0,
+                areaDescription: '',
                 orderNow: this.$route.params.order ? this.$route.params.order : '1'
             }
         },
@@ -171,20 +173,30 @@
                 this.area = this.$route.params.area;
                 this.orderNow = this.$route.params.order ? this.$route.params.order : '1';
             },
+            ...mapActions(["post"]),
             getData () {
                 var url = '/a/' + this.area + "/" + this.page + '/' + this.orderNow;
-
-                this.$http.post(url).then(function (response) {
-                    if (response.data.result) {
-                        this.topics = response.data.data.topics.result;
-                        this.page = response.data.data.topics.pageNumber;
-                        this.total = response.data.data.topics.totalCount;
-                        this.size = response.data.data.topics.pageSize;
+                var that = this;
+                that.post({
+                    url: '/a/i/' + this.area
+                }).then(function (data) {
+                    if (data.result) {
+                        that.areaDescription = data.data.area.description
+                    }
+                })
+                that.post({
+                    url: url
+                }).then(function (data) {
+                    if (data.result) {
+                        that.topics = data.data.topics.result;
+                        that.page = data.data.topics.pageNumber;
+                        that.total = data.data.topics.totalCount;
+                        that.size = data.data.topics.pageSize;
                     } else {
-                        this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
+                        that.$message.error(data.message.length > 40 ? ( data.message.substring(0, 40) + "...") : data.message);
                     }
                 }, function () {
-                    this.$message.error('数据获取错误');
+                    that.$message.error('数据获取错误');
                 })
             },
             nextPage () {

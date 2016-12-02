@@ -15,7 +15,9 @@ import com.silentgo.lc4e.database.model.VwUserPermission;
 import com.silentgo.lc4e.database.model.VwUserRolePermission;
 import com.silentgo.lc4e.entity.UserRolePermission;
 import com.silentgo.lc4e.util.shiro.PassDisposer;
+import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.utils.Assert;
+import com.silentgo.utils.EncryptKit;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -122,11 +124,13 @@ public class UserService {
         BigDecimal initialRank = BigDecimal.valueOf(Long.parseLong(comVarService.getComVarValueByName("UserInitialRank")));
         user.setRank(initialRank);
         user.setBalance(new BigDecimal(0));
-
+        user.setImg(EncryptKit.getMD5(user.getMail()));
 
         int i = userDao.insertByRow(user);
 
         Assert.isTrue(i == 1, "数据执行Insert异常 , data :" + SilentGo.me().json().toJsonString(user));
+
+        eventFactory.emit(new UserRegisterEvent(user));
 
         return user;
     }

@@ -2,10 +2,7 @@ package com.silentgo.lc4e.web.controller;
 
 import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
-import com.silentgo.core.route.annotation.Controller;
-import com.silentgo.core.route.annotation.PathVariable;
-import com.silentgo.core.route.annotation.Route;
-import com.silentgo.core.route.annotation.RouteMatch;
+import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
@@ -40,6 +37,7 @@ public class UserInfoController {
 
     @Route("/{username}")
     @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
     public Message userInfo(@PathVariable @RequestString String username) {
 
         User user = userService.findUserInfo(Long.valueOf(username));

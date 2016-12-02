@@ -27,13 +27,13 @@ public class User extends TableModel {
 	@Column
 	public String passsalt;
 
-	@Column(nullable = true)
-	public String web;
+	@Column(def = true)
+	public String img;
 
 	@Column(nullable = true)
 	public Date birth;
 
-	@Column(nullable = true)
+	@Column(def = true,nullable = true)
 	public String sign;
 
 	@Column(def = true)
@@ -102,12 +102,12 @@ public class User extends TableModel {
 		this.passsalt = passsalt;
 	}
 
-	public String getWeb() {
-		return web;
+	public String getImg() {
+		return img;
 	}
 
-	public void setWeb(String web) {
-		this.web = web;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public Date getBirth() {

@@ -132,9 +132,7 @@ public class UserController {
         }
         userService.createUser(user);
 
-        //event notify
         if (user.getId() != null) {
-            eventFactory.emit(new UserRegisterEvent(user));
             return new Message(true, "register successfully");
         } else {
             return new Message("register failed");

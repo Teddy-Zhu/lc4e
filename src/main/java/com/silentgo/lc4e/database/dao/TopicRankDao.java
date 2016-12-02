@@ -11,5 +11,8 @@ public interface TopicRankDao extends BaseDao<TopicRank> {
 
     @Set(" view_count = view_count + ?")
     int updateSetWhereTopicId(Integer count, Long id);
+
+    @Set(" comment_count = comment_count + ? ")
+    int updateReplyCountSetWhereTopicId(Integer count, Long id);
 }
 

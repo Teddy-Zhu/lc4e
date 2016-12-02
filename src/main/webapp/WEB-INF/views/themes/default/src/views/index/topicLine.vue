@@ -5,7 +5,7 @@
                 <tr>
                     <td align="center" width="10%">
                         <a class="topic-author-img-a">
-                            <img :src="getAvatar(data.authorMail)" class="topic-line-img">
+                            <img :src="getAvatar(data.authorImg)" class="topic-line-img">
                         </a>
                     </td>
                     <td align="left" width="75%">
@@ -77,7 +77,7 @@
     .topic-line:hover {
         background-color: white;
         border-left: 5px solid #505c6f;
-        box-shadow: 2px 4px 6px rgba(29, 26, 26, 0.3)
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
     }
 
     .topic-line-title {
@@ -119,8 +119,6 @@
     }
 </style>
 <script>
-    import md5 from 'md5'
-
     export default{
         name: 'sg-topic-Line',
         data() {
@@ -141,8 +139,8 @@
             getUserUrl(id){
                 return '/i/' + id;
             },
-            getAvatar(mail){
-                return this.avatarUrl.replace('{md5}', md5(mail));
+            getAvatar(img){
+                return this.avatarUrl.replace('{md5}', img ? img : '84fe01dba7e12fbae34fd2b7ea3b18a6');
             },
             splitText(str){
                 if (!str) return [];

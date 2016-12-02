@@ -35,9 +35,6 @@ public class VwTopicDetail extends TableModel {
 	@Column(value = "author_nick",nullable = true)
 	public String authorNick;
 
-	@Column(value = "author_mail",nullable = true)
-	public String authorMail;
-
 	@Column("area_id")
 	public Long areaId;
 
@@ -52,6 +49,9 @@ public class VwTopicDetail extends TableModel {
 
 	@Column(value = "area_abbr",nullable = true)
 	public String areaAbbr;
+
+	@Column(value = "author_img",def = true,nullable = true)
+	public String authorImg;
 
 	public String getTitle() {
 		return title;
@@ -125,14 +125,6 @@ public class VwTopicDetail extends TableModel {
 		this.authorNick = authorNick;
 	}
 
-	public String getAuthorMail() {
-		return authorMail;
-	}
-
-	public void setAuthorMail(String authorMail) {
-		this.authorMail = authorMail;
-	}
-
 	public Long getAreaId() {
 		return areaId;
 	}
@@ -171,6 +163,14 @@ public class VwTopicDetail extends TableModel {
 
 	public void setAreaAbbr(String areaAbbr) {
 		this.areaAbbr = areaAbbr;
+	}
+
+	public String getAuthorImg() {
+		return authorImg;
+	}
+
+	public void setAuthorImg(String authorImg) {
+		this.authorImg = authorImg;
 	}
 
 

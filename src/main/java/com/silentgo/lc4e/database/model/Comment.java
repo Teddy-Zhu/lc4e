@@ -8,7 +8,7 @@ import com.silentgo.orm.base.TableModel;
 @Table(value = "comment",  primaryKey = "id")
 public class Comment extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	@Column("user_id")
@@ -28,9 +28,6 @@ public class Comment extends TableModel {
 
 	@Column("is_visible")
 	public Boolean isVisible;
-
-	@Column
-	public Integer floor;
 
 	@Column("create_time")
 	public Date createTime;
@@ -92,14 +89,6 @@ public class Comment extends TableModel {
 
 	public void setIsVisible(Boolean isVisible) {
 		this.isVisible = isVisible;
-	}
-
-	public Integer getFloor() {
-		return floor;
-	}
-
-	public void setFloor(Integer floor) {
-		this.floor = floor;
 	}
 
 	public Date getCreateTime() {

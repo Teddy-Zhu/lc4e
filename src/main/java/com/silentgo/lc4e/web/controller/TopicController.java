@@ -8,10 +8,13 @@ import com.silentgo.lc4e.database.model.Topic;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
+import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.service.CommentService;
 import com.silentgo.lc4e.web.service.CurUserService;
 import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
+import com.silentgo.utils.Assert;
 import org.apache.shiro.authz.annotation.RequiresUser;
 
 import java.util.ArrayList;
@@ -28,13 +31,31 @@ import java.util.ArrayList;
 @Route("/t")
 public class TopicController {
 
+    @Inject
+    CommentService commentService;
 
-    @Route("/{topic:([0-9a-zA-Z]{4,})}")
+    @Route("/{topic:([0-9a-zA-Z]{4,})}/reply")
+    @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
+    @RequiresUser
+    public Message reply(@RequestParam Comment comment, @PathVariable("topic") String url) {
+
+        commentService.replyTopicByUrl(url, comment);
+
+        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(url)));
+    }
+
+    @Route("/{topic:([0-9a-zA-Z]{4,})}/info")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message topicInfo(Request request, @PathVariable("topic") String url) {
-        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(url)));
+        return new Message(true,
+                new ReturnData("topic", topicService.getTopicDetail(url))
+        );
     }
+
+    @Inject
+    ComVarService comVarService;
 
     /**
      * page topic data
@@ -44,14 +65,13 @@ public class TopicController {
      * @param page
      * @return
      */
-    @Route("/{topic:([0-9a-zA-Z]{4,})}/{page:([1-9][0-9]*)}")
+    @Route("/{topic:([0-9a-zA-Z]{4,})}/comment/{page:([1-9][0-9]*)}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
-    public Message t2(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
-        return new Message(true, new ReturnData("topic", new Topic()),
-                new ReturnData("comments", new ArrayList<Comment>() {{
-                    add(new Comment());
-                }}));
+    public Message getComments(Request request, @PathVariable("topic") String topicpath, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}, defaultValue = "1") Integer page) {
+
+        Integer size = Integer.valueOf(comVarService.getComVarValueByName("CommentSize"));
+        return new Message(true, new ReturnData("comments", commentService.getComments(size, page, topicpath)));
     }
 
     @Inject

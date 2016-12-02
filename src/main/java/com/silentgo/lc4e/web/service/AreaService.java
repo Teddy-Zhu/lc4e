@@ -4,6 +4,7 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.database.dao.AreaDao;
 import com.silentgo.lc4e.database.model.Area;
+import com.silentgo.utils.CollectionKit;
 
 import java.util.List;
 
@@ -23,5 +24,17 @@ public class AreaService {
 
     public List<Area> getAreas() {
         return areaDao.queryListWhereIsPublishAndIsVisibleAndIsClose(true, true, false);
+    }
+
+    public Area getAreaDetail(String areaAbbr) {
+        Area areaQuery = new Area();
+        areaQuery.setAbbr(areaAbbr);
+        List<Area> areas = areaDao.queryByModelSelective(areaQuery);
+
+        if (!CollectionKit.isEmpty(areas)) {
+            areaQuery.setDescription(areas.get(0).getDescription());
+            return areaQuery;
+        }
+        return areaQuery;
     }
 }

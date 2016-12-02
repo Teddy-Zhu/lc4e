@@ -10,6 +10,7 @@ import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.Popup;
 import com.silentgo.lc4e.entity.ReturnData;
 import com.silentgo.lc4e.tool.RelativeDate;
+import com.silentgo.lc4e.web.service.AreaService;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.orm.model.Page;
@@ -55,6 +56,16 @@ public class AreaController {
         Integer size = Integer.parseInt(comVarService.getComVarValueByName("AreaPageSize"));
         return new Message(true, new ReturnData("area", area),
                 new ReturnData("topics", topicService.getTopic(area, order, page, size)));
+    }
+
+    @Inject
+    AreaService areaService;
+
+    @Route("/i/{area}")
+    @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
+    public Message areaDetail(Request request, @PathVariable String area) {
+        return new Message(true, new ReturnData("area", areaService.getAreaDetail(area)));
     }
 
 

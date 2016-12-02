@@ -22,4 +22,13 @@ public class PageFilter {
             result.setPageSize(10);
         }
     }
+
+    public void filterPage(Page result, int size) {
+        if (result.getPageNumber() < 1) {
+            result.setPageNumber(1);
+        }
+        if (result.getPageSize() < 1) {
+            result.setPageSize(size);
+        }
+    }
 }
