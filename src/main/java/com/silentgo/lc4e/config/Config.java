@@ -1,5 +1,11 @@
 package com.silentgo.lc4e.config;
 
+import com.alibaba.druid.filter.Filter;
+import com.alibaba.druid.filter.logging.Log4jFilter;
+import com.alibaba.druid.filter.logging.LogFilter;
+import com.alibaba.druid.filter.logging.Slf4jLogFilter;
+import com.alibaba.druid.filter.stat.StatFilter;
+import com.alibaba.druid.wall.WallFilter;
 import com.silentgo.core.SilentGo;
 import com.silentgo.core.cache.CacheManager;
 import com.silentgo.core.config.SilentGoConfig;
@@ -12,13 +18,21 @@ import com.silentgo.lc4e.tool.staticIncludeTag;
 import com.silentgo.lc4e.util.shiro.UserRealm;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.lc4e.web.service.MenuService;
+import com.silentgo.orm.base.DBConfig;
+import com.silentgo.orm.base.DBManager;
 import com.silentgo.orm.base.DBType;
+import com.silentgo.orm.base.ManagerInitialCallBack;
+import com.silentgo.orm.connect.ConnectManager;
+import com.silentgo.orm.kit.configKit;
+import com.silentgo.orm.source.druid.DruidManager;
+import com.silentgo.orm.source.druid.DruidPool;
 import com.silentgo.shiro.ShiroInitConfig;
 import com.silentgo.shiro.ShiroMethod;
 import com.silentgo.utils.PropKit;
 import jetbrick.template.JetGlobalContext;
 import jetbrick.template.resolver.GlobalResolver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -39,7 +53,33 @@ public class Config implements com.silentgo.core.config.Config {
         config.setDbType(DBType.MYSQL.getName());
 
         //set user prop
-        config.setUserProp(new PropKit("config.properties"));
+        PropKit propKit = new PropKit("config.properties");
+
+        //set druid connect
+        DBConfig dbConfig = configKit.getConfig(propKit);
+        ConnectManager.setDBManager(DBType.MYSQL, DruidManager.class);
+        dbConfig.setCallBack(new ManagerInitialCallBack() {
+            @Override
+            public void before(DBManager dbManager) {
+                DruidManager manager = (DruidManager) dbManager;
+                manager.setLogAbandoned(true);
+                manager.setMaxWait(2000);
+                LogFilter logFilter = new Slf4jLogFilter();
+                WallFilter wallFilter = new WallFilter();
+                wallFilter.setDbType(DBType.MYSQL.getName());
+                manager.setFilterList(new ArrayList<Filter>() {{
+                    add(wallFilter);
+                    add(logFilter);
+                    add(new StatFilter());
+                }});
+            }
+            @Override
+            public void after(DBManager dbManager) {
+            }
+        });
+
+        config.getDbConfigList().add(dbConfig);
+        config.setUserProp(propKit);
         //filter static files
         config.addEndStatic(".ico");
         config.addStartStatic("/themes");

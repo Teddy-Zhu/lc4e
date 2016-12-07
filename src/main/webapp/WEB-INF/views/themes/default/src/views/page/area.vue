@@ -178,7 +178,7 @@
                 var url = '/a/' + this.area + "/" + this.page + '/' + this.orderNow;
                 var that = this;
                 that.post({
-                    url: '/a/i/' + this.area
+                    url: '/a/' + this.area + "/info"
                 }).then(function (data) {
                     if (data.result) {
                         that.areaDescription = data.data.area.description

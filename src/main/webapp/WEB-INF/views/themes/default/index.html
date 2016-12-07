@@ -24,6 +24,8 @@
     };
     if (preLoadData.user) {
         sessionStorage.setItem('user', preLoadData.user);
+    }else{
+        sessionStorage.removeItem('user');
     }
 </script>
 <script src="/themes/dist/vendors.js"></script>

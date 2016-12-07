@@ -6,6 +6,8 @@ import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
 import com.silentgo.lc4e.database.model.SysConfig;
 import com.silentgo.lc4e.database.dao.SysConfigDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,6 +18,8 @@ import java.util.List;
  */
 @Service
 public class ComVarService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ComVarService.class);
 
     @Inject
     SysConfigDao sysConfigDao;
@@ -35,7 +39,9 @@ public class ComVarService {
     }
 
     public String getComVarValueByName(String name) {
+        LOGGER.debug("enter getComVarValueByName param:{}", name);
         SysConfig commonVariable = getComVarByName(name);
+        LOGGER.debug("exit getComVarValueByName result:{}", commonVariable);
         if (commonVariable != null) {
             return commonVariable.getValue();
         } else {

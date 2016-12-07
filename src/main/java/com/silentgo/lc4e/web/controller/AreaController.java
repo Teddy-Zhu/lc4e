@@ -61,7 +61,7 @@ public class AreaController {
     @Inject
     AreaService areaService;
 
-    @Route("/i/{area}")
+    @Route("/{area}/info")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message areaDetail(Request request, @PathVariable String area) {
