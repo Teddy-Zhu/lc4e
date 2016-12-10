@@ -23,10 +23,10 @@ public class Area extends TableModel {
 	@Column
 	public String description;
 
-	@Column
+	@Column(nullable = true)
 	public String css;
 
-	@Column
+	@Column(nullable = true)
 	public String icon;
 
 	@Column(value = "is_publish",def = true)
@@ -41,7 +41,7 @@ public class Area extends TableModel {
 	@Column("create_time")
 	public Date createTime;
 
-	@Column("update_time")
+	@Column(value = "update_time",nullable = true)
 	public Date updateTime;
 
 	public Long getId() {

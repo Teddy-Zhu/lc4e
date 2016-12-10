@@ -1,3 +1,11 @@
+import com.silentgo.orm.source.jdbc.JDBCManager;
+import com.silentgo.utils.random.RandomUtil;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  * Project : lc4e
  * Package : PACKAGE_NAME
@@ -7,7 +15,10 @@
  *         Created by teddyzhu on 2016/10/28.
  */
 public class TestNames {
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, SQLException {
 
+
+        return;
     }
+
 }

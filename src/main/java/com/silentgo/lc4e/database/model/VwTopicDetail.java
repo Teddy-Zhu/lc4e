@@ -1,5 +1,6 @@
 package com.silentgo.lc4e.database.model;
 
+import java.math.BigDecimal;
 import com.silentgo.orm.base.annotation.Table;
 import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
@@ -38,20 +39,56 @@ public class VwTopicDetail extends TableModel {
 	@Column("area_id")
 	public Long areaId;
 
-	@Column(value = "view_count",nullable = true)
-	public Integer viewCount;
-
-	@Column(value = "comment_count",nullable = true)
-	public Integer commentCount;
-
-	@Column(nullable = true)
-	public String tags;
-
 	@Column(value = "area_abbr",nullable = true)
 	public String areaAbbr;
 
 	@Column(value = "author_img",def = true,nullable = true)
 	public String authorImg;
+
+	@Column(value = "is_visible",def = true)
+	public Boolean isVisible;
+
+	@Column(value = "is_close",def = true)
+	public Boolean isClose;
+
+	@Column(value = "is_delete",def = true)
+	public Boolean isDelete;
+
+	@Column(value = "is_comment",def = true)
+	public Boolean isComment;
+
+	@Column(def = true,nullable = true)
+	public String tags;
+
+	@Column(def = true)
+	public Integer top;
+
+	@Column(def = true)
+	public Integer down;
+
+	@Column(value = "comment_count",def = true)
+	public Integer commentCount;
+
+	@Column(value = "view_count",def = true,nullable = true)
+	public Integer viewCount;
+
+	@Column(value = "topic_rank",def = true)
+	public BigDecimal topicRank;
+
+	@Column(value = "cuser_id",def = true,nullable = true)
+	public Long cuserId;
+
+	@Column(value = "cuser_nick",nullable = true)
+	public String cuserNick;
+
+	@Column(value = "cuser_img",def = true,nullable = true)
+	public String cuserImg;
+
+	@Column(value = "cuser_time",nullable = true)
+	public Date cuserTime;
+
+	@Column(value = "author_rank",def = true,nullable = true)
+	public BigDecimal authorRank;
 
 	public String getTitle() {
 		return title;
@@ -133,30 +170,6 @@ public class VwTopicDetail extends TableModel {
 		this.areaId = areaId;
 	}
 
-	public Integer getViewCount() {
-		return viewCount;
-	}
-
-	public void setViewCount(Integer viewCount) {
-		this.viewCount = viewCount;
-	}
-
-	public Integer getCommentCount() {
-		return commentCount;
-	}
-
-	public void setCommentCount(Integer commentCount) {
-		this.commentCount = commentCount;
-	}
-
-	public String getTags() {
-		return tags;
-	}
-
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
-
 	public String getAreaAbbr() {
 		return areaAbbr;
 	}
@@ -171,6 +184,126 @@ public class VwTopicDetail extends TableModel {
 
 	public void setAuthorImg(String authorImg) {
 		this.authorImg = authorImg;
+	}
+
+	public Boolean getIsVisible() {
+		return isVisible;
+	}
+
+	public void setIsVisible(Boolean isVisible) {
+		this.isVisible = isVisible;
+	}
+
+	public Boolean getIsClose() {
+		return isClose;
+	}
+
+	public void setIsClose(Boolean isClose) {
+		this.isClose = isClose;
+	}
+
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	public Boolean getIsComment() {
+		return isComment;
+	}
+
+	public void setIsComment(Boolean isComment) {
+		this.isComment = isComment;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public Integer getTop() {
+		return top;
+	}
+
+	public void setTop(Integer top) {
+		this.top = top;
+	}
+
+	public Integer getDown() {
+		return down;
+	}
+
+	public void setDown(Integer down) {
+		this.down = down;
+	}
+
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public Integer getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(Integer viewCount) {
+		this.viewCount = viewCount;
+	}
+
+	public BigDecimal getTopicRank() {
+		return topicRank;
+	}
+
+	public void setTopicRank(BigDecimal topicRank) {
+		this.topicRank = topicRank;
+	}
+
+	public Long getCuserId() {
+		return cuserId;
+	}
+
+	public void setCuserId(Long cuserId) {
+		this.cuserId = cuserId;
+	}
+
+	public String getCuserNick() {
+		return cuserNick;
+	}
+
+	public void setCuserNick(String cuserNick) {
+		this.cuserNick = cuserNick;
+	}
+
+	public String getCuserImg() {
+		return cuserImg;
+	}
+
+	public void setCuserImg(String cuserImg) {
+		this.cuserImg = cuserImg;
+	}
+
+	public Date getCuserTime() {
+		return cuserTime;
+	}
+
+	public void setCuserTime(Date cuserTime) {
+		this.cuserTime = cuserTime;
+	}
+
+	public BigDecimal getAuthorRank() {
+		return authorRank;
+	}
+
+	public void setAuthorRank(BigDecimal authorRank) {
+		this.authorRank = authorRank;
 	}
 
 

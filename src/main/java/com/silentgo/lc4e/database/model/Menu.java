@@ -23,16 +23,16 @@ public class Menu extends TableModel {
 	@Column
 	public String name;
 
-	@Column
+	@Column(nullable = true)
 	public String css;
 
-	@Column
+	@Column(nullable = true)
 	public String icon;
 
 	@Column("create_time")
 	public Date createTime;
 
-	@Column("update_time")
+	@Column(value = "update_time",nullable = true)
 	public Date updateTime;
 
 	public Long getId() {

@@ -13,33 +13,73 @@ import java.util.List;
 @Service
 public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
 
-
-    @Where({" create_time < ? "})
+    /**
+     * order by create time
+     *
+     * @param date
+     * @param start
+     * @param size
+     * @param area
+     * @return
+     */
     @ColumnIgnore({"content", "id"})
-    @WhereGroup(
-            @WhereJudge(value = "area", condition = " area_abbr = <#area/> ")
-    )
-    public List<VwTopicDetail> queryWhereOrderByCreateTimeDescLimit(Date date, int start, int size, @Param("area") String area);
+    @Where({"is_visible =?", "is_delete=?"})
+    @WhereGroup({
+            @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
+            @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
+    })
+    public List<VwTopicDetail> queryWhereOrderByCreateTimeDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
 
-
-    @Where("vw_topic_detail.create_time > ?")
-    @LeftJoin(value = "comment", on = "comment.topic_id = vw_topic_detail.id")
-    @OrderBy("max(comment.create_time) desc")
-    @WhereGroup(
-            @WhereJudge(value = "area", condition = " area_abbr = <#area/> ")
-    )
+    /**
+     * order by last comment time
+     *
+     * @param date
+     * @param start
+     * @param size
+     * @param area
+     * @return
+     */
     @ColumnIgnore({"content", "id"})
-    public List<VwTopicDetail> queryWhereGroupByIdOrderLimit(Date date, int start, int size, @Param("area") String area);
+    @Where({"is_visible =?", "is_delete=?"})
+    @WhereGroup({
+            @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
+            @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
+    })
+    public List<VwTopicDetail> queryWhereOrderByCuserTimeDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
 
-    @Where({" create_time < ? "})
-    @WhereGroup(
-            @WhereJudge(value = "area", condition = " area_abbr = <#area/> ")
-    )
-    public int countWhere(Date date, @Param("area") String area);
+
+    /**
+     * order by comment count
+     *
+     * @param date
+     * @param start
+     * @param size
+     * @param area
+     * @return
+     */
+    @ColumnIgnore({"content", "id"})
+    @Where({"is_visible =?", "is_delete=?"})
+    @WhereGroup({
+            @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
+            @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
+    })
+    public List<VwTopicDetail> queryWhereOrderByCommentCountDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
+
+
+    @Where({"is_visible =?", "is_delete=?"})
+    @WhereGroup({
+            @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
+            @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
+    })
+    public int countWhere(@Param("createTime") Date date, boolean isVisible, boolean isDelete, @Param("area") String area);
 
     @ColumnIgnore({"content", "id"})
-    @Select(" select vw_topic_detail.* from vw_topic_detail where id in (<#id/>) order by field(id,<#id/>) ")
-    public List<VwTopicDetail> queryByIds(@Param("id") List<String> id);
-
+    @OrderBy("match(tags) against (? in boolean mode) desc")
+    @Where({"is_visible =?", "is_delete=?"})
+    @WhereGroup({
+            @WhereJudge(value = "area", condition = "area_abbr = <#area/> "),
+            @WhereJudge(value = "createTime", condition = "create_time < <#createTime/> ")
+    })
+    public List<VwTopicDetail> queryUserLikeWhereOrderLimit(@Param("area") String area, @Param("createTime") Date date, boolean isVisible, boolean isDelete, String userTags, int start, int size);
 }
 

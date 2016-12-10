@@ -6,6 +6,7 @@ import com.silentgo.orm.base.BaseDao;
 import com.silentgo.orm.sqlparser.annotation.ColumnIgnore;
 import com.silentgo.orm.sqlparser.annotation.Set;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
@@ -23,7 +24,7 @@ public interface UserDao extends BaseDao<User> {
     int countWhereMail(String mail);
 
     @Set({" balance = balance + ? ", " update_time = ?"})
-    int updateSetWhereId(int balance, Date updateTime, Long id);
+    int updateBalanceSetWhereId(Double balance, Date updateTime, Long id);
 
 }
 

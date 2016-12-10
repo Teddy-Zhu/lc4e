@@ -26,14 +26,23 @@ public class Comment extends TableModel {
 	@Column
 	public String content;
 
+	@Column(def = true)
+	public String texts;
+
 	@Column("is_visible")
 	public Boolean isVisible;
+
+	@Column(def = true)
+	public Integer down;
 
 	@Column("create_time")
 	public Date createTime;
 
 	@Column(value = "update_time",nullable = true)
 	public Date updateTime;
+
+	@Column(def = true)
+	public Integer top;
 
 	public Long getId() {
 		return id;
@@ -83,12 +92,28 @@ public class Comment extends TableModel {
 		this.content = content;
 	}
 
+	public String getTexts() {
+		return texts;
+	}
+
+	public void setTexts(String texts) {
+		this.texts = texts;
+	}
+
 	public Boolean getIsVisible() {
 		return isVisible;
 	}
 
 	public void setIsVisible(Boolean isVisible) {
 		this.isVisible = isVisible;
+	}
+
+	public Integer getDown() {
+		return down;
+	}
+
+	public void setDown(Integer down) {
+		this.down = down;
 	}
 
 	public Date getCreateTime() {
@@ -105,6 +130,14 @@ public class Comment extends TableModel {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Integer getTop() {
+		return top;
+	}
+
+	public void setTop(Integer top) {
+		this.top = top;
 	}
 
 

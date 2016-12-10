@@ -305,6 +305,8 @@
 .markdown-body code {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
+    white-space: normal;
+    word-break: break-all;
 }
 
 .markdown-body pre {
@@ -357,7 +359,11 @@
     outline: none;
 }
 
-.markdown-body p,
+.markdown-body p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
 .markdown-body blockquote,
 .markdown-body ul,
 .markdown-body ol,
@@ -572,8 +578,6 @@
     padding: 0;
     margin: 0;
     font-size: 100%;
-    word-break: normal;
-    white-space: pre;
     background: transparent;
     border: 0;
 }

@@ -1,5 +1,6 @@
 package com.silentgo.lc4e.web.service;
 
+import com.hankcs.hanlp.HanLP;
 import com.silentgo.core.config.SilentGoConfig;
 import com.silentgo.core.db.intercept.Transaction;
 import com.silentgo.core.ioc.annotation.Inject;
@@ -9,6 +10,7 @@ import com.silentgo.lc4e.database.dao.AreaDao;
 import com.silentgo.lc4e.database.dao.TopicDao;
 import com.silentgo.lc4e.database.dao.VwTopicDetailDao;
 import com.silentgo.lc4e.database.model.Topic;
+import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.database.model.VwTopicDetail;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
@@ -16,8 +18,11 @@ import com.silentgo.lc4e.web.event.VisitTopic;
 import com.silentgo.orm.model.Page;
 import com.silentgo.utils.Assert;
 import com.silentgo.utils.DateKit;
+import com.silentgo.utils.StringKit;
 import org.hashids.Hashids;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,37 +44,70 @@ public class TopicService {
     @Inject
     AreaDao areaDao;
 
+    @Inject
+    TagService tagService;
+
     /**
-     * all topic in time range(3 month)
-     *
-     * @param order 1:  by topic publish time
-     *              2: by last reply time
-     *              3: by user favorite tag
+     * @param area
+     * @param page
+     * @param size
      * @return
      */
+    public Page<VwTopicDetail> getTopicByUserLike(String area, int page, int size) {
+        User user = curUserService.getCurrentUser();
+        if (user == null) return new Page<>();
 
+        List<String> userTags = tagService.getUserTags(user.getId());
+        Date date = getDate();
+        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+
+        List<VwTopicDetail> list = vwTopicDetailDao.queryUserLikeWhereOrderLimit(area, date, true, false, StringKit.join(userTags, ","), result.getStart(), result.getPageSize());
+
+        result.setResult(list);
+
+        return result;
+    }
+
+    /**
+     * all topic in time range(default 3 month)
+     *
+     * @param order 1: by topic publish time
+     *              2: by last reply time
+     *              3: by comment count
+     *              4: by user favorite tag
+     * @return
+     */
     public Page<VwTopicDetail> getTopic(String area, int order, int page, int size) {
         switch (order) {
-            case 3:
-                return new Page<>();
+            case 4:
+                return getTopicByUserLike(area, page, size);
             case 1:
                 return getTopicByPubDate(area, page, size);
             case 2:
                 return getTopicByLast(area, page, size);
+            case 3:
+                return getTopicByCommentCount(area, page, size);
             default:
                 return new Page<>();
         }
     }
 
+    public Page<VwTopicDetail> getTopicByCommentCount(String area, int page, int size) {
+        Date date = getDate();
+        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCommentCountDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
+
+        result.setResult(list);
+
+        return result;
+    }
+
     public Page<VwTopicDetail> getTopicByLast(String area, int page, int size) {
+        Date date = getDate();
+        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
 
-        Date date = DateKit.addMonths(new Date(), 3);
-
-        int total = vwTopicDetailDao.countWhere(date, area);
-
-        Page<VwTopicDetail> result = buildDetailModel(page, size, total);
-
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereGroupByIdOrderLimit(date, result.getStart(), result.getPageSize(), area);
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCuserTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
 
         result.setResult(list);
 
@@ -78,21 +116,28 @@ public class TopicService {
 
     public Page<VwTopicDetail> getTopicByPubDate(String area, int page, int size) {
 
+        Date date = getDate();
 
-        Date date = DateKit.addMonths(new Date(), 3);
+        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
 
-        int total = vwTopicDetailDao.countWhere(date, area);
-
-        Page<VwTopicDetail> result = buildDetailModel(page, size, total);
-
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, result.getStart(), result.getPageSize(), area);
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
 
         result.setResult(list);
 
         return result;
     }
 
-    public Page<VwTopicDetail> buildDetailModel(int page, int size, int total) {
+    private Date getDate() {
+        Integer month = Integer.valueOf(comVarService.getComVarValueByName("ShowLastMonthTopic"));
+        Date date = null;
+        if (month != -1)
+            date = DateKit.addMonths(new Date(), 3);
+        return date;
+    }
+
+    private Page<VwTopicDetail> buildDetailModel(Date date, String area, int page, int size) {
+
+        int total = vwTopicDetailDao.countWhere(date, true, false, area);
 
         Page<VwTopicDetail> result = new Page<>();
         result.setPageNumber(page);
@@ -153,6 +198,15 @@ public class TopicService {
         topic.setIsComment(true);
         topic.setIsDelete(false);
         topic.setUrl(" ");
+        topic.setViewCount(0);
+        topic.setCommentCount(0);
+        topic.setDown(0);
+        topic.setTop(0);
+        topic.setRank(new BigDecimal(0));
+
+        List<String> tags = HanLP.extractKeyword(topic.getTitle() + topic.getContent(), 4);
+
+        topic.setTags(StringKit.join(tags, ","));
 
         int i = topicDao.insertByRow(topic);
 
@@ -169,11 +223,9 @@ public class TopicService {
 
         Assert.isTrue(i == 1, "主题创建url失败");
 
-        topic.setUrl(url);
+        eventFactory.emit(new TopicEvent(topic));
 
         silentGoConfig.getCacheManager().set("topicPublishCache", topic.getUserId(), new Date());
-
-        eventFactory.emit(new TopicEvent(topic));
 
         return true;
     }

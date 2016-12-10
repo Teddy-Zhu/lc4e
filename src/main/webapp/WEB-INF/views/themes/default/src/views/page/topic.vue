@@ -114,6 +114,7 @@
         background: white;
         padding: 10px 10px;
         border-radius: 0.3em;
+        width: 100%;
     }
 
     .comment.replyTable {
@@ -133,8 +134,7 @@
     }
 
     .comment.replyTable {
-        padding: 8px 10px;
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+        padding: 8px 10px 0;
     }
 
     .comment .commentTitle {
@@ -263,6 +263,9 @@
                                     message: '回复主题' + that.topic.title + '成功',
                                     type: 'success'
                                 });
+                                that.total = that.total + 1;
+                                that.comments.push(data.data.comment)
+                                that.$refs.form.resetFields();
                             } else {
                                 that.$message({
                                     message: data.message,
@@ -308,7 +311,7 @@
         },
         components: {
             'sg-body': Body,
-            'sg-markdown': (resolve, reject)=> {
+            'sg-markdown': (resolve, reject) => {
                 require(['../compments/markdown.vue'], resolve);
             }
         }

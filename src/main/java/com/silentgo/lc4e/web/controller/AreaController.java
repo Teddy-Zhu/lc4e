@@ -42,13 +42,13 @@ public class AreaController {
     TopicService topicService;
 
 
-    @Route({"/{area}/{page:([1-9][0-9]*)}/{order:([1-3])}", "/{area}"})
+    @Route({"/{area}/{page:([1-9][0-9]*)}/{order:([1-5])}", "/{area}"})
     @RouteMatch(method = RequestMethod.GET)
     public String a(Request request) {
         return "index.html";
     }
 
-    @Route("/{area}/{page:([1-9][0-9]*)}/{order:([1-3])}")
+    @Route("/{area}/{page:([1-9][0-9]*)}/{order:([1-5])}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     public Message a2(Request request, @PathVariable String area, @PathVariable @RequestInt(range = {1, Integer.MAX_VALUE}) Integer page, @PathVariable Integer order) {

@@ -11,6 +11,7 @@ import com.silentgo.lc4e.web.service.ComVarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -37,7 +38,7 @@ public class RegisterReward implements EventListener<UserRegisterEvent> {
     @Transaction(propagation = Propagation.PROPAGATION_REQUIRES_NEW)
     public void onEvent(UserRegisterEvent event) {
 
-        int i = userDao.updateSetWhereId(Integer.parseInt(comVarService.getComVarValueByName("RegisterReward")),
+        int i = userDao.updateBalanceSetWhereId(Double.valueOf(comVarService.getComVarValueByName("RegisterReward")),
                 new Date(), event.getUser().getId());
 
         if (i == 1) {

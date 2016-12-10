@@ -23,7 +23,7 @@ public class generatedb {
         config.setPass("12345678");
         config.setUser("root");
         config.setDbName("lc4e");
-        config.setUrl("jdbc:mysql://localhost:3306/lc4e?useUnicode=true&characterEncoding=utf-8&useSSL=true");
+        config.setUrl("jdbc:mysql://localhost:3306/lc4e?useUnicode=true&characterEncoding=utf-8");
         new Generate(config).GenerateModelAndDao();
     }
 }

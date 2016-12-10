@@ -10,6 +10,9 @@ export default {
         label: '最后回复'
     }, {
         value: '3',
+        label: '回复数'
+    }, {
+        value: '4',
         label: '个人喜好'
     }]
 }

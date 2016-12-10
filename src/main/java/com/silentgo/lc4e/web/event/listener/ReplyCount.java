@@ -3,7 +3,7 @@ package com.silentgo.lc4e.web.event.listener;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
-import com.silentgo.lc4e.database.dao.TopicRankDao;
+import com.silentgo.lc4e.database.dao.TopicDao;
 import com.silentgo.lc4e.web.event.ReplyEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +21,14 @@ public class ReplyCount implements EventListener<ReplyEvent> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReplyCount.class);
     @Inject
-    TopicRankDao topicRankDao;
+    TopicDao topicDao;
 
     @Override
     public void onEvent(ReplyEvent replyEvent) {
-        int i = topicRankDao.updateReplyCountSetWhereTopicId(1, replyEvent.getComment().getTopicId());
+        int i = topicDao.updateReplyCountSetWhereId(1,
+                replyEvent.getComment().getUserId(),
+                replyEvent.getComment().getCreateTime(),
+                replyEvent.getComment().getTopicId());
 
         LOGGER.debug("increase comment count result : {}", i == 1);
     }

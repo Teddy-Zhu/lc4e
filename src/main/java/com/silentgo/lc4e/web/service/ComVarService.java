@@ -4,8 +4,8 @@ import com.silentgo.core.cache.annotation.Cache;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
-import com.silentgo.lc4e.database.model.SysConfig;
 import com.silentgo.lc4e.database.dao.SysConfigDao;
+import com.silentgo.lc4e.database.model.SysConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

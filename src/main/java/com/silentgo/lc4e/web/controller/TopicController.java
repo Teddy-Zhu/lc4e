@@ -6,6 +6,7 @@ import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.Comment;
 import com.silentgo.lc4e.database.model.Topic;
 import com.silentgo.lc4e.database.model.User;
+import com.silentgo.lc4e.database.model.VwCommentDetail;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
 import com.silentgo.lc4e.web.service.ComVarService;
@@ -34,15 +35,26 @@ public class TopicController {
     @Inject
     CommentService commentService;
 
+
     @Route("/{topic:([0-9a-zA-Z]{4,})}/reply")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     @RequiresUser
     public Message reply(@RequestParam Comment comment, @PathVariable("topic") String url) {
 
-        commentService.replyTopicByUrl(url, comment);
 
-        return new Message(true, new ReturnData("topic", topicService.getTopicDetail(url)));
+        commentService.replyTopicByUrl(url, comment);
+        VwCommentDetail commentDetail = new VwCommentDetail();
+        commentDetail.setId(comment.getId());
+        commentDetail.setDown(comment.getDown());
+        commentDetail.setTop(comment.getTop());
+        commentDetail.setCreateTime(comment.getCreateTime());
+        commentDetail.setContent(comment.getContent());
+        User user = curUserService.getCurrentUser();
+        commentDetail.setImg(user.getImg());
+        commentDetail.setNick(user.getNick());
+
+        return new Message(true, new ReturnData("comment", commentDetail));
     }
 
     @Route("/{topic:([0-9a-zA-Z]{4,})}/info")

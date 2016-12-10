@@ -5,17 +5,17 @@ import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
 import com.silentgo.orm.base.TableModel;
 
-@Table(value = "tag",  primaryKey = "id")
-public class Tag extends TableModel {
+@Table(value = "statistic",  primaryKey = "id")
+public class Statistic extends TableModel {
 
-	@Column(aic = true)
+	@Column
 	public Long id;
 
-	@Column("tag_name")
-	public String tagName;
+	@Column(value = "topic_count",def = true)
+	public Long topicCount;
 
-	@Column(nullable = true)
-	public String description;
+	@Column(value = "user_count",def = true)
+	public Long userCount;
 
 	@Column("create_time")
 	public Date createTime;
@@ -31,20 +31,20 @@ public class Tag extends TableModel {
 		this.id = id;
 	}
 
-	public String getTagName() {
-		return tagName;
+	public Long getTopicCount() {
+		return topicCount;
 	}
 
-	public void setTagName(String tagName) {
-		this.tagName = tagName;
+	public void setTopicCount(Long topicCount) {
+		this.topicCount = topicCount;
 	}
 
-	public String getDescription() {
-		return description;
+	public Long getUserCount() {
+		return userCount;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUserCount(Long userCount) {
+		this.userCount = userCount;
 	}
 
 	public Date getCreateTime() {

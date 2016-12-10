@@ -35,6 +35,12 @@ public class VwCommentDetail extends TableModel {
 	@Column(def = true)
 	public Long id;
 
+	@Column(def = true)
+	public Integer down;
+
+	@Column(def = true)
+	public Integer top;
+
 	public Boolean getIsVisible() {
 		return isVisible;
 	}
@@ -105,6 +111,22 @@ public class VwCommentDetail extends TableModel {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Integer getDown() {
+		return down;
+	}
+
+	public void setDown(Integer down) {
+		this.down = down;
+	}
+
+	public Integer getTop() {
+		return top;
+	}
+
+	public void setTop(Integer top) {
+		this.top = top;
 	}
 
 

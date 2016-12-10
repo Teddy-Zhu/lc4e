@@ -1,5 +1,6 @@
 package com.silentgo.lc4e.database.model;
 
+import java.math.BigDecimal;
 import com.silentgo.orm.base.annotation.Table;
 import com.silentgo.orm.base.annotation.Column;
 import java.util.Date;
@@ -40,6 +41,30 @@ public class Topic extends TableModel {
 
 	@Column(value = "is_comment",def = true)
 	public Boolean isComment;
+
+	@Column(def = true,nullable = true)
+	public String tags;
+
+	@Column(def = true)
+	public Integer top;
+
+	@Column(def = true)
+	public Integer down;
+
+	@Column(value = "comment_count",def = true)
+	public Integer commentCount;
+
+	@Column(value = "view_count",def = true,nullable = true)
+	public Integer viewCount;
+
+	@Column(def = true)
+	public BigDecimal rank;
+
+	@Column(value = "last_comment_user_id",nullable = true)
+	public Long lastCommentUserId;
+
+	@Column(value = "last_comment_time",nullable = true)
+	public Date lastCommentTime;
 
 	@Column("create_time")
 	public Date createTime;
@@ -133,6 +158,70 @@ public class Topic extends TableModel {
 
 	public void setIsComment(Boolean isComment) {
 		this.isComment = isComment;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public Integer getTop() {
+		return top;
+	}
+
+	public void setTop(Integer top) {
+		this.top = top;
+	}
+
+	public Integer getDown() {
+		return down;
+	}
+
+	public void setDown(Integer down) {
+		this.down = down;
+	}
+
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public Integer getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(Integer viewCount) {
+		this.viewCount = viewCount;
+	}
+
+	public BigDecimal getRank() {
+		return rank;
+	}
+
+	public void setRank(BigDecimal rank) {
+		this.rank = rank;
+	}
+
+	public Long getLastCommentUserId() {
+		return lastCommentUserId;
+	}
+
+	public void setLastCommentUserId(Long lastCommentUserId) {
+		this.lastCommentUserId = lastCommentUserId;
+	}
+
+	public Date getLastCommentTime() {
+		return lastCommentTime;
+	}
+
+	public void setLastCommentTime(Date lastCommentTime) {
+		this.lastCommentTime = lastCommentTime;
 	}
 
 	public Date getCreateTime() {
