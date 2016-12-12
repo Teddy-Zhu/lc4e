@@ -35,10 +35,7 @@ public class TemplateTool {
         if (user == null) {
             return null;
         }
-        User curUser = null;
-        if (user.isAuthenticated()) {
-            curUser = (User) SilentGo.me().getConfig().getCacheManager().get("users", user.getSession().getId().toString());
-        }
+        User curUser = (User) SilentGo.me().getConfig().getCacheManager().get("users", user.getSession().getId().toString());
         if (curUser == null) return "";
         else {
             User tmp = new User();

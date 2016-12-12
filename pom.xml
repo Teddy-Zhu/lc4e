@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <version>0.0.1</version>
     <name>lc4e Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <url>http://www.silentgo.com</url>
     <properties>
         <slf4j.version>1.7.12</slf4j.version>
     </properties>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>framework</artifactId>
-            <version>0.0.36</version>
+            <version>0.0.37</version>
         </dependency>
 
         <dependency>
@@ -54,13 +54,6 @@
             <scope>compile</scope>
         </dependency>
 
-
-        <!-- gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.7</version>
-        </dependency>
 
         <!-- hanlp -->
         <dependency>

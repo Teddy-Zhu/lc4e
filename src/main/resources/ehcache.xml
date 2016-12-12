@@ -5,7 +5,7 @@
 
     <cache name="topicPublishCache"
            maxElementsInMemory="1"
-           eternal="false"
+           eternal="true"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -15,8 +15,8 @@
 
     <!-- 登录记录缓存 锁定10分钟 -->
     <cache name="passwordRetryCache"
-           maxElementsInMemory="1"
-           eternal="false"
+           maxElementsInMemory="0"
+           eternal="true"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -24,8 +24,8 @@
     </cache>
 
     <cache name="authorizationCache"
-           maxEntriesLocalHeap="1"
-           eternal="false"
+           maxElementsInMemory="0"
+           eternal="true"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            diskPersistent="true"
@@ -34,8 +34,8 @@
     </cache>
 
     <cache name="authenticationCache"
-           maxEntriesLocalHeap="1"
-           eternal="false"
+           maxElementsInMemory="0"
+           eternal="true"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -44,9 +44,9 @@
     </cache>
 
     <cache name="shiro-activeSessionCache"
-           maxEntriesLocalHeap="1"
+           maxElementsInMemory="0"
            maxEntriesLocalDisk="2000"
-           eternal="false"
+           eternal="true"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -56,10 +56,10 @@
 
     <!-- default cache data -->
     <defaultCache
-            maxElementsInMemory="1"
+            maxElementsInMemory="0"
             maxEntriesLocalHeap="2000"
             maxEntriesLocalDisk="2000"
-            eternal="false"
+            eternal="true"
             timeToIdleSeconds="604800"
             timeToLiveSeconds="0"
             overflowToDisk="true"

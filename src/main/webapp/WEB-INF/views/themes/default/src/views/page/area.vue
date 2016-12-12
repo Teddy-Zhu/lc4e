@@ -130,8 +130,7 @@
 <script type="text/javascript">
     import Body from '../compments/body.vue'
     import TopicLine from '../index/topicLine.vue'
-    import {mapState} from 'vuex'
-    import {mapActions} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
     export default  {
         name: 'area',
         data () {

@@ -21,10 +21,10 @@
                             </table>
                         </el-col>
                         <el-col :span="24">
-                            <table v-for="comment in comments" class="comment replyTable">
+                            <tawebble v-for="comment in comments" class="comment replyTable">
                                 <tr>
                                     <td rowspan="2" class="authorpic left">
-                                        <img :src="getAvatar(comment.img)">
+                                        <img :src="getAvatar(comment.img,50)">
                                     </td>
                                     <td class="commentTitle">
                                         <el-breadcrumb separator=" ">
@@ -42,7 +42,7 @@
                                         <sg-markdown :sourceOut="comment.content" :isEditor="false"></sg-markdown>
                                     </td>
                                 </tr>
-                            </table>
+                            </tawebble>
                             <div v-if="comments.length == 0" class="emptyComment">
                                 no comments
                             </div>
@@ -57,7 +57,7 @@
                                     :total="total">
                             </el-pagination>
                         </el-col>
-                        <el-col :span="24">
+                        <el-col :span="24" v-if="loginUser.id">
                             <el-form ref="form" :rules="rules" :model="form" label-width="0">
                                 <el-form-item label="" prop="content" class="replyItem">
                                     <el-input placeholder="请输入回复内容,文明用语,O(∩_∩)O" type="textarea"
@@ -181,7 +181,7 @@
 </style>
 <script>
     import Body from '../compments/body.vue'
-    import {mapActions} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
     export default{
         name: "topicInfo",
         data(){
@@ -214,6 +214,10 @@
             this.getData();
             this.getComments();
         },
+        computed: mapState({
+            orders: state => state.order,
+            loginUser: state => state.user
+        }),
         watch: {
             $route(val, oldVal){
                 this.updateBaseData();
@@ -285,8 +289,8 @@
             pageChange(){
                 this.page = page;
             },
-            getAvatar(img){
-                return this.avatarUrl.replace('{md5}', img ? img : '84fe01dba7e12fbae34fd2b7ea3b18a6').replace('s=48', 's=66');
+            getAvatar(img, size){
+                return this.avatarUrl.replace('{md5}', img ? img : '84fe01dba7e12fbae34fd2b7ea3b18a6').replace('s=48', size ? ('s=' + size) : 's=66');
             },
             getData(){
                 var url = '/t/' + this.name + "/info";
