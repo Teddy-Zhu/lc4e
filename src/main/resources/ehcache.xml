@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache name="es" updateCheck="false">
 
-    <diskStore path="java.io.tmpdir"/>
+    <diskStore path="~/ehdata"/>
 
     <cache name="topicPublishCache"
            maxElementsInMemory="1"
-           eternal="true"
+           maxElementsOnDisk="0"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -15,8 +15,8 @@
 
     <!-- 登录记录缓存 锁定10分钟 -->
     <cache name="passwordRetryCache"
-           maxElementsInMemory="0"
-           eternal="true"
+           maxElementsInMemory="1"
+           maxElementsOnDisk="0"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -24,8 +24,8 @@
     </cache>
 
     <cache name="authorizationCache"
-           maxElementsInMemory="0"
-           eternal="true"
+           maxElementsInMemory="1"
+           maxElementsOnDisk="0"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            diskPersistent="true"
@@ -34,8 +34,8 @@
     </cache>
 
     <cache name="authenticationCache"
-           maxElementsInMemory="0"
-           eternal="true"
+           maxElementsInMemory="1"
+           maxElementsOnDisk="0"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -44,9 +44,8 @@
     </cache>
 
     <cache name="shiro-activeSessionCache"
-           maxElementsInMemory="0"
-           maxEntriesLocalDisk="2000"
-           eternal="true"
+           maxElementsInMemory="1"
+           maxElementsOnDisk="0"
            timeToIdleSeconds="3600"
            timeToLiveSeconds="0"
            overflowToDisk="true"
@@ -56,10 +55,9 @@
 
     <!-- default cache data -->
     <defaultCache
-            maxElementsInMemory="0"
+            maxElementsInMemory="1"
             maxEntriesLocalHeap="2000"
             maxEntriesLocalDisk="2000"
-            eternal="true"
             timeToIdleSeconds="604800"
             timeToLiveSeconds="0"
             overflowToDisk="true"
