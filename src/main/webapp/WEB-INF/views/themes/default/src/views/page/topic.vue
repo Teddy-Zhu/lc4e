@@ -21,7 +21,7 @@
                             </table>
                         </el-col>
                         <el-col :span="24">
-                            <tawebble v-for="comment in comments" class="comment replyTable">
+                            <table v-for="comment in comments" class="comment replyTable">
                                 <tr>
                                     <td rowspan="2" class="authorpic left">
                                         <img :src="getAvatar(comment.img,50)">
@@ -42,7 +42,7 @@
                                         <sg-markdown :sourceOut="comment.content" :isEditor="false"></sg-markdown>
                                     </td>
                                 </tr>
-                            </tawebble>
+                            </table>
                             <div v-if="comments.length == 0" class="emptyComment">
                                 no comments
                             </div>
