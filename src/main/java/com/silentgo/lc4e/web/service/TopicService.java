@@ -24,6 +24,7 @@ import org.hashids.Hashids;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -206,6 +207,13 @@ public class TopicService {
 
         List<String> tags = HanLP.extractKeyword(topic.getTitle() + topic.getContent(), 4);
 
+        Iterator tagIterator = tags.iterator();
+        while (tagIterator.hasNext()) {
+            String tag = (String) tagIterator.next();
+            if (topic.getTitle().trim().equals(tag) || topic.getContent().equals(tag)) {
+                tagIterator.remove();
+            }
+        }
         topic.setTags(StringKit.join(tags, ","));
 
         int i = topicDao.insertByRow(topic);
