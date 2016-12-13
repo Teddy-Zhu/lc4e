@@ -24,7 +24,7 @@
     import markdownIt from 'markdown-it'
 
     import "../../markdown/markdown.css"
-    import "highlight.js/styles/atom-one-light.css"
+    import "../../highlight/styles/atom-one-light.css"
     export default {
         name: 'sg-markdown',
         data() {
@@ -112,29 +112,38 @@
                 this.outHtml = outHtml;
                 this.$emit('rendered', outHtml);
             },
-            getEmoji(){
-
-            },
             render(){
                 if (!this.md) {
                     var that = this;
-                    var emojiPro = new Promise(function (resolve, reject) {
-                        require(['markdown-it-emoji'], resolve);
+                    var emojiPro = new Promise(function (resolve) {
+                        require.ensure(['markdown-it-emoji'], () => {
+                            resolve(require('markdown-it-emoji'))
+                        }, 'meoji');
                     });
-                    var footNotePro = new Promise(function (resolve, reject) {
-                        require(['markdown-it-footnote'], resolve);
+                    var footNotePro = new Promise(function (resolve) {
+                        require.ensure(['markdown-it-footnote'], () => {
+                            resolve(require('markdown-it-footnote'))
+                        }, 'footnote');
                     });
-                    var abbrPro = new Promise(function (resolve, reject) {
-                        require(['markdown-it-abbr'], resolve);
+                    var abbrPro = new Promise(function (resolve) {
+                        require.ensure(['markdown-it-abbr'], () => {
+                            resolve(require('markdown-it-abbr'));
+                        }, 'abbr');
                     });
-                    var markPro = new Promise(function (resolve, reject) {
-                        require(['markdown-it-mark'], resolve);
+                    var markPro = new Promise(function (resolve) {
+                        require.ensure(['markdown-it-mark'], () => {
+                            resolve(require('markdown-it-mark'));
+                        }, 'mark');
                     });
-                    var taskListPro = new Promise(function (resolve, reject) {
-                        require(['markdown-it-task-lists'], resolve);
+                    var taskListPro = new Promise(function (resolve) {
+                        require.ensure(['markdown-it-task-lists'], () => {
+                            resolve(require('markdown-it-task-lists'));
+                        }, 'tasklist');
                     });
-                    var highPro = new Promise(function (resolve, reject) {
-                        require(['highlight.js'], resolve);
+                    var highPro = new Promise(function (resolve) {
+                        require.ensure(['../../highlight'], () => {
+                            resolve(require('../../highlight'));
+                        }, 'highlight');
                     });
 
                     Promise.all([emojiPro, footNotePro, abbrPro, markPro, taskListPro, highPro]).then(function (result) {

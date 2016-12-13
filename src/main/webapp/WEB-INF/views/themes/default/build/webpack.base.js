@@ -7,8 +7,7 @@ const path = require('path')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CompressionWebpackPlugin = require('compression-webpack-plugin')
-
+var CleanPlugin = require('clean-webpack-plugin');
 const postcss =
     [
         require('autoprefixer')
@@ -96,6 +95,11 @@ module.exports =
                 name: "vendors",
                 minChunks: 2,
                 filename: 'vendors.js'
+            }),
+            new CleanPlugin(['bundle', 'img'], {
+                root: path.join(__dirname, '../../../../../themes/default/dist/'),
+                verbose: true,
+                dry: false
             })
         ]
     }

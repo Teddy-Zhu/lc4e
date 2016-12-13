@@ -15,7 +15,7 @@ module.exports = merge(config,
             new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('development')}),
             new webpack.NoErrorsPlugin(),
             new webpack.optimize.UglifyJsPlugin({ //压缩代码
-                sourceMap: true,
+                sourceMap: false,
                 compress: {
                     warnings: false
                 }
