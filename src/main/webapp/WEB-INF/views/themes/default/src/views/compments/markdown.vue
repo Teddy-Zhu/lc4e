@@ -22,12 +22,6 @@
 </style>
 <script>
     import markdownIt from 'markdown-it'
-    import emoji from 'markdown-it-emoji'
-    import footnote from 'markdown-it-footnote'
-    import abbreviation from 'markdown-it-abbr'
-    import mark from 'markdown-it-mark'
-    import taskList from 'markdown-it-task-lists'
-    import hljs from 'highlight.js';
 
     import "../../markdown/markdown.css"
     import "highlight.js/styles/atom-one-light.css"
@@ -76,10 +70,6 @@
                 type: Boolean,
                 default: true
             },
-            emoji: {
-                type: Boolean,
-                default: true
-            },
             typographer: {
                 type: Boolean,
                 default: true
@@ -117,31 +107,67 @@
             }
         },
         methods: {
-            render(){
-                this.md = new markdownIt().use(footnote).use(abbreviation).use(mark).use(taskList);
-                if (this.emoji) this.md.use(emoji)
-                this.md.set({
-                    html: this.html,
-                    xhtmlOut: this.xhtmlOut,
-                    breaks: this.breaks,
-                    linkify: this.linkify,
-                    typographer: this.typographer,
-                    langPrefix: this.langPrefix,
-                    quotes: this.quotes,
-                    highlight: function (str, lang) {
-                        if (lang && hljs.getLanguage(lang)) {
-                            try {
-                                return hljs.highlight(lang, str).value;
-                            } catch (__) {
-                            }
-                        }
-                        return '';
-                    }
-                });
-                this.md.renderer.rules.table_open = () => '<table class="' + this.tableClass + '">\n'
-                var outHtml = this.show ? this.md.render(this.sourceOut) : ''
+            renderHtml(){
+                var outHtml = this.show ? this.md.render(this.sourceOut) : '';
                 this.outHtml = outHtml;
                 this.$emit('rendered', outHtml);
+            },
+            getEmoji(){
+
+            },
+            render(){
+                if (!this.md) {
+                    var that = this;
+                    var emojiPro = new Promise(function (resolve, reject) {
+                        require(['markdown-it-emoji'], resolve);
+                    });
+                    var footNotePro = new Promise(function (resolve, reject) {
+                        require(['markdown-it-footnote'], resolve);
+                    });
+                    var abbrPro = new Promise(function (resolve, reject) {
+                        require(['markdown-it-abbr'], resolve);
+                    });
+                    var markPro = new Promise(function (resolve, reject) {
+                        require(['markdown-it-mark'], resolve);
+                    });
+                    var taskListPro = new Promise(function (resolve, reject) {
+                        require(['markdown-it-task-lists'], resolve);
+                    });
+                    var highPro = new Promise(function (resolve, reject) {
+                        require(['highlight.js'], resolve);
+                    });
+
+                    Promise.all([emojiPro, footNotePro, abbrPro, markPro, taskListPro, highPro]).then(function (result) {
+                        that.md = new markdownIt();
+                        for (var i = 0, len = result.length - 1; i < len; i++) {
+                            that.md.use(result[i]);
+                        }
+                        var hljs = result[result.length - 1];
+                        that.md.set({
+                            html: that.html,
+                            xhtmlOut: that.xhtmlOut,
+                            breaks: that.breaks,
+                            linkify: that.linkify,
+                            typographer: that.typographer,
+                            langPrefix: that.langPrefix,
+                            quotes: that.quotes,
+                            highlight: function (str, lang) {
+                                if (lang && hljs.getLanguage(lang)) {
+                                    try {
+                                        return hljs.highlight(lang, str).value;
+                                    } catch (__) {
+                                    }
+                                }
+                                return '';
+                            }
+                        });
+                        that.md.renderer.rules.table_open = () => '<table class="' + that.tableClass + '">\n'
+                        that.renderHtml();
+                    });
+                } else {
+                    this.renderHtml();
+                }
+
             }
         }
     }
