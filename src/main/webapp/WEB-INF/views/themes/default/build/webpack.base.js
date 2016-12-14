@@ -5,7 +5,6 @@
 
 const path = require('path')
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanPlugin = require('clean-webpack-plugin');
 const postcss =
@@ -23,7 +22,8 @@ module.exports =
         },
         entry: {
             app: './src/app.js',
-            vendors: ['vue', 'vuex', 'vue-resource', 'element-ui']
+            elementui: './src/elementui',
+            vendors: ['vue', 'vuex', 'vue-resource']
         },
         output: {
             path: path.join(__dirname, '../../../../../themes/default/dist/'),
@@ -81,7 +81,13 @@ module.exports =
                         presets: [
                             ['es2015', {modules: false}], 'stage-2'
                         ],
-                        plugins: ["transform-runtime"]
+                        plugins: ["transform-runtime",
+                            ["component", [
+                                {
+                                    "libraryName": "element-ui",
+                                    "styleLibraryName": "theme-default"
+                                }
+                            ]]]
                     },
                     postcss,
                     vue: {
@@ -92,9 +98,8 @@ module.exports =
             }),
             new ExtractTextPlugin("[name].css"),
             new webpack.optimize.CommonsChunkPlugin({
-                name: "vendors",
-                minChunks: 2,
-                filename: 'vendors.js'
+                names: ["vendors", "elementui"],
+                minChunks: 2
             }),
             new CleanPlugin(['bundle', 'img'], {
                 root: path.join(__dirname, '../../../../../themes/default/dist/'),

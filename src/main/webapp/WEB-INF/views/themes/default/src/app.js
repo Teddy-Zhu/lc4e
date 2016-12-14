@@ -7,9 +7,9 @@ import router from './route'
 import resource from 'vue-resource'
 import store from './store'
 import App from './app.vue'
-import ElementUI from 'element-ui'
+import elementui from './elementui'
 
-Vue.use(ElementUI)
+Vue.use(elementui)
 Vue.use(resource)
 
 router.beforeEach((to, from, next) => {

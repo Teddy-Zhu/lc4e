@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <title>${SiteName}</title>
-    <link href="/themes/dist/app.css?v=?${JsVersion}" rel="stylesheet" type="text/css">
-    <link href="/themes/dist/base/base.css?v=?${JsVersion}" rel="stylesheet" type="text/css">
+    <link href="/themes/dist/app.css?v=${JsVersion}" rel="stylesheet" type="text/css">
+    <link href="/themes/dist/elementui.css?v=${JsVersion}" rel="stylesheet" type="text/css">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link href="//at.alicdn.com/t/font_1476846710_1240242.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -28,7 +28,8 @@
         sessionStorage.removeItem('user');
     }
 </script>
-<script src="/themes/dist/vendors.js?v=?${JsVersion}"></script>
-<script src="/themes/dist/app.js?v=?${JsVersion}"></script>
+<script src="/themes/dist/elementui.js?v=${JsVersion}"></script>
+<script src="/themes/dist/vendors.js?v=${JsVersion}"></script>
+<script src="/themes/dist/app.js?v=${JsVersion}"></script>
 </body>
 </html>
