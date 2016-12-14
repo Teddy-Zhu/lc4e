@@ -73,6 +73,7 @@ public class Config implements com.silentgo.core.config.Config {
                     add(new StatFilter());
                 }});
             }
+
             @Override
             public void after(DBManager dbManager) {
             }
@@ -134,7 +135,7 @@ public class Config implements com.silentgo.core.config.Config {
         //"http://7u2sne.com1.z0.glb.clouddn.com" +
         globalContext.set(String.class, "Theme", "/themes/" + Key.kvs.get("Theme"));
         globalContext.set(String.class, "userImg", comVarService.getComVarValueByName("Avatar"));
-        globalContext.set(String.class, "JsVersion", comVarService.getComVarValueByName("JsVersion"));
+        globalContext.set(String.class, "JsVersion", comVarService.getComVarValueByName("JsVersion", false));
 
         config.getStaticMapping().put("/themes", "/themes/" + Key.kvs.get("Theme"));
     }

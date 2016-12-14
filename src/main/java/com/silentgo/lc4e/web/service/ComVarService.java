@@ -30,12 +30,27 @@ public class ComVarService {
         return sysConfigDao.queryOneWhereName(name);
     }
 
+    public SysConfig getComVarByNameNocache(String name) {
+        return sysConfigDao.queryOneWhereName(name);
+    }
+
     public List<SysConfig> getComVarsByNames(String[] name) {
         return sysConfigDao.queryListWhereName(Arrays.asList(name));
     }
 
     public List<SysConfig> getComVarsByNames(Collection<String> name) {
         return sysConfigDao.queryListWhereName(name);
+    }
+
+    public String getComVarValueByName(String name, boolean useCache) {
+        LOGGER.debug("enter getComVarValueByName param:{}", name);
+        SysConfig commonVariable = useCache ? getComVarByName(name) : getComVarByNameNocache(name);
+        LOGGER.debug("exit getComVarValueByName result:{}", commonVariable);
+        if (commonVariable != null) {
+            return commonVariable.getValue();
+        } else {
+            return null;
+        }
     }
 
     public String getComVarValueByName(String name) {
