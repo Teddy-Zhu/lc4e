@@ -7,7 +7,7 @@
                         <el-col :span="24">
                             <table class="topic replyTable">
                                 <tr>
-                                    <td class="left">{{topic.authorNick}}</td>
+                                    <td class="left"><router-link :to="'/i/'+topic.authorId" tag="a">{{topic.authorNick}}</router-link></td>
                                     <td class="title">{{topic.title}}</td>
                                 </tr>
                                 <tr>
@@ -27,7 +27,7 @@
                                         <img :src="getAvatar(comment.img,50)">
                                     </td>
                                     <td class="commentTitle">
-                                        <el-breadcrumb separator=" ">
+                                        <el-breadcrumb separator="|">
                                             <el-breadcrumb-item :to="{ path: '/i/' + comment.userId }">
                                                 <el-tag class="clickable">{{comment.nick}}</el-tag>
                                             </el-breadcrumb-item>
@@ -113,33 +113,24 @@
         border: 1px solid #d3dce6;
         background: white;
         padding: 10px 10px;
-        border-radius: 0.3em;
         width: 100%;
     }
 
     .comment.replyTable {
-        border-radius: 0;
         border-bottom: none;
     }
 
     .comment.replyTable:first-child {
-        border-top-left-radius: 0.3em;
-        border-top-right-radius: 0.3em;
     }
 
     .comment.replyTable:last-child {
         border-bottom: 1px solid #d3dce6;
-        border-bottom-right-radius: 0.3em;
-        border-bottom-left-radius: 0.3em;
-    }
-
-    .comment.replyTable {
-        padding: 8px 10px 0;
     }
 
     .comment .commentTitle {
         border-bottom: 1px dashed black;
         padding-bottom: 5px;
+        padding-left: .5em;
     }
 
     .inline-block {
@@ -154,10 +145,15 @@
     .title {
         border-bottom: 1px dashed black;
         font-size: 1.5em;
+        padding-left: .2em;
     }
 
     .authorpic {
         vertical-align: top;
+    }
+
+    .authorpic.left, .left {
+        border-right: 1px dashed black;
     }
 
     .emptyComment {

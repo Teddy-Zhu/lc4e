@@ -9,15 +9,24 @@
                                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                             </el-breadcrumb>
                         </el-col>
-                        <el-col :span="5">
-                            <el-select v-model="orderNow" size="mini" class="el-select-mini">
-                                <el-option
-                                        v-for="orderItem in orders"
-                                        :label="orderItem.label"
-                                        :key="orderItem.value"
-                                        :value="orderItem.value">
-                                </el-option>
-                            </el-select>
+                        <el-col :span="10">
+                            <el-row type="flex" justify="end">
+                                <el-col :span="11" class="el-col-right">
+                                    <el-button type="primary" size="mini" icon="edit" @click="newTopic" v-if="user.id">
+                                        发布主题
+                                    </el-button>
+                                </el-col>
+                                <el-col :span="12" :offset="1">
+                                    <el-select v-model="orderNow" class="el-select-mini">
+                                        <el-option
+                                                v-for="orderItem in orders"
+                                                :label="orderItem.label"
+                                                :key="orderItem.value"
+                                                :value="orderItem.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-col>
+                            </el-row>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -57,6 +66,9 @@
 </template>
 <style type="text/css">
 
+    .el-pagination {
+        background-color: #f2f3f5;
+    }
     .topic-hot-line {
         margin: 5px 0;
         border-bottom: 1px solid #c2c8dc;
@@ -76,6 +88,8 @@
     .topic-hot {
         min-height: 100px;
         padding: 10px 0;
+        background-color: white;
+        margin-bottom: 1rem;
         border-radius: 0.2em;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
         border-bottom: 1px solid rgba(162, 162, 162, 0.31);
@@ -91,9 +105,9 @@
         display: inline-block;
     }
 
-    .el-select-mini .el-input input {
-        height: 24px;
-        line-height: 23px;
+    .el-select-mini .el-input .el-input__inner {
+        height: 23px;
+        line-height: 24px;
         background-color: #f2f3f5;
     }
 
@@ -105,15 +119,18 @@
 
     .inline-block {
         display: inline-block;
+        background: #F2F3F5;
     }
 
     .br-path {
         margin: 10px 0;
     }
 
-    .el-pagination {
-        background-color: #f2f3f5;
+    .el-col-right {
+        text-align: right;
+        line-height: 26px;
     }
+
 </style>
 <script type="text/javascript">
     import Body from '../compments/body.vue'
@@ -148,7 +165,10 @@
                 }]
             }
         },
-        computed: mapState({orders: state => state.order}),
+        computed: mapState({
+            orders: state => state.order,
+            user: state => state.user
+        }),
         created () {
             this.getData();
         },
@@ -165,6 +185,9 @@
             }
         },
         methods: {
+            newTopic(){
+                this.$router.push('/t/new/');
+            },
             pageChange(page){
                 this.page = page;
             },
@@ -175,7 +198,7 @@
             getData () {
                 var url = '/a/all/' + this.page + '/' + this.orderNow;
 
-                this.$http.post(url).then((response)=> {
+                this.$http.post(url).then(function (response) {
                     if (response.data.result) {
                         this.topics = response.data.data.topics.result;
                         this.page = response.data.data.topics.pageNumber;
@@ -184,7 +207,7 @@
                     } else {
                         this.$message.error(response.data.message.length > 40 ? response.data.message.substring(0, 40) + "..." : response.data.message);
                     }
-                }, (response)=> {
+                }, function (response) {
                     this.$message.error('数据获取错误');
                 });
             },

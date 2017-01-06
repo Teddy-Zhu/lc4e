@@ -2,7 +2,10 @@ package com.silentgo.lc4e.tool;
 
 
 import com.silentgo.core.SilentGo;
+import com.silentgo.core.ioc.bean.BeanFactory;
+import com.silentgo.core.ioc.bean.BeanWrapper;
 import com.silentgo.lc4e.database.model.User;
+import com.silentgo.lc4e.web.service.UserService;
 import com.silentgo.utils.StringKit;
 import org.apache.shiro.SecurityUtils;
 
@@ -35,13 +38,22 @@ public class TemplateTool {
         if (user == null) {
             return null;
         }
-        User curUser = (User) SilentGo.me().getConfig().getCacheManager().get("users", user.getSession().getId().toString());
-        if (curUser == null) return "";
-        else {
-            User tmp = new User();
-            tmp.setId(curUser.getId());
-            tmp.setNick(curUser.getNick());
-            return SilentGo.me().getConfig().getJsonPaser().toJsonString(tmp);
+
+        SilentGo me = SilentGo.me();
+
+        User curUser = (User) me.getConfig().getCacheManager().get("users", user.getSession().getId().toString());
+        if (curUser == null) {
+            if (!user.isAuthenticated() && user.isRemembered()) {
+                curUser = ((UserService) me.getFactory(me.getConfig().getBeanClass()).getBean(UserService.class.getName()).getObject()).findUserFullInfo(user.getPrincipal().toString());
+                me.getConfig().getCacheManager().set("users", user.getSession().getId().toString(), curUser);
+            } else {
+                return "";
+            }
         }
+        User tmp = new User();
+        tmp.setId(curUser.getId());
+        tmp.setNick(curUser.getNick());
+        return SilentGo.me().getConfig().getJsonPaser().toJsonString(tmp);
+
     }
 }

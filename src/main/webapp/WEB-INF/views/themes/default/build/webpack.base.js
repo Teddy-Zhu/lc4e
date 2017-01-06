@@ -99,7 +99,7 @@ module.exports =
             new ExtractTextPlugin("[name].css"),
             new webpack.optimize.CommonsChunkPlugin({
                 names: ["vendors", "elementui"],
-                minChunks: 2
+                minChunks: 1
             }),
             new CleanPlugin(['bundle', 'img'], {
                 root: path.join(__dirname, '../../../../../themes/default/dist/'),

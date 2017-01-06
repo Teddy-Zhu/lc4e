@@ -1,5 +1,8 @@
+import com.silentgo.lc4e.web.service.UrlGenerateService;
 import com.silentgo.orm.source.jdbc.JDBCManager;
+import com.silentgo.utils.ReflectKit;
 import com.silentgo.utils.random.RandomUtil;
+import com.silentgo.utils.reflect.SGClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +20,7 @@ import java.sql.SQLException;
 public class TestNames {
     public static void main(String[] args) throws NoSuchMethodException, SQLException {
 
-
+        SGClass sgClass = ReflectKit.getSGClass(UrlGenerateService.class);
         return;
     }
 

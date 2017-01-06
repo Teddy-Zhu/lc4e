@@ -63,7 +63,9 @@
     </sg-body>
 </template>
 <style type="text/css">
-
+    .el-pagination {
+        background-color: #f2f3f5;
+    }
     .topic-hot-line {
         margin: 5px 0;
         border-bottom: 1px solid #c2c8dc;
@@ -125,7 +127,6 @@
         text-align: right;
         line-height: 26px;
     }
-
 </style>
 <script type="text/javascript">
     import Body from '../compments/body.vue'

@@ -1,7 +1,7 @@
 <template>
     <el-row>
         <el-col :span="24" class="menu-panel">
-            <el-menu default-active="/" theme="dark" :mode="mode" :router="true"
+            <el-menu :default-active="$route.path" theme="dark" :mode="mode" :router="true"
                      class="sg-header" :class="{ fixed : 'fixed' }">
                 <template v-for="menu in menus">
                     <el-menu-item :index="menu.abbr" v-if="menu.children.length == 0">{{menu.name}}</el-menu-item>
@@ -82,7 +82,6 @@
                 self.fixed = window.scrollY > 0;
             })
         },
-        methods: {},
         components: {
             'sg-menu': sgmenu
         }

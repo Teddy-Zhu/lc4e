@@ -5,7 +5,8 @@
                 <tr>
                     <td align="center" width="10%">
                         <a class="topic-author-img-a">
-                            <img :src="getAvatar(data.authorImg)" class="topic-line-img">
+                            <router-link :to="getUserUrl(data.authorId)" :src="getAvatar(data.authorImg)" tag="img"
+                                         class="topic-line-img"></router-link>
                         </a>
                     </td>
                     <td align="left" width="75%">
@@ -45,8 +46,8 @@
 </template>
 <style>
     .el-tag-mini {
-        height: 12px;
-        line-height: 12px;
+        height: 15px;
+        line-height: 13px;
     }
 
     .topic-author-img-a {
@@ -61,6 +62,7 @@
     .topic-line-img {
         width: 3em;
         height: 3em;
+        cursor: pointer;
     }
 
     .topic-table {
