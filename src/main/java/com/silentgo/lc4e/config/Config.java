@@ -1,7 +1,6 @@
 package com.silentgo.lc4e.config;
 
 import com.alibaba.druid.filter.Filter;
-import com.alibaba.druid.filter.logging.Log4jFilter;
 import com.alibaba.druid.filter.logging.LogFilter;
 import com.alibaba.druid.filter.logging.Slf4jLogFilter;
 import com.alibaba.druid.filter.stat.StatFilter;
@@ -25,7 +24,6 @@ import com.silentgo.orm.base.ManagerInitialCallBack;
 import com.silentgo.orm.connect.ConnectManager;
 import com.silentgo.orm.kit.configKit;
 import com.silentgo.orm.source.druid.DruidManager;
-import com.silentgo.orm.source.druid.DruidPool;
 import com.silentgo.shiro.ShiroInitConfig;
 import com.silentgo.shiro.ShiroMethod;
 import com.silentgo.utils.PropKit;

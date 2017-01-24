@@ -1,13 +1,7 @@
-import com.silentgo.lc4e.web.service.UrlGenerateService;
-import com.silentgo.orm.source.jdbc.JDBCManager;
-import com.silentgo.utils.ReflectKit;
-import com.silentgo.utils.random.RandomUtil;
-import com.silentgo.utils.reflect.SGClass;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.lang.reflect.Field;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project : lc4e
@@ -17,11 +11,15 @@ import java.sql.SQLException;
  *         <p>
  *         Created by teddyzhu on 2016/10/28.
  */
-public class TestNames {
-    public static void main(String[] args) throws NoSuchMethodException, SQLException {
+public class TestNames<T> {
 
-        SGClass sgClass = ReflectKit.getSGClass(UrlGenerateService.class);
-        return;
+    public List<String> aaa = new ArrayList<>();
+
+    public List<T> asdas = new ArrayList();
+
+    public static void main(String[] args) throws NoSuchMethodException, SQLException, NoSuchFieldException {
+        Field a = TestNames.class.getField("asdas");
+        System.out.println(a);
     }
 
 }
