@@ -1,4 +1,7 @@
-import java.lang.reflect.Field;
+import com.silentgo.lc4e.web.event.listener.ViewTopicCountListener;
+import com.silentgo.utils.ReflectKit;
+import com.silentgo.utils.reflect.SGClass;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +21,7 @@ public class TestNames<T> {
     public List<T> asdas = new ArrayList();
 
     public static void main(String[] args) throws NoSuchMethodException, SQLException, NoSuchFieldException {
-        Field a = TestNames.class.getField("asdas");
-        System.out.println(a);
+        SGClass sgClass = ReflectKit.getSGClass(ViewTopicCountListener.class);
     }
 
 }

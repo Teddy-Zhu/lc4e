@@ -13,9 +13,6 @@
                         <el-form-item label="验证码" v-if="captcha" prop="captcha">
                             <el-input v-model="form.captcha"></el-input>
                         </el-form-item>
-                        <el-form-item label="记住我" prop="rememberMe">
-                            <el-switch on-text="" off-text="" v-model="form.rememberMe"></el-switch>
-                        </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="onSubmit">登陆</el-button>
                             <el-button @click="reset">重置</el-button>
@@ -46,8 +43,7 @@
                 form: {
                     name: '',
                     password: '',
-                    captcha: '',
-                    rememberMe: false
+                    captcha: ''
                 },
                 rules: {
                     name: [

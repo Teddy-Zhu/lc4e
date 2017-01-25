@@ -149,7 +149,6 @@ public class UserController {
      * @param password
      * @param captcha
      * @param request
-     * @param rememberMe
      * @return
      */
     @RouteMatch(method = RequestMethod.POST)
@@ -157,8 +156,7 @@ public class UserController {
     @ResponseBody
     public Message signin(@RequestParam String name, @RequestParam String password,
                           @RequestParam @RequestString(defaultValue = "@@@@", range = {4, 4}) String captcha,
-                          Request request,
-                          @RequestBool Boolean rememberMe) {
+                          Request request) {
 
         SysConfig captchaConfig = comVarService.getComVarByName("Captcha");
         boolean captchaValue = Boolean.parseBoolean(captchaConfig.getValue());
@@ -168,7 +166,7 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(name, password);
-            token.setRememberMe(rememberMe);
+            token.setRememberMe(true);
             subject.login(token);
             subject.getSession().removeAttribute(Lc4eCaptchaRender.captcha_code);
             if (!subject.isAuthenticated()) {

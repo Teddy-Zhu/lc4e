@@ -13,6 +13,8 @@
     <url>http://www.silentgo.com</url>
     <properties>
         <slf4j.version>1.7.12</slf4j.version>
+        <utils.version>0.1.8</utils.version>
+        <orm.version>0.2.8</orm.version>
     </properties>
     <dependencies>
 
@@ -26,7 +28,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>framework</artifactId>
-            <version>0.0.41</version>
+            <version>0.0.42</version>
         </dependency>
 
         <dependency>
@@ -41,6 +43,16 @@
             <version>0.0.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.silentgo</groupId>
+            <artifactId>utils</artifactId>
+            <version>${utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.silentgo</groupId>
+            <artifactId>orm</artifactId>
+            <version>${orm.version}</version>
+        </dependency>
 
         <!-- hanlp -->
         <dependency>

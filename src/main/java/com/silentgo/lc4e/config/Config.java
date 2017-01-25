@@ -61,6 +61,7 @@ public class Config implements com.silentgo.core.config.Config {
             public void before(DBManager dbManager) {
                 DruidManager manager = (DruidManager) dbManager;
                 manager.setLogAbandoned(true);
+                manager.setRemoveAbandoned(true);
                 manager.setMaxWait(2000);
                 LogFilter logFilter = new Slf4jLogFilter();
                 WallFilter wallFilter = new WallFilter();
