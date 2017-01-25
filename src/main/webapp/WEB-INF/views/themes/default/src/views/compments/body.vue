@@ -16,7 +16,7 @@
         props: {
             col: {
                 type: Number,
-                default: 20
+                default: 22
             }
         }
     }
