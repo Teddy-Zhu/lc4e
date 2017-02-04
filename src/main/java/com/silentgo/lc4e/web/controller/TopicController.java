@@ -16,6 +16,7 @@ import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
 import com.silentgo.utils.Assert;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresUser;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class TopicController {
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
     @RequiresUser
+    @RequiresAuthentication
     public Message reply(@RequestParam Comment comment, @PathVariable("topic") String url) {
 
 

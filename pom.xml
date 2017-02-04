@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>shiro</artifactId>
-            <version>0.0.8</version>
+            <version>0.1.1</version>
         </dependency>
 
         <dependency>
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>com.silentgo</groupId>
             <artifactId>json</artifactId>
-            <version>0.0.3</version>
+            <version>0.0.5</version>
         </dependency>
 
     </dependencies>
