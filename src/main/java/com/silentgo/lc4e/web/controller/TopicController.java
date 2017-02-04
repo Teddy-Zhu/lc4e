@@ -55,6 +55,7 @@ public class TopicController {
         User user = curUserService.getCurrentUser();
         commentDetail.setImg(user.getImg());
         commentDetail.setNick(user.getNick());
+        commentDetail.setUserId(user.getId());
 
         return new Message(true, new ReturnData("comment", commentDetail));
     }
