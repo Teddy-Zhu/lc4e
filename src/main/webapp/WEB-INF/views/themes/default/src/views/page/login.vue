@@ -33,7 +33,7 @@
     }
 </style>
 <script>
-    import Body from '../compments/body.vue'
+    import Body from '../compments/front.vue'
     import {mapActions} from 'vuex'
 
     export default{

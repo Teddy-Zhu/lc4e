@@ -8,8 +8,8 @@ import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.UserDao;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,7 +26,7 @@ import java.util.Date;
 public class RegisterReward implements EventListener<UserRegisterEvent> {
 
 
-    private final Logger logger = LoggerFactory.getLogger(RegisterReward.class);
+    private final Log logger = LogFactory.get(RegisterReward.class);
 
     @Inject
     private UserDao userDao;

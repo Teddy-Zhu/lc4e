@@ -6,8 +6,8 @@ import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
 import com.silentgo.lc4e.database.dao.SysConfigDao;
 import com.silentgo.lc4e.database.model.SysConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class ComVarService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ComVarService.class);
+    private static final Log LOGGER = LogFactory.get(ComVarService.class);
 
     @Inject
     SysConfigDao sysConfigDao;

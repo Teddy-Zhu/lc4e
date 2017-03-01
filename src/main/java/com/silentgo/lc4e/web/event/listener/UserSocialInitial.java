@@ -8,8 +8,8 @@ import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.UserSocialDao;
 import com.silentgo.lc4e.database.model.UserSocial;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.util.Date;
 
@@ -24,7 +24,7 @@ import java.util.Date;
 @EventListen
 public class UserSocialInitial implements EventListener<UserRegisterEvent> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserSocialInitial.class);
+    private static final Log LOGGER = LogFactory.get(UserSocialInitial.class);
 
     @Inject
     UserSocialDao userSocialDao;

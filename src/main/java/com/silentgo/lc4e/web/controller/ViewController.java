@@ -7,13 +7,12 @@ import com.silentgo.core.route.annotation.Controller;
 import com.silentgo.core.route.annotation.PathVariable;
 import com.silentgo.core.route.annotation.Route;
 import com.silentgo.lc4e.tool.Lc4eCaptchaRender;
-import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 /**
  * Created by teddy on 2015/7/18.
@@ -22,7 +21,7 @@ import org.slf4j.LoggerFactory;
 @Route("/")
 public class ViewController {
 
-    private static final Logger log = LoggerFactory.getLogger(ViewController.class);
+    private static final Log log = LogFactory.get(ViewController.class);
 
     @Inject
     TopicService topicService;

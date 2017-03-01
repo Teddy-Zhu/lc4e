@@ -16,6 +16,7 @@
                 </template>
                 <template v-else>
                     <el-menu-item index="/u/signout" class="menu-right">退出</el-menu-item>
+                    <el-menu-item index="/manage" class="menu-right">后台管理</el-menu-item>
                     <el-menu-item :index="'/i/' + user.id" class="menu-right">{{user.nick}}</el-menu-item>
                 </template>
             </el-menu>

@@ -7,7 +7,10 @@
                         <el-col :span="24">
                             <table class="topic replyTable">
                                 <tr>
-                                    <td class="left"><router-link :to="'/i/'+topic.authorId" tag="a">{{topic.authorNick}}</router-link></td>
+                                    <td class="left">
+                                        <router-link :to="'/i/'+topic.authorId" tag="a">{{topic.authorNick}}
+                                        </router-link>
+                                    </td>
                                     <td class="title">{{topic.title}}</td>
                                 </tr>
                                 <tr>
@@ -95,12 +98,13 @@
         width: 100%;
     }
 
-    .topic {
-        margin-bottom: 1rem;
+    .comment .commentTitle .el-tag {
+        height: 16px;
+        line-height: 14px;
     }
 
-    .el-pagination {
-        background-color: #f2f3f5;
+    .topic {
+        margin-bottom: 1rem;
     }
 
     .clickable {
@@ -131,6 +135,7 @@
         border-bottom: 1px dashed black;
         padding-bottom: 5px;
         padding-left: .5em;
+        height: 1px;
     }
 
     .inline-block {
@@ -176,7 +181,7 @@
     }
 </style>
 <script>
-    import Body from '../compments/body.vue'
+    import Body from '../compments/front.vue'
     import {mapState, mapActions} from 'vuex'
     export default{
         name: "topicInfo",

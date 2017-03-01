@@ -1,7 +1,7 @@
 package com.silentgo.lc4e.tool;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class RelativeDate {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RelativeDate.class);
+    private static final Log LOGGER = LogFactory.get(RelativeDate.class);
     private static final long ONE_MINUTE = 60000L;
     private static final long ONE_HOUR = 3600000L;
     private static final long ONE_DAY = 86400000L;

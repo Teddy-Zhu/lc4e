@@ -7,7 +7,7 @@ import router from './route'
 import resource from 'vue-resource'
 import store from './store'
 import App from './app.vue'
-import elementui from './elementui'
+import elementui from 'element-ui';
 
 Vue.use(elementui)
 Vue.use(resource)
@@ -16,7 +16,6 @@ router.beforeEach((to, from, next) => {
     store.state.route.load = true;
     next();
 })
-
 router.afterEach(route => {
     store.state.route.load = false;
 })

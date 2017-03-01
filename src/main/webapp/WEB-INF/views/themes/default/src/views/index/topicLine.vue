@@ -46,8 +46,8 @@
 </template>
 <style>
     .el-tag-mini {
-        height: 15px;
-        line-height: 13px;
+        height: 16px;
+        line-height: 14px;
     }
 
     .topic-author-img-a {

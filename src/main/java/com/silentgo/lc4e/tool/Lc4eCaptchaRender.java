@@ -4,10 +4,9 @@ import com.silentgo.core.exception.AppRenderException;
 import com.silentgo.core.render.Render;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.Response;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 import com.silentgo.utils.random.RandomUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class Lc4eCaptchaRender implements Render {
 
-    private static final Logger log = LoggerFactory.getLogger(Lc4eCaptchaRender.class);
+    private static final Log log = LogFactory.get();
 
     public static final String captcha_code = "lc4e_captcha_code";
     private static boolean casesensitive = false;

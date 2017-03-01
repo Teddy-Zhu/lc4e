@@ -7,8 +7,8 @@ import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.TopicDao;
 import com.silentgo.lc4e.web.event.VisitTopic;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 /**
  * Project : lc4e
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  */
 @EventListen(async = true)
 public class ViewTopicCountListener implements EventListener<VisitTopic> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserSocialInitial.class);
+    private static final Log LOGGER = LogFactory.get(UserSocialInitial.class);
 
     @Inject
     TopicDao topicDao;

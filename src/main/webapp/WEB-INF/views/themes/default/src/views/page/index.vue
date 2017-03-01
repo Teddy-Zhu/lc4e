@@ -66,9 +66,6 @@
 </template>
 <style type="text/css">
 
-    .el-pagination {
-        background-color: #f2f3f5;
-    }
     .topic-hot-line {
         margin: 5px 0;
         border-bottom: 1px solid #c2c8dc;
@@ -88,11 +85,8 @@
     .topic-hot {
         min-height: 100px;
         padding: 10px 0;
-        background-color: white;
         margin-bottom: 1rem;
         border-radius: 0.2em;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(162, 162, 162, 0.31);
     }
 
     .topic-hot-line a {
@@ -108,7 +102,6 @@
     .el-select-mini .el-input .el-input__inner {
         height: 23px;
         line-height: 24px;
-        background-color: #f2f3f5;
     }
 
     .pager-center {
@@ -119,7 +112,6 @@
 
     .inline-block {
         display: inline-block;
-        background: #F2F3F5;
     }
 
     .br-path {
@@ -133,7 +125,7 @@
 
 </style>
 <script type="text/javascript">
-    import Body from '../compments/body.vue'
+    import Body from '../compments/front.vue'
     import TopicLine from '../index/topicLine.vue'
     import {mapState} from 'vuex'
 

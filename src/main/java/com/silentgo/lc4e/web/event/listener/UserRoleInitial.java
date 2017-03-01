@@ -13,8 +13,8 @@ import com.silentgo.lc4e.web.event.UserRegisterEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.utils.Assert;
 import com.silentgo.utils.DateKit;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.util.Date;
 
@@ -29,7 +29,7 @@ import java.util.Date;
 @EventListen
 public class UserRoleInitial implements EventListener<UserRegisterEvent> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserRoleInitial.class);
+    private static final Log LOGGER = LogFactory.get(UserRoleInitial.class);
 
     @Inject
     UserRoleDao userRoleDao;

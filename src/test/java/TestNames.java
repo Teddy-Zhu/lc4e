@@ -1,6 +1,7 @@
 import com.silentgo.lc4e.web.event.listener.ViewTopicCountListener;
 import com.silentgo.utils.ReflectKit;
 import com.silentgo.utils.reflect.SGClass;
+import com.silentgo.utils.reflect.SGClassParseKit;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,12 +17,15 @@ import java.util.List;
  */
 public class TestNames<T> {
 
-    public List<String> aaa = new ArrayList<>();
-
-    public List<T> asdas = new ArrayList();
-
     public static void main(String[] args) throws NoSuchMethodException, SQLException, NoSuchFieldException {
-        SGClass sgClass = ReflectKit.getSGClass(ViewTopicCountListener.class);
+       // SGClass sgClass = ReflectKit.getSGClass(ViewTopicCountListener.class);
+
+        int i = 1;
+        long start = System.currentTimeMillis();
+        for (int i1 = 0; i1 < i; i1++) {
+            SGClassParseKit.parse(ViewTopicCountListener.class);
+        }
+        System.out.println(System.currentTimeMillis() - start);
     }
 
 }

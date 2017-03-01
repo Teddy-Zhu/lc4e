@@ -6,8 +6,8 @@ import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.UserDao;
 import com.silentgo.lc4e.web.event.ReplyEvent;
 import com.silentgo.lc4e.web.service.ComVarService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.silentgo.utils.log.Log;
+import com.silentgo.utils.log.LogFactory;
 
 import java.util.Date;
 
@@ -22,7 +22,7 @@ import java.util.Date;
 @EventListen
 public class ReplyReward implements EventListener<ReplyEvent> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReplyReward.class);
+    private static final Log LOGGER = LogFactory.get(ReplyReward.class);
 
     @Inject
     private UserDao userDao;
