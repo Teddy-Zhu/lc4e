@@ -19,8 +19,8 @@
 
 </style>
 <script>
-    import Header from '../../views/compments/header.vue'
-    import Footer from '../../views/compments/footer.vue'
+    import Header from './header.vue'
+    import Footer from './footer.vue'
 
     export default{
         name: 'sg-body',

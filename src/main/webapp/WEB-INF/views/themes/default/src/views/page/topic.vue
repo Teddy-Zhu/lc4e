@@ -87,6 +87,7 @@
         </slot>
     </sg-body>
 </template>
+
 <style scoped>
     .pager-center {
         text-align: center;

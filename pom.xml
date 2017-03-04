@@ -13,7 +13,7 @@
     <url>http://www.silentgo.com</url>
     <properties>
         <slf4j.version>1.7.12</slf4j.version>
-        <utils.version>0.1.8</utils.version>
+        <utils.version>0.1.9</utils.version>
         <orm.version>0.2.8</orm.version>
     </properties>
     <dependencies>

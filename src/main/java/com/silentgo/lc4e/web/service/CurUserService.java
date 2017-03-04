@@ -30,10 +30,17 @@ public class CurUserService {
         if (user == null) {
             return null;
         }
-        User curUser = null;
-        if (user.isAuthenticated()) {
-            curUser = (User) config.getCacheManager().get("users", user.getSession().getId().toString());
+
+        User curUser = (User) config.getCacheManager().get("users", user.getSession().getId().toString());
+        if (curUser == null) {
+            if (!user.isAuthenticated() && user.isRemembered()) {
+                curUser = ((UserService) config.getFactory(config.getBeanClass(), SilentGo.me()).getBean(UserService.class.getName()).getObject()).findUserFullInfo(user.getPrincipal().toString());
+                config.getCacheManager().set("users", user.getSession().getId().toString(), curUser);
+            } else {
+                return null;
+            }
         }
+
         return curUser;
     }
 

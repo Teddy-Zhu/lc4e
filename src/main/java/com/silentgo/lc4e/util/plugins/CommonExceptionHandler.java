@@ -1,18 +1,15 @@
 package com.silentgo.lc4e.util.plugins;
 
-import com.silentgo.core.SilentGo;
 import com.silentgo.core.config.SilentGoConfig;
 import com.silentgo.core.exception.annotaion.ExceptionHandler;
 import com.silentgo.core.exception.support.IExceptionHandler;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.render.RenderModel;
 import com.silentgo.core.render.support.JsonRender;
-import com.silentgo.core.render.support.JspRender;
 import com.silentgo.core.render.support.RenderFactory;
 import com.silentgo.core.render.support.RenderType;
-import com.silentgo.jetbrick.JetTemplateRender;
-import com.silentgo.jetbrick.JetbrickInitConfig;
 import com.silentgo.lc4e.entity.Message;
+import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.Response;
 
@@ -24,7 +21,7 @@ import com.silentgo.servlet.http.Response;
  *         <p>
  *         Created by teddyzhu on 2016/10/13.
  */
-@ExceptionHandler
+@ExceptionHandler(AppBusinessException.class)
 public class CommonExceptionHandler implements IExceptionHandler {
 
 
@@ -33,6 +30,7 @@ public class CommonExceptionHandler implements IExceptionHandler {
 
     @Inject
     RenderFactory renderFactory;
+
     @Override
     public RenderModel resolve(Response response, Request request, Exception ex) {
         Message error = new Message(ex.getMessage() == null ? ex.toString() : ex.getMessage());

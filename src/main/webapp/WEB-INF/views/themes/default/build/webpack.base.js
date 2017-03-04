@@ -22,7 +22,7 @@ module.exports =
         },
         entry: {
             app: './src/app.js',
-            elementui: './src/elementui',
+            elementui: 'element-ui',
             vendors: ['vue', 'vuex', 'vue-resource']
         },
         output: {
