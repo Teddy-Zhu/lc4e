@@ -3,8 +3,7 @@ package com.silentgo.lc4e.web.event.listener;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
-import com.silentgo.lc4e.database.dao.StatisticDao;
-import com.silentgo.lc4e.database.model.Statistic;
+import com.silentgo.lc4e.database.dao.SysConfigDao;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
 
 /**
@@ -19,12 +18,12 @@ import com.silentgo.lc4e.web.event.UserRegisterEvent;
 public class UserStatisticListener implements EventListener<UserRegisterEvent> {
 
     @Inject
-    StatisticDao statisticDao;
+    SysConfigDao sysConfigDao;
 
     @Override
     public void onEvent(UserRegisterEvent userRegisterEvent) {
 
-        statisticDao.updateUserSetWhereId(1, 1L);
+        sysConfigDao.updateValueSetWhereName(1, "UserCount");
 
     }
 }

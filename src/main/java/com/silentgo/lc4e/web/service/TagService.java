@@ -5,10 +5,8 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.config.Key;
 import com.silentgo.lc4e.database.dao.TagDao;
-import com.silentgo.lc4e.database.dao.UserTagDao;
 import com.silentgo.lc4e.database.dao.VwUserTagsDao;
 import com.silentgo.lc4e.database.model.Tag;
-import com.silentgo.lc4e.database.model.UserTag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +31,7 @@ public class TagService {
     VwUserTagsDao userTagsDao;
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     @Cache(cacheName = Key.ComVar, key = "tags")
     public List<String> getTags() {

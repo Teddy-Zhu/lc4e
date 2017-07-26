@@ -8,15 +8,8 @@ import com.alibaba.druid.wall.WallFilter;
 import com.silentgo.core.SilentGo;
 import com.silentgo.core.cache.CacheManager;
 import com.silentgo.core.config.SilentGoConfig;
-import com.silentgo.core.render.support.RenderFactory;
-import com.silentgo.core.render.support.RenderType;
-import com.silentgo.jetbrick.JetTemplateRender;
-import com.silentgo.jetbrick.JetbrickInitConfig;
-import com.silentgo.lc4e.tool.TemplateTool;
-import com.silentgo.lc4e.tool.staticIncludeTag;
+import com.silentgo.core.ioc.bean.BeanFactory;
 import com.silentgo.lc4e.util.shiro.UserRealm;
-import com.silentgo.lc4e.web.service.ComVarService;
-import com.silentgo.lc4e.web.service.MenuService;
 import com.silentgo.orm.base.DBConfig;
 import com.silentgo.orm.base.DBManager;
 import com.silentgo.orm.base.DBType;
@@ -25,14 +18,9 @@ import com.silentgo.orm.connect.ConnectManager;
 import com.silentgo.orm.kit.configKit;
 import com.silentgo.orm.source.druid.DruidManager;
 import com.silentgo.shiro.ShiroInitConfig;
-import com.silentgo.shiro.ShiroMethod;
 import com.silentgo.utils.PropKit;
-import jetbrick.template.JetGlobalContext;
-import jetbrick.template.resolver.GlobalResolver;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Project : lc4e
@@ -44,6 +32,8 @@ import java.util.Properties;
  */
 public class Config implements com.silentgo.core.config.Config {
 
+    private static PropKit propKit;
+
     @Override
     public void initialBuild(SilentGoConfig config) {
 
@@ -51,7 +41,7 @@ public class Config implements com.silentgo.core.config.Config {
         config.setDbType(DBType.MYSQL.getName());
 
         //set user prop
-        PropKit propKit = new PropKit("config.properties");
+        propKit = new PropKit("config.properties");
 
         //set druid connect
         DBConfig dbConfig = configKit.getConfig(propKit);
@@ -80,62 +70,20 @@ public class Config implements com.silentgo.core.config.Config {
 
         config.getDbConfigList().add(dbConfig);
         config.setUserProp(propKit);
-        //filter static files
-        config.addEndStatic(".ico");
-        config.addStartStatic("/themes");
-
         //enable shiro
         config.addExtraInitConfig(new ShiroInitConfig(new UserRealm()));
-        config.addExtraInitConfig(new JetbrickInitConfig());
-
 
     }
 
     @Override
     public void afterInit(SilentGoConfig config) {
 
-
         CacheManager cacheManager = config.getCacheManager();
         cacheManager.evict(Key.ComVar);
 
-        RenderFactory renderFactory = config.getFactory(RenderFactory.class, SilentGo.me());
+        BeanFactory beanFactory = config.getFactory(config.getBeanClass(), SilentGo.me());
 
 
-        ComVarService comVarService = (ComVarService) config.getBean(ComVarService.class.getName()).getObject();
-        Key.kvs.put("Theme", comVarService.getComVarValueByName("DefaultTheme"));
-
-        Properties properties = new Properties();
-        properties.setProperty("templateSuffix", ".html");
-        properties.setProperty("trimDirectiveComments", "true");
-        properties.setProperty("trimDirectiveCommentsPrefix", "<!---");
-        properties.setProperty("trimDirectiveCommentsSuffix", "--->");
-        properties.setProperty("jetx.template.loaders", "$loader");
-        properties.setProperty("$loader", "jetbrick.template.loader.ServletResourceLoader");
-        properties.setProperty("$loader.root", "/WEB-INF/views/themes/" + Key.kvs.get("Theme"));
-        properties.setProperty("$loader.reloadable", "true");
-
-        JetTemplateRender jetTemplateRender = new JetTemplateRender(properties);
-        renderFactory.addAndReplaceRender(RenderType.View, jetTemplateRender);
-
-        GlobalResolver resolver = jetTemplateRender.getEngine().getGlobalResolver();
-        resolver.registerFunctions(ShiroMethod.class);
-        resolver.registerFunctions(TemplateTool.class);
-        resolver.registerTags(staticIncludeTag.class);
-
-        JetGlobalContext globalContext = jetTemplateRender.getEngine().getGlobalContext();
-
-
-        MenuService menuService = (MenuService) config.getBean(MenuService.class).getObject();
-        globalContext.set(String.class, "SiteName", comVarService.getComVarValueByName("SiteName"));
-        globalContext.set(List.class, "menulist", menuService.getMenuTree());
-        globalContext.set(String.class, "menusString", config.getJsonPaser().toJsonString(menuService.getMenuTree()));
-        globalContext.set(String.class, "version", comVarService.getComVarValueByName("Version"));
-        //add cdn
-        //"http://7u2sne.com1.z0.glb.clouddn.com" +
-        globalContext.set(String.class, "Theme", "/themes/" + Key.kvs.get("Theme"));
-        globalContext.set(String.class, "userImg", comVarService.getComVarValueByName("Avatar"));
-        globalContext.set(String.class, "JsVersion", comVarService.getComVarValueByName("JsVersion", false));
-
-        config.getStaticMapping().put("/themes", "/themes/" + Key.kvs.get("Theme"));
+        beanFactory.addBean(propKit, true, false, true);
     }
 }

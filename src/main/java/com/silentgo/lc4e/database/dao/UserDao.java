@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
-public interface UserDao extends BaseDao<User> {
+public interface UserDao extends BaseDao<User, Long> {
 
     User queryOneWhereName(String name);
 

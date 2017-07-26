@@ -6,7 +6,6 @@ import com.silentgo.core.exception.support.IExceptionHandler;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.render.RenderModel;
 import com.silentgo.core.render.support.JsonRender;
-import com.silentgo.core.render.support.JspRender;
 import com.silentgo.core.render.support.RenderFactory;
 import com.silentgo.core.render.support.RenderType;
 import com.silentgo.lc4e.entity.Message;
@@ -29,6 +28,12 @@ public class ShiroExceptionHandler implements IExceptionHandler {
     @Override
     public RenderModel resolve(Response response, Request request, Exception ex) {
         Message error = new Message(ex.getMessage() == null ? ex.toString() : ex.getMessage());
+
+        if (UnauthenticatedException.class.equals(ex.getClass())) {
+            error.setMessage("未登录");
+        } else if (AuthenticationException.class.equals(ex.getClass())) {
+            error.setMessage("登录失败");
+        }
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             return new RenderModel(new JsonRender(), error, request, response);
         } else {

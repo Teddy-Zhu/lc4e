@@ -1,6 +1,5 @@
 package com.silentgo.lc4e.web.controller;
 
-import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.User;
@@ -24,21 +23,10 @@ public class UserInfoController {
     @Inject
     UserService userService;
 
-    /**
-     * user infomation view
-     *
-     * @param username
-     * @return
-     */
-    @Route("/{username}")
-    public String user(@PathVariable @RequestString String username) {
-        return "index.html";
-    }
-
     @Route("/{username}")
     @RouteMatch(method = RequestMethod.POST)
     @ResponseBody
-    public Message userInfo(@PathVariable @RequestString String username) {
+    public Message userInfo(@PathVariable("username") String username) {
 
         User user = userService.findUserInfo(Long.valueOf(username));
 

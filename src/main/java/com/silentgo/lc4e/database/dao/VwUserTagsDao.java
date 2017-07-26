@@ -8,7 +8,7 @@ import com.silentgo.orm.sqlparser.annotation.Query;
 import java.util.List;
 
 @Service
-public interface VwUserTagsDao extends BaseDao<VwUserTags> {
+public interface VwUserTagsDao extends BaseDao<VwUserTags, Long> {
 
     @Query("tagName")
     List<String> queryTagsWhereUserIdOrderByRankDescLimit(Long userId, int start, int size);

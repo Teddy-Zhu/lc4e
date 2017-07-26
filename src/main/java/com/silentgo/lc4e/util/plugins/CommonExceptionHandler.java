@@ -21,7 +21,7 @@ import com.silentgo.servlet.http.Response;
  *         <p>
  *         Created by teddyzhu on 2016/10/13.
  */
-@ExceptionHandler(AppBusinessException.class)
+@ExceptionHandler({RuntimeException.class, AppBusinessException.class})
 public class CommonExceptionHandler implements IExceptionHandler {
 
 

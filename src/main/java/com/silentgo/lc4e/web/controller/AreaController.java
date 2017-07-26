@@ -1,27 +1,15 @@
 package com.silentgo.lc4e.web.controller;
 
 import com.silentgo.core.aop.validator.annotation.RequestInt;
-import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.route.annotation.*;
-import com.silentgo.lc4e.config.Key;
-import com.silentgo.lc4e.entity.Article;
 import com.silentgo.lc4e.entity.Message;
-import com.silentgo.lc4e.entity.Popup;
 import com.silentgo.lc4e.entity.ReturnData;
-import com.silentgo.lc4e.tool.RelativeDate;
 import com.silentgo.lc4e.web.service.AreaService;
-import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.service.ConfigService;
 import com.silentgo.lc4e.web.service.TopicService;
-import com.silentgo.orm.model.Page;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
-import com.silentgo.utils.StringKit;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Project : lc4e
@@ -36,17 +24,11 @@ import java.util.Random;
 public class AreaController {
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     @Inject
     TopicService topicService;
 
-
-    @Route({"/{area}/{page:([1-9][0-9]*)}/{order:([1-5])}", "/{area}"})
-    @RouteMatch(method = RequestMethod.GET)
-    public String a(Request request) {
-        return "index.html";
-    }
 
     @Route("/{area}/{page:([1-9][0-9]*)}/{order:([1-5])}")
     @RouteMatch(method = RequestMethod.POST)

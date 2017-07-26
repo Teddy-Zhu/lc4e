@@ -17,7 +17,7 @@ import org.hashids.Hashids;
 public class UrlGenerateService {
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     public String getUrl(Long id) {
         String salt = comVarService.getComVarValueByName("TopicUrlSalt");

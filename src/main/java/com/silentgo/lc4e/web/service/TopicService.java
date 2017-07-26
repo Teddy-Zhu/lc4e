@@ -8,24 +8,25 @@ import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.core.plugin.event.EventFactory;
 import com.silentgo.lc4e.database.dao.AreaDao;
 import com.silentgo.lc4e.database.dao.TopicDao;
+import com.silentgo.lc4e.database.dao.TopicStatisticsDao;
 import com.silentgo.lc4e.database.dao.VwTopicDetailDao;
 import com.silentgo.lc4e.database.model.Topic;
+import com.silentgo.lc4e.database.model.TopicStatistics;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.database.model.VwTopicDetail;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
 import com.silentgo.lc4e.web.event.VisitTopic;
+import com.silentgo.lc4e.web.request.TodayHotTopicSearch;
+import com.silentgo.lc4e.web.request.TopicSearch;
+import com.silentgo.lc4e.web.response.TopicRes;
+import com.silentgo.lc4e.web.response.TopicSRes;
+import com.silentgo.lc4e.web.service.model.SimpleTopicInfo;
 import com.silentgo.orm.model.Page;
-import com.silentgo.utils.Assert;
-import com.silentgo.utils.DateKit;
-import com.silentgo.utils.StringKit;
-import org.hashids.Hashids;
+import com.silentgo.utils.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by teddy on 2015/9/23.
@@ -54,17 +55,24 @@ public class TopicService {
      * @param size
      * @return
      */
-    public Page<VwTopicDetail> getTopicByUserLike(String area, int page, int size) {
+    public Page<TopicRes> getTopicByUserLike(String area, int page, int size) {
         User user = curUserService.getCurrentUser();
         if (user == null) return new Page<>();
 
         List<String> userTags = tagService.getUserTags(user.getId());
         Date date = getDate();
-        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+        Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryUserLikeWhereOrderLimit(area, date, true, false, StringKit.join(userTags, ","), result.getStart(), result.getPageSize());
+        List<VwTopicDetail> list = vwTopicDetailDao.queryUserLikeWhereOrderByLimit(area, date, true, false, StringKit.join(userTags, ","), result.getStart(), result.getPageSize());
 
-        result.setResult(list);
+        List<TopicRes> topicRes = new ArrayList<>();
+
+        for (VwTopicDetail vwTopicDetail : list) {
+            TopicRes topicRes1 = new TopicRes();
+            ReflectKit.copyProperties(vwTopicDetail, topicRes1);
+            topicRes.add(topicRes1);
+        }
+        result.setResult(topicRes);
 
         return result;
     }
@@ -78,7 +86,7 @@ public class TopicService {
      *              4: by user favorite tag
      * @return
      */
-    public Page<VwTopicDetail> getTopic(String area, int order, int page, int size) {
+    public Page<TopicRes> getTopic(String area, int order, int page, int size) {
         switch (order) {
             case 4:
                 return getTopicByUserLike(area, page, size);
@@ -93,37 +101,94 @@ public class TopicService {
         }
     }
 
-    public Page<VwTopicDetail> getTopicByCommentCount(String area, int page, int size) {
+    public Page<TopicRes> getTopicByCommentCount(String area, int page, int size) {
         Date date = getDate();
-        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+        Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
         List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCommentCountDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
 
-        result.setResult(list);
+        List<TopicRes> topicRes = new ArrayList<>();
+
+        for (VwTopicDetail vwTopicDetail : list) {
+            TopicRes topicRes1 = new TopicRes();
+            ReflectKit.copyProperties(vwTopicDetail, topicRes1);
+            topicRes.add(topicRes1);
+        }
+
+        result.setResult(topicRes);
 
         return result;
     }
 
-    public Page<VwTopicDetail> getTopicByLast(String area, int page, int size) {
+    public Page<TopicRes> getTopicByLast(String area, int page, int size) {
         Date date = getDate();
-        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+        Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
         List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCuserTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
 
-        result.setResult(list);
+        List<TopicRes> topicRes = new ArrayList<>();
+
+        for (VwTopicDetail vwTopicDetail : list) {
+            TopicRes topicRes1 = new TopicRes();
+            ReflectKit.copyProperties(vwTopicDetail, topicRes1);
+            topicRes.add(topicRes1);
+        }
+
+        result.setResult(topicRes);
 
         return result;
     }
 
-    public Page<VwTopicDetail> getTopicByPubDate(String area, int page, int size) {
+    public Page<TopicRes> getTopicByPubDate(String area, int page, int size) {
 
         Date date = getDate();
 
-        Page<VwTopicDetail> result = buildDetailModel(date, area, page, size);
+        Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
         List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
 
-        result.setResult(list);
+        List<TopicRes> topicRes = new ArrayList<>();
+
+        for (VwTopicDetail vwTopicDetail : list) {
+            TopicRes topicRes1 = new TopicRes();
+            ReflectKit.copyProperties(vwTopicDetail, topicRes1);
+            topicRes.add(topicRes1);
+        }
+
+        result.setResult(topicRes);
+
+        return result;
+    }
+
+    /**
+     * backend
+     *
+     * @return
+     */
+    public Page<TopicSRes> getTopicList(TopicSearch topicSearch) {
+        Assert.isNotNull(topicSearch, "参数非法");
+
+        int count = vwTopicDetailDao.countWhere(topicSearch.getCreateBeginTime(),
+                topicSearch.getCreateEndTime(), topicSearch.getUpdateBeginTime(), topicSearch.getUpdateEndTime(),
+                topicSearch.getArea(), topicSearch.isVisible(), topicSearch.isDelete(), topicSearch.isClose(),
+                topicSearch.isComment());
+
+        Page<TopicSRes> result = new Page<>();
+        result.setPageNumber(topicSearch.getPageNum());
+        result.setPageSize(topicSearch.getPageSize());
+        result.setTotalCount(count);
+
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(topicSearch.getCreateBeginTime(),
+                topicSearch.getCreateEndTime(), topicSearch.getUpdateBeginTime(), topicSearch.getUpdateEndTime(),
+                topicSearch.getArea(), topicSearch.isVisible(), topicSearch.isDelete(), topicSearch.isClose(),
+                topicSearch.isComment(), topicSearch.getStartRow(), topicSearch.getPageSize());
+        List<TopicSRes> topicSRes = new ArrayList<>();
+        for (VwTopicDetail vwTopicDetail : list) {
+            TopicSRes topicRes = new TopicSRes();
+            ReflectKit.copyProperties(vwTopicDetail, topicRes);
+            topicSRes.add(topicRes);
+        }
+        result.setResult(topicSRes);
 
         return result;
     }
@@ -136,11 +201,11 @@ public class TopicService {
         return date;
     }
 
-    private Page<VwTopicDetail> buildDetailModel(Date date, String area, int page, int size) {
+    private Page<TopicRes> buildDetailModel(Date date, String area, int page, int size) {
 
         int total = vwTopicDetailDao.countWhere(date, true, false, area);
 
-        Page<VwTopicDetail> result = new Page<>();
+        Page<TopicRes> result = new Page<>();
         result.setPageNumber(page);
         result.setPageSize(size);
         pageFilter.filterPage(result);
@@ -148,19 +213,28 @@ public class TopicService {
         return result;
     }
 
-    public VwTopicDetail getTopicDetail(String url) {
+    public TopicRes getTopicDetail(String url) {
         Assert.isNotBlank(url, "主题不存在");
 
         Long id = urlGenerateService.getId(url);
 
-        VwTopicDetail detail = vwTopicDetailDao.queryByPrimaryKey(id);
+        VwTopicDetail vwTopicDetail = new VwTopicDetail();
+        vwTopicDetail.setIsDelete(false);
+        vwTopicDetail.setId(id);
+        List<VwTopicDetail> details = vwTopicDetailDao.queryByModelSelective(vwTopicDetail);
 
-        eventFactory.emit(new VisitTopic(detail));
-        return detail;
+        Assert.isNotEmpty(details, "主题不存在");
+
+        eventFactory.emit(new VisitTopic(details.get(0)));
+
+
+        TopicRes topicRes = new TopicRes();
+        ReflectKit.copyProperties(details.get(0), topicRes);
+        return topicRes;
     }
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     @Inject
     SilentGoConfig silentGoConfig;
@@ -169,6 +243,9 @@ public class TopicService {
     TopicDao topicDao;
     @Inject
     EventFactory eventFactory;
+
+    @Inject
+    TopicStatisticsDao topicStatisticsDao;
 
     @Inject
     UrlGenerateService urlGenerateService;
@@ -205,15 +282,8 @@ public class TopicService {
         topic.setTop(0);
         topic.setRank(new BigDecimal(0));
 
-        List<String> tags = HanLP.extractKeyword(topic.getTitle() + topic.getContent(), 4);
+        List<String> tags = buildTags(topic.getTitle(), topic.getContent());
 
-        Iterator tagIterator = tags.iterator();
-        while (tagIterator.hasNext()) {
-            String tag = (String) tagIterator.next();
-            if (topic.getTitle().trim().equals(tag) || topic.getContent().equals(tag)) {
-                tagIterator.remove();
-            }
-        }
         topic.setTags(StringKit.join(tags, ","));
 
         int i = topicDao.insertByRow(topic);
@@ -231,6 +301,8 @@ public class TopicService {
 
         Assert.isTrue(i == 1, "主题创建url失败");
 
+        tagService.addTags(tags.toArray(new String[0]));
+
         eventFactory.emit(new TopicEvent(topic));
 
         silentGoConfig.getCacheManager().set("topicPublishCache", topic.getUserId(), new Date());
@@ -238,5 +310,123 @@ public class TopicService {
         return true;
     }
 
+    /**
+     * backend
+     *
+     * @param id
+     * @return
+     */
+    public TopicRes getTopicDetail(Long id) {
 
+        Assert.isNotNull(id, "参数非法");
+
+        VwTopicDetail vwTopicDetail = new VwTopicDetail();
+        vwTopicDetail.setId(id);
+        List<VwTopicDetail> details = vwTopicDetailDao.queryByModelSelective(vwTopicDetail);
+
+        Assert.isNotEmpty(details, "主题不存在");
+
+        TopicRes topicRes = new TopicRes();
+        ReflectKit.copyProperties(details.get(0), topicRes);
+
+        return topicRes;
+    }
+
+    /**
+     * backend
+     *
+     * @param topic
+     * @return
+     */
+    public boolean editTopic(Topic topic) {
+
+        Assert.isNotNull(topic, "main parameter can not be null");
+        Assert.isNotBlank(topic.getContent(), "文章内容不能为空");
+        Assert.isNotBlank(topic.getTitle(), "文章标题不能为空");
+        Assert.isNotNull(topic.getAreaId(), "区域不能为空");
+        Assert.isNotNull(topic.getUserId(), "用户不能为空");
+        Assert.isNotNull(topic.getId(), "参数非法");
+
+        Topic origin = topicDao.queryByPrimaryKey(topic.getId());
+
+        Assert.isNotNull(origin, "文章不存在");
+        //Assert.isTrue(origin.getUserId().equals(topic.getUserId()), "不能编辑他人的文章");
+
+
+        List<String> tags = buildTags(topic.getTitle(), topic.getContent());
+
+
+        String tagString = StringKit.join(tags, ",");
+        if (origin.getTags() != null && !tagString.equals(origin.getTags())) {
+            topic.setTags(tagString);
+            tagService.addTags(tags.toArray(new String[0]));
+        }
+        topic.setCreateTime(null);
+//        topic.setIsClose(false);
+//        topic.setIsVisible(true);
+//        topic.setIsComment(true);
+//        topic.setIsDelete(false);
+//        topic.setUrl(" ");
+//        topic.setViewCount(0);
+//        topic.setCommentCount(0);
+//        topic.setDown(0);
+//        topic.setTop(0);
+//        topic.setRank(new BigDecimal(0));
+        topic.setUserId(null);
+        topic.setUpdateTime(new Date());
+
+        int ret = topicDao.updateByPrimaryKeySelective(topic);
+        return ret == 1;
+    }
+
+    private List<String> buildTags(String title, String content) {
+        List<String> tags = HanLP.extractKeyword(content, 4);
+
+        Iterator tagIterator = tags.iterator();
+        while (tagIterator.hasNext()) {
+            String tag = (String) tagIterator.next();
+            if (title.trim().equals(tag) || content.equals(tag)) {
+                tagIterator.remove();
+            }
+        }
+        return tags;
+    }
+
+    /**
+     * 获取今日热门主题
+     *
+     * @param todayHotTopicSearch
+     * @return
+     */
+    public SimpleTopicInfo[] getTodayHotTopics(TodayHotTopicSearch todayHotTopicSearch) {
+
+        int size = todayHotTopicSearch.getSize();
+        Long areaId = todayHotTopicSearch.getAreaId();
+
+
+        Map<String, Object> queryMap = new HashMap<>();
+
+        queryMap.put("time", DateKit.removeTime(new Date()));
+        queryMap.put("areaId", areaId);
+        queryMap.put("orderBy", "reply_count desc");
+        queryMap.put("limitBy", " 0," + size);
+        List<TopicStatistics> topics = topicStatisticsDao.queryByModelMap(queryMap);
+
+        final long[] topicIds = CollectionKit.isEmpty(topics) ? new long[0] : topics.stream().mapToLong(TopicStatistics::getTopicId).toArray();
+
+        List<SimpleTopicInfo> simpleTopicInfos;
+        if (topicIds.length == 0) {
+            simpleTopicInfos = new ArrayList<>();
+        } else {
+            simpleTopicInfos = topicDao.queryListWhere(topicIds);
+        }
+
+        SimpleTopicInfo[] sortedInfos = new SimpleTopicInfo[simpleTopicInfos.size()];
+
+        for (int i = 0; i < topicIds.length; i++) {
+            int finalI = i;
+            sortedInfos[i] = simpleTopicInfos.stream().filter(simpleTopicInfo -> simpleTopicInfo.getId().equals(topicIds[finalI])).findFirst().get();
+        }
+        return sortedInfos;
+    }
 }

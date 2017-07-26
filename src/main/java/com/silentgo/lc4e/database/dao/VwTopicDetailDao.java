@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
+public interface VwTopicDetailDao extends BaseDao<VwTopicDetail, Long> {
 
     /**
      * order by create time
@@ -80,6 +80,52 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail> {
             @WhereJudge(value = "area", condition = "area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = "create_time < <#createTime/> ")
     })
-    public List<VwTopicDetail> queryUserLikeWhereOrderLimit(@Param("area") String area, @Param("createTime") Date date, boolean isVisible, boolean isDelete, String userTags, int start, int size);
+    public List<VwTopicDetail> queryUserLikeWhereOrderByLimit(@Param("area") String area, @Param("createTime") Date date, boolean isVisible, boolean isDelete, String userTags, int start, int size);
+
+    @ColumnIgnore({"content"})
+    @WhereGroup({
+            @WhereJudge(value = "isVisible", condition = " is_visible = <#isVisible/> "),
+            @WhereJudge(value = "isDelete", condition = " is_delete = <#isDelete/> "),
+            @WhereJudge(value = "isClose", condition = " is_close = <#isClose/> "),
+            @WhereJudge(value = "isComment", condition = " is_comment = <#isComment/> "),
+            @WhereJudge(value = "area", condition = " area_id = <#area/> "),
+            @WhereJudge(value = "createBeginTime", condition = " create_time >= <#createBeginTime/> "),
+            @WhereJudge(value = "createEndTime", condition = " create_time <= <#createEndTime/> "),
+            @WhereJudge(value = "updateBeginTime", condition = " update_time >= <#updateBeginTime/> "),
+            @WhereJudge(value = "updateEndTime", condition = " update_time <= <#updateEndTime/> ")
+    })
+    public List<VwTopicDetail> queryWhereOrderByCreateTimeDescLimit(@Param("createBeginTime") Date createBeginTime,
+                                                                    @Param("createEndTime") Date createEndTime,
+                                                                    @Param("updateBeginTime") Date updateBeginTime,
+                                                                    @Param("updateEndTime") Date updateEndTime,
+                                                                    @Param("area") Long area,
+                                                                    @Param("isVisible") Boolean isVisible,
+                                                                    @Param("isDelete") Boolean isDelete,
+                                                                    @Param("isClose") Boolean isClose,
+                                                                    @Param("isComment") Boolean isComment,
+                                                                    int start, int size);
+
+
+    @WhereGroup({
+            @WhereJudge(value = "isVisible", condition = " is_visible = <#isVisible/> "),
+            @WhereJudge(value = "isDelete", condition = " is_delete = <#isDelete/> "),
+            @WhereJudge(value = "isClose", condition = " is_close = <#isClose/> "),
+            @WhereJudge(value = "isComment", condition = " is_comment = <#isComment/> "),
+            @WhereJudge(value = "area", condition = " area_id = <#area/> "),
+            @WhereJudge(value = "createBeginTime", condition = " create_time >= <#createBeginTime/> "),
+            @WhereJudge(value = "createEndTime", condition = " create_time <= <#createEndTime/> "),
+            @WhereJudge(value = "updateBeginTime", condition = " update_time >= <#updateBeginTime/> "),
+            @WhereJudge(value = "updateEndTime", condition = " update_time <= <#updateEndTime/> ")
+    })
+    public int countWhere(@Param("createBeginTime") Date createBeginTime,
+                          @Param("createEndTime") Date createEndTime,
+                          @Param("updateBeginTime") Date updateBeginTime,
+                          @Param("updateEndTime") Date updateEndTime,
+                          @Param("area") Long area,
+                          @Param("isVisible") Boolean isVisible,
+                          @Param("isDelete") Boolean isDelete,
+                          @Param("isClose") Boolean isClose,
+                          @Param("isComment") Boolean isComment);
+
 }
 

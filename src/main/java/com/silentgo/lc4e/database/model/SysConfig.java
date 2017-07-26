@@ -8,19 +8,25 @@ import com.silentgo.orm.base.TableModel;
 @Table(value = "sys_config",  primaryKey = "id")
 public class SysConfig extends TableModel {
 
-	@Column
+	@Column(aic = true)
 	public Long id;
 
 	@Column
 	public String name;
 
-	@Column
+	@Column(def = true)
 	public String value;
+
+	@Column("group_id")
+	public Long groupId;
+
+	@Column("group_name")
+	public String groupName;
 
 	@Column(nullable = true)
 	public String error;
 
-	@Column
+	@Column(nullable = true)
 	public String description;
 
 	@Column("create_time")
@@ -51,6 +57,22 @@ public class SysConfig extends TableModel {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	public Long getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(Long groupId) {
+		this.groupId = groupId;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 	public String getError() {

@@ -1,6 +1,5 @@
 package com.silentgo.lc4e.web.service;
 
-import com.silentgo.core.db.intercept.Transaction;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.core.plugin.event.EventFactory;
@@ -87,7 +86,7 @@ public class CommentService {
         int total = commentDao.countWhereTopicIdAndisVisible(topicId, true);
         comments.setTotalCount(total);
 
-        List<VwCommentDetail> list = vwCommentDetailDao.queryWhereTopicIdAndisVisible(topicId, true);
+        List<VwCommentDetail> list = vwCommentDetailDao.queryWhereTopicIdAndisVisibleLimit(topicId, true, comments.getStart(), comments.getPageSize());
 
         comments.setResult(list);
 

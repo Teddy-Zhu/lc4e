@@ -7,11 +7,10 @@ import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.UserDao;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
-import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.service.ConfigService;
 import com.silentgo.utils.log.Log;
 import com.silentgo.utils.log.LogFactory;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -32,7 +31,7 @@ public class RegisterReward implements EventListener<UserRegisterEvent> {
     private UserDao userDao;
 
     @Inject
-    private ComVarService comVarService;
+    private ConfigService comVarService;
 
     @Override
     @Transaction(propagation = Propagation.PROPAGATION_REQUIRES_NEW)

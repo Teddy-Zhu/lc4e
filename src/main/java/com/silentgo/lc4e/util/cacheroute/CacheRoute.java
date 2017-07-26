@@ -2,10 +2,7 @@ package com.silentgo.lc4e.util.cacheroute;
 
 import com.silentgo.core.action.ActionChain;
 import com.silentgo.core.action.ActionParam;
-import com.silentgo.core.action.RouteAction;
 import com.silentgo.core.action.annotation.Action;
-import com.silentgo.core.ioc.annotation.Inject;
-import com.silentgo.lc4e.web.service.ComVarService;
 import com.silentgo.servlet.http.HttpStatus;
 import com.silentgo.servlet.http.Request;
 

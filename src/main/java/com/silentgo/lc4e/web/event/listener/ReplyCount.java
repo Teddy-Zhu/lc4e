@@ -4,9 +4,14 @@ import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
 import com.silentgo.lc4e.database.dao.TopicDao;
+import com.silentgo.lc4e.database.dao.TopicStatisticsDao;
+import com.silentgo.lc4e.database.model.TopicStatistics;
 import com.silentgo.lc4e.web.event.ReplyEvent;
+import com.silentgo.utils.DateKit;
 import com.silentgo.utils.log.Log;
 import com.silentgo.utils.log.LogFactory;
+
+import java.util.Date;
 
 /**
  * Project : lc4e
@@ -22,6 +27,8 @@ public class ReplyCount implements EventListener<ReplyEvent> {
     private static final Log LOGGER = LogFactory.get(ReplyCount.class);
     @Inject
     TopicDao topicDao;
+    @Inject
+    TopicStatisticsDao topicStatisticsDao;
 
     @Override
     public void onEvent(ReplyEvent replyEvent) {
@@ -30,6 +37,18 @@ public class ReplyCount implements EventListener<ReplyEvent> {
                 replyEvent.getComment().getCreateTime(),
                 replyEvent.getComment().getTopicId());
 
-        LOGGER.debug("increase comment count result : {}", i == 1);
+
+        int ret = topicStatisticsDao.updateReplyCountSetWhereTopicIdAndTime(1, new Date(), replyEvent.getComment().getTopicId(), DateKit.removeTime(replyEvent.getComment().getCreateTime()));
+
+        if (ret != 1) {
+            TopicStatistics topicStatistics = new TopicStatistics();
+            topicStatistics.setTime(DateKit.removeTime(replyEvent.getComment().getCreateTime()));
+            topicStatistics.setReplyCount(1L);
+            topicStatistics.setTopicId(replyEvent.getComment().getTopicId());
+            topicStatistics.setCreateTime(new Date());
+            topicStatistics.setViewCount(0L);
+            ret = topicStatisticsDao.insertByRow(topicStatistics);
+        }
+        LOGGER.debug("increase comment count result : {} , save statistics result :{}", i == 1, ret == 1);
     }
 }

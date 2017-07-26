@@ -1,7 +1,6 @@
 package com.silentgo.lc4e.web.event.listener;
 
 import com.silentgo.core.db.intercept.Transaction;
-import com.silentgo.core.db.propagation.Propagation;
 import com.silentgo.core.ioc.annotation.Inject;
 import com.silentgo.core.plugin.event.EventListener;
 import com.silentgo.core.plugin.event.annotation.EventListen;
@@ -10,7 +9,7 @@ import com.silentgo.lc4e.database.dao.UserRoleDao;
 import com.silentgo.lc4e.database.model.Role;
 import com.silentgo.lc4e.database.model.UserRole;
 import com.silentgo.lc4e.web.event.UserRegisterEvent;
-import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.service.ConfigService;
 import com.silentgo.utils.Assert;
 import com.silentgo.utils.DateKit;
 import com.silentgo.utils.log.Log;
@@ -35,7 +34,7 @@ public class UserRoleInitial implements EventListener<UserRegisterEvent> {
     UserRoleDao userRoleDao;
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     @Inject
     RoleDao roleDao;

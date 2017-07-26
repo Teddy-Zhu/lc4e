@@ -14,11 +14,19 @@ public class Message implements Serializable {
 
     private Map<String, Object> data;
 
+    public Message(String name, Object data) {
+        this.result = true;
+        this.message = "success";
+        this.data = new HashMap<>();
+        this.data.put(name, data);
+    }
+
     public Message(boolean result, String message, Map<String, Object> data) {
         this.result = result;
         this.message = message;
         this.data = data;
     }
+
     public Message(boolean result, String message, ReturnData... data) {
         this.result = result;
         this.message = message;

@@ -8,10 +8,10 @@ import com.silentgo.orm.sqlparser.annotation.ColumnIgnore;
 import java.util.List;
 
 @Service
-public interface VwCommentDetailDao extends BaseDao<VwCommentDetail> {
+public interface VwCommentDetailDao extends BaseDao<VwCommentDetail, Long> {
 
 
     @ColumnIgnore("isVisible")
-    List<VwCommentDetail> queryWhereTopicIdAndisVisible(Long id, Boolean isVisible);
+    List<VwCommentDetail> queryWhereTopicIdAndisVisibleLimit(Long id, Boolean isVisible, int start,int size);
 }
 

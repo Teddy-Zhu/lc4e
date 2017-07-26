@@ -8,7 +8,7 @@ import com.silentgo.orm.sqlparser.annotation.ColumnIgnore;
 import java.util.List;
 
 @Service
-public interface CommentDao extends BaseDao<Comment> {
+public interface CommentDao extends BaseDao<Comment, Long> {
 
     int countWhereTopicIdAndisVisible(Long id, Boolean isVisible);
 

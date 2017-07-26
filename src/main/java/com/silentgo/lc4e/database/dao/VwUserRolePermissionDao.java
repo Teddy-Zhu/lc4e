@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public interface VwUserRolePermissionDao extends BaseDao<VwUserRolePermission> {
+public interface VwUserRolePermissionDao extends BaseDao<VwUserRolePermission, Long> {
 
     @Where({" role_is_available = ? ", " permission_is_available = ? ", " role_end_time >= ? "})
     List<VwUserRolePermission> queryWhereUserName(String username, Integer roleIsAvailable, Integer permissionIsAvailable, Date time);

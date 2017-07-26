@@ -9,17 +9,16 @@ import com.silentgo.lc4e.database.model.User;
 import com.silentgo.lc4e.database.model.VwCommentDetail;
 import com.silentgo.lc4e.entity.Message;
 import com.silentgo.lc4e.entity.ReturnData;
-import com.silentgo.lc4e.web.service.ComVarService;
+import com.silentgo.lc4e.web.request.TodayHotTopicSearch;
+import com.silentgo.lc4e.web.request.TopicReq;
 import com.silentgo.lc4e.web.service.CommentService;
+import com.silentgo.lc4e.web.service.ConfigService;
 import com.silentgo.lc4e.web.service.CurUserService;
 import com.silentgo.lc4e.web.service.TopicService;
 import com.silentgo.servlet.http.Request;
 import com.silentgo.servlet.http.RequestMethod;
-import com.silentgo.utils.Assert;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresUser;
-
-import java.util.ArrayList;
 
 /**
  * Project : lc4e
@@ -42,7 +41,7 @@ public class TopicController {
     @ResponseBody
     @RequiresUser
     @RequiresAuthentication
-    public Message reply(@RequestParam Comment comment, @PathVariable("topic") String url) {
+    public Message reply(@RequestBody Comment comment, @PathVariable("topic") String url) {
 
 
         commentService.replyTopicByUrl(url, comment);
@@ -70,7 +69,7 @@ public class TopicController {
     }
 
     @Inject
-    ComVarService comVarService;
+    ConfigService comVarService;
 
     /**
      * page topic data
@@ -105,7 +104,7 @@ public class TopicController {
     @ResponseBody
     @RouteMatch(method = RequestMethod.POST)
     @RequiresUser
-    public Message newTopic(Request request, @RequestParam Topic topic) {
+    public Message newTopic(Request request, @RequestBody Topic topic) {
         User user = curUserService.getCurrentUser();
         topic.setUserId(user.getId());
         boolean result = topicService.createTopic(topic);
@@ -114,21 +113,17 @@ public class TopicController {
         return new Message(result, "主题创建成功", new ReturnData("topic", ret));
     }
 
-    /**
-     * view new topc , visit topic
-     *
-     * @param request
-     * @return
-     */
-    @Route({"/new/{area}", "/{topic:([0-9a-zA-Z]{4,})}", "/{topic:([0-9a-zA-Z]{4,})}/{page:([1-9][0-9]*)}"})
-    @RouteMatch(method = RequestMethod.GET)
-    public String newTopic(Request request) {
-        return "index.html";
+
+    @Route("/todayHot")
+    @RouteMatch(method = RequestMethod.POST)
+    @ResponseBody
+    public Message todayHot(@RequestBody TodayHotTopicSearch todayHotTopicSearch) {
+        if (todayHotTopicSearch == null) {
+            todayHotTopicSearch = new TodayHotTopicSearch();
+        }
+        Integer size = Integer.valueOf(comVarService.getComVarValueByName("TodayHotSize"));
+        todayHotTopicSearch.setSize(size);
+        return new Message(true, new ReturnData("topics", topicService.getTodayHotTopics(todayHotTopicSearch)));
     }
 
-
-    @Route("/new")
-    public String newTopic() {
-        return "index.html";
-    }
 }

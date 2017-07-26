@@ -1,11 +1,11 @@
-import com.silentgo.lc4e.web.event.listener.ViewTopicCountListener;
-import com.silentgo.utils.ReflectKit;
-import com.silentgo.utils.reflect.SGClass;
-import com.silentgo.utils.reflect.SGClassParseKit;
+import com.silentgo.json.JSON;
+import com.silentgo.lc4e.web.service.model.SimpleTopicInfo;
+import com.silentgo.utils.DateKit;
 
+import java.beans.IntrospectionException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Project : lc4e
@@ -17,15 +17,15 @@ import java.util.List;
  */
 public class TestNames<T> {
 
-    public static void main(String[] args) throws NoSuchMethodException, SQLException, NoSuchFieldException {
-       // SGClass sgClass = ReflectKit.getSGClass(ViewTopicCountListener.class);
+    public static void main(String[] args) throws NoSuchMethodException, SQLException, NoSuchFieldException, IntrospectionException {
 
-        int i = 1;
-        long start = System.currentTimeMillis();
-        for (int i1 = 0; i1 < i; i1++) {
-            SGClassParseKit.parse(ViewTopicCountListener.class);
-        }
-        System.out.println(System.currentTimeMillis() - start);
+        SimpleTopicInfo[] simpleTopicInfos = new SimpleTopicInfo[3];
+
+        simpleTopicInfos[0] = new SimpleTopicInfo();
+        simpleTopicInfos[1] = new SimpleTopicInfo();
+        simpleTopicInfos[2] = new SimpleTopicInfo();
+
+        System.out.println(JSON.toJSONString(simpleTopicInfos));
     }
 
 }

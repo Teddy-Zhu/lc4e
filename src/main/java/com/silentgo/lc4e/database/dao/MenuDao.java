@@ -8,7 +8,7 @@ import com.silentgo.core.ioc.annotation.Service;
 import java.util.List;
 
 @Service
-public interface MenuDao extends BaseDao<Menu> {
+public interface MenuDao extends BaseDao<Menu, Long> {
 
     List<MenuEntity> queryListOrderByParentIdAndOrder();
 }

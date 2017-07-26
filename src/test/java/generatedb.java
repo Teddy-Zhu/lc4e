@@ -20,10 +20,10 @@ public class generatedb {
         config.setPackagePath("com.silentgo.test.database");
         config.setOutPath("/Users/teddyzhu/Downloads/model");
         config.setDriver("com.mysql.cj.jdbc.Driver");
-        config.setPass("12345678");
-        config.setUser("root");
+        config.setPass("tywhxhxr2012");
+        config.setUser("lc4e");
         config.setDbName("lc4e");
-        config.setUrl("jdbc:mysql://localhost:3306/lc4e?useUnicode=true&characterEncoding=utf-8");
+        config.setUrl("jdbc:mysql://180.235.137.57:3306/lc4e?useUnicode=true&characterEncoding=utf-8");
         new Generate(config).GenerateModelAndDao();
     }
 }

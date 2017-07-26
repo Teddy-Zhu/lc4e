@@ -9,7 +9,7 @@ import com.silentgo.orm.sqlparser.annotation.Query;
 import java.util.List;
 
 @Service
-public interface UserTagDao extends BaseDao<UserTag> {
+public interface UserTagDao extends BaseDao<UserTag, Long> {
 
 }
 

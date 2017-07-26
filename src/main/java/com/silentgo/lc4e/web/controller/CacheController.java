@@ -1,6 +1,5 @@
 package com.silentgo.lc4e.web.controller;
 
-import com.silentgo.core.SilentGo;
 import com.silentgo.core.aop.validator.annotation.RequestString;
 import com.silentgo.core.cache.CacheManager;
 import com.silentgo.core.config.SilentGoConfig;

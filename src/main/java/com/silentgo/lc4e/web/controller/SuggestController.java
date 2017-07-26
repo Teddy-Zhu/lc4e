@@ -2,12 +2,9 @@ package com.silentgo.lc4e.web.controller;
 
 
 import com.silentgo.core.ioc.annotation.Inject;
-import com.silentgo.core.route.annotation.Controller;
-import com.silentgo.core.route.annotation.RequestParam;
-import com.silentgo.core.route.annotation.ResponseBody;
-import com.silentgo.core.route.annotation.Route;
-import com.silentgo.lc4e.database.model.User;
+import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.entity.Message;
+import com.silentgo.lc4e.web.request.UserPredictReq;
 import com.silentgo.lc4e.web.service.UserService;
 import com.silentgo.utils.StringKit;
 
@@ -23,30 +20,30 @@ public class SuggestController {
 
     @Route
     @ResponseBody
-    public Message name(@RequestParam String name) {
+    public Message name(@RequestBody UserPredictReq req) {
         boolean exist = true;
-        if (StringKit.isNotBlank(name)) {
-            exist = userService.validateUserName(name);
+        if (StringKit.isNotBlank(req.getName())) {
+            exist = userService.validateUserName(req.getName());
         }
         return new Message(!exist, exist ? "用户名已被使用" : "");
     }
 
     @Route
     @ResponseBody
-    public Message nick(@RequestParam("name") String nick) {
+    public Message nick(@RequestBody UserPredictReq req) {
         boolean exist = true;
-        if (StringKit.isNotBlank(nick)) {
-            exist = userService.validateUserNick(nick);
+        if (StringKit.isNotBlank(req.getName())) {
+            exist = userService.validateUserNick(req.getName());
         }
         return new Message(!exist, exist ? "用户昵称已被使用" : "");
     }
 
     @Route
     @ResponseBody
-    public Message mail(@RequestParam("name") String mail) {
+    public Message mail(@RequestBody UserPredictReq req) {
         boolean exist = true;
-        if (StringKit.isNotBlank(mail)) {
-            exist = userService.validateUserMail(mail);
+        if (StringKit.isNotBlank(req.getName())) {
+            exist = userService.validateUserMail(req.getName());
         }
         return new Message(!exist, exist ? "用户邮箱已被使用" : "");
     }
