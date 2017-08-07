@@ -21,8 +21,8 @@ import java.util.List;
  * Package : com.silentgo.lc4e.web.service
  *
  * @author <a href="mailto:teddyzhu15@gmail.com" target="_blank">teddyzhu</a>
- *         <p>
- *         Created by teddyzhu on 2016/11/30.
+ * <p>
+ * Created by teddyzhu on 2016/11/30.
  */
 @Service
 public class CommentService {
@@ -86,7 +86,7 @@ public class CommentService {
         int total = commentDao.countWhereTopicIdAndisVisible(topicId, true);
         comments.setTotalCount(total);
 
-        List<VwCommentDetail> list = vwCommentDetailDao.queryWhereTopicIdAndisVisibleLimit(topicId, true, comments.getStart(), comments.getPageSize());
+        List<VwCommentDetail> list = vwCommentDetailDao.queryWhereTopicIdAndisVisibleLimit(topicId, true, comments.getPager());
 
         comments.setResult(list);
 

@@ -3,6 +3,7 @@ package com.silentgo.lc4e.database.dao;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.database.model.User;
 import com.silentgo.orm.base.BaseDao;
+import com.silentgo.orm.base.annotation.Param;
 import com.silentgo.orm.sqlparser.annotation.ColumnIgnore;
 import com.silentgo.orm.sqlparser.annotation.Set;
 
@@ -23,8 +24,8 @@ public interface UserDao extends BaseDao<User, Long> {
 
     int countWhereMail(String mail);
 
-    @Set({" balance = balance + ? ", " update_time = ?"})
-    int updateBalanceSetWhereId(Double balance, Date updateTime, Long id);
+    @Set({" balance = balance + <#balance/> ", " update_time = <#updateTime/>"})
+    int updateBalanceSetWhereId(@Param("balance") Double balance, @Param("updateTime") Date updateTime, Long id);
 
 }
 

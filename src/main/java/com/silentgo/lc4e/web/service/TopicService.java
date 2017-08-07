@@ -63,7 +63,7 @@ public class TopicService {
         Date date = getDate();
         Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryUserLikeWhereOrderByLimit(area, date, true, false, StringKit.join(userTags, ","), result.getStart(), result.getPageSize());
+        List<VwTopicDetail> list = vwTopicDetailDao.queryUserLikeWhereOrderByLimit(area, date, true, false, StringKit.join(userTags, ","), result.getPager());
 
         List<TopicRes> topicRes = new ArrayList<>();
 
@@ -105,7 +105,7 @@ public class TopicService {
         Date date = getDate();
         Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCommentCountDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCommentCountDescLimit(date, true, false, result.getPager(), area);
 
         List<TopicRes> topicRes = new ArrayList<>();
 
@@ -124,7 +124,7 @@ public class TopicService {
         Date date = getDate();
         Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCuserTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCuserTimeDescLimit(date, true, false, result.getPager(), area);
 
         List<TopicRes> topicRes = new ArrayList<>();
 
@@ -145,7 +145,7 @@ public class TopicService {
 
         Page<TopicRes> result = buildDetailModel(date, area, page, size);
 
-        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, true, false, result.getStart(), result.getPageSize(), area);
+        List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(date, true, false, result.getPager(), area);
 
         List<TopicRes> topicRes = new ArrayList<>();
 
@@ -181,7 +181,7 @@ public class TopicService {
         List<VwTopicDetail> list = vwTopicDetailDao.queryWhereOrderByCreateTimeDescLimit(topicSearch.getCreateBeginTime(),
                 topicSearch.getCreateEndTime(), topicSearch.getUpdateBeginTime(), topicSearch.getUpdateEndTime(),
                 topicSearch.getArea(), topicSearch.isVisible(), topicSearch.isDelete(), topicSearch.isClose(),
-                topicSearch.isComment(), topicSearch.getStartRow(), topicSearch.getPageSize());
+                topicSearch.isComment(), result.getPager());
         List<TopicSRes> topicSRes = new ArrayList<>();
         for (VwTopicDetail vwTopicDetail : list) {
             TopicSRes topicRes = new TopicSRes();

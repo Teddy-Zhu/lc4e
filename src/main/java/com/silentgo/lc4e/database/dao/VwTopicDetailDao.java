@@ -3,6 +3,7 @@ package com.silentgo.lc4e.database.dao;
 import com.silentgo.core.ioc.annotation.Service;
 import com.silentgo.lc4e.database.model.VwTopicDetail;
 import com.silentgo.orm.base.BaseDao;
+import com.silentgo.orm.base.Pager;
 import com.silentgo.orm.base.annotation.Param;
 import com.silentgo.orm.sqlparser.annotation.*;
 
@@ -17,70 +18,67 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail, Long> {
      * order by create time
      *
      * @param date
-     * @param start
-     * @param size
+     * @param pager
      * @param area
      * @return
      */
     @ColumnIgnore({"content", "id"})
-    @Where({"is_visible =?", "is_delete=?"})
+    @Where({"is_visible =<#isVisible/>", "is_delete=<#isDelete/>"})
     @WhereGroup({
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
     })
-    public List<VwTopicDetail> queryWhereOrderByCreateTimeDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
+    public List<VwTopicDetail> queryWhereOrderByCreateTimeDescLimit(@Param("createTime") Date date, @Param("isVisible") boolean isVisible, @Param("isDelete") boolean isDelete, Pager pager, @Param("area") String area);
 
     /**
      * order by last comment time
      *
      * @param date
-     * @param start
-     * @param size
+     * @param pager
      * @param area
      * @return
      */
     @ColumnIgnore({"content", "id"})
-    @Where({"is_visible =?", "is_delete=?"})
+    @Where({"is_visible =<#isVisible/>", "is_delete=<#isDelete/>"})
     @WhereGroup({
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
     })
-    public List<VwTopicDetail> queryWhereOrderByCuserTimeDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
+    public List<VwTopicDetail> queryWhereOrderByCuserTimeDescLimit(@Param("createTime") Date date, @Param("isVisible") boolean isVisible, @Param("isDelete") boolean isDelete, Pager pager, @Param("area") String area);
 
 
     /**
      * order by comment count
      *
      * @param date
-     * @param start
-     * @param size
+     * @param pager
      * @param area
      * @return
      */
     @ColumnIgnore({"content", "id"})
-    @Where({"is_visible =?", "is_delete=?"})
+    @Where({"is_visible =<#isVisible/>", "is_delete=<#isDelete/>"})
     @WhereGroup({
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
     })
-    public List<VwTopicDetail> queryWhereOrderByCommentCountDescLimit(@Param("createTime") Date date, boolean isVisible, boolean isDelete, int start, int size, @Param("area") String area);
+    public List<VwTopicDetail> queryWhereOrderByCommentCountDescLimit(@Param("createTime") Date date, @Param("isVisible") boolean isVisible, @Param("isDelete") boolean isDelete, Pager pager, @Param("area") String area);
 
 
-    @Where({"is_visible =?", "is_delete=?"})
+    @Where({"is_visible =<#isVisible/>", "is_delete=<#isDelete/>"})
     @WhereGroup({
             @WhereJudge(value = "area", condition = " area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = " create_time < <#createTime/> ")
     })
-    public int countWhere(@Param("createTime") Date date, boolean isVisible, boolean isDelete, @Param("area") String area);
+    public int countWhere(@Param("createTime") Date date, @Param("isVisible") boolean isVisible, @Param("isDelete") boolean isDelete, @Param("area") String area);
 
     @ColumnIgnore({"content", "id"})
-    @OrderBy("match(tags) against (? in boolean mode) desc")
-    @Where({"is_visible =?", "is_delete=?"})
+    @OrderBy("match(tags) against (<#userTags/> in boolean mode) desc")
+    @Where({"is_visible =<#isVisible/>", "is_delete=<#isDelete/>"})
     @WhereGroup({
             @WhereJudge(value = "area", condition = "area_abbr = <#area/> "),
             @WhereJudge(value = "createTime", condition = "create_time < <#createTime/> ")
     })
-    public List<VwTopicDetail> queryUserLikeWhereOrderByLimit(@Param("area") String area, @Param("createTime") Date date, boolean isVisible, boolean isDelete, String userTags, int start, int size);
+    public List<VwTopicDetail> queryUserLikeWhereOrderByLimit(@Param("area") String area, @Param("createTime") Date date, @Param("isVisible") boolean isVisible, @Param("isDelete") boolean isDelete, @Param("userTags") String userTags, Pager pager);
 
     @ColumnIgnore({"content"})
     @WhereGroup({
@@ -103,7 +101,7 @@ public interface VwTopicDetailDao extends BaseDao<VwTopicDetail, Long> {
                                                                     @Param("isDelete") Boolean isDelete,
                                                                     @Param("isClose") Boolean isClose,
                                                                     @Param("isComment") Boolean isComment,
-                                                                    int start, int size);
+                                                                    Pager pager);
 
 
     @WhereGroup({

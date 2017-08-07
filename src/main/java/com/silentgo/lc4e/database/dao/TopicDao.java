@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 public interface TopicDao extends BaseDao<Topic, Long> {
 
-    @Set("view_count = view_count + ?")
-    int updateSetWhereId(Integer i, Long topicId);
+    @Set("view_count = view_count + <#i/>")
+    int updateSetWhereId(@Param("i") Integer i, Long topicId);
 
-    @Set({"comment_count = comment_count + ?", "last_comment_user_id=?", "last_comment_time=?"})
-    int updateReplyCountSetWhereId(Integer i, Long lastCommentUserId, Date lastCommentTime, Long topicId);
+    @Set({"comment_count = comment_count + <#i/>", "last_comment_user_id=<#lastUser/>", "last_comment_time=<#lastTime/>"})
+    int updateReplyCountSetWhereId(@Param("i") Integer i,@Param("lastUser") Long lastCommentUserId,@Param("lastTime") Date lastCommentTime, Long topicId);
 
     int countWhereId(Long id);
 
