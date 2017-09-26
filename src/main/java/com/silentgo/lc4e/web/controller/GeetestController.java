@@ -1,6 +1,7 @@
 package com.silentgo.lc4e.web.controller;
 
 import com.silentgo.core.ioc.annotation.Inject;
+import com.silentgo.core.ioc.annotation.Lazy;
 import com.silentgo.core.route.annotation.Controller;
 import com.silentgo.core.route.annotation.ResponseBody;
 import com.silentgo.core.route.annotation.Route;
@@ -13,14 +14,15 @@ import com.silentgo.utils.PropKit;
  * Package : com.silentgo.lc4e.web.controller
  *
  * @author <a href="mailto:teddyzhu15@gmail.com" target="_blank">teddyzhu</a>
- *         <p>
- *         Created by teddyzhu on 2017/7/17.
+ * <p>
+ * Created by teddyzhu on 2017/7/17.
  */
 @Controller
 @Route("/geetest")
 public class GeetestController {
 
     @Inject
+    @Lazy
     PropKit propKit;
 
     @Route("/init")

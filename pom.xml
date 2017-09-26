@@ -13,9 +13,9 @@
     <url>http://www.silentgo.com</url>
     <properties>
         <slf4j.version>1.7.12</slf4j.version>
-        <utils.version>0.1.15</utils.version>
-        <orm.version>0.3.1</orm.version>
-        <framework.version>0.0.48</framework.version>
+        <utils.version>0.1.16</utils.version>
+        <orm.version>0.3.2</orm.version>
+        <framework.version>0.0.49</framework.version>
         <json.version>0.0.9</json.version>
     </properties>
     <dependencies>

@@ -13,6 +13,14 @@ public class Pager {
     private Integer pageNum;
     private Integer pageSize;
 
+    public Pager() {
+    }
+
+    public Pager(Integer pageNum, Integer pageSize) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
+
     public Integer getStartRow() {
         return (getPageNum() - 1) * getPageSize();
     }

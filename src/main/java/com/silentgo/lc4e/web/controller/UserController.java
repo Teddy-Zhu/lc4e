@@ -1,6 +1,7 @@
 package com.silentgo.lc4e.web.controller;
 
 import com.silentgo.core.ioc.annotation.Inject;
+import com.silentgo.core.ioc.annotation.Lazy;
 import com.silentgo.core.plugin.event.EventFactory;
 import com.silentgo.core.route.annotation.*;
 import com.silentgo.lc4e.database.model.SysConfig;
@@ -134,6 +135,7 @@ public class UserController {
     CurUserService curUserService;
 
     @Inject
+    @Lazy
     PropKit propKit;
 
     /**

@@ -25,7 +25,6 @@ import java.util.Map;
  *         <p>
  *         Created by teddyzhu on 2017/7/17.
  */
-@Service
 public class GeetestLib {
 
     protected final String verName = "4.0";

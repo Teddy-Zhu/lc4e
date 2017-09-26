@@ -104,15 +104,15 @@ public class ConfigService {
     public Page<SysConfigGroup> queryConfigGroupBySearchParam(SystemConfigGroupSearch search) {
 
         Map<String, Object> map = ReflectKit.beanToMap(search);
+        Page<SysConfigGroup> result = new Page<>(search.getPageNum(), search.getPageSize());
 
         int count = sysConfigGroupDao.countByModelMap(map);
 
-        map.put("limitBy", search.getStartRow() + "," + search.getPageSize());
+        map.put("limitBy", result.getPager());
         map.put("orderBy", "create_time desc");
 
         List<SysConfigGroup> configs = sysConfigGroupDao.queryByModelMap(map);
 
-        Page<SysConfigGroup> result = new Page<>(search.getPageNum(), search.getPageSize());
         result.setTotalCount(count);
         result.setResult(configs);
         return result;
@@ -127,15 +127,15 @@ public class ConfigService {
     public Page<SysConfig> queryConfigBySearchParam(SystemConfigSearch search) {
 
         Map<String, Object> map = ReflectKit.beanToMap(search);
+        Page<SysConfig> result = new Page<>(search.getPageNum(), search.getPageSize());
 
         int count = sysConfigDao.countByModelMap(map);
 
-        map.put("limitBy", search.getStartRow() + "," + search.getPageSize());
+        map.put("limitBy", result.getPager());
         map.put("orderBy", "create_time desc");
 
         List<SysConfig> configs = sysConfigDao.queryByModelMap(map);
 
-        Page<SysConfig> result = new Page<>(search.getPageNum(), search.getPageSize());
         result.setTotalCount(count);
         result.setResult(configs);
         return result;

@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public interface SysConfigDao extends BaseDao<SysConfig, Long> {
+public interface  SysConfigDao extends BaseDao<SysConfig, Long> {
 
 
     SysConfig queryOneWhereName(String name);

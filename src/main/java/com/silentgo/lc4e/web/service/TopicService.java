@@ -17,6 +17,7 @@ import com.silentgo.lc4e.database.model.VwTopicDetail;
 import com.silentgo.lc4e.util.exception.AppBusinessException;
 import com.silentgo.lc4e.web.event.TopicEvent;
 import com.silentgo.lc4e.web.event.VisitTopic;
+import com.silentgo.lc4e.web.request.Pager;
 import com.silentgo.lc4e.web.request.TodayHotTopicSearch;
 import com.silentgo.lc4e.web.request.TopicSearch;
 import com.silentgo.lc4e.web.response.TopicRes;
@@ -409,7 +410,7 @@ public class TopicService {
         queryMap.put("time", DateKit.removeTime(new Date()));
         queryMap.put("areaId", areaId);
         queryMap.put("orderBy", "reply_count desc");
-        queryMap.put("limitBy", " 0," + size);
+        queryMap.put("limitBy", new Pager(1, size));
         List<TopicStatistics> topics = topicStatisticsDao.queryByModelMap(queryMap);
 
         final long[] topicIds = CollectionKit.isEmpty(topics) ? new long[0] : topics.stream().mapToLong(TopicStatistics::getTopicId).toArray();
